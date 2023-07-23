@@ -9,10 +9,8 @@ export function Posts(props: PostsPT) {
   return (
     <StyledPosts>
       <PostForm />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <Post message={"it' my first post"} />
+      <Post message={"i can learn"} />
     </StyledPosts>
   );
 }

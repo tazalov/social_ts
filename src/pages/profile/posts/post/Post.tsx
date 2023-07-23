@@ -6,9 +6,11 @@ import styled from "styled-components";
 import { ShadowContainer } from "../../../../components/ShadowContainer";
 import { theme } from "../../../../styles/Theme";
 
-type PostPT = {};
+type PostPT = {
+  message: string;
+};
 
-export function Post(props: PostPT) {
+export function Post({ message }: PostPT) {
   return (
     <ShadowContainer>
       <StyledPost>
@@ -19,7 +21,7 @@ export function Post(props: PostPT) {
             <span>date</span>
           </UserInfo>
         </FlexWrapper>
-        <PostText>blablabla</PostText>
+        <PostText>{message}</PostText>
         <PostButtons gap={"10px"}>
           <button>like</button>
           <button>comment</button>
