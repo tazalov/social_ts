@@ -1,6 +1,7 @@
 import React from "react";
 import { ShadowContainer } from "../../components/ShadowContainer";
 import styled from "styled-components";
+import { theme } from "../../styles/Theme";
 
 type SidebarPT = {};
 
@@ -21,4 +22,12 @@ const StyledSidebar = styled.nav`
   grid-area: sidebar;
 `;
 
-const SidebarItem = styled.li``;
+const SidebarItem = styled.li`
+  font-size: 20px;
+  padding: 15px 20px;
+  user-select: none;
+  cursor: pointer;
+  &:hover {
+    background-color: ${theme.colors.primaryBg};
+  }
+`;

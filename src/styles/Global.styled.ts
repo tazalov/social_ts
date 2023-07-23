@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-fontoothing: grayscale;
+    //-moz-osx-fontoothing: grayscale;
     background-color: ${theme.colors.primaryBg};
     color: ${theme.colors.primaryFont};
   }
@@ -63,5 +63,9 @@ export const GlobalStyle = createGlobalStyle`
   h6 {
     font-weight: inherit;
     font-size: inherit;
+  }
+  
+  svg {
+    fill: ${theme.colors.primaryFont};
   }
 `;

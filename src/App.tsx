@@ -4,6 +4,7 @@ import { Main } from "./layout/main/Main";
 import { Sidebar } from "./layout/sidebar/Sidebar";
 import { Container } from "./components/Container";
 import styled from "styled-components";
+import { Profile } from "./pages/profile/Profile";
 
 export function App() {
   return (
@@ -13,10 +14,7 @@ export function App() {
         <GridContainer>
           <Sidebar />
           <Main>
-            <Sidebar />
-            <Sidebar />
-            <Sidebar />
-            <Sidebar />
+            <Profile />
           </Main>
         </GridContainer>
       </Container>
@@ -26,7 +24,7 @@ export function App() {
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template: auto / 150px 1fr;
+  grid-template: auto / min-content 1fr;
   grid-template-areas: "sidebar main";
   gap: 10px;
 `;

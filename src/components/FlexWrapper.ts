@@ -7,6 +7,7 @@ type FlexWrapperPT = {
   wrap?: string;
   relative?: boolean;
   content?: string;
+  gap?: string;
 };
 
 export const FlexWrapper = styled.div<FlexWrapperPT>`
@@ -17,9 +18,10 @@ export const FlexWrapper = styled.div<FlexWrapperPT>`
   align-items: ${(props) => props.align || "stretch"};
   flex-wrap: ${(props) => props.wrap || "nowrap"};
   align-content: ${(props) => props.content || "stretch"};
-  ${(props) =>
-    props.relative &&
-    css`
-      position: relative;
-    `};
+  gap: ${(props) => props.gap || "0px"}
+    ${(props) =>
+      props.relative &&
+      css`
+        position: relative;
+      `};
 `;
