@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 type AvatarPT = {
   img: string;
-  width: number;
-  height: number;
+  w: number;
+  h: number;
 };
 
 export function Avatar(props: AvatarPT) {
   return (
-    <StyledAvatar width={props.width} height={props.height}>
+    <StyledAvatar width={props.w} height={props.h}>
       <img src={props.img} alt="img" />
     </StyledAvatar>
   );
