@@ -21,12 +21,10 @@ type StyledAvatarPT = {
 };
 
 const StyledAvatar = styled.div<StyledAvatarPT>`
-  width: ${(props) => props.width + "px"};
-  height: ${(props) => props.height + "px"};
   img {
     border-radius: 50%;
-    width: 100%;
-    height: 100%;
+    width: ${(props) => props.width + "px"};
+    height: ${(props) => props.height + "px"};
     object-fit: cover;
   }
 `;
