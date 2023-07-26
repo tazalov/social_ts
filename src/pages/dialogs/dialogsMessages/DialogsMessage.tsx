@@ -2,12 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../styles/Theme";
 
-type DialogsMessagePT = {};
+type DialogsMessagePT = {
+  id: number;
+  message: string;
+};
 
-export function DialogsMessage(props: DialogsMessagePT) {
+export function DialogsMessage({ id, message }: DialogsMessagePT) {
   return (
     <StyledMessage>
-      <Text>123123</Text>
+      <Text>{message}</Text>
       <Time>12/04/1996</Time>
     </StyledMessage>
   );

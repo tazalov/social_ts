@@ -8,15 +8,16 @@ import { NavLink } from "react-router-dom";
 
 type DialogsListItemPT = {
   id: number;
+  name: string;
 };
 
-export function DialogsListItem({ id }: DialogsListItemPT) {
+export function DialogsListItem({ id, name }: DialogsListItemPT) {
   return (
     <ListItem>
       <ItemLink to={`/dialogs/${id}`}>
         <FlexWrapper align={"center"} gap={"10px"}>
           <Avatar img={avatar} w={40} h={40} />
-          <ItemText>123123123</ItemText>
+          <ItemText>{name}</ItemText>
         </FlexWrapper>
       </ItemLink>
     </ListItem>
