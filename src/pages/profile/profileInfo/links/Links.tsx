@@ -1,5 +1,5 @@
 import React from "react";
-import { Social } from "../../../../components/Icon/Social";
+import { Social } from "../../../../components/icon/Social";
 import { FlexWrapper } from "../../../../components/FlexWrapper";
 import styled from "styled-components";
 

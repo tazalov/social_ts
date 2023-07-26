@@ -1,6 +1,6 @@
 import React from "react";
 import { ShadowContainer } from "../../components/ShadowContainer";
-import { Icon } from "../../components/Icon/Icon";
+import { Icon } from "../../components/icon/Icon";
 import { Container } from "../../components/Container";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
