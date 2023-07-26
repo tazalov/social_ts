@@ -1,11 +1,11 @@
 import React from "react";
-import { FlexWrapper } from "../../../../components/FlexWrapper";
 import styled from "styled-components";
-import { ShadowContainer } from "../../../../components/ShadowContainer";
+import { ShadowContainer } from "../ShadowContainer";
+import { FlexWrapper } from "../FlexWrapper";
 
-type PostFormPT = {};
+type TextFormPT = {};
 
-export function PostForm(props: PostFormPT) {
+export function TextForm(props: TextFormPT) {
   return (
     <ShadowContainer>
       <StyledPostForm>
