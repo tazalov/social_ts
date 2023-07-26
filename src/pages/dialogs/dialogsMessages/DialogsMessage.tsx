@@ -14,12 +14,12 @@ export function DialogsMessage(props: DialogsMessagePT) {
 }
 
 const StyledMessage = styled.li`
-  margin: 5px;
+  margin: 10px;
   background-color: ${theme.colors.primaryBg};
   border-radius: 8px 8px 8px 0;
   max-width: 300px;
   position: relative;
-  padding: 10px;
+  padding: 5px;
   user-select: none;
   &:before {
     position: absolute;

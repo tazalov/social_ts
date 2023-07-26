@@ -30,16 +30,31 @@ export function DialogsMessages(props: DialogsMessagesPT) {
   );
 }
 
-const StyledDialogsMessages = styled(FlexWrapper)``;
+const StyledDialogsMessages = styled(FlexWrapper)`
+  padding: 5px;
+`;
 
 const MessagesList = styled.ul`
   height: 100%;
   padding: 0 10px;
-  overflow: auto;
+  overflow-y: hidden;
   ${Scroll}
+  &:hover,
+  &:focus {
+    overflow-y: auto;
+  }
 `;
 
 const FormWrapper = styled.div`
   padding: 10px;
-  background-color: ${theme.colors.thirdBg};
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background-color: ${theme.colors.thirdBg};
+  }
 `;

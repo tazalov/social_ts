@@ -12,6 +12,5 @@ export const Scroll = css`
 
   &::-webkit-scrollbar-thumb {
     background-color: ${theme.colors.primaryBg};
-    border-radius: 4px;
   }
 `;
