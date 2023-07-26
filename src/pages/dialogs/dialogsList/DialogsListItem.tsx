@@ -20,6 +20,8 @@ export function DialogsListItem(props: DialogsListItemPT) {
 
 const ListItem = styled.li`
   padding: 10px;
+  user-select: none;
+  cursor: pointer;
   &:hover {
     background-color: ${theme.colors.primaryBg};
   }

@@ -6,21 +6,22 @@ import { Container } from "./components/Container";
 import styled from "styled-components";
 import { Profile } from "./pages/profile/Profile";
 import { Dialogs } from "./pages/dialogs/Dialogs";
+import { BrowserRouter, Route } from "react-router-dom";
 
 export function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
       <Container>
         <GridContainer>
           <Sidebar />
           <Main>
-            {/*<Profile />*/}
-            <Dialogs />
+            <Route component={Profile} path={"/profile"} />
+            <Route component={Dialogs} path={"/dialogs"} />
           </Main>
         </GridContainer>
       </Container>
-    </>
+    </BrowserRouter>
   );
 }
 

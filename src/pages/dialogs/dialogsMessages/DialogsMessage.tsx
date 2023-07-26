@@ -20,6 +20,7 @@ const StyledMessage = styled.li`
   max-width: 300px;
   position: relative;
   padding: 10px;
+  user-select: none;
   &:before {
     position: absolute;
     content: "";

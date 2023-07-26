@@ -3,6 +3,8 @@ import { DialogsMessage } from "./DialogsMessage";
 import styled from "styled-components";
 import { FlexWrapper } from "../../../components/FlexWrapper";
 import { TextForm } from "../../../components/textForm/textForm";
+import { Scroll } from "../../../components/Scroll";
+import { theme } from "../../../styles/Theme";
 
 type DialogsMessagesPT = {};
 
@@ -21,7 +23,9 @@ export function DialogsMessages(props: DialogsMessagesPT) {
         <DialogsMessage />
         <DialogsMessage />
       </MessagesList>
-      <TextForm />
+      <FormWrapper>
+        <TextForm />
+      </FormWrapper>
     </StyledDialogsMessages>
   );
 }
@@ -30,6 +34,12 @@ const StyledDialogsMessages = styled(FlexWrapper)``;
 
 const MessagesList = styled.ul`
   height: 100%;
-  padding: 10px;
+  padding: 0 10px;
   overflow: auto;
+  ${Scroll}
+`;
+
+const FormWrapper = styled.div`
+  padding: 10px;
+  background-color: ${theme.colors.thirdBg};
 `;
