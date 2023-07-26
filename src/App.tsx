@@ -5,6 +5,7 @@ import { Sidebar } from "./layout/sidebar/Sidebar";
 import { Container } from "./components/Container";
 import styled from "styled-components";
 import { Profile } from "./pages/profile/Profile";
+import { Dialogs } from "./pages/dialogs/Dialogs";
 
 export function App() {
   return (
@@ -14,7 +15,8 @@ export function App() {
         <GridContainer>
           <Sidebar />
           <Main>
-            <Profile />
+            {/*<Profile />*/}
+            <Dialogs />
           </Main>
         </GridContainer>
       </Container>

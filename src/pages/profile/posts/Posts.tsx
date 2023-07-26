@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { PostForm } from "./postForm/PostForm";
 import { Post } from "./post/Post";
+import { TextForm } from "../../../components/textForm/textForm";
 
 type PostsPT = {};
 
 export function Posts(props: PostsPT) {
   return (
     <StyledPosts>
-      <PostForm />
+      <TextForm />
       <Post message={"it' my first post"} />
       <Post message={"i can learn"} />
     </StyledPosts>
