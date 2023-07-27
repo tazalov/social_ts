@@ -30,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     //-moz-osx-fontoothing: grayscale;
     background-color: ${theme.colors.primaryBg};
     color: ${theme.colors.primaryFont};
+    font-size: 16px;
   }
   input,
   button,

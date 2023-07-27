@@ -5,43 +5,45 @@ import { FlexWrapper } from "../../../components/FlexWrapper";
 import { TextForm } from "../../../components/textForm/textForm";
 import { Scroll } from "../../../components/Scroll";
 import { theme } from "../../../styles/Theme";
+import { ShadowContainer } from "../../../components/ShadowContainer";
 
 type DialogsMessagesPT = {};
 
 export function DialogsMessages(props: DialogsMessagesPT) {
+  const data = [
+    { id: 1, message: "Lorem ipsum" },
+    {
+      id: 2,
+      message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    },
+    {
+      id: 3,
+      message:
+        "A molestiae praesentium quod! Earum hic necessitatibus temporibus! Architecto cum nesciunt quis.",
+    },
+    {
+      id: 4,
+      message:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A molestiae praesentium quod! Earum hic necessitatibus temporibus! Architecto cum nesciunt quis.",
+    },
+    { id: 5, message: "Lorem ipsum" },
+    {
+      id: 6,
+      message:
+        "A molestiae praesentium quod! Earum hic necessitatibus temporibus!",
+    },
+    { id: 7, message: "Lorem ipsum" },
+    { id: 8, message: "A molestiae praesentium quod!" },
+  ];
   return (
     <StyledDialogsMessages direction={"column"}>
-      <MessagesList>
-        <DialogsMessage id={1} message={"Lorem ipsum"} />
-        <DialogsMessage
-          id={2}
-          message={"Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
-        />
-        <DialogsMessage id={3} message={"A molestiae praesentium quod!"} />
-        <DialogsMessage
-          id={4}
-          message={
-            "A molestiae praesentium quod! Earum hic necessitatibus temporibus! Architecto cum nesciunt quis."
-          }
-        />
-        <DialogsMessage
-          id={5}
-          message={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A molestiae praesentium quod! Earum hic necessitatibus temporibus! Architecto cum nesciunt quis."
-          }
-        />
-        <DialogsMessage
-          id={6}
-          message={"Earum hic necessitatibus temporibus!"}
-        />
-        <DialogsMessage
-          id={7}
-          message={
-            "A molestiae praesentium quod! Earum hic necessitatibus temporibus!"
-          }
-        />
-        <DialogsMessage id={8} message={"Lorem ipsum"} />
-      </MessagesList>
+      <ListWrapper>
+        <MessagesList>
+          {data.map((el) => (
+            <DialogsMessage key={el.id} id={el.id} message={el.message} />
+          ))}
+        </MessagesList>
+      </ListWrapper>
       <FormWrapper>
         <TextForm place={"Enter your message..."} />
       </FormWrapper>
@@ -50,7 +52,13 @@ export function DialogsMessages(props: DialogsMessagesPT) {
 }
 
 const StyledDialogsMessages = styled(FlexWrapper)`
+  height: 100%;
+`;
+
+const ListWrapper = styled(ShadowContainer)`
+  min-height: 100%;
   padding: 5px;
+  margin-bottom: 10px;
 `;
 
 const MessagesList = styled.ul`
@@ -64,16 +72,6 @@ const MessagesList = styled.ul`
   }
 `;
 
-const FormWrapper = styled.div`
+const FormWrapper = styled(ShadowContainer)`
   padding: 10px;
-  position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 20px;
-    right: 20px;
-    height: 1px;
-    background-color: ${theme.colors.thirdBg};
-  }
 `;

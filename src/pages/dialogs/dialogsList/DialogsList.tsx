@@ -2,30 +2,38 @@ import React from "react";
 import styled from "styled-components";
 import { DialogsListItem } from "./DialogsListItem";
 import { Scroll } from "../../../components/Scroll";
+import { theme } from "../../../styles/Theme";
+import { ShadowContainer } from "../../../components/ShadowContainer";
 
 type DialogsListPT = {};
 
 export function DialogsList(props: DialogsListPT) {
+  const data = [
+    { id: 1, name: "Iliya" },
+    { id: 2, name: "Dmitry" },
+    { id: 3, name: "Victor" },
+    { id: 4, name: "Dariya" },
+    { id: 5, name: "Alena" },
+    { id: 6, name: "Vladimir" },
+    { id: 7, name: "Tazazal" },
+    { id: 8, name: "Iron Man" },
+    { id: 9, name: "Blablabla" },
+    { id: 10, name: "Zxcxzczxc" },
+  ];
+
   return (
     <StyledDialogsList>
       <List>
-        <DialogsListItem id={1} name={"Iliya"} />
-        <DialogsListItem id={2} name={"Dmitry"} />
-        <DialogsListItem id={3} name={"Victor"} />
-        <DialogsListItem id={4} name={"Dariya"} />
-        <DialogsListItem id={5} name={"Alena"} />
-        <DialogsListItem id={6} name={"Vladimir"} />
-        <DialogsListItem id={7} name={"Tazazal"} />
-        <DialogsListItem id={8} name={"Iron Man"} />
-        <DialogsListItem id={9} name={"Blablabla"} />
-        <DialogsListItem id={10} name={"Zxcxzczxc"} />
+        {data.map((el) => (
+          <DialogsListItem key={el.id} id={el.id} name={el.name} />
+        ))}
       </List>
     </StyledDialogsList>
   );
 }
 
-const StyledDialogsList = styled.div`
-  padding: 5px 0;
+const StyledDialogsList = styled(ShadowContainer)`
+  padding: 5px;
 `;
 
 const List = styled.ul`

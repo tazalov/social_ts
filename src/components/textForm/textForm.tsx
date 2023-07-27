@@ -22,4 +22,10 @@ const StyledTextArea = styled.textarea`
   padding: 5px;
   color: ${theme.colors.primaryFont};
   background-color: ${theme.colors.thirdBg};
+  font-family:
+    "Rubik",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Arial",
+    sans-serif;
 `;
