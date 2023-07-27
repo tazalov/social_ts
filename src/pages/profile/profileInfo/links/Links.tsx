@@ -5,39 +5,21 @@ import styled from "styled-components";
 
 type LinksPT = {};
 
-function Links(props: LinksPT) {
+export function Links(props: LinksPT) {
   return (
-    <FlexWrapper>
-      <Block>
-        <Social iconId={"github"} />
-      </Block>
-      <Block>
-        <Social iconId={"vk"} />
-      </Block>
-      <Block>
-        <Social iconId={"facebook"} />
-      </Block>
-      <Block>
-        <Social iconId={"instagram"} />
-      </Block>
-      <Block>
-        <Social iconId={"twitter"} />
-      </Block>
-      <Block>
-        <Social iconId={"website"} />
-      </Block>
-      <Block>
-        <Social iconId={"youtube"} />
-      </Block>
-      <Block>
-        <Social iconId={"mainLink"} />
-      </Block>
-    </FlexWrapper>
+    <StyledLinks gap={"10px"}>
+      <Social iconId={"github"} />
+      <Social iconId={"vk"} />
+      <Social iconId={"facebook"} />
+      <Social iconId={"instagram"} />
+      <Social iconId={"twitter"} />
+      <Social iconId={"website"} />
+      <Social iconId={"youtube"} />
+      <Social iconId={"mainLink"} />
+    </StyledLinks>
   );
 }
 
-export default Links;
-
-const Block = styled.div`
-  margin: 5px;
+const StyledLinks = styled(FlexWrapper)`
+  padding: 10px;
 `;

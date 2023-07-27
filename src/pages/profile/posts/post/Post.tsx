@@ -21,7 +21,7 @@ export function Post({ name, message, likes }: PostPT) {
       <StyledPost>
         <FlexWrapper align={"center"}>
           <Avatar img={avatar} w={50} h={50} />
-          <UserInfo>
+          <UserInfo gap={"10px"} justify={"space-between"}>
             <span>{name}</span>
             <i>12/04/2022</i>
           </UserInfo>
@@ -42,14 +42,11 @@ export function Post({ name, message, likes }: PostPT) {
 }
 
 const StyledPost = styled.div`
-  margin-bottom: 10px;
   padding: 10px;
 `;
 
-const UserInfo = styled.div`
+const UserInfo = styled(FlexWrapper)`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   margin-left: 10px;
   span {
     color: ${theme.colors.primaryFont};

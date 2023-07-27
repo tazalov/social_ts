@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { DialogsListItem } from "./DialogsListItem";
 import { Scroll } from "../../../components/Scroll";
-import { theme } from "../../../styles/Theme";
 import { ShadowContainer } from "../../../components/ShadowContainer";
 
 type DialogsListPT = {};

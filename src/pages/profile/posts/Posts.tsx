@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Post } from "./post/Post";
 import { TextForm } from "../../../components/textForm/textForm";
 import { ShadowContainer } from "../../../components/ShadowContainer";
+import { FlexWrapper } from "../../../components/FlexWrapper";
 
 type PostsPT = {};
 
@@ -13,7 +14,7 @@ export function Posts(props: PostsPT) {
     { id: 3, user: "Egorka", text: "it' my third post", likes: 12312 },
   ];
   return (
-    <StyledPosts>
+    <StyledPosts direction={"column"} gap={"10px"}>
       <ShadowContainer as={FormWrapper}>
         <TextForm place={"Enter post message..."} />
       </ShadowContainer>
@@ -30,9 +31,8 @@ export function Posts(props: PostsPT) {
   );
 }
 
-const StyledPosts = styled.div``;
+const StyledPosts = styled(FlexWrapper)``;
 
 const FormWrapper = styled.div`
-  margin: 10px 0;
   padding: 10px;
 `;

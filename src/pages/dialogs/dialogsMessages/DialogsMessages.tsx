@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { FlexWrapper } from "../../../components/FlexWrapper";
 import { TextForm } from "../../../components/textForm/textForm";
 import { Scroll } from "../../../components/Scroll";
-import { theme } from "../../../styles/Theme";
 import { ShadowContainer } from "../../../components/ShadowContainer";
 
 type DialogsMessagesPT = {};
