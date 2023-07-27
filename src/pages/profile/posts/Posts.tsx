@@ -10,7 +10,7 @@ export function Posts(props: PostsPT) {
   return (
     <StyledPosts>
       <ShadowContainer as={FormWrapper}>
-        <TextForm />
+        <TextForm place={"Enter post message..."} />
       </ShadowContainer>
       <Post message={"it' my first post"} />
       <Post message={"i can learn"} />

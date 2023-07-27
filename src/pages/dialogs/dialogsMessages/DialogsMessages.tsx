@@ -43,7 +43,7 @@ export function DialogsMessages(props: DialogsMessagesPT) {
         <DialogsMessage id={8} message={"Lorem ipsum"} />
       </MessagesList>
       <FormWrapper>
-        <TextForm />
+        <TextForm place={"Enter your message..."} />
       </FormWrapper>
     </StyledDialogsMessages>
   );
