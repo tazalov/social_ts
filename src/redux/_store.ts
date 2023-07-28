@@ -20,11 +20,18 @@ export type DialogsT = {
   messages: DialogsMessageT[];
 };
 
+export type SideUserT = {
+  id: number;
+  name: string;
+  followed: boolean;
+};
+
 export type StateT = {
   profile: {
     posts: PostT[];
   };
   dialogs: DialogsT;
+  sideUsers: SideUserT[];
 };
 
 export type StoreT = {
@@ -77,8 +84,17 @@ export const store: StoreT = {
         },
         { id: 7, message: "Lorem ipsum" },
         { id: 8, message: "A molestiae praesentium quod!" },
+        { id: 9, message: "A molestiae praesentium quod!" },
+        { id: 10, message: "A molestiae praesentium quod!" },
       ],
     },
+    sideUsers: [
+      { id: 1, name: "Tazazal", followed: true },
+      { id: 2, name: "Anton", followed: false },
+      { id: 3, name: "Igor", followed: false },
+      { id: 4, name: "Bukashka", followed: false },
+      { id: 5, name: "YA YA YA", followed: false },
+    ],
   },
   getState() {
     return this._state;
