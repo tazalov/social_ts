@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { theme } from "./Theme";
+import { ScrollBody } from "../components/ScrollBody";
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -31,6 +32,8 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${theme.colors.primaryBg};
     color: ${theme.colors.primaryFont};
     font-size: 16px;
+    ${ScrollBody};
+    
   }
   input,
   button,

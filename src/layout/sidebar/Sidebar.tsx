@@ -43,6 +43,6 @@ const SidebarLink = styled(NavLink)`
   display: block;
   &.active,
   &:hover {
-    background-color: ${theme.colors.primaryBg};
+    background-color: ${theme.colors.thirdBg};
   }
 `;

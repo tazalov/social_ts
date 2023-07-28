@@ -1,16 +1,16 @@
 import { css } from "styled-components";
 import { theme } from "../styles/Theme";
 
-export const Scroll = css`
+export const ScrollBody = css`
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: ${theme.colors.thirdBg};
+    background-color: ${theme.colors.secondaryBg};
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: ${theme.colors.primaryBg};
+    background-color: ${theme.colors.thirdBg};
   }
 `;

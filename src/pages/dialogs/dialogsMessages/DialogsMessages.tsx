@@ -56,7 +56,6 @@ const StyledDialogsMessages = styled(FlexWrapper)`
 
 const ListWrapper = styled(ShadowContainer)`
   min-height: 100%;
-  padding: 5px;
   margin-bottom: 10px;
 `;
 

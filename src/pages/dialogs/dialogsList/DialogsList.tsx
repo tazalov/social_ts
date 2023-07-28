@@ -31,16 +31,13 @@ export function DialogsList(props: DialogsListPT) {
   );
 }
 
-const StyledDialogsList = styled(ShadowContainer)`
-  padding: 5px;
-`;
+const StyledDialogsList = styled(ShadowContainer)``;
 
 const List = styled.ul`
+  ${Scroll};
   height: 100%;
   overflow-y: hidden;
-  ${Scroll}
-  &:hover,
-  &:focus {
+  &:hover {
     overflow-y: auto;
   }
 `;
