@@ -19,7 +19,7 @@ export function Dialogs({ dialogs }: DialogsPT) {
 
 const StyledDialogs = styled.div`
   display: grid;
-  grid-template-columns: 170px 4fr;
+  grid-template-columns: 200px 4fr;
   grid-template-rows: 60vh;
-  gap: 10px;
+  gap: 20px;
 `;

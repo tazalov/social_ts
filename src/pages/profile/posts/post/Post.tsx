@@ -61,7 +61,8 @@ const UserInfo = styled(FlexWrapper)`
 
 const PostText = styled.div`
   margin: 10px 0;
-  padding: 10px;
+  padding: 20px 10px;
+  background-color: ${theme.colors.thirdBg};
 `;
 
 const PostButtons = styled(FlexWrapper)`

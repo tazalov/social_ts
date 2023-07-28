@@ -13,7 +13,7 @@ type ProfilePT = {
 
 export function Profile({ posts }: ProfilePT) {
   return (
-    <FlexWrapper gap={"10px"} direction={"column"}>
+    <FlexWrapper gap={"20px"} direction={"column"}>
       <ShadowContainer>
         <CoverImg>
           <img src={cover} alt="" />

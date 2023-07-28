@@ -10,11 +10,11 @@ type HeaderPT = {};
 
 export function Header(props: HeaderPT) {
   return (
-    <ShadowContainer as={StyledHeader}>
-      <Container>
+    <Container>
+      <ShadowContainer as={StyledHeader}>
         <FlexWrapper justify={"space-between"} align={"center"}>
           <Icon iconId={"logo"} width={"30px"} height={"30px"} />
-          <FlexWrapper gap={"10px"}>
+          <FlexWrapper gap={"20px"}>
             <MenuLink href="#1">
               <Icon iconId={"search"} width={"20px"} height={"20px"} />
             </MenuLink>
@@ -31,14 +31,14 @@ export function Header(props: HeaderPT) {
             </MenuLink>
           </FlexWrapper>
         </FlexWrapper>
-      </Container>
-    </ShadowContainer>
+      </ShadowContainer>
+    </Container>
   );
 }
 
 const StyledHeader = styled.header`
-  margin-bottom: 10px;
-  padding: 5px;
+  margin: 20px 0;
+  padding: 10px;
 `;
 
 const MenuLink = styled.a`

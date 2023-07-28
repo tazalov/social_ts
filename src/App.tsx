@@ -3,11 +3,12 @@ import { Header } from "./layout/header/Header";
 import { Main } from "./layout/main/Main";
 import { Sidebar } from "./layout/sidebar/Sidebar";
 import { Container } from "./components/Container";
-import styled from "styled-components";
 import { Profile } from "./pages/profile/Profile";
 import { Dialogs } from "./pages/dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
 import { StateT } from "./redux/_store";
+import { Users } from "./layout/users/Users";
+import { FlexWrapper } from "./components/FlexWrapper";
 
 type AppPT = {
   state: StateT;
@@ -18,8 +19,11 @@ export function App({ state }: AppPT) {
     <BrowserRouter>
       <Header />
       <Container>
-        <GridContainer>
-          <Sidebar />
+        <FlexWrapper gap={"20px"}>
+          <FlexWrapper direction={"column"} gap={"20px"}>
+            <Sidebar />
+            <Users sideUsers={state.sideUsers} />
+          </FlexWrapper>
           <Main>
             <Route
               render={() => <Profile posts={state.profile.posts} />}
@@ -30,15 +34,8 @@ export function App({ state }: AppPT) {
               path={"/dialogs"}
             />
           </Main>
-        </GridContainer>
+        </FlexWrapper>
       </Container>
     </BrowserRouter>
   );
 }
-
-const GridContainer = styled.div`
-  display: grid;
-  grid-template: auto / min-content 1fr;
-  grid-template-areas: "sidebar main";
-  gap: 10px;
-`;

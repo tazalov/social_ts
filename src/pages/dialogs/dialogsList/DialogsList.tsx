@@ -21,7 +21,9 @@ export function DialogsList({ list }: DialogsListPT) {
   );
 }
 
-const StyledDialogsList = styled(ShadowContainer)``;
+const StyledDialogsList = styled(ShadowContainer)`
+  height: 100%;
+`;
 
 const List = styled.ul`
   ${Scroll};

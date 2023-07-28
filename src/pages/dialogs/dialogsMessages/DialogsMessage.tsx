@@ -16,7 +16,7 @@ export function DialogsMessage({ id, message }: DialogsMessagePT) {
   );
 }
 
-const StyledMessage = styled.li`
+const StyledMessage = styled.div`
   margin: 10px;
   background-color: ${theme.colors.primaryBg};
   border-radius: 8px 8px 8px 0;

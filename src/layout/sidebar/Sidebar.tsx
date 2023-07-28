@@ -3,6 +3,14 @@ import { ShadowContainer } from "../../components/ShadowContainer";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faComments,
+  faMessage,
+  faMusic,
+  faUser,
+  faUserGroup,
+} from "@fortawesome/free-solid-svg-icons";
 
 type SidebarPT = {};
 
@@ -11,36 +19,57 @@ export function Sidebar(props: SidebarPT) {
     <StyledSidebar>
       <ShadowContainer as={"ul"}>
         <SidebarItem>
-          <SidebarLink to={"/profile"}>Profile</SidebarLink>
+          <SidebarLink to={"/profile"}>
+            <FontAwesomeIcon icon={faUser} />
+            <span>Profile</span>
+          </SidebarLink>
         </SidebarItem>
         <SidebarItem>
-          <SidebarLink to={"/dialogs"}>Dialogs</SidebarLink>
+          <SidebarLink to={"/dialogs"}>
+            <FontAwesomeIcon icon={faMessage} />
+            <span>Dialogs</span>
+          </SidebarLink>
         </SidebarItem>
         <SidebarItem>
-          <SidebarLink to={"/1"}>Friends</SidebarLink>
+          <SidebarLink to={"/music"}>
+            <FontAwesomeIcon icon={faMusic} />
+            <span>Music</span>
+          </SidebarLink>
         </SidebarItem>
         <SidebarItem>
-          <SidebarLink to={"/2"}>Chat</SidebarLink>
+          <SidebarLink to={"/1"}>
+            <FontAwesomeIcon icon={faUserGroup} />
+            <span>Friends</span>
+          </SidebarLink>
+        </SidebarItem>
+        <SidebarItem>
+          <SidebarLink to={"/2"}>
+            <FontAwesomeIcon icon={faComments} />
+            <span>Chat</span>
+          </SidebarLink>
         </SidebarItem>
       </ShadowContainer>
     </StyledSidebar>
   );
 }
 
-const StyledSidebar = styled.nav`
-  grid-area: sidebar;
-`;
+const StyledSidebar = styled.nav``;
 
 const SidebarItem = styled.li``;
 
 const SidebarLink = styled(NavLink)`
-  width: 100%;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
-  padding: 15px 20px;
+  padding: 15px 150px 15px 20px;
   user-select: none;
   cursor: pointer;
-  display: block;
+  display: flex;
+  align-items: center;
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
   &.active,
   &:hover {
     background-color: ${theme.colors.thirdBg};

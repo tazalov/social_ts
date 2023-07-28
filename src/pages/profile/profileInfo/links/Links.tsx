@@ -7,7 +7,7 @@ type LinksPT = {};
 
 export function Links(props: LinksPT) {
   return (
-    <StyledLinks gap={"10px"}>
+    <StyledLinks gap={"10px"} justify={"flex-end"}>
       <Social iconId={"github"} />
       <Social iconId={"vk"} />
       <Social iconId={"facebook"} />
@@ -20,6 +20,4 @@ export function Links(props: LinksPT) {
   );
 }
 
-const StyledLinks = styled(FlexWrapper)`
-  padding: 10px;
-`;
+const StyledLinks = styled(FlexWrapper)``;

@@ -37,4 +37,6 @@ const ItemLink = styled(NavLink)`
   }
 `;
 
-const ItemText = styled.div``;
+const ItemText = styled.div`
+  font-size: 22px;
+`;

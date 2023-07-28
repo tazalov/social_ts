@@ -10,5 +10,5 @@ export function Main(props: MainPT) {
 }
 
 const StyledMain = styled.main`
-  grid-area: main;
+  width: 100%;
 `;

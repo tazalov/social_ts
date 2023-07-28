@@ -12,7 +12,7 @@ type PostsPT = {
 
 export function Posts({ posts }: PostsPT) {
   return (
-    <StyledPosts direction={"column"} gap={"10px"}>
+    <FlexWrapper direction={"column"} gap={"20px"}>
       <ShadowContainer as={FormWrapper}>
         <TextForm place={"Enter post message..."} />
       </ShadowContainer>
@@ -25,11 +25,9 @@ export function Posts({ posts }: PostsPT) {
           likes={el.likes}
         />
       ))}
-    </StyledPosts>
+    </FlexWrapper>
   );
 }
-
-const StyledPosts = styled(FlexWrapper)``;
 
 const FormWrapper = styled.div`
   padding: 10px;
