@@ -5,40 +5,18 @@ import { FlexWrapper } from "../../../components/FlexWrapper";
 import { TextForm } from "../../../components/textForm/textForm";
 import { Scroll } from "../../../components/Scroll";
 import { ShadowContainer } from "../../../components/ShadowContainer";
+import { DialogsMessageT } from "../../../redux/_store";
 
-type DialogsMessagesPT = {};
+type DialogsMessagesPT = {
+  messages: DialogsMessageT[];
+};
 
-export function DialogsMessages(props: DialogsMessagesPT) {
-  const data = [
-    { id: 1, message: "Lorem ipsum" },
-    {
-      id: 2,
-      message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-    },
-    {
-      id: 3,
-      message:
-        "A molestiae praesentium quod! Earum hic necessitatibus temporibus! Architecto cum nesciunt quis.",
-    },
-    {
-      id: 4,
-      message:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A molestiae praesentium quod! Earum hic necessitatibus temporibus! Architecto cum nesciunt quis.",
-    },
-    { id: 5, message: "Lorem ipsum" },
-    {
-      id: 6,
-      message:
-        "A molestiae praesentium quod! Earum hic necessitatibus temporibus!",
-    },
-    { id: 7, message: "Lorem ipsum" },
-    { id: 8, message: "A molestiae praesentium quod!" },
-  ];
+export function DialogsMessages({ messages }: DialogsMessagesPT) {
   return (
     <StyledDialogsMessages direction={"column"}>
       <ListWrapper>
         <MessagesList>
-          {data.map((el) => (
+          {messages.map((el) => (
             <DialogsMessage key={el.id} id={el.id} message={el.message} />
           ))}
         </MessagesList>

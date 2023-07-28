@@ -7,8 +7,13 @@ import styled from "styled-components";
 import { Profile } from "./pages/profile/Profile";
 import { Dialogs } from "./pages/dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
+import { StateT } from "./redux/_store";
 
-export function App() {
+type AppPT = {
+  state: StateT;
+};
+
+export function App({ state }: AppPT) {
   return (
     <BrowserRouter>
       <Header />
@@ -16,8 +21,14 @@ export function App() {
         <GridContainer>
           <Sidebar />
           <Main>
-            <Route component={Profile} path={"/profile"} />
-            <Route component={Dialogs} path={"/dialogs"} />
+            <Route
+              render={() => <Profile posts={state.profile.posts} />}
+              path={"/profile"}
+            />
+            <Route
+              render={() => <Dialogs dialogs={state.dialogs} />}
+              path={"/dialogs"}
+            />
           </Main>
         </GridContainer>
       </Container>

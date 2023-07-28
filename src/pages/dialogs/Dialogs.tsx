@@ -2,14 +2,17 @@ import React from "react";
 import { DialogsList } from "./dialogsList/DialogsList";
 import { DialogsMessages } from "./dialogsMessages/DialogsMessages";
 import styled from "styled-components";
+import { DialogsT } from "../../redux/_store";
 
-type DialogsPT = {};
+type DialogsPT = {
+  dialogs: DialogsT;
+};
 
-export function Dialogs(props: DialogsPT) {
+export function Dialogs({ dialogs }: DialogsPT) {
   return (
     <StyledDialogs>
-      <DialogsList />
-      <DialogsMessages />
+      <DialogsList list={dialogs.list} />
+      <DialogsMessages messages={dialogs.messages} />
     </StyledDialogs>
   );
 }
