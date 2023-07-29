@@ -26,7 +26,7 @@ export function App({ state }: AppPT) {
           </FlexWrapper>
           <Main>
             <Route
-              render={() => <Profile posts={state.profile.posts} />}
+              render={() => <Profile profile={state.profile} />}
               path={"/profile"}
             />
             <Route

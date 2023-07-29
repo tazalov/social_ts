@@ -8,6 +8,7 @@ type FlexWrapperPT = {
   relative?: boolean;
   content?: string;
   gap?: string;
+  fullWidth?: boolean;
 };
 
 export const FlexWrapper = styled.div<FlexWrapperPT>`
@@ -24,4 +25,10 @@ export const FlexWrapper = styled.div<FlexWrapperPT>`
       css`
         position: relative;
       `};
+  ${(props) =>
+    props.fullWidth
+      ? css`
+          width: 100%;
+        `
+      : ""};
 `;

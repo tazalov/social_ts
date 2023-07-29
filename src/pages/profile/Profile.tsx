@@ -5,13 +5,14 @@ import { ShadowContainer } from "../../components/ShadowContainer";
 import { Posts } from "./posts/Posts";
 import { ProfileInfo } from "./profileInfo/ProfileInfo";
 import { FlexWrapper } from "../../components/FlexWrapper";
-import { PostT } from "../../redux/_store";
+import { ProfileT } from "../../redux/_store";
+import { Friends } from "./friends/Friends";
 
 type ProfilePT = {
-  posts: PostT[];
+  profile: ProfileT;
 };
 
-export function Profile({ posts }: ProfilePT) {
+export function Profile({ profile }: ProfilePT) {
   return (
     <FlexWrapper gap={"20px"} direction={"column"}>
       <ShadowContainer>
@@ -20,7 +21,10 @@ export function Profile({ posts }: ProfilePT) {
         </CoverImg>
         <ProfileInfo />
       </ShadowContainer>
-      <Posts posts={posts} />
+      <FlexWrapper gap={"20px"}>
+        <Posts posts={profile.posts} />
+        <Friends friends={profile.friends} />
+      </FlexWrapper>
     </FlexWrapper>
   );
 }

@@ -12,7 +12,7 @@ type PostsPT = {
 
 export function Posts({ posts }: PostsPT) {
   return (
-    <FlexWrapper direction={"column"} gap={"20px"}>
+    <FlexWrapper direction={"column"} gap={"20px"} fullWidth>
       <ShadowContainer as={FormWrapper}>
         <TextForm place={"Enter post message..."} />
       </ShadowContainer>
