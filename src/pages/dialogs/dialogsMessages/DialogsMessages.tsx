@@ -4,14 +4,18 @@ import styled from "styled-components";
 import { TextForm } from "../../../components/textForm/textForm";
 import { Scroll } from "../../../components/Scroll";
 import { ShadowContainer } from "../../../components/ShadowContainer";
-import { DialogsMessageT } from "../../../redux/_store";
+import { ActionsT, addMessageAC, DialogsMessageT } from "../../../redux/_store";
 import { FlexWrapper } from "../../../components/FlexWrapper";
 
 type DialogsMessagesPT = {
   messages: DialogsMessageT[];
+  dispatch: (value: ActionsT) => void;
 };
 
-export function DialogsMessages({ messages }: DialogsMessagesPT) {
+export function DialogsMessages({ messages, dispatch }: DialogsMessagesPT) {
+  const addMessage = (message: string) => {
+    dispatch(addMessageAC(message));
+  };
   return (
     <StyledDialogsMessages direction={"column"} gap={"20px"}>
       <MessagesList>
@@ -20,7 +24,7 @@ export function DialogsMessages({ messages }: DialogsMessagesPT) {
         ))}
       </MessagesList>
       <FormWrapper>
-        <TextForm place={"Enter your message..."} callback={() => {}} />
+        <TextForm place={"Enter your message..."} callback={addMessage} />
       </FormWrapper>
     </StyledDialogsMessages>
   );

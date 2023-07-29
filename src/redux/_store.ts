@@ -51,9 +51,31 @@ export type StoreT = {
   _state: StateT;
   getState: () => StateT;
   _callSubscribers: () => void;
-  addPost: (post: string) => void;
   subscribe: (observer: () => void) => void;
+  dispatch: (action: ActionsT) => void;
 };
+
+type AddPostAT = {
+  type: "social/profile/ADD_POST";
+  postText: string;
+};
+
+export const addPostAC = (postText: string): AddPostAT => ({
+  type: "social/profile/ADD_POST",
+  postText,
+});
+
+type AddMessageAT = {
+  type: "social/profile/ADD_MESSAGE";
+  messageText: string;
+};
+
+export const addMessageAC = (messageText: string): AddMessageAT => ({
+  type: "social/profile/ADD_MESSAGE",
+  messageText,
+});
+
+export type ActionsT = AddPostAT | AddMessageAT;
 
 export const store: StoreT = {
   _state: {
@@ -130,9 +152,31 @@ export const store: StoreT = {
   subscribe(observer) {
     this._callSubscribers = observer;
   },
-  addPost(postText: string) {
-    const newPost = { id: 4, user: "Tazalov", text: postText, likes: 0 };
-    this._state.profile.posts = [...this._state.profile.posts, newPost];
-    this._callSubscribers();
+  dispatch(action: ActionsT) {
+    switch (action.type) {
+      case "social/profile/ADD_POST": {
+        const newPost = {
+          id: 4,
+          user: "Tazalov",
+          text: action.postText,
+          likes: 0,
+        };
+        this._state.profile.posts = [...this._state.profile.posts, newPost];
+        this._callSubscribers();
+        break;
+      }
+      case "social/profile/ADD_MESSAGE": {
+        const newMessage = {
+          id: 11,
+          message: action.messageText,
+        };
+        this._state.dialogs.messages = [
+          ...this._state.dialogs.messages,
+          newMessage,
+        ];
+        this._callSubscribers();
+        break;
+      }
+    }
   },
 };

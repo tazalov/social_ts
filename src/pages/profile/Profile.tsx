@@ -5,15 +5,15 @@ import { ShadowContainer } from "../../components/ShadowContainer";
 import { Posts } from "./posts/Posts";
 import { ProfileInfo } from "./profileInfo/ProfileInfo";
 import { FlexWrapper } from "../../components/FlexWrapper";
-import { ProfileT } from "../../redux/_store";
+import { ActionsT, ProfileT } from "../../redux/_store";
 import { Friends } from "./friends/Friends";
 
 type ProfilePT = {
   profile: ProfileT;
-  addPost: (value: string) => void;
+  dispatch: (value: ActionsT) => void;
 };
 
-export function Profile({ profile, addPost }: ProfilePT) {
+export function Profile({ profile, dispatch }: ProfilePT) {
   return (
     <FlexWrapper gap={"20px"} direction={"column"}>
       <ShadowContainer>
@@ -23,7 +23,7 @@ export function Profile({ profile, addPost }: ProfilePT) {
         <ProfileInfo />
       </ShadowContainer>
       <FlexWrapper gap={"20px"}>
-        <Posts posts={profile.posts} addPost={addPost} />
+        <Posts posts={profile.posts} dispatch={dispatch} />
         <Friends friends={profile.friends} />
       </FlexWrapper>
     </FlexWrapper>

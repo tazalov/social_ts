@@ -8,7 +8,7 @@ const renderThree = () => {
   ReactDOM.render(
     <>
       <GlobalStyle />
-      <App state={store.getState()} addPost={store.addPost.bind(store)} />
+      <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
     </>,
     document.getElementById("root"),
   );

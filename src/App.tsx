@@ -6,16 +6,16 @@ import { Container } from "./components/Container";
 import { Profile } from "./pages/profile/Profile";
 import { Dialogs } from "./pages/dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
-import { StateT } from "./redux/_store";
+import { ActionsT, StateT } from "./redux/_store";
 import { Users } from "./layout/users/Users";
 import { FlexWrapper } from "./components/FlexWrapper";
 
 type AppPT = {
   state: StateT;
-  addPost: (value: string) => void;
+  dispatch: (value: ActionsT) => void;
 };
 
-export function App({ state, addPost }: AppPT) {
+export function App({ state, dispatch }: AppPT) {
   return (
     <BrowserRouter>
       <Header />
@@ -28,12 +28,14 @@ export function App({ state, addPost }: AppPT) {
           <Main>
             <Route
               render={() => (
-                <Profile profile={state.profile} addPost={addPost} />
+                <Profile profile={state.profile} dispatch={dispatch} />
               )}
               path={"/profile"}
             />
             <Route
-              render={() => <Dialogs dialogs={state.dialogs} />}
+              render={() => (
+                <Dialogs dialogs={state.dialogs} dispatch={dispatch} />
+              )}
               path={"/dialogs"}
             />
           </Main>

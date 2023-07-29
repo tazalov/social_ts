@@ -4,14 +4,18 @@ import { Post } from "./post/Post";
 import { TextForm } from "../../../components/textForm/textForm";
 import { ShadowContainer } from "../../../components/ShadowContainer";
 import { FlexWrapper } from "../../../components/FlexWrapper";
-import { PostT } from "../../../redux/_store";
+import { ActionsT, addPostAC, PostT } from "../../../redux/_store";
 
 type PostsPT = {
   posts: PostT[];
-  addPost: (value: string) => void;
+  dispatch: (value: ActionsT) => void;
 };
 
-export function Posts({ posts, addPost }: PostsPT) {
+export function Posts({ posts, dispatch }: PostsPT) {
+  const addPost = (postText: string) => {
+    dispatch(addPostAC(postText));
+  };
+
   return (
     <StyledPosts direction={"column"} gap={"20px"}>
       <ShadowContainer as={FormWrapper}>
