@@ -11,6 +11,7 @@ import {
   faUser,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
+import { SubTitle } from "../../components/Subtitle";
 
 type SidebarPT = {};
 
@@ -58,10 +59,8 @@ const StyledSidebar = styled.nav``;
 const SidebarItem = styled.li``;
 
 const SidebarLink = styled(NavLink)`
-  font-size: 18px;
-  font-weight: 600;
+  ${SubTitle};
   padding: 15px 150px 15px 20px;
-  user-select: none;
   cursor: pointer;
   display: flex;
   align-items: center;

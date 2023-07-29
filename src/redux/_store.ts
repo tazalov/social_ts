@@ -63,7 +63,7 @@ export const store: StoreT = {
       friends: {
         count: 123,
         list: [
-          { id: 1, name: "Egorka" },
+          { id: 1, name: "Egorka Zashibu" },
           { id: 2, name: "Vsaya" },
           { id: 3, name: "Antoni" },
           { id: 4, name: "Dima" },

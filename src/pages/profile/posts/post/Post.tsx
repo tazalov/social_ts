@@ -7,6 +7,7 @@ import { ShadowContainer } from "../../../../components/ShadowContainer";
 import { theme } from "../../../../styles/Theme";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { SubTitle } from "../../../../components/Subtitle";
 
 type PostPT = {
   id: number;
@@ -49,9 +50,7 @@ const UserInfo = styled(FlexWrapper)`
   width: 100%;
   margin-left: 10px;
   span {
-    color: ${theme.colors.primaryFont};
-    font-size: 20px;
-    font-weight: 600;
+    ${SubTitle};
   }
   i {
     color: ${theme.colors.secondaryFont};

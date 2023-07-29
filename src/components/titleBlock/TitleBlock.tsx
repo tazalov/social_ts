@@ -5,6 +5,7 @@ import React from "react";
 import styled from "styled-components";
 import { FlexWrapper } from "../FlexWrapper";
 import { theme } from "../../styles/Theme";
+import { SubTitle } from "../Subtitle";
 
 type TitleBlockPT = {
   title: string | React.ReactNode;
@@ -28,8 +29,7 @@ const TitleWrapper = styled(FlexWrapper)`
 `;
 
 const Title = styled.h2`
-  font-size: 18px;
-  font-weight: 600;
+  ${SubTitle};
   span {
     color: ${theme.colors.secondaryFont};
     font-size: 14px;

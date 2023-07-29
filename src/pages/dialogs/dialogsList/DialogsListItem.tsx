@@ -5,6 +5,7 @@ import { Avatar } from "../../../components/avatar/Avatar";
 import avatar from "../../../assets/images/anynft.webp";
 import { FlexWrapper } from "../../../components/FlexWrapper";
 import { NavLink } from "react-router-dom";
+import { SubTitle } from "../../../components/Subtitle";
 
 type DialogsListItemPT = {
   id: number;
@@ -13,22 +14,17 @@ type DialogsListItemPT = {
 
 export function DialogsListItem({ id, name }: DialogsListItemPT) {
   return (
-    <ListItem>
-      <ItemLink to={`/dialogs/${id}`}>
-        <FlexWrapper align={"center"} gap={"10px"}>
-          <Avatar img={avatar} w={40} h={40} />
-          <ItemText>{name}</ItemText>
-        </FlexWrapper>
-      </ItemLink>
-    </ListItem>
+    <ItemLink to={`/dialogs/${id}`}>
+      <FlexWrapper align={"center"} gap={"10px"}>
+        <Avatar img={avatar} w={40} h={40} />
+        <ItemText>{name}</ItemText>
+      </FlexWrapper>
+    </ItemLink>
   );
 }
 
-const ListItem = styled.li``;
-
 const ItemLink = styled(NavLink)`
   padding: 10px;
-  user-select: none;
   cursor: pointer;
   display: block;
   &.active,
@@ -38,5 +34,5 @@ const ItemLink = styled(NavLink)`
 `;
 
 const ItemText = styled.div`
-  font-size: 22px;
+  ${SubTitle}
 `;

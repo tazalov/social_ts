@@ -16,7 +16,7 @@ export function User({ name, followed }: UserPT) {
     <StyledUser align={"center"} gap={"5px"} justify={"space-between"}>
       <Info align={"center"} gap={"10px"}>
         <Avatar img={avatar} w={50} h={50} />
-        <span>{name}</span>
+        <span>{name.length > 10 ? `${name.slice(0, 8)}...` : name}</span>
       </Info>
       <ButtonB title={"follow"} callback={() => {}} disable={followed} />
     </StyledUser>
