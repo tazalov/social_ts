@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Post } from "./post/Post";
 import { TextForm } from "../../../components/textForm/textForm";
-import { ShadowContainer } from "../../../components/ShadowContainer";
-import { FlexWrapper } from "../../../components/FlexWrapper";
+import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
+import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 import { ActionsT, addPostAC, PostT } from "../../../redux/_store";
 
 type PostsPT = {
@@ -18,9 +18,9 @@ export function Posts({ posts, dispatch }: PostsPT) {
 
   return (
     <StyledPosts direction={"column"} gap={"20px"}>
-      <ShadowContainer as={FormWrapper}>
+      <ShadowContainerStyled as={FormWrapper}>
         <TextForm place={"Enter post message..."} callback={addPost} />
-      </ShadowContainer>
+      </ShadowContainerStyled>
       {posts.map((el) => (
         <Post
           key={el.id}
@@ -34,7 +34,7 @@ export function Posts({ posts, dispatch }: PostsPT) {
   );
 }
 
-const StyledPosts = styled(FlexWrapper)`
+const StyledPosts = styled(FlexWrapperStyled)`
   width: 100%;
 `;
 

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { FlexWrapper } from "../FlexWrapper";
+import { FlexWrapperStyled } from "../FlexWrapper.styled";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
 import { Button } from "../button/Button";
@@ -23,14 +23,14 @@ export function TextForm({ place, callback, submit }: TextFormPT) {
   };
 
   return (
-    <FlexWrapper gap={"10px"}>
+    <FlexWrapperStyled gap={"10px"}>
       <StyledTextArea
         placeholder={place}
         value={text}
         onChange={onChangeHandler}
       />
       <Button title={"send"} callback={onClickHandler} submit />
-    </FlexWrapper>
+    </FlexWrapperStyled>
   );
 }
 

@@ -2,13 +2,13 @@ import React from "react";
 import { Header } from "./layout/header/Header";
 import { Main } from "./layout/main/Main";
 import { Sidebar } from "./layout/sidebar/Sidebar";
-import { Container } from "./components/Container";
+import { ContainerStyled } from "./components/Container.styled";
 import { Profile } from "./pages/profile/Profile";
 import { Dialogs } from "./pages/dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
 import { ActionsT, StateT } from "./redux/_store";
 import { Users } from "./layout/users/Users";
-import { FlexWrapper } from "./components/FlexWrapper";
+import { FlexWrapperStyled } from "./components/FlexWrapper.styled";
 
 type AppPT = {
   state: StateT;
@@ -19,12 +19,12 @@ export function App({ state, dispatch }: AppPT) {
   return (
     <BrowserRouter>
       <Header />
-      <Container>
-        <FlexWrapper gap={"20px"}>
-          <FlexWrapper direction={"column"} gap={"20px"}>
+      <ContainerStyled>
+        <FlexWrapperStyled gap={"20px"}>
+          <FlexWrapperStyled direction={"column"} gap={"20px"}>
             <Sidebar />
             <Users sideUsers={state.sideUsers} />
-          </FlexWrapper>
+          </FlexWrapperStyled>
           <Main>
             <Route
               render={() => (
@@ -39,8 +39,8 @@ export function App({ state, dispatch }: AppPT) {
               path={"/dialogs"}
             />
           </Main>
-        </FlexWrapper>
-      </Container>
+        </FlexWrapperStyled>
+      </ContainerStyled>
     </BrowserRouter>
   );
 }

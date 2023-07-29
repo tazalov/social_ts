@@ -1,6 +1,6 @@
 import React from "react";
 import { Social } from "../../../../components/icon/Social";
-import { FlexWrapper } from "../../../../components/FlexWrapper";
+import { FlexWrapperStyled } from "../../../../components/FlexWrapper.styled";
 import styled from "styled-components";
 
 type LinksPT = {};
@@ -20,4 +20,4 @@ export function Links(props: LinksPT) {
   );
 }
 
-const StyledLinks = styled(FlexWrapper)``;
+const StyledLinks = styled(FlexWrapperStyled)``;

@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar } from "../../../components/avatar/Avatar";
 import avatar from "../../../assets/images/anynft.webp";
 import styled from "styled-components";
-import { FlexWrapper } from "../../../components/FlexWrapper";
+import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 import { Links } from "./links/Links";
 import { ButtonB } from "../../../components/button/ButtonB";
 import { theme } from "../../../styles/Theme";
@@ -11,7 +11,7 @@ type ProfileInfoPT = {};
 
 export function ProfileInfo(props: ProfileInfoPT) {
   return (
-    <FlexWrapper align={"center"} justify={"space-between"}>
+    <FlexWrapperStyled align={"center"} justify={"space-between"}>
       <StyledProfileInfo align={"center"}>
         <Avatar img={avatar} w={100} h={100} />
         <Info direction={"column"} align={"flex-start"} gap={"10px"}>
@@ -36,19 +36,19 @@ export function ProfileInfo(props: ProfileInfoPT) {
         <ButtonB title={"edit"} callback={() => console.log(1)} />
         <Links />
       </Buttons>
-    </FlexWrapper>
+    </FlexWrapperStyled>
   );
 }
 
-const StyledProfileInfo = styled(FlexWrapper)`
+const StyledProfileInfo = styled(FlexWrapperStyled)`
   padding: 10px;
 `;
 
-const Info = styled(FlexWrapper)`
+const Info = styled(FlexWrapperStyled)`
   margin-left: 20px;
 `;
 
-const Name = styled(FlexWrapper)`
+const Name = styled(FlexWrapperStyled)`
   font-size: 25px;
   p {
     text-transform: uppercase;
@@ -70,6 +70,6 @@ const Looking = styled.div`
   }
 `;
 
-const Buttons = styled(FlexWrapper)`
+const Buttons = styled(FlexWrapperStyled)`
   padding: 0 10px;
 `;

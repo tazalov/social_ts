@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { DialogsListItem } from "./DialogsListItem";
-import { Scroll } from "../../../components/Scroll";
-import { ShadowContainer } from "../../../components/ShadowContainer";
+import { ScrollStyled } from "../../../components/Scroll.styled";
+import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { DialogsListItemT } from "../../../redux/_store";
 
 type DialogsListPT = {
@@ -21,12 +21,12 @@ export function DialogsList({ list }: DialogsListPT) {
   );
 }
 
-const StyledDialogsList = styled(ShadowContainer)`
+const StyledDialogsList = styled(ShadowContainerStyled)`
   height: 100%;
 `;
 
 const List = styled.ul`
-  ${Scroll};
+  ${ScrollStyled};
   height: 100%;
   overflow-y: hidden;
   &:hover {

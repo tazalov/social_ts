@@ -9,7 +9,7 @@ type FlexWrapperPT = {
   gap?: string;
 };
 
-export const FlexWrapper = styled.div<FlexWrapperPT>`
+export const FlexWrapperStyled = styled.div<FlexWrapperPT>`
   min-height: 100%;
   display: flex;
   flex-direction: ${(props) => props.direction || "row"};

@@ -1,7 +1,7 @@
 import { FriendsT } from "../../../redux/_store";
 import styled from "styled-components";
 import { Friend } from "./Friend";
-import { ShadowContainer } from "../../../components/ShadowContainer";
+import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { TitleBlock } from "../../../components/titleBlock/TitleBlock";
 
 type FriendsPT = {
@@ -27,7 +27,7 @@ export function Friends({ friends }: FriendsPT) {
   );
 }
 
-const StyledFriends = styled(ShadowContainer)`
+const StyledFriends = styled(ShadowContainerStyled)`
   height: min-content;
 `;
 

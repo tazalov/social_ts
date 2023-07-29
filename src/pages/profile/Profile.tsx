@@ -1,10 +1,10 @@
 import React from "react";
 import cover from "../../assets/images/carrepair.webp";
 import styled from "styled-components";
-import { ShadowContainer } from "../../components/ShadowContainer";
+import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
 import { Posts } from "./posts/Posts";
 import { ProfileInfo } from "./profileInfo/ProfileInfo";
-import { FlexWrapper } from "../../components/FlexWrapper";
+import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
 import { ActionsT, ProfileT } from "../../redux/_store";
 import { Friends } from "./friends/Friends";
 
@@ -15,18 +15,18 @@ type ProfilePT = {
 
 export function Profile({ profile, dispatch }: ProfilePT) {
   return (
-    <FlexWrapper gap={"20px"} direction={"column"}>
-      <ShadowContainer>
+    <FlexWrapperStyled gap={"20px"} direction={"column"}>
+      <ShadowContainerStyled>
         <CoverImg>
           <img src={cover} alt="" />
         </CoverImg>
         <ProfileInfo />
-      </ShadowContainer>
-      <FlexWrapper gap={"20px"}>
+      </ShadowContainerStyled>
+      <FlexWrapperStyled gap={"20px"}>
         <Posts posts={profile.posts} dispatch={dispatch} />
         <Friends friends={profile.friends} />
-      </FlexWrapper>
-    </FlexWrapper>
+      </FlexWrapperStyled>
+    </FlexWrapperStyled>
   );
 }
 

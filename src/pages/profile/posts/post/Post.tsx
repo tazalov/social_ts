@@ -1,13 +1,13 @@
 import React from "react";
-import { FlexWrapper } from "../../../../components/FlexWrapper";
+import { FlexWrapperStyled } from "../../../../components/FlexWrapper.styled";
 import { Avatar } from "../../../../components/avatar/Avatar";
 import avatar from "../../../../assets/images/anynft.webp";
 import styled from "styled-components";
-import { ShadowContainer } from "../../../../components/ShadowContainer";
+import { ShadowContainerStyled } from "../../../../components/ShadowContainer.styled";
 import { theme } from "../../../../styles/Theme";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { SubTitle } from "../../../../components/Subtitle";
+import { SubtitleStyled } from "../../../../components/Subtitle.styled";
 
 type PostPT = {
   id: number;
@@ -18,15 +18,15 @@ type PostPT = {
 
 export function Post({ name, message, likes }: PostPT) {
   return (
-    <ShadowContainer>
+    <ShadowContainerStyled>
       <StyledPost>
-        <FlexWrapper align={"center"}>
+        <FlexWrapperStyled align={"center"}>
           <Avatar img={avatar} w={50} h={50} />
           <UserInfo gap={"10px"} justify={"space-between"}>
             <span>{name}</span>
             <i>12/04/2022</i>
           </UserInfo>
-        </FlexWrapper>
+        </FlexWrapperStyled>
         <PostText>{message}</PostText>
         <PostButtons gap={"10px"} justify={"space-between"}>
           <button>
@@ -38,7 +38,7 @@ export function Post({ name, message, likes }: PostPT) {
           </button>
         </PostButtons>
       </StyledPost>
-    </ShadowContainer>
+    </ShadowContainerStyled>
   );
 }
 
@@ -46,11 +46,11 @@ const StyledPost = styled.div`
   padding: 10px;
 `;
 
-const UserInfo = styled(FlexWrapper)`
+const UserInfo = styled(FlexWrapperStyled)`
   width: 100%;
   margin-left: 10px;
   span {
-    ${SubTitle};
+    ${SubtitleStyled};
   }
   i {
     color: ${theme.colors.secondaryFont};
@@ -64,7 +64,7 @@ const PostText = styled.div`
   background-color: ${theme.colors.thirdBg};
 `;
 
-const PostButtons = styled(FlexWrapper)`
+const PostButtons = styled(FlexWrapperStyled)`
   button {
     padding: 5px;
     color: ${theme.colors.secondaryFont};

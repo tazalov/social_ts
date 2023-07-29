@@ -3,7 +3,7 @@ import avatar from "../../assets/images/carrepair.webp";
 import { ButtonB } from "../../components/button/ButtonB";
 import React from "react";
 import styled from "styled-components";
-import { FlexWrapper } from "../../components/FlexWrapper";
+import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
 import { theme } from "../../styles/Theme";
 
 type UserPT = {
@@ -23,13 +23,13 @@ export function User({ name, followed }: UserPT) {
   );
 }
 
-const StyledUser = styled(FlexWrapper)`
+const StyledUser = styled(FlexWrapperStyled)`
   padding: 10px;
   &:hover {
     background-color: ${theme.colors.thirdBg};
   }
 `;
 
-const Info = styled(FlexWrapper)`
+const Info = styled(FlexWrapperStyled)`
   user-select: none;
 `;

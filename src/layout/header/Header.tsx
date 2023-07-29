@@ -1,20 +1,20 @@
 import React from "react";
-import { ShadowContainer } from "../../components/ShadowContainer";
+import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
 import { Icon } from "../../components/icon/Icon";
-import { Container } from "../../components/Container";
+import { ContainerStyled } from "../../components/Container.styled";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
-import { FlexWrapper } from "../../components/FlexWrapper";
+import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
 
 type HeaderPT = {};
 
 export function Header(props: HeaderPT) {
   return (
-    <Container>
-      <ShadowContainer as={StyledHeader}>
-        <FlexWrapper justify={"space-between"} align={"center"}>
+    <ContainerStyled>
+      <ShadowContainerStyled as={StyledHeader}>
+        <FlexWrapperStyled justify={"space-between"} align={"center"}>
           <Icon iconId={"logo"} width={"30px"} height={"30px"} />
-          <FlexWrapper gap={"20px"}>
+          <FlexWrapperStyled gap={"20px"}>
             <MenuLink href="#1">
               <Icon iconId={"search"} width={"20px"} height={"20px"} />
             </MenuLink>
@@ -29,10 +29,10 @@ export function Header(props: HeaderPT) {
                 viewBox="0 0 32 32"
               />
             </MenuLink>
-          </FlexWrapper>
-        </FlexWrapper>
-      </ShadowContainer>
-    </Container>
+          </FlexWrapperStyled>
+        </FlexWrapperStyled>
+      </ShadowContainerStyled>
+    </ContainerStyled>
   );
 }
 

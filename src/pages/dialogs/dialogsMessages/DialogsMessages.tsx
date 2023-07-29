@@ -2,10 +2,10 @@ import React from "react";
 import { DialogsMessage } from "./DialogsMessage";
 import styled from "styled-components";
 import { TextForm } from "../../../components/textForm/textForm";
-import { Scroll } from "../../../components/Scroll";
-import { ShadowContainer } from "../../../components/ShadowContainer";
+import { ScrollStyled } from "../../../components/Scroll.styled";
+import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { ActionsT, addMessageAC, DialogsMessageT } from "../../../redux/_store";
-import { FlexWrapper } from "../../../components/FlexWrapper";
+import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 
 type DialogsMessagesPT = {
   messages: DialogsMessageT[];
@@ -30,21 +30,21 @@ export function DialogsMessages({ messages, dispatch }: DialogsMessagesPT) {
   );
 }
 
-const StyledDialogsMessages = styled(FlexWrapper)`
+const StyledDialogsMessages = styled(FlexWrapperStyled)`
   height: 100%;
 `;
 
-const MessagesList = styled(ShadowContainer)`
+const MessagesList = styled(ShadowContainerStyled)`
   padding: 0 10px;
   overflow-y: hidden;
   height: 100%;
-  ${Scroll}
+  ${ScrollStyled}
   &:hover,
   &:focus {
     overflow-y: auto;
   }
 `;
 
-const FormWrapper = styled(ShadowContainer)`
+const FormWrapper = styled(ShadowContainerStyled)`
   padding: 10px;
 `;

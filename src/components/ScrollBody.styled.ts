@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 import { theme } from "../styles/Theme";
 
-export const ScrollBody = css`
+export const ScrollBodyStyled = css`
   &::-webkit-scrollbar {
     width: 8px;
   }
