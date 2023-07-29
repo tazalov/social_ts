@@ -1,3 +1,6 @@
+import { AddPostAT, profileReducer } from "./profile.reducer";
+import { AddMessageAT, dialogsReducer } from "./dialogs.reducer";
+
 export type PostT = {
   id: number;
   user: string;
@@ -54,26 +57,6 @@ export type StoreT = {
   subscribe: (observer: () => void) => void;
   dispatch: (action: ActionsT) => void;
 };
-
-type AddPostAT = {
-  type: "social/profile/ADD_POST";
-  postText: string;
-};
-
-export const addPostAC = (postText: string): AddPostAT => ({
-  type: "social/profile/ADD_POST",
-  postText,
-});
-
-type AddMessageAT = {
-  type: "social/profile/ADD_MESSAGE";
-  messageText: string;
-};
-
-export const addMessageAC = (messageText: string): AddMessageAT => ({
-  type: "social/profile/ADD_MESSAGE",
-  messageText,
-});
 
 export type ActionsT = AddPostAT | AddMessageAT;
 
@@ -153,30 +136,8 @@ export const store: StoreT = {
     this._callSubscribers = observer;
   },
   dispatch(action: ActionsT) {
-    switch (action.type) {
-      case "social/profile/ADD_POST": {
-        const newPost = {
-          id: 4,
-          user: "Tazalov",
-          text: action.postText,
-          likes: 0,
-        };
-        this._state.profile.posts = [...this._state.profile.posts, newPost];
-        this._callSubscribers();
-        break;
-      }
-      case "social/profile/ADD_MESSAGE": {
-        const newMessage = {
-          id: 11,
-          message: action.messageText,
-        };
-        this._state.dialogs.messages = [
-          ...this._state.dialogs.messages,
-          newMessage,
-        ];
-        this._callSubscribers();
-        break;
-      }
-    }
+    this._state.profile = profileReducer(this._state.profile, action);
+    this._state.dialogs = dialogsReducer(this._state.dialogs, action);
+    this._callSubscribers();
   },
 };

@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { TextForm } from "../../../components/textForm/textForm";
 import { ScrollStyled } from "../../../components/Scroll.styled";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
-import { ActionsT, addMessageAC, DialogsMessageT } from "../../../redux/_store";
+import { ActionsT, DialogsMessageT } from "../../../redux/_store";
 import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
+import { addMessageAC } from "../../../redux/dialogs.reducer";
 
 type DialogsMessagesPT = {
   messages: DialogsMessageT[];

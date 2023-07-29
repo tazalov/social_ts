@@ -4,7 +4,8 @@ import { Post } from "./post/Post";
 import { TextForm } from "../../../components/textForm/textForm";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
-import { ActionsT, addPostAC, PostT } from "../../../redux/_store";
+import { ActionsT, PostT } from "../../../redux/_store";
+import { addPostAC } from "../../../redux/profile.reducer";
 
 type PostsPT = {
   posts: PostT[];
