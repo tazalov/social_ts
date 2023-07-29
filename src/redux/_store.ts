@@ -1,5 +1,3 @@
-import { renderThree } from "../index";
-
 export type PostT = {
   id: number;
   user: string;
@@ -127,6 +125,12 @@ export const store: StoreT = {
   },
 };
 
+let callSubscribers = () => {};
+
+export const subscribe = (callback: () => void) => {
+  callSubscribers = callback;
+};
+
 export function addPost(postTest: string) {
   const newPost = {
     id: 4,
@@ -135,5 +139,5 @@ export function addPost(postTest: string) {
     likes: 0,
   };
   store._state.profile.posts.push(newPost);
-  renderThree();
+  callSubscribers();
 }

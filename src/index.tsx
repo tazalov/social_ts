@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./App";
 import { GlobalStyle } from "./styles/Global.styled";
-import { addPost, store } from "./redux/_store";
+import { addPost, store, subscribe } from "./redux/_store";
 
-export const renderThree = () => {
+const renderThree = () => {
   ReactDOM.render(
     <>
       <GlobalStyle />
@@ -13,5 +13,5 @@ export const renderThree = () => {
     document.getElementById("root"),
   );
 };
-
+subscribe(renderThree);
 renderThree();
