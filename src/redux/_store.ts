@@ -5,6 +5,21 @@ export type PostT = {
   likes: number;
 };
 
+export type FriendT = {
+  id: number;
+  name: string;
+};
+
+export type FriendsT = {
+  count: number;
+  list: FriendT[];
+};
+
+export type ProfileT = {
+  posts: PostT[];
+  friends: FriendsT;
+};
+
 export type DialogsListItemT = {
   id: number;
   name: string;
@@ -27,9 +42,7 @@ export type SideUserT = {
 };
 
 export type StateT = {
-  profile: {
-    posts: PostT[];
-  };
+  profile: ProfileT;
   dialogs: DialogsT;
   sideUsers: SideUserT[];
 };
@@ -47,6 +60,17 @@ export const store: StoreT = {
         { id: 2, user: "Dariya", text: "it' my second post", likes: 22 },
         { id: 3, user: "Egorka", text: "it' my third post", likes: 12312 },
       ],
+      friends: {
+        count: 123,
+        list: [
+          { id: 1, name: "Egorka" },
+          { id: 2, name: "Vsaya" },
+          { id: 3, name: "Antoni" },
+          { id: 4, name: "Dima" },
+          { id: 5, name: "blabla" },
+          { id: 6, name: "Tratata" },
+        ],
+      },
     },
     dialogs: {
       list: [
@@ -89,7 +113,7 @@ export const store: StoreT = {
       ],
     },
     sideUsers: [
-      { id: 1, name: "Tazazal", followed: true },
+      { id: 1, name: "Tazazal", followed: false },
       { id: 2, name: "Anton", followed: false },
       { id: 3, name: "Igor", followed: false },
       { id: 4, name: "Bukashka", followed: false },
