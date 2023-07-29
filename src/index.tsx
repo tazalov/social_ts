@@ -2,16 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./App";
 import { GlobalStyle } from "./styles/Global.styled";
-import { addPost, store, subscribe } from "./redux/_store";
+import { store } from "./redux/_store";
 
 const renderThree = () => {
   ReactDOM.render(
     <>
       <GlobalStyle />
-      <App state={store.getState()} addPost={addPost} />
+      <App state={store.getState()} addPost={store.addPost.bind(store)} />
     </>,
     document.getElementById("root"),
   );
 };
-subscribe(renderThree);
 renderThree();
+store.subscribe(renderThree);

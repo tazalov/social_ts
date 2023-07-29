@@ -21,19 +21,13 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    min-height: 100vh;
     line-height: 1;
     font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Arial', sans-serif;
-    //text-rendering: optimizeibility;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    //-moz-osx-fontoothing: grayscale;
-    background-color: ${theme.colors.primaryBg};
-    color: ${theme.colors.primaryFont};
     font-size: 16px;
+    color: ${theme.colors.primaryFont};
+    background: linear-gradient(180deg,#424979, #24273b);
     ${ScrollBody};
-    
   }
   input,
   button,
@@ -53,7 +47,8 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
   a:hover {
-    text-decoration: none  }
+    text-decoration: none
+  }
   ul li {
     list-style: none;
   }
@@ -73,3 +68,5 @@ export const GlobalStyle = createGlobalStyle`
     fill: ${theme.colors.primaryFont};
   }
 `;
+
+/*background-color: ${theme.colors.primaryBg};*/

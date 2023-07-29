@@ -50,6 +50,9 @@ export type StateT = {
 export type StoreT = {
   _state: StateT;
   getState: () => StateT;
+  _callSubscribers: () => void;
+  addPost: (post: string) => void;
+  subscribe: (observer: () => void) => void;
 };
 
 export const store: StoreT = {
@@ -123,21 +126,13 @@ export const store: StoreT = {
   getState() {
     return this._state;
   },
+  _callSubscribers: () => {},
+  subscribe(observer) {
+    this._callSubscribers = observer;
+  },
+  addPost(postText: string) {
+    const newPost = { id: 4, user: "Tazalov", text: postText, likes: 0 };
+    this._state.profile.posts = [...this._state.profile.posts, newPost];
+    this._callSubscribers();
+  },
 };
-
-let callSubscribers = () => {};
-
-export const subscribe = (callback: () => void) => {
-  callSubscribers = callback;
-};
-
-export function addPost(postTest: string) {
-  const newPost = {
-    id: 4,
-    user: "Tazalov",
-    text: postTest,
-    likes: 0,
-  };
-  store._state.profile.posts.push(newPost);
-  callSubscribers();
-}
