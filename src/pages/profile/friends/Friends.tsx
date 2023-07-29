@@ -1,8 +1,8 @@
-import { FriendsT } from "../../../redux/_store";
 import styled from "styled-components";
 import { Friend } from "./Friend";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { TitleBlock } from "../../../components/titleBlock/TitleBlock";
+import { FriendsT } from "../../../redux/profile.reducer";
 
 type FriendsPT = {
   friends: FriendsT;

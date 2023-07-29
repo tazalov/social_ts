@@ -1,3 +1,5 @@
+export {};
+/*
 import { AddPostAT, profileReducer } from "./profile.reducer";
 import { AddMessageAT, dialogsReducer } from "./dialogs.reducer";
 
@@ -141,3 +143,4 @@ export const store: StoreT = {
     this._callSubscribers();
   },
 };
+*/

@@ -2,11 +2,11 @@ import React from "react";
 import { DialogsList } from "./dialogsList/DialogsList";
 import { DialogsMessages } from "./dialogsMessages/DialogsMessages";
 import styled from "styled-components";
-import { ActionsT, DialogsT } from "../../redux/_store";
+import { DialogsAT, DialogsT } from "../../redux/dialogs.reducer";
 
 type DialogsPT = {
   dialogs: DialogsT;
-  dispatch: (value: ActionsT) => void;
+  dispatch: (value: DialogsAT) => void;
 };
 
 export function Dialogs({ dialogs, dispatch }: DialogsPT) {

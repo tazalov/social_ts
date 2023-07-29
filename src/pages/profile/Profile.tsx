@@ -5,12 +5,12 @@ import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
 import { Posts } from "./posts/Posts";
 import { ProfileInfo } from "./profileInfo/ProfileInfo";
 import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
-import { ActionsT, ProfileT } from "../../redux/_store";
 import { Friends } from "./friends/Friends";
+import { ProfileAT, ProfileT } from "../../redux/profile.reducer";
 
 type ProfilePT = {
   profile: ProfileT;
-  dispatch: (value: ActionsT) => void;
+  dispatch: (value: ProfileAT) => void;
 };
 
 export function Profile({ profile, dispatch }: ProfilePT) {

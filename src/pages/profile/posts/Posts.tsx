@@ -4,12 +4,11 @@ import { Post } from "./post/Post";
 import { TextForm } from "../../../components/textForm/textForm";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
-import { ActionsT, PostT } from "../../../redux/_store";
-import { addPostAC } from "../../../redux/profile.reducer";
+import { addPostAC, PostT, ProfileAT } from "../../../redux/profile.reducer";
 
 type PostsPT = {
   posts: PostT[];
-  dispatch: (value: ActionsT) => void;
+  dispatch: (value: ProfileAT) => void;
 };
 
 export function Posts({ posts, dispatch }: PostsPT) {

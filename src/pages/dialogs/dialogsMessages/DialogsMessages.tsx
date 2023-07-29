@@ -4,13 +4,16 @@ import styled from "styled-components";
 import { TextForm } from "../../../components/textForm/textForm";
 import { ScrollStyled } from "../../../components/Scroll.styled";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
-import { ActionsT, DialogsMessageT } from "../../../redux/_store";
 import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
-import { addMessageAC } from "../../../redux/dialogs.reducer";
+import {
+  addMessageAC,
+  DialogsAT,
+  DialogsMessageT,
+} from "../../../redux/dialogs.reducer";
 
 type DialogsMessagesPT = {
   messages: DialogsMessageT[];
-  dispatch: (value: ActionsT) => void;
+  dispatch: (value: DialogsAT) => void;
 };
 
 export function DialogsMessages({ messages, dispatch }: DialogsMessagesPT) {
@@ -39,6 +42,7 @@ const MessagesList = styled(ShadowContainerStyled)`
   padding: 0 10px;
   overflow-y: hidden;
   height: 100%;
+
   ${ScrollStyled}
   &:hover,
   &:focus {

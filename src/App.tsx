@@ -6,13 +6,17 @@ import { ContainerStyled } from "./components/Container.styled";
 import { Profile } from "./pages/profile/Profile";
 import { Dialogs } from "./pages/dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
-import { ActionsT, StateT } from "./redux/_store";
 import { Users } from "./layout/users/Users";
 import { FlexWrapperStyled } from "./components/FlexWrapper.styled";
+import { AppStateT } from "./redux/store";
+import { DialogsAT } from "./redux/dialogs.reducer";
+import { ProfileAT } from "./redux/profile.reducer";
+
+export type CombineActionsT = ProfileAT | DialogsAT;
 
 type AppPT = {
-  state: StateT;
-  dispatch: (value: ActionsT) => void;
+  state: AppStateT;
+  dispatch: (value: CombineActionsT) => void;
 };
 
 export function App({ state, dispatch }: AppPT) {

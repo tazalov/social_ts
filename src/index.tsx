@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./App";
 import { GlobalStyle } from "./styles/Global.styled";
-import { store } from "./redux/_store";
+import { store } from "./redux/store";
 
 const renderThree = () => {
   ReactDOM.render(

@@ -1,9 +1,9 @@
 import React from "react";
 import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
 import styled from "styled-components";
-import { SideUserT } from "../../redux/_store";
 import { User } from "./User";
 import { TitleBlock } from "../../components/titleBlock/TitleBlock";
+import { SideUserT } from "../../redux/sideusers.reducer";
 
 type CoursesPT = {
   sideUsers: SideUserT[];

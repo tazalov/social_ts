@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { DialogsListItem } from "./DialogsListItem";
 import { ScrollStyled } from "../../../components/Scroll.styled";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
-import { DialogsListItemT } from "../../../redux/_store";
+import { DialogsListItemT } from "../../../redux/dialogs.reducer";
 
 type DialogsListPT = {
   list: DialogsListItemT[];
