@@ -124,3 +124,13 @@ export const store: StoreT = {
     return this._state;
   },
 };
+
+export function addPost(postTest: string) {
+  const newPost = {
+    id: 4,
+    user: "Tazalov",
+    text: postTest,
+    likes: 0,
+  };
+  store._state.profile.posts.push(newPost);
+}

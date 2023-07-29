@@ -4,12 +4,13 @@ import { theme } from "../../styles/Theme";
 
 type ButtonPT = {
   title: string;
+  callback: () => void;
+  submit?: boolean;
   radius?: boolean;
   disable?: boolean;
-  callback: () => void;
 };
 
-export function Button({ title, radius, disable, callback }: ButtonPT) {
+export function Button({ title, radius, disable, callback, submit }: ButtonPT) {
   const onClickHandler = () => {
     callback();
   };
@@ -18,6 +19,7 @@ export function Button({ title, radius, disable, callback }: ButtonPT) {
       disabled={disable || false}
       onClick={onClickHandler}
       radius={radius ? "true" : "false"}
+      type={submit ? "submit" : undefined}
     >
       {title}
     </StyledButton>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import { FlexWrapper } from "../FlexWrapper";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
@@ -6,13 +6,30 @@ import { Button } from "../button/Button";
 
 type TextFormPT = {
   place: string;
+  callback: (value: string) => void;
+  submit?: boolean;
 };
 
-export function TextForm({ place }: TextFormPT) {
+export function TextForm({ place, callback, submit }: TextFormPT) {
+  const [text, setText] = useState<string>("");
+
+  const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setText(e.target.value);
+  };
+
+  const onClickHandler = () => {
+    callback(text);
+    setText("");
+  };
+
   return (
     <FlexWrapper gap={"10px"}>
-      <StyledTextArea placeholder={place} />
-      <Button title={"send"} callback={() => console.log("btn")} />
+      <StyledTextArea
+        placeholder={place}
+        value={text}
+        onChange={onChangeHandler}
+      />
+      <Button title={"send"} callback={onClickHandler} submit />
     </FlexWrapper>
   );
 }

@@ -12,9 +12,10 @@ import { FlexWrapper } from "./components/FlexWrapper";
 
 type AppPT = {
   state: StateT;
+  addPost: (value: string) => void;
 };
 
-export function App({ state }: AppPT) {
+export function App({ state, addPost }: AppPT) {
   return (
     <BrowserRouter>
       <Header />
@@ -26,7 +27,9 @@ export function App({ state }: AppPT) {
           </FlexWrapper>
           <Main>
             <Route
-              render={() => <Profile profile={state.profile} />}
+              render={() => (
+                <Profile profile={state.profile} addPost={addPost} />
+              )}
               path={"/profile"}
             />
             <Route

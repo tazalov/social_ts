@@ -10,9 +10,10 @@ import { Friends } from "./friends/Friends";
 
 type ProfilePT = {
   profile: ProfileT;
+  addPost: (value: string) => void;
 };
 
-export function Profile({ profile }: ProfilePT) {
+export function Profile({ profile, addPost }: ProfilePT) {
   return (
     <FlexWrapper gap={"20px"} direction={"column"}>
       <ShadowContainer>
@@ -22,7 +23,7 @@ export function Profile({ profile }: ProfilePT) {
         <ProfileInfo />
       </ShadowContainer>
       <FlexWrapper gap={"20px"}>
-        <Posts posts={profile.posts} />
+        <Posts posts={profile.posts} addPost={addPost} />
         <Friends friends={profile.friends} />
       </FlexWrapper>
     </FlexWrapper>

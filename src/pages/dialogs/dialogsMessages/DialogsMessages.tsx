@@ -20,7 +20,7 @@ export function DialogsMessages({ messages }: DialogsMessagesPT) {
         ))}
       </MessagesList>
       <FormWrapper>
-        <TextForm place={"Enter your message..."} />
+        <TextForm place={"Enter your message..."} callback={() => {}} />
       </FormWrapper>
     </StyledDialogsMessages>
   );

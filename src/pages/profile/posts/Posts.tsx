@@ -8,13 +8,14 @@ import { PostT } from "../../../redux/_store";
 
 type PostsPT = {
   posts: PostT[];
+  addPost: (value: string) => void;
 };
 
-export function Posts({ posts }: PostsPT) {
+export function Posts({ posts, addPost }: PostsPT) {
   return (
     <FlexWrapper direction={"column"} gap={"20px"} fullWidth>
       <ShadowContainer as={FormWrapper}>
-        <TextForm place={"Enter post message..."} />
+        <TextForm place={"Enter post message..."} callback={addPost} />
       </ShadowContainer>
       {posts.map((el) => (
         <Post
