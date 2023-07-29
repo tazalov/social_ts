@@ -1,3 +1,5 @@
+import { renderThree } from "../index";
+
 export type PostT = {
   id: number;
   user: string;
@@ -133,4 +135,5 @@ export function addPost(postTest: string) {
     likes: 0,
   };
   store._state.profile.posts.push(newPost);
+  renderThree();
 }
