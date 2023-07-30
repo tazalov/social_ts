@@ -4,13 +4,13 @@ import { Main } from "./layout/main/Main";
 import { Sidebar } from "./layout/sidebar/Sidebar";
 import { ContainerStyled } from "./components/Container.styled";
 import { Profile } from "./pages/profile/Profile";
-import { Dialogs } from "./pages/dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Users } from "./layout/users/Users";
 import { FlexWrapperStyled } from "./components/FlexWrapper.styled";
 import { AppStateT } from "./redux/store";
 import { DialogsAT } from "./redux/dialogs.reducer";
 import { ProfileAT } from "./redux/profile.reducer";
+import { DialogsContainer } from "./pages/dialogs/DialogsContainer";
 
 export type CombineActionsT = ProfileAT | DialogsAT;
 
@@ -38,7 +38,7 @@ export function App({ state, dispatch }: AppPT) {
             />
             <Route
               render={() => (
-                <Dialogs dialogs={state.dialogs} dispatch={dispatch} />
+                <DialogsContainer dialogs={state.dialogs} dispatch={dispatch} />
               )}
               path={"/dialogs"}
             />

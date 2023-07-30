@@ -2,11 +2,11 @@ import React from "react";
 import cover from "../../assets/images/carrepair.webp";
 import styled from "styled-components";
 import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
-import { Posts } from "./posts/Posts";
 import { ProfileInfo } from "./profileInfo/ProfileInfo";
 import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
 import { Friends } from "./friends/Friends";
 import { ProfileAT, ProfileT } from "../../redux/profile.reducer";
+import { PostsContainer } from "./posts/PostsContainer";
 
 type ProfilePT = {
   profile: ProfileT;
@@ -23,7 +23,7 @@ export function Profile({ profile, dispatch }: ProfilePT) {
         <ProfileInfo />
       </ShadowContainerStyled>
       <FlexWrapperStyled gap={"20px"}>
-        <Posts posts={profile.posts} dispatch={dispatch} />
+        <PostsContainer posts={profile.posts} dispatch={dispatch} />
         <Friends friends={profile.friends} />
       </FlexWrapperStyled>
     </FlexWrapperStyled>

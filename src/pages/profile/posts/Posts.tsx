@@ -4,18 +4,14 @@ import { Post } from "./post/Post";
 import { TextForm } from "../../../components/textForm/textForm";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
-import { addPostAC, PostT, ProfileAT } from "../../../redux/profile.reducer";
+import { PostT } from "../../../redux/profile.reducer";
 
 type PostsPT = {
   posts: PostT[];
-  dispatch: (value: ProfileAT) => void;
+  addPost: (postText: string) => void;
 };
 
-export function Posts({ posts, dispatch }: PostsPT) {
-  const addPost = (postText: string) => {
-    dispatch(addPostAC(postText));
-  };
-
+export function Posts({ posts, addPost }: PostsPT) {
   return (
     <StyledPosts direction={"column"} gap={"20px"}>
       <ShadowContainerStyled as={FormWrapper}>

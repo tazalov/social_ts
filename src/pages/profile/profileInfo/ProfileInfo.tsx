@@ -13,7 +13,9 @@ export function ProfileInfo(props: ProfileInfoPT) {
   return (
     <FlexWrapperStyled align={"center"} justify={"space-between"}>
       <StyledProfileInfo align={"center"}>
-        <Avatar img={avatar} w={100} h={100} />
+        <StyledAvatar>
+          <Avatar img={avatar} w={150} h={150} />
+        </StyledAvatar>
         <Info direction={"column"} align={"flex-start"} gap={"10px"}>
           <Name align={"center"} gap={"5px"}>
             <p>username</p>
@@ -41,7 +43,17 @@ export function ProfileInfo(props: ProfileInfoPT) {
 }
 
 const StyledProfileInfo = styled(FlexWrapperStyled)`
-  padding: 10px;
+  padding: 10px 10px 10px 160px;
+  position: relative;
+`;
+
+const StyledAvatar = styled.div`
+  position: absolute;
+  margin-top: -80px;
+  left: 10px;
+  top: 0;
+  border: 5px solid ${theme.colors.secondaryBg};
+  border-radius: 50%;
 `;
 
 const Info = styled(FlexWrapperStyled)`

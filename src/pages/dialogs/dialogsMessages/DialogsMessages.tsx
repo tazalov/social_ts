@@ -5,21 +5,14 @@ import { TextForm } from "../../../components/textForm/textForm";
 import { ScrollStyled } from "../../../components/Scroll.styled";
 import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
-import {
-  addMessageAC,
-  DialogsAT,
-  DialogsMessageT,
-} from "../../../redux/dialogs.reducer";
+import { DialogsMessageT } from "../../../redux/dialogs.reducer";
 
 type DialogsMessagesPT = {
   messages: DialogsMessageT[];
-  dispatch: (value: DialogsAT) => void;
+  addMessage: (value: string) => void;
 };
 
-export function DialogsMessages({ messages, dispatch }: DialogsMessagesPT) {
-  const addMessage = (message: string) => {
-    dispatch(addMessageAC(message));
-  };
+export function DialogsMessages({ messages, addMessage }: DialogsMessagesPT) {
   return (
     <StyledDialogsMessages direction={"column"} gap={"20px"}>
       <MessagesList>
