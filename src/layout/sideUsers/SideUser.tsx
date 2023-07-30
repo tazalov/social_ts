@@ -11,7 +11,7 @@ type UserPT = {
   followed: boolean;
 };
 
-export function User({ name, followed }: UserPT) {
+export function SideUser({ name, followed }: UserPT) {
   return (
     <StyledUser align={"center"} gap={"5px"} justify={"space-between"}>
       <Info align={"center"} gap={"10px"}>

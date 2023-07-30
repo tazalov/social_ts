@@ -5,6 +5,7 @@ import { ContainerStyled } from "../../components/Container.styled";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
 import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
+import { NavLink } from "react-router-dom";
 
 type HeaderPT = {};
 
@@ -15,13 +16,13 @@ export function Header(props: HeaderPT) {
         <FlexWrapperStyled justify={"space-between"} align={"center"}>
           <Icon iconId={"logo"} width={"30px"} height={"30px"} />
           <FlexWrapperStyled gap={"20px"}>
-            <MenuLink href="#1">
+            <MenuLink to={"/users"}>
               <Icon iconId={"search"} width={"20px"} height={"20px"} />
             </MenuLink>
-            <MenuLink href="#1">
+            <MenuLink to={"/users"}>
               <Icon iconId={"gear"} width={"20px"} height={"20px"} />
             </MenuLink>
-            <MenuLink href="#1">
+            <MenuLink to={"/users"}>
               <Icon
                 iconId={"logout"}
                 width={"20px"}
@@ -41,7 +42,7 @@ const StyledHeader = styled.header`
   padding: 10px;
 `;
 
-const MenuLink = styled.a`
+const MenuLink = styled(NavLink)`
   svg {
     transition: all 0.3s linear;
     &:hover {
