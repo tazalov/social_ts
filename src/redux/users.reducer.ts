@@ -44,7 +44,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Alabaika",
-      id: 19587,
+      id: 1958,
       uniqueUrlName: null,
       photos: {
         small:
@@ -57,7 +57,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Zhenya_pas",
-      id: 19589,
+      id: 1989,
       uniqueUrlName: null,
       photos: {
         small:
@@ -70,7 +70,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Arseniy",
-      id: 19588,
+      id: 9588,
       uniqueUrlName: null,
       photos: {
         small:
@@ -83,7 +83,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Alabaika",
-      id: 19587,
+      id: 195,
       uniqueUrlName: null,
       photos: {
         small:
@@ -96,7 +96,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Zhenya_pas",
-      id: 19589,
+      id: 18,
       uniqueUrlName: null,
       photos: {
         small:
@@ -109,7 +109,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Arseniy",
-      id: 19588,
+      id: 958,
       uniqueUrlName: null,
       photos: {
         small:
@@ -122,7 +122,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Alabaika",
-      id: 19587,
+      id: 95,
       uniqueUrlName: null,
       photos: {
         small:
@@ -135,7 +135,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Zhenya_pas",
-      id: 19589,
+      id: 8,
       uniqueUrlName: null,
       photos: {
         small:
@@ -148,7 +148,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Arseniy",
-      id: 19588,
+      id: 5,
       uniqueUrlName: null,
       photos: {
         small:
@@ -161,7 +161,7 @@ const initialState: InitialStateT = {
     },
     {
       name: "Alabaika",
-      id: 19587,
+      id: 1,
       uniqueUrlName: null,
       photos: {
         small:
@@ -180,11 +180,51 @@ export const usersReducer = (
   action: any,
 ) => {
   switch (action.type) {
-    case "social/profile/ADD_MESSAGE": {
-      return state;
+    case "social/profile/FOLLOW": {
+      return {
+        ...state,
+        list: state.list.map((el) => {
+          if (el.id === action.id) {
+            return { ...el, followed: true };
+          }
+          return el;
+        }),
+      };
+    }
+    case "social/profile/UNFOLLOW": {
+      return {
+        ...state,
+        list: state.list.map((el) => {
+          if (el.id === action.id) {
+            return { ...el, followed: false };
+          }
+          return el;
+        }),
+      };
     }
     default: {
       return state;
     }
   }
 };
+
+export type UsersAT = FollowAT | UnfollowAT;
+
+type FollowAT = {
+  type: "social/profile/FOLLOW";
+  id: number;
+};
+type UnfollowAT = {
+  type: "social/profile/UNFOLLOW";
+  id: number;
+};
+
+export const followAC = (id: number): FollowAT => ({
+  type: "social/profile/FOLLOW",
+  id,
+});
+
+export const unfollowAC = (id: number): UnfollowAT => ({
+  type: "social/profile/UNFOLLOW",
+  id,
+});

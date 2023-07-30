@@ -12,20 +12,39 @@ type UserPT = {
   followed: boolean;
   avatarUrl: string | null;
   status: string | null;
+  follow: (id: number) => void;
+  unfollow: (id: number) => void;
 };
 
-export function User({ name, followed, avatarUrl, status }: UserPT) {
+export function User({
+  id,
+  name,
+  followed,
+  avatarUrl,
+  status,
+  follow,
+  unfollow,
+}: UserPT) {
   const newStatus = status
     ? status.length > 15
       ? `${status.slice(0, 13)}...`
       : status
     : "No status";
+  const followUser = () => {
+    follow(id);
+  };
+  const unfollowUser = () => {
+    unfollow(id);
+  };
   return (
     <StyledUser direction={"column"} align={"center"} gap={"20px"}>
       <Avatar img={avatarUrl || photo} w={100} h={100} />
       <Name>{name.length > 10 ? `${name.slice(0, 8)}...` : name}</Name>
       <Status>{newStatus}</Status>
-      <ButtonB title={followed ? "unfollow" : "follow"} callback={() => {}} />
+      <ButtonB
+        title={followed ? "unfollow" : "follow"}
+        callback={followed ? unfollowUser : followUser}
+      />
     </StyledUser>
   );
 }

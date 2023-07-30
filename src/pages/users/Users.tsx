@@ -5,9 +5,12 @@ import { UserT } from "../../redux/users.reducer";
 
 type UsersPT = {
   list: UserT[];
+  follow: (id: number) => void;
+  unfollow: (id: number) => void;
 };
 
-export function Users({ list }: UsersPT) {
+export function Users({ list, follow, unfollow }: UsersPT) {
+  console.log("rerender");
   return (
     <StyledUsers>
       {list.map((el) => (
@@ -18,6 +21,8 @@ export function Users({ list }: UsersPT) {
           followed={el.followed}
           avatarUrl={el.photos.small}
           status={el.status}
+          follow={follow}
+          unfollow={unfollow}
         />
       ))}
     </StyledUsers>
