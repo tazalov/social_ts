@@ -2,18 +2,19 @@ import React from "react";
 import { DialogsList } from "./dialogsList/DialogsList";
 import { DialogsMessages } from "./dialogsMessages/DialogsMessages";
 import styled from "styled-components";
-import { DialogsT } from "../../redux/dialogs.reducer";
+import { DialogsListItemT, DialogsMessageT } from "../../redux/dialogs.reducer";
 
 type DialogsPT = {
-  dialogs: DialogsT;
-  addMessage: (value: string) => void;
+  list: DialogsListItemT[];
+  messages: DialogsMessageT[];
+  addMessage: (message: string) => void;
 };
 
-export function Dialogs({ dialogs, addMessage }: DialogsPT) {
+export function Dialogs({ list, messages, addMessage }: DialogsPT) {
   return (
     <StyledDialogs>
-      <DialogsList list={dialogs.list} />
-      <DialogsMessages messages={dialogs.messages} addMessage={addMessage} />
+      <DialogsList list={list} />
+      <DialogsMessages messages={messages} addMessage={addMessage} />
     </StyledDialogs>
   );
 }

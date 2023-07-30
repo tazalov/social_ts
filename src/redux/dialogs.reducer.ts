@@ -8,12 +8,7 @@ export type DialogsMessageT = {
   message: string;
 };
 
-export type DialogsT = {
-  list: DialogsListItemT[];
-  messages: DialogsMessageT[];
-};
-
-type InitialStateT = {
+export type InitialStateT = {
   list: DialogsListItemT[];
   messages: DialogsMessageT[];
 };

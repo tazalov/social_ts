@@ -10,7 +10,7 @@ import { FlexWrapperStyled } from "./components/FlexWrapper.styled";
 import { AppStateT } from "./redux/store";
 import { DialogsAT } from "./redux/dialogs.reducer";
 import { ProfileAT } from "./redux/profile.reducer";
-import { DialogsContainer } from "./pages/dialogs/DialogsContainer";
+import Dialogs from "./pages/dialogs/DialogsContainer";
 
 export type CombineActionsT = ProfileAT | DialogsAT;
 
@@ -36,12 +36,7 @@ export function App({ state, dispatch }: AppPT) {
               )}
               path={"/profile"}
             />
-            <Route
-              render={() => (
-                <DialogsContainer dialogs={state.dialogs} dispatch={dispatch} />
-              )}
-              path={"/dialogs"}
-            />
+            <Route render={() => <Dialogs />} path={"/dialogs"} />
           </Main>
         </FlexWrapperStyled>
       </ContainerStyled>
