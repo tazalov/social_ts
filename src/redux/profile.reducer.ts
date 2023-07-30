@@ -15,12 +15,7 @@ export type FriendsT = {
   list: FriendT[];
 };
 
-export type ProfileT = {
-  posts: PostT[];
-  friends: FriendsT;
-};
-
-type InitialStateT = {
+export type InitialStateT = {
   posts: PostT[];
   friends: FriendsT;
 };

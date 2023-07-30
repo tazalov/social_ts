@@ -5,15 +5,16 @@ import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
 import { ProfileInfo } from "./profileInfo/ProfileInfo";
 import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
 import { Friends } from "./friends/Friends";
-import { ProfileAT, ProfileT } from "../../redux/profile.reducer";
-import { PostsContainer } from "./posts/PostsContainer";
+import { FriendsT, PostT } from "../../redux/profile.reducer";
+import { Posts } from "./posts/Posts";
 
 type ProfilePT = {
-  profile: ProfileT;
-  dispatch: (value: ProfileAT) => void;
+  posts: PostT[];
+  friends: FriendsT;
+  addPost: (postText: string) => void;
 };
 
-export function Profile({ profile, dispatch }: ProfilePT) {
+export function Profile({ posts, friends, addPost }: ProfilePT) {
   return (
     <FlexWrapperStyled gap={"20px"} direction={"column"}>
       <ShadowContainerStyled>
@@ -23,8 +24,8 @@ export function Profile({ profile, dispatch }: ProfilePT) {
         <ProfileInfo />
       </ShadowContainerStyled>
       <FlexWrapperStyled gap={"20px"}>
-        <PostsContainer posts={profile.posts} dispatch={dispatch} />
-        <Friends friends={profile.friends} />
+        <Posts posts={posts} addPost={addPost} />
+        <Friends friends={friends} />
       </FlexWrapperStyled>
     </FlexWrapperStyled>
   );
