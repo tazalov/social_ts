@@ -10,6 +10,7 @@ import {
 } from "../../redux/users.reducer";
 import { AppStateT } from "../../redux/store";
 import { Dispatch } from "redux";
+import { UsersC } from "./UsersC";
 
 const mapStateToProps = (state: AppStateT): InitialStateT => ({
   list: state.users.list,
@@ -30,4 +31,4 @@ const mapDispatchToProps = (dispatch: Dispatch<UsersAT>) => ({
 export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(
   mapStateToProps,
   mapDispatchToProps,
-)(Users);
+)(UsersC);
