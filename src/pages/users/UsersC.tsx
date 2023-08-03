@@ -5,6 +5,7 @@ import { UserT } from "../../redux/users.reducer";
 import axios from "axios";
 import { Component } from "react";
 import { Pagination } from "../../components/pagination/Pagination";
+import { Pagination2 } from "../../components/pagination/Pagination2";
 
 type UsersPT = {
   list: UserT[];
@@ -55,7 +56,7 @@ export class UsersC extends Component<UsersPT> {
     } = this.props;
     return (
       <>
-        <Pagination
+        <Pagination2
           pageSize={pageSize}
           currentPage={currentPage}
           totalCount={totalCount}
