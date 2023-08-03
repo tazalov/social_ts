@@ -20,7 +20,7 @@ export type InitialStateT = {
 const initialState: InitialStateT = {
   list: [],
   totalCount: 0,
-  pageSize: 10,
+  pageSize: 15,
   currentPage: 1,
 };
 

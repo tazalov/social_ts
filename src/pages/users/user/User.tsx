@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
-import { Avatar } from "../../components/avatar/Avatar";
-import photo from "../../assets/images/anynft.webp";
-import { ButtonB } from "../../components/button/ButtonB";
-import { SubtitleStyled } from "../../components/Subtitle.styled";
-import { theme } from "../../styles/Theme";
+import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
+import { Avatar } from "../../../components/avatar/Avatar";
+import photo from "../../../assets/images/anynft.webp";
+import { ButtonB } from "../../../components/button/ButtonB";
+import { SubtitleStyled } from "../../../components/Subtitle.styled";
+import { theme } from "../../../styles/Theme";
 
 type UserPT = {
   id: number;
