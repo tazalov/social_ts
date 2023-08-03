@@ -13,31 +13,39 @@ type UsersPT = {
 };
 
 export class UsersC extends Component<UsersPT> {
-  getUsersC = () => {
-    if (!this.props.list.length) {
+  componentDidMount() {
+    const { list, setUsers } = this.props;
+    if (!list.length) {
       axios
         .get("https://social-network.samuraijs.com/api/1.0/users")
-        .then((response) => this.props.setUsers(response.data.items));
+        .then((response) => setUsers(response.data.items));
     }
-  };
+  }
   render() {
     let { list, follow, unfollow } = this.props;
     return (
-      <StyledUsers>
-        <button onClick={this.getUsersC}>getUsers</button>
-        {list.map((el) => (
-          <User
-            key={el.id}
-            id={el.id}
-            name={el.name}
-            followed={el.followed}
-            avatarUrl={el.photos.small}
-            status={el.status}
-            follow={follow}
-            unfollow={unfollow}
-          />
-        ))}
-      </StyledUsers>
+      <>
+        <div>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+        </div>
+        <StyledUsers>
+          {list.map((el) => (
+            <User
+              key={el.id}
+              id={el.id}
+              name={el.name}
+              followed={el.followed}
+              avatarUrl={el.photos.small}
+              status={el.status}
+              follow={follow}
+              unfollow={unfollow}
+            />
+          ))}
+        </StyledUsers>
+      </>
     );
   }
 }
