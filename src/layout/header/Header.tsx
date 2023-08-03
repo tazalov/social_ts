@@ -14,7 +14,7 @@ export function Header(props: HeaderPT) {
     <ContainerStyled>
       <ShadowContainerStyled as={StyledHeader}>
         <FlexWrapperStyled justify={"space-between"} align={"center"}>
-          <Icon iconId={"logo"} width={"30px"} height={"30px"} />
+          <Icon iconId={"logo"} width={"40px"} height={"40px"} />
           <FlexWrapperStyled gap={"20px"}>
             <MenuLink to={"/users"}>
               <Icon iconId={"search"} width={"20px"} height={"20px"} />
