@@ -15,6 +15,7 @@ export type InitialStateT = {
   totalCount: number;
   pageSize: number;
   currentPage: number;
+  isPageLoading: boolean;
 };
 
 const initialState: InitialStateT = {
@@ -22,6 +23,7 @@ const initialState: InitialStateT = {
   totalCount: 0,
   pageSize: 15,
   currentPage: 1,
+  isPageLoading: true,
 };
 
 export const usersReducer = (
@@ -64,13 +66,24 @@ export const usersReducer = (
         currentPage: action.currentPage,
       };
     }
+    case "social/users/SET_LOADING": {
+      return {
+        ...state,
+        isPageLoading: action.isLoad,
+      };
+    }
     default: {
       return state;
     }
   }
 };
 
-export type UsersAT = FollowAT | UnfollowAT | SetUsersAT | SetCurrentPageAT;
+export type UsersAT =
+  | FollowAT
+  | UnfollowAT
+  | SetUsersAT
+  | SetCurrentPageAT
+  | SetLoadingPageAT;
 
 type FollowAT = {
   type: "social/users/FOLLOW";
@@ -93,6 +106,11 @@ type SetCurrentPageAT = {
   currentPage: number;
 };
 
+type SetLoadingPageAT = {
+  type: "social/users/SET_LOADING";
+  isLoad: boolean;
+};
+
 export const followAC = (id: number): FollowAT => ({
   type: "social/users/FOLLOW",
   id,
@@ -112,4 +130,9 @@ export const setUsersAC = (users: UserT[], totalCount: number): SetUsersAT => ({
 export const setCurrentPageAC = (currentPage: number): SetCurrentPageAT => ({
   type: "social/users/SET_CURRENT_PAGE",
   currentPage,
+});
+
+export const setLoadingPageAC = (isLoad: boolean): SetLoadingPageAT => ({
+  type: "social/users/SET_LOADING",
+  isLoad,
 });
