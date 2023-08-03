@@ -1,4 +1,3 @@
-import { Button } from "../button/Button";
 import { FlexWrapperStyled } from "../FlexWrapper.styled";
 import { ShadowContainerStyled } from "../ShadowContainer.styled";
 import styled from "styled-components";
@@ -6,7 +5,6 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { theme } from "../../styles/Theme";
-import axios from "axios";
 
 type PaginationPT = {
   totalCount: number;
