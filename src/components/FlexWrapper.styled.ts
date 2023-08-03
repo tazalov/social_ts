@@ -10,7 +10,6 @@ type FlexWrapperPT = {
 };
 
 export const FlexWrapperStyled = styled.div<FlexWrapperPT>`
-  min-height: 100%;
   display: flex;
   flex-direction: ${(props) => props.direction || "row"};
   justify-content: ${(props) => props.justify || "flex-start"};
