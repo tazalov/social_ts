@@ -6,17 +6,20 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { theme } from "../../styles/Theme";
+import axios from "axios";
 
 type PaginationPT = {
   totalCount: number;
   pageSize: number;
   currentPage: number;
+  setPage: (page: number) => void;
 };
 
 export function Pagination({
   totalCount,
   pageSize,
   currentPage,
+  setPage,
 }: PaginationPT) {
   const pagesCount: number = Math.ceil(totalCount / pageSize);
   const pages: Array<number> = Array.from(
@@ -26,22 +29,29 @@ export function Pagination({
   const portionSize: number = 10;
   const portionCount: number = Math.ceil(pagesCount / portionSize);
 
-  type SetPortionNumT = (value: number) => void;
-
-  const [portionNum, setPortionNum]: [number, SetPortionNumT] = useState(
+  const [portionNum, setPortionNum] = useState<number>(
     Math.ceil(currentPage / portionSize),
   );
 
   const leftBorderPortion: number = (portionNum - 1) * portionSize + 1; // 1 11 21 31 41
   const rightBorderPortion: number = portionNum * portionSize; // 10 20 30 40 50
 
-  const buttons: JSX.Element[] = pages
-    .filter((p) => p >= leftBorderPortion && p <= rightBorderPortion)
-    .map((el) => (
-      <StyledButton key={el} onClick={() => {}}>
-        {el}
-      </StyledButton>
-    ));
+  const buttons = pages.reduce((acc: JSX.Element[], el) => {
+    const onClickHandler = () => setPage(el);
+    if (el >= leftBorderPortion && el <= rightBorderPortion) {
+      const button = (
+        <StyledButton
+          as={el === currentPage ? StyledSelectedButton : StyledButton}
+          key={el}
+          onClick={onClickHandler}
+        >
+          {el}
+        </StyledButton>
+      );
+      acc.push(button);
+    }
+    return acc;
+  }, []);
 
   return (
     <StyledPagination>
@@ -83,4 +93,10 @@ const StyledButton = styled(StyledArrow)`
     background-color: ${theme.colors.primaryFont};
     box-shadow: 0 0 8px rgba(0, 183, 255, 0.4);
   }
+`;
+
+const StyledSelectedButton = styled(StyledButton)`
+  background-color: ${theme.colors.primaryFont};
+  box-shadow: 0 0 8px rgba(0, 183, 255, 0.4);
+  color: ${theme.colors.accent};
 `;

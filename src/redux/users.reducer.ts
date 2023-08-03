@@ -12,10 +12,16 @@ export type UserT = {
 
 export type InitialStateT = {
   list: UserT[];
+  totalCount: number;
+  pageSize: number;
+  currentPage: number;
 };
 
 const initialState: InitialStateT = {
   list: [],
+  totalCount: 0,
+  pageSize: 10,
+  currentPage: 1,
 };
 
 export const usersReducer = (
@@ -23,7 +29,7 @@ export const usersReducer = (
   action: UsersAT,
 ) => {
   switch (action.type) {
-    case "social/profile/FOLLOW": {
+    case "social/users/FOLLOW": {
       return {
         ...state,
         list: state.list?.map((el) => {
@@ -34,7 +40,7 @@ export const usersReducer = (
         }),
       };
     }
-    case "social/profile/UNFOLLOW": {
+    case "social/users/UNFOLLOW": {
       return {
         ...state,
         list: state.list?.map((el) => {
@@ -45,10 +51,17 @@ export const usersReducer = (
         }),
       };
     }
-    case "social/profile/SET_USERS": {
+    case "social/users/SET_USERS": {
       return {
         ...state,
-        list: [...state.list, ...action.users],
+        list: action.users,
+        totalCount: action.totalCount,
+      };
+    }
+    case "social/users/SET_CURRENT_PAGE": {
+      return {
+        ...state,
+        currentPage: action.currentPage,
       };
     }
     default: {
@@ -57,34 +70,46 @@ export const usersReducer = (
   }
 };
 
-export type UsersAT = FollowAT | UnfollowAT | SetUsersAT;
+export type UsersAT = FollowAT | UnfollowAT | SetUsersAT | SetCurrentPageAT;
 
 type FollowAT = {
-  type: "social/profile/FOLLOW";
+  type: "social/users/FOLLOW";
   id: number;
 };
 
 type UnfollowAT = {
-  type: "social/profile/UNFOLLOW";
+  type: "social/users/UNFOLLOW";
   id: number;
 };
 
 type SetUsersAT = {
-  type: "social/profile/SET_USERS";
+  type: "social/users/SET_USERS";
   users: UserT[];
+  totalCount: number;
+};
+
+type SetCurrentPageAT = {
+  type: "social/users/SET_CURRENT_PAGE";
+  currentPage: number;
 };
 
 export const followAC = (id: number): FollowAT => ({
-  type: "social/profile/FOLLOW",
+  type: "social/users/FOLLOW",
   id,
 });
 
 export const unfollowAC = (id: number): UnfollowAT => ({
-  type: "social/profile/UNFOLLOW",
+  type: "social/users/UNFOLLOW",
   id,
 });
 
-export const setUsersAC = (users: UserT[]): SetUsersAT => ({
-  type: "social/profile/SET_USERS",
+export const setUsersAC = (users: UserT[], totalCount: number): SetUsersAT => ({
+  type: "social/users/SET_USERS",
   users,
+  totalCount,
+});
+
+export const setCurrentPageAC = (currentPage: number): SetCurrentPageAT => ({
+  type: "social/users/SET_CURRENT_PAGE",
+  currentPage,
 });
