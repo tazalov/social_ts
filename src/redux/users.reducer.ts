@@ -111,28 +111,28 @@ type SetLoadingPageAT = {
   isLoad: boolean;
 };
 
-export const followAC = (id: number): FollowAT => ({
+export const follow = (id: number): FollowAT => ({
   type: "social/users/FOLLOW",
   id,
 });
 
-export const unfollowAC = (id: number): UnfollowAT => ({
+export const unfollow = (id: number): UnfollowAT => ({
   type: "social/users/UNFOLLOW",
   id,
 });
 
-export const setUsersAC = (users: UserT[], totalCount: number): SetUsersAT => ({
+export const setUsers = (users: UserT[], totalCount: number): SetUsersAT => ({
   type: "social/users/SET_USERS",
   users,
   totalCount,
 });
 
-export const setCurrentPageAC = (currentPage: number): SetCurrentPageAT => ({
+export const setCurrentPage = (currentPage: number): SetCurrentPageAT => ({
   type: "social/users/SET_CURRENT_PAGE",
   currentPage,
 });
 
-export const setLoadingPageAC = (isLoad: boolean): SetLoadingPageAT => ({
+export const setLoadingPage = (isLoad: boolean): SetLoadingPageAT => ({
   type: "social/users/SET_LOADING",
   isLoad,
 });

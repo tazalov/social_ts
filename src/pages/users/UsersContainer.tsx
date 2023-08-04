@@ -1,17 +1,15 @@
 import { connect } from "react-redux";
 import { Users } from "./Users";
 import {
-  followAC,
+  follow,
   InitialStateT,
-  setCurrentPageAC,
-  setLoadingPageAC,
-  setUsersAC,
-  unfollowAC,
-  UsersAT,
+  setCurrentPage,
+  setLoadingPage,
+  setUsers,
+  unfollow,
   UserT,
 } from "../../redux/users.reducer";
 import { AppStateT } from "../../redux/store";
-import { Dispatch } from "redux";
 import { Component } from "react";
 import axios from "axios";
 import { Pagination2 } from "../../components/pagination/Pagination2";
@@ -93,16 +91,7 @@ type MapDispatchPT = {
   setLoadingPage: (isLoad: boolean) => void;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<UsersAT>) => ({
-  follow: (id: number) => dispatch(followAC(id)),
-  unfollow: (id: number) => dispatch(unfollowAC(id)),
-  setUsers: (users: UserT[], count: number) =>
-    dispatch(setUsersAC(users, count)),
-  setCurrentPage: (page: number) => dispatch(setCurrentPageAC(page)),
-  setLoadingPage: (isLoad: boolean) => dispatch(setLoadingPageAC(isLoad)),
-});
-
 export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(
   mapStateToProps,
-  mapDispatchToProps,
+  { follow, unfollow, setUsers, setLoadingPage, setCurrentPage },
 )(UsersC);
