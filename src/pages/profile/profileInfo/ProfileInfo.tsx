@@ -1,31 +1,44 @@
 import React from "react";
 import { Avatar } from "../../../components/avatar/Avatar";
-import avatar from "../../../assets/images/anynft.webp";
+import noAvatar from "../../../assets/images/anynft.webp";
 import styled from "styled-components";
 import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 import { Links } from "./links/Links";
 import { ButtonB } from "../../../components/button/ButtonB";
 import { theme } from "../../../styles/Theme";
+import { ContactsT } from "../../../redux/profile.reducer";
 
-type ProfileInfoPT = {};
+type ProfileInfoPT = {
+  avatar: string | null;
+  name: string;
+  isLookingJob: boolean;
+  jobDesc: string | null;
+  contacts: ContactsT;
+};
 
-export function ProfileInfo(props: ProfileInfoPT) {
+export function ProfileInfo({
+  avatar,
+  name,
+  isLookingJob,
+  jobDesc,
+  contacts,
+}: ProfileInfoPT) {
   return (
     <FlexWrapperStyled align={"center"} justify={"space-between"}>
       <StyledProfileInfo align={"center"}>
         <StyledAvatar>
-          <Avatar img={avatar} w={150} h={150} />
+          <Avatar img={avatar || noAvatar} w={150} h={150} />
         </StyledAvatar>
         <Info direction={"column"} align={"flex-start"} gap={"10px"}>
           <Name align={"center"} gap={"5px"}>
-            <p>username</p>
-            <span>Frontend developer</span>
+            <p>{name}</p>
+            <span>{jobDesc || "developer"}</span>
           </Name>
           <Status>
             <i>A molestiae praesentium quod!</i>
           </Status>
           <Looking>
-            Looking for a job: <span>yes</span>
+            Looking for a job: <span>{isLookingJob ? "YES" : "NO"}</span>
           </Looking>
         </Info>
       </StyledProfileInfo>
@@ -36,7 +49,7 @@ export function ProfileInfo(props: ProfileInfoPT) {
         gap={"10px"}
       >
         <ButtonB title={"edit"} callback={() => console.log(1)} />
-        <Links />
+        <Links links={contacts} />
       </Buttons>
     </FlexWrapperStyled>
   );
@@ -72,13 +85,15 @@ const Name = styled(FlexWrapperStyled)`
   }
 `;
 
-const Status = styled.div``;
+const Status = styled.div`
+  color: ${theme.colors.secondaryFont};
+`;
 
 const Looking = styled.div`
+  text-align: left;
   span {
     font-size: 18px;
     padding: 5px;
-    text-transform: uppercase;
   }
 `;
 

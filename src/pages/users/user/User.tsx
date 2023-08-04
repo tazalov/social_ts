@@ -5,6 +5,7 @@ import photo from "../../../assets/images/anynft.webp";
 import { ButtonB } from "../../../components/button/ButtonB";
 import { SubtitleStyled } from "../../../components/Subtitle.styled";
 import { theme } from "../../../styles/Theme";
+import { NavLink } from "react-router-dom";
 
 type UserPT = {
   id: number;
@@ -38,7 +39,9 @@ export function User({
   };
   return (
     <StyledUser direction={"column"} align={"center"} gap={"20px"}>
-      <Avatar img={avatarUrl || photo} w={100} h={100} />
+      <NavLink to={`/profile/${id}`}>
+        <Avatar img={avatarUrl || photo} w={100} h={100} />
+      </NavLink>
       <Name>{name.length > 10 ? `${name.slice(0, 8)}...` : name}</Name>
       <Status>{newStatus}</Status>
       <ButtonB

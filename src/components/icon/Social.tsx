@@ -1,49 +1,45 @@
 import React from "react";
 import iconsSprite from "../../assets/images/icon/social-icon-sprite.svg";
 import styled, { css } from "styled-components";
+import { ContactLinksT } from "../../pages/profile/profileInfo/links/Links";
 
 type Props = {
-  iconId: ContactLink;
+  iconId: ContactLinksT;
   width?: string;
   height?: string;
   viewBox?: string;
+  link: string;
 };
 
-type ContactLink =
-  | "github"
-  | "vk"
-  | "facebook"
-  | "instagram"
-  | "twitter"
-  | "website"
-  | "youtube"
-  | "mainLink";
-
-export const Social = (props: Props) => {
+export const Social = ({ iconId, width, height, link, viewBox }: Props) => {
   return (
-    <StyledSocial
-      width={props.width || "30px"}
-      height={props.height || "30px"}
-      viewBox={props.viewBox || "0 0 24 24"}
-      xmlns="http://www.w3.org/2000/svg"
-      link={props.iconId}
-    >
-      {props.iconId === "instagram" && (
-        <radialGradient id="gradient" r="150%" cx="30%" cy="107%">
-          <stop stopColor="#fff" offset="0" />
-          <stop stopColor="#fff" offset="0.05" />
-          <stop stopColor="#fff" offset="0.45" />
-          <stop stopColor="#fff" offset="0.6" />
-          <stop stopColor="#fff" offset="0.9" />
-        </radialGradient>
-      )}
-      <use xlinkHref={`${iconsSprite}#${props.iconId}`} />
-    </StyledSocial>
+    <Link href={link}>
+      <StyledSocial
+        width={width || "30px"}
+        height={height || "30px"}
+        viewBox={viewBox || "0 0 24 24"}
+        xmlns="http://www.w3.org/2000/svg"
+        link={iconId}
+      >
+        {iconId === "instagram" && (
+          <radialGradient id="gradient" r="150%" cx="30%" cy="107%">
+            <stop stopColor="#fff" offset="0" />
+            <stop stopColor="#fff" offset="0.05" />
+            <stop stopColor="#fff" offset="0.45" />
+            <stop stopColor="#fff" offset="0.6" />
+            <stop stopColor="#fff" offset="0.9" />
+          </radialGradient>
+        )}
+        <use xlinkHref={`${iconsSprite}#${iconId}`} />
+      </StyledSocial>
+    </Link>
   );
 };
 
+const Link = styled.a``;
+
 type StyledSocialPT = {
-  link: ContactLink;
+  link: ContactLinksT;
 };
 
 const StyledSocial = styled.svg<StyledSocialPT>`

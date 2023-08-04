@@ -10,13 +10,18 @@ type PreloaderPT = {
 export function Preloader({ size }: PreloaderPT) {
   return (
     <StyledPreloader align={"center"} justify={"center"}>
-      <Icon iconId={"logo"} width={`${size}px`} height={`${size}px`} />
+      <Wrapper>
+        <Icon iconId={"logo"} width={`${size}px`} height={`${size}px`} />
+      </Wrapper>
     </StyledPreloader>
   );
 }
 
 const StyledPreloader = styled(FlexWrapperStyled)`
   height: 100%;
+`;
+
+const Wrapper = styled.div`
   animation: rotate 1s linear infinite;
   @keyframes rotate {
     from {

@@ -9,16 +9,19 @@ import { SubtitleStyled } from "../Subtitle.styled";
 
 type TitleBlockPT = {
   title: string | React.ReactNode;
+  nobtn?: boolean;
 };
 
-export function TitleBlock({ title }: TitleBlockPT) {
+export function TitleBlock({ title, nobtn }: TitleBlockPT) {
   return (
     <TitleWrapper justify={"space-between"} align={"center"}>
       <Title>{title}</Title>
-      <ButtonB
-        title={<FontAwesomeIcon icon={faAnglesRight} />}
-        callback={() => {}}
-      />
+      {nobtn || (
+        <ButtonB
+          title={<FontAwesomeIcon icon={faAnglesRight} />}
+          callback={() => {}}
+        />
+      )}
     </TitleWrapper>
   );
 }

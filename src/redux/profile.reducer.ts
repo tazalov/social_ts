@@ -15,12 +15,40 @@ export type FriendsT = {
   list: FriendT[];
 };
 
+export type ContactsT = {
+  facebook: string | null;
+  website: string | null;
+  vk: string | null;
+  twitter: string | null;
+  instagram: string | null;
+  youtube: string | null;
+  github: string | null;
+  mainLink: string | null;
+};
+
+export type PhotosT = {
+  small: string | null;
+  large: string | null;
+};
+
+export type ProfileT = {
+  aboutMe: string | null;
+  contacts: ContactsT;
+  lookingForAJob: boolean;
+  lookingForAJobDescription: string | null;
+  fullName: string;
+  userId: number;
+  photos: PhotosT;
+};
+
 export type InitialStateT = {
+  profile: ProfileT | null;
   posts: PostT[];
   friends: FriendsT;
 };
 
 const initialState: InitialStateT = {
+  profile: null,
   posts: [
     {
       id: 1,
@@ -89,20 +117,36 @@ export const profileReducer = (
         posts: [...state.posts, newPost],
       };
     }
+    case "social/profile/SET_PROFILE": {
+      return {
+        ...state,
+        profile: action.profile,
+      };
+    }
     default: {
       return state;
     }
   }
 };
 
-export type ProfileAT = AddPostAT;
+export type ProfileAT = AddPostAT | SetProfileAT;
 
 export type AddPostAT = {
   type: "social/profile/ADD_POST";
   postText: string;
 };
 
-export const addPostAC = (postText: string): AddPostAT => ({
+export type SetProfileAT = {
+  type: "social/profile/SET_PROFILE";
+  profile: ProfileT;
+};
+
+export const addPost = (postText: string): AddPostAT => ({
   type: "social/profile/ADD_POST",
   postText,
+});
+
+export const setProfile = (profile: ProfileT): SetProfileAT => ({
+  type: "social/profile/SET_PROFILE",
+  profile,
 });
