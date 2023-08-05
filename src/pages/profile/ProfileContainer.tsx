@@ -9,16 +9,32 @@ import {
 import { Profile } from "./Profile";
 import React, { Component } from "react";
 import axios from "axios";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-class ProfileContainer extends Component<InitialStateT & MapDispatchPT> {
+type ProfileContainerPT = InitialStateT &
+  MapDispatchPT &
+  RouteComponentProps<{ userId: string }>;
+
+class ProfileContainer extends Component<ProfileContainerPT> {
   componentDidMount() {
-    let userId = this.props.profile?.userId;
-    if (!userId) userId = 2;
+    let userId = this.props.match.params.userId;
+    if (!userId) userId = "29403";
     axios
       .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
       .then((response) => {
         this.props.setProfile(response.data);
       });
+  }
+
+  componentDidUpdate(prevProps: Readonly<ProfileContainerPT>) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      let userId = "29403";
+      axios
+        .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+        .then((response) => {
+          this.props.setProfile(response.data);
+        });
+    }
   }
 
   render() {
@@ -37,7 +53,9 @@ type MapDispatchPT = {
   setProfile: (profile: ProfileT) => void;
 };
 
+const ProfileWithRouter = withRouter(ProfileContainer);
+
 export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(
   mapStateToProps,
   { addPost, setProfile },
-)(ProfileContainer);
+)(ProfileWithRouter);

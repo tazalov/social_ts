@@ -37,7 +37,7 @@ export type ProfileT = {
   lookingForAJob: boolean;
   lookingForAJobDescription: string | null;
   fullName: string;
-  userId: number;
+  userId: string;
   photos: PhotosT;
 };
 

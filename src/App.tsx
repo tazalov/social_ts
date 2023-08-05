@@ -7,20 +7,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { SideUsers } from "./layout/sideUsers/SideUsers";
 import { FlexWrapperStyled } from "./components/FlexWrapper.styled";
 import { AppStateT } from "./redux/store";
-import { DialogsAT } from "./redux/dialogs.reducer";
-import { ProfileAT } from "./redux/profile.reducer";
 import Dialogs from "./pages/dialogs/DialogsContainer";
 import Profile from "./pages/profile/ProfileContainer";
 import Users from "./pages/users/UsersContainer";
 
-export type CombineActionsT = ProfileAT | DialogsAT;
-
 type AppPT = {
   state: AppStateT;
-  dispatch: (value: CombineActionsT) => void;
 };
 
-export function App({ state, dispatch }: AppPT) {
+export function App({ state }: AppPT) {
   return (
     <BrowserRouter>
       <Header />
@@ -31,7 +26,7 @@ export function App({ state, dispatch }: AppPT) {
             <SideUsers sideUsers={state.sideUsers} />
           </FlexWrapperStyled>
           <Main>
-            <Route render={() => <Profile />} path={"/profile"} />
+            <Route render={() => <Profile />} path={"/profile/:userId?"} />
             <Route render={() => <Dialogs />} path={"/dialogs"} />
             <Route render={() => <Users />} path={"/users"} />
           </Main>
