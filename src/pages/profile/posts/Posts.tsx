@@ -1,10 +1,8 @@
-import React from "react";
-import styled from "styled-components";
 import { Post } from "./post/Post";
 import { TextForm } from "../../../components/textForm/textForm";
-import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
-import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 import { PostT } from "../../../redux/profile.reducer";
+import { S } from "./Posts.styled";
+import { C } from "../../../components/Common.styled";
 
 type PostsPT = {
   posts: PostT[];
@@ -13,10 +11,10 @@ type PostsPT = {
 
 export function Posts({ posts, addPost }: PostsPT) {
   return (
-    <StyledPosts direction={"column"} gap={"20px"}>
-      <ShadowContainerStyled as={FormWrapper}>
+    <S.Posts direction={"column"} gap={"20px"}>
+      <C.ShadowContainer as={S.FormWrapper}>
         <TextForm place={"Enter post message..."} callback={addPost} />
-      </ShadowContainerStyled>
+      </C.ShadowContainer>
       {posts.map((el) => (
         <Post
           key={el.id}
@@ -26,14 +24,6 @@ export function Posts({ posts, addPost }: PostsPT) {
           likes={el.likes}
         />
       ))}
-    </StyledPosts>
+    </S.Posts>
   );
 }
-
-const StyledPosts = styled(FlexWrapperStyled)`
-  width: 100%;
-`;
-
-const FormWrapper = styled.div`
-  padding: 10px;
-`;

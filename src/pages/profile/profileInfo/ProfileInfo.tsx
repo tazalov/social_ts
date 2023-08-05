@@ -1,12 +1,10 @@
-import React from "react";
 import { Avatar } from "../../../components/avatar/Avatar";
 import noAvatar from "../../../assets/images/anynft.webp";
-import styled from "styled-components";
-import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 import { Links } from "./links/Links";
 import { ButtonB } from "../../../components/button/ButtonB";
-import { theme } from "../../../styles/Theme";
 import { ContactsT } from "../../../redux/profile.reducer";
+import { S } from "./ProfileInfo.styled";
+import { C } from "../../../components/Common.styled";
 
 type ProfileInfoPT = {
   avatar: string | null;
@@ -24,25 +22,25 @@ export function ProfileInfo({
   contacts,
 }: ProfileInfoPT) {
   return (
-    <FlexWrapperStyled align={"center"} justify={"space-between"}>
-      <StyledProfileInfo align={"center"}>
-        <StyledAvatar>
+    <C.FlexWrapper align={"center"} justify={"space-between"}>
+      <S.ProfileInfo align={"center"}>
+        <S.Avatar>
           <Avatar img={avatar || noAvatar} w={150} h={150} />
-        </StyledAvatar>
-        <Info direction={"column"} align={"flex-start"} gap={"10px"}>
-          <Name align={"center"} gap={"5px"}>
+        </S.Avatar>
+        <S.Info direction={"column"} align={"flex-start"} gap={"10px"}>
+          <S.Name align={"center"} gap={"5px"}>
             <p>{name}</p>
             <span>{jobDesc || "developer"}</span>
-          </Name>
-          <Status>
+          </S.Name>
+          <S.Status>
             <i>A molestiae praesentium quod!</i>
-          </Status>
-          <Looking>
+          </S.Status>
+          <S.Looking>
             Looking for a job: <span>{isLookingJob ? "YES" : "NO"}</span>
-          </Looking>
-        </Info>
-      </StyledProfileInfo>
-      <Buttons
+          </S.Looking>
+        </S.Info>
+      </S.ProfileInfo>
+      <S.Buttons
         direction={"column"}
         justify={"center"}
         align={"flex-end"}
@@ -50,53 +48,7 @@ export function ProfileInfo({
       >
         <ButtonB title={"edit"} callback={() => console.log(1)} />
         <Links links={contacts} />
-      </Buttons>
-    </FlexWrapperStyled>
+      </S.Buttons>
+    </C.FlexWrapper>
   );
 }
-
-const StyledProfileInfo = styled(FlexWrapperStyled)`
-  padding: 10px 10px 10px 160px;
-  position: relative;
-`;
-
-const StyledAvatar = styled.div`
-  position: absolute;
-  margin-top: -80px;
-  left: 10px;
-  top: 0;
-  border: 5px solid ${theme.colors.secondaryBg};
-  border-radius: 50%;
-`;
-
-const Info = styled(FlexWrapperStyled)`
-  margin-left: 20px;
-`;
-
-const Name = styled(FlexWrapperStyled)`
-  font-size: 25px;
-  p {
-    text-transform: uppercase;
-  }
-  span {
-    font-size: 14px;
-    padding: 5px;
-    background-color: ${theme.colors.primaryBg};
-  }
-`;
-
-const Status = styled.div`
-  color: ${theme.colors.secondaryFont};
-`;
-
-const Looking = styled.div`
-  text-align: left;
-  span {
-    font-size: 18px;
-    padding: 5px;
-  }
-`;
-
-const Buttons = styled(FlexWrapperStyled)`
-  padding: 0 10px;
-`;

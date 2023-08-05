@@ -1,6 +1,6 @@
 import { TitleBlock } from "../../../components/titleBlock/TitleBlock";
-import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
-import styled from "styled-components";
+import { C } from "../../../components/Common.styled";
+import { S } from "./About.styled";
 
 type AboutPT = {
   about: string | null;
@@ -8,15 +8,9 @@ type AboutPT = {
 
 export function About({ about }: AboutPT) {
   return (
-    <ShadowContainerStyled>
+    <C.ShadowContainer>
       <TitleBlock title={"About me"} nobtn />
-      <Text>{about || "User dont add this info"}</Text>
-    </ShadowContainerStyled>
+      <S.Text>{about || "User dont add this info"}</S.Text>
+    </C.ShadowContainer>
   );
 }
-
-const Text = styled.div`
-  padding: 10px;
-  text-align: center;
-  font-size: 20px;
-`;

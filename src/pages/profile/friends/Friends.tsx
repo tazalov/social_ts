@@ -1,8 +1,7 @@
-import styled from "styled-components";
 import { Friend } from "./Friend";
-import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
 import { TitleBlock } from "../../../components/titleBlock/TitleBlock";
 import { FriendsT } from "../../../redux/profile.reducer";
+import { S } from "./Friends.styled";
 
 type FriendsPT = {
   friends: FriendsT;
@@ -10,7 +9,7 @@ type FriendsPT = {
 
 export function Friends({ friends }: FriendsPT) {
   return (
-    <StyledFriends>
+    <S.Friends>
       <TitleBlock
         title={
           <>
@@ -18,21 +17,11 @@ export function Friends({ friends }: FriendsPT) {
           </>
         }
       />
-      <List>
+      <S.List>
         {friends.list.map((el) => (
           <Friend key={el.id} name={el.name} />
         ))}
-      </List>
-    </StyledFriends>
+      </S.List>
+    </S.Friends>
   );
 }
-
-const StyledFriends = styled(ShadowContainerStyled)`
-  height: min-content;
-`;
-
-const List = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 1fr;
-`;
