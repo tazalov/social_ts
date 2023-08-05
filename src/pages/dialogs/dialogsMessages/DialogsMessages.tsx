@@ -1,11 +1,7 @@
-import React from "react";
 import { DialogsMessage } from "./DialogsMessage";
-import styled from "styled-components";
 import { TextForm } from "../../../components/textForm/textForm";
-import { ScrollStyled } from "../../../components/Scroll.styled";
-import { ShadowContainerStyled } from "../../../components/ShadowContainer.styled";
-import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 import { DialogsMessageT } from "../../../redux/dialogs.reducer";
+import { S } from "./DialogsMessages.styled";
 
 type DialogsMessagesPT = {
   messages: DialogsMessageT[];
@@ -14,35 +10,15 @@ type DialogsMessagesPT = {
 
 export function DialogsMessages({ messages, addMessage }: DialogsMessagesPT) {
   return (
-    <StyledDialogsMessages direction={"column"} gap={"20px"}>
-      <MessagesList>
+    <S.DialogsMessages direction={"column"} gap={"20px"}>
+      <S.MessagesList>
         {messages.map((el) => (
           <DialogsMessage key={el.id} id={el.id} message={el.message} />
         ))}
-      </MessagesList>
-      <FormWrapper>
+      </S.MessagesList>
+      <S.FormWrapper>
         <TextForm place={"Enter your message..."} callback={addMessage} />
-      </FormWrapper>
-    </StyledDialogsMessages>
+      </S.FormWrapper>
+    </S.DialogsMessages>
   );
 }
-
-const StyledDialogsMessages = styled(FlexWrapperStyled)`
-  height: 100%;
-`;
-
-const MessagesList = styled(ShadowContainerStyled)`
-  padding: 0 10px;
-  overflow-y: hidden;
-  height: 100%;
-
-  ${ScrollStyled}
-  &:hover,
-  &:focus {
-    overflow-y: auto;
-  }
-`;
-
-const FormWrapper = styled(ShadowContainerStyled)`
-  padding: 10px;
-`;

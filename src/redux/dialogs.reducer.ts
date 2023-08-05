@@ -82,7 +82,7 @@ export type AddMessageAT = {
   messageText: string;
 };
 
-export const addMessageAC = (messageText: string): AddMessageAT => ({
+export const addMessage = (messageText: string): AddMessageAT => ({
   type: "social/profile/ADD_MESSAGE",
   messageText,
 });

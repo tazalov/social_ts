@@ -1,8 +1,7 @@
-import React from "react";
 import { DialogsList } from "./dialogsList/DialogsList";
 import { DialogsMessages } from "./dialogsMessages/DialogsMessages";
-import styled from "styled-components";
 import { DialogsListItemT, DialogsMessageT } from "../../redux/dialogs.reducer";
+import { S } from "./Dialogs.styled";
 
 type DialogsPT = {
   list: DialogsListItemT[];
@@ -12,16 +11,9 @@ type DialogsPT = {
 
 export function Dialogs({ list, messages, addMessage }: DialogsPT) {
   return (
-    <StyledDialogs>
+    <S.Dialogs>
       <DialogsList list={list} />
       <DialogsMessages messages={messages} addMessage={addMessage} />
-    </StyledDialogs>
+    </S.Dialogs>
   );
 }
-
-const StyledDialogs = styled.div`
-  display: grid;
-  grid-template-columns: 200px 4fr;
-  grid-template-rows: 60vh;
-  gap: 20px;
-`;

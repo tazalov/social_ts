@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 import { theme } from "../styles/Theme";
 
-const ScrollStyled = css`
+const Scroll = css`
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -13,7 +13,7 @@ const ScrollStyled = css`
   }
 `;
 
-const ScrollBodyStyled = css`
+const ScrollBody = css`
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -25,14 +25,14 @@ const ScrollBodyStyled = css`
   }
 `;
 
-const SubtitleStyled = css`
+const Subtitle = css`
   font-size: 18px;
   font-weight: 600;
   user-select: none;
 `;
 
 export const F = {
-  ScrollStyled,
-  ScrollBodyStyled,
-  SubtitleStyled,
+  Scroll,
+  ScrollBody,
+  Subtitle,
 };
