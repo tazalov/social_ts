@@ -6,16 +6,11 @@ import { ContainerStyled } from "./components/Container.styled";
 import { BrowserRouter, Route } from "react-router-dom";
 import { SideUsers } from "./layout/sideUsers/SideUsers";
 import { FlexWrapperStyled } from "./components/FlexWrapper.styled";
-import { AppStateT } from "./redux/store";
 import Dialogs from "./pages/dialogs/DialogsContainer";
 import Profile from "./pages/profile/ProfileContainer";
 import Users from "./pages/users/UsersContainer";
 
-type AppPT = {
-  state: AppStateT;
-};
-
-export function App({ state }: AppPT) {
+export function App() {
   return (
     <BrowserRouter>
       <Header />
