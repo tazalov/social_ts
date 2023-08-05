@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
-import { FlexWrapperStyled } from "../FlexWrapper.styled";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
 import { Button } from "../button/Button";
+import { C } from "../Common.styled";
 
 type TextFormPT = {
   place: string;
@@ -23,14 +23,14 @@ export function TextForm({ place, callback, submit }: TextFormPT) {
   };
 
   return (
-    <FlexWrapperStyled gap={"10px"}>
+    <C.FlexWrapper gap={"10px"}>
       <StyledTextArea
         placeholder={place}
         value={text}
         onChange={onChangeHandler}
       />
       <Button title={"send"} callback={onClickHandler} submit />
-    </FlexWrapperStyled>
+    </C.FlexWrapper>
   );
 }
 

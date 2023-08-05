@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 type AvatarPT = {
@@ -7,10 +6,10 @@ type AvatarPT = {
   h: number;
 };
 
-export function Avatar(props: AvatarPT) {
+export function Avatar({ img, w, h }: AvatarPT) {
   return (
-    <StyledAvatar width={props.w} height={props.h}>
-      <img src={props.img} alt="img" />
+    <StyledAvatar width={w} height={h}>
+      <img src={img} alt="img" />
     </StyledAvatar>
   );
 }

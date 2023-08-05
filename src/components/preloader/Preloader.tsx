@@ -1,7 +1,7 @@
 import { Icon } from "../icon/Icon";
 import React from "react";
 import styled from "styled-components";
-import { FlexWrapperStyled } from "../FlexWrapper.styled";
+import { C } from "../Common.styled";
 
 type PreloaderPT = {
   size: number;
@@ -17,7 +17,7 @@ export function Preloader({ size }: PreloaderPT) {
   );
 }
 
-const StyledPreloader = styled(FlexWrapperStyled)`
+const StyledPreloader = styled(C.FlexWrapper)`
   height: 100%;
 `;
 

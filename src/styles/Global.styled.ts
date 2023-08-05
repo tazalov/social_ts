@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { theme } from "./Theme";
-import { ScrollBodyStyled } from "../components/ScrollBody.styled";
+import { F } from "../components/Fragments.styled";
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     color: ${theme.colors.primaryFont};
     background: linear-gradient(180deg,#424979, #24273b);
-    ${ScrollBodyStyled};
+    ${F.ScrollBody};
   }
   input,
   button,

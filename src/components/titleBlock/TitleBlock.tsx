@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import styled from "styled-components";
-import { FlexWrapperStyled } from "../FlexWrapper.styled";
 import { theme } from "../../styles/Theme";
-import { SubtitleStyled } from "../Subtitle.styled";
+import { F } from "../Fragments.styled";
+import { C } from "../Common.styled";
 
 type TitleBlockPT = {
   title: string | React.ReactNode;
@@ -26,13 +26,13 @@ export function TitleBlock({ title, nobtn }: TitleBlockPT) {
   );
 }
 
-const TitleWrapper = styled(FlexWrapperStyled)`
+const TitleWrapper = styled(C.FlexWrapper)`
   background-color: ${theme.colors.thirdBg};
   padding: 15px 20px;
 `;
 
 const Title = styled.h2`
-  ${SubtitleStyled};
+  ${F.Subtitle};
   span {
     color: ${theme.colors.secondaryFont};
     font-size: 14px;
