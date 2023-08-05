@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 ReactDOM.render(
   <Provider store={store}>
     <GlobalStyle />
-    <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+    <App state={store.getState()} />
   </Provider>,
   document.getElementById("root"),
 );
