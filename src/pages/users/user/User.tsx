@@ -1,11 +1,8 @@
-import styled from "styled-components";
-import { FlexWrapperStyled } from "../../../components/FlexWrapper.styled";
 import { Avatar } from "../../../components/avatar/Avatar";
 import photo from "../../../assets/images/anynft.webp";
 import { ButtonB } from "../../../components/button/ButtonB";
-import { SubtitleStyled } from "../../../components/Subtitle.styled";
-import { theme } from "../../../styles/Theme";
 import { NavLink } from "react-router-dom";
+import { S } from "./User.styled";
 
 type UserPT = {
   id: number;
@@ -38,33 +35,16 @@ export function User({
     unfollow(id);
   };
   return (
-    <StyledUser direction={"column"} align={"center"} gap={"20px"}>
+    <S.User direction={"column"} align={"center"} gap={"20px"}>
       <NavLink to={`/profile/${id}`}>
         <Avatar img={avatarUrl || photo} w={100} h={100} />
       </NavLink>
-      <Name>{name.length > 10 ? `${name.slice(0, 8)}...` : name}</Name>
-      <Status>{newStatus}</Status>
+      <S.Name>{name.length > 10 ? `${name.slice(0, 8)}...` : name}</S.Name>
+      <S.Status>{newStatus}</S.Status>
       <ButtonB
         title={followed ? "unfollow" : "follow"}
         callback={followed ? unfollowUser : followUser}
       />
-    </StyledUser>
+    </S.User>
   );
 }
-
-const StyledUser = styled(FlexWrapperStyled)`
-  padding: 10px;
-  &:hover {
-    background-color: ${theme.colors.thirdBg};
-  }
-`;
-
-const Name = styled.div`
-  ${SubtitleStyled};
-  font-size: 22px;
-`;
-
-const Status = styled.div`
-  color: ${theme.colors.secondaryFont};
-  font-size: 14px;
-`;

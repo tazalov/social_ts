@@ -1,7 +1,6 @@
 import { User } from "./user/User";
-import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
-import styled from "styled-components";
 import { UserT } from "../../redux/users.reducer";
+import { S } from "./Users.styled";
 
 type UsersPT = {
   list: UserT[];
@@ -11,7 +10,7 @@ type UsersPT = {
 
 export function Users({ list, follow, unfollow }: UsersPT) {
   return (
-    <StyledUsers>
+    <S.Users>
       {list.map((el) => (
         <User
           key={el.id}
@@ -24,12 +23,6 @@ export function Users({ list, follow, unfollow }: UsersPT) {
           unfollow={unfollow}
         />
       ))}
-    </StyledUsers>
+    </S.Users>
   );
 }
-
-const StyledUsers = styled(ShadowContainerStyled)`
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-`;
