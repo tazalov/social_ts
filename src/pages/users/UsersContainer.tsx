@@ -12,9 +12,9 @@ import {
 } from "../../redux/users.reducer";
 import { AppStateT } from "../../redux/store";
 import { Component } from "react";
-import axios from "axios";
 import { Pagination2 } from "../../components/pagination/Pagination2";
 import { Preloader } from "../../components/preloader/Preloader";
+import { usersAPI } from "../../api/api";
 
 type UsersCPT = InitialStateT & MapDispatchPT;
 
@@ -24,34 +24,20 @@ class UsersC extends Component<UsersCPT> {
       this.props;
     if (!list.length) {
       setLoadingPage(true);
-      axios
-        .get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
-          {
-            withCredentials: true,
-          },
-        )
-        .then((response) => {
-          setUsers(response.data.items, response.data.totalCount);
-          setLoadingPage(false);
-        });
+      usersAPI.getUsers(currentPage, pageSize).then((data) => {
+        setUsers(data.items, data.totalCount);
+        setLoadingPage(false);
+      });
     }
   }
   componentDidUpdate(prevProps: Readonly<UsersCPT>) {
     const { pageSize, currentPage, setUsers, setLoadingPage } = this.props;
     if (currentPage !== prevProps.currentPage) {
       setLoadingPage(true);
-      axios
-        .get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
-          {
-            withCredentials: true,
-          },
-        )
-        .then((response) => {
-          setUsers(response.data.items, response.data.totalCount);
-          setLoadingPage(false);
-        });
+      usersAPI.getUsers(currentPage, pageSize).then((data) => {
+        setUsers(data.items, data.totalCount);
+        setLoadingPage(false);
+      });
     }
   }
 

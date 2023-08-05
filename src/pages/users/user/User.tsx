@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { S } from "./User.styled";
 import axios from "axios";
 import { ProgressFollow } from "../../../redux/users.reducer";
+import { usersAPI } from "../../../api/api";
 
 type UserPT = {
   id: number;
@@ -36,34 +37,21 @@ export function User({
     : "No status";
   const followUser = () => {
     toggleProgressFollow(true, id);
-    axios
-      .post(
-        `https://social-network.samuraijs.com/api/1.0/follow/${id}`,
-        {},
-        {
-          withCredentials: true,
-          headers: { "API-KEY": "b8ade8b2-587b-4098-8840-48ea374583b5" },
-        },
-      )
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          toggleProgressFollow(false, null);
-          follow(id);
-        }
-      });
+    usersAPI.followU(id).then((data) => {
+      if (data.resultCode === 0) {
+        toggleProgressFollow(false, null);
+        follow(id);
+      }
+    });
   };
   const unfollowUser = () => {
     toggleProgressFollow(true, id);
-    axios
-      .delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          toggleProgressFollow(false, null);
-          unfollow(id);
-        }
-      });
+    usersAPI.unfollowU(id).then((data) => {
+      if (data.resultCode === 0) {
+        toggleProgressFollow(false, null);
+        unfollow(id);
+      }
+    });
   };
   return (
     <S.User direction={"column"} align={"center"} gap={"20px"}>

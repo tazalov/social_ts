@@ -8,32 +8,29 @@ import {
 } from "../../redux/profile.reducer";
 import { Profile } from "./Profile";
 import React, { Component } from "react";
-import axios from "axios";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { profileAPI } from "../../api/api";
 
 type ProfileContainerPT = InitialStateT &
   MapDispatchPT &
   RouteComponentProps<{ userId: string }>;
 
 class ProfileContainer extends Component<ProfileContainerPT> {
+  getProfileInfo(userId: string) {
+    profileAPI.getProfile(userId).then((data) => {
+      this.props.setProfile(data);
+    });
+  }
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if (!userId) userId = "29403";
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then((response) => {
-        this.props.setProfile(response.data);
-      });
+    this.getProfileInfo(userId);
   }
 
   componentDidUpdate(prevProps: Readonly<ProfileContainerPT>) {
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
       let userId = "29403";
-      axios
-        .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-        .then((response) => {
-          this.props.setProfile(response.data);
-        });
+      this.getProfileInfo(userId);
     }
   }
 
