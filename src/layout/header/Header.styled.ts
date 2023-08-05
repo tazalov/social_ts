@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { theme } from "../../styles/Theme";
+import { F } from "../../components/Fragments.styled";
 
 const Header = styled.header`
   margin: 20px 0;
@@ -16,7 +17,17 @@ const MenuLink = styled(NavLink)`
   }
 `;
 
+const Login = styled.span`
+  ${F.Subtitle};
+  text-transform: uppercase;
+  transition: all 0.3s linear;
+  &:hover {
+    color: ${theme.colors.accent};
+  }
+`;
+
 export const S = {
   Header,
   MenuLink,
+  Login,
 };

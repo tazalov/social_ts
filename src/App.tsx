@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "./layout/header/Header";
+import Header from "./layout/header/HeaderContainer";
 import { Main } from "./layout/main/Main";
 import { Sidebar } from "./layout/sidebar/Sidebar";
 import { BrowserRouter, Route } from "react-router-dom";
