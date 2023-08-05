@@ -6,6 +6,7 @@ import {
   setCurrentPage,
   setLoadingPage,
   setUsers,
+  toggleProgressFollow,
   unfollow,
   UserT,
 } from "../../redux/users.reducer";
@@ -26,6 +27,9 @@ class UsersC extends Component<UsersCPT> {
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
+          {
+            withCredentials: true,
+          },
         )
         .then((response) => {
           setUsers(response.data.items, response.data.totalCount);
@@ -40,6 +44,9 @@ class UsersC extends Component<UsersCPT> {
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
+          {
+            withCredentials: true,
+          },
         )
         .then((response) => {
           setUsers(response.data.items, response.data.totalCount);
@@ -58,6 +65,8 @@ class UsersC extends Component<UsersCPT> {
       follow,
       unfollow,
       setCurrentPage,
+      progressFollow,
+      toggleProgressFollow,
     } = this.props;
     return isPageLoading ? (
       <Preloader size={150} />
@@ -69,7 +78,13 @@ class UsersC extends Component<UsersCPT> {
           totalCount={totalCount}
           setPage={setCurrentPage}
         />
-        <Users list={list} follow={follow} unfollow={unfollow} />
+        <Users
+          list={list}
+          follow={follow}
+          unfollow={unfollow}
+          progressFollow={progressFollow}
+          toggleProgressFollow={toggleProgressFollow}
+        />
       </>
     );
   }
@@ -81,6 +96,7 @@ const mapStateToProps = (state: AppStateT): InitialStateT => ({
   pageSize: state.users.pageSize,
   currentPage: state.users.currentPage,
   isPageLoading: state.users.isPageLoading,
+  progressFollow: state.users.progressFollow,
 });
 
 type MapDispatchPT = {
@@ -89,9 +105,17 @@ type MapDispatchPT = {
   setUsers: (user: UserT[], count: number) => void;
   setCurrentPage: (page: number) => void;
   setLoadingPage: (isLoad: boolean) => void;
+  toggleProgressFollow: (isFetch: boolean, id: number | null) => void;
 };
 
 export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(
   mapStateToProps,
-  { follow, unfollow, setUsers, setLoadingPage, setCurrentPage },
+  {
+    follow,
+    unfollow,
+    setUsers,
+    setLoadingPage,
+    setCurrentPage,
+    toggleProgressFollow,
+  },
 )(UsersC);

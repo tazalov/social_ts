@@ -14,7 +14,7 @@ export function ButtonB({ title, disable, callback }: ButtonBPT) {
   };
   return (
     <StyledButton disabled={disable || false} onClick={onClickHandler}>
-      {disable ? "..." : title}
+      {title}
     </StyledButton>
   );
 }

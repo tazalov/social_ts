@@ -1,14 +1,22 @@
 import { User } from "./user/User";
-import { UserT } from "../../redux/users.reducer";
+import { ProgressFollow, UserT } from "../../redux/users.reducer";
 import { S } from "./Users.styled";
 
 type UsersPT = {
   list: UserT[];
   follow: (id: number) => void;
   unfollow: (id: number) => void;
+  progressFollow: ProgressFollow;
+  toggleProgressFollow: (isFetch: boolean, id: number | null) => void;
 };
 
-export function Users({ list, follow, unfollow }: UsersPT) {
+export function Users({
+  list,
+  follow,
+  unfollow,
+  progressFollow,
+  toggleProgressFollow,
+}: UsersPT) {
   return (
     <S.Users>
       {list.map((el) => (
@@ -21,6 +29,8 @@ export function Users({ list, follow, unfollow }: UsersPT) {
           status={el.status}
           follow={follow}
           unfollow={unfollow}
+          progressFollow={progressFollow}
+          toggleProgressFollow={toggleProgressFollow}
         />
       ))}
     </S.Users>
