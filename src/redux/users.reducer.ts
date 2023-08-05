@@ -10,9 +10,9 @@ export type UserT = {
   followed: boolean;
 };
 
-export type ProgressFollow = {
+export type ProgressFollowT = {
   isFetch: boolean;
-  userId: number | null;
+  userId: number[];
 };
 
 export type InitialStateT = {
@@ -21,7 +21,7 @@ export type InitialStateT = {
   pageSize: number;
   currentPage: number;
   isPageLoading: boolean;
-  progressFollow: ProgressFollow;
+  progressFollow: ProgressFollowT;
 };
 
 const initialState: InitialStateT = {
@@ -32,7 +32,7 @@ const initialState: InitialStateT = {
   isPageLoading: true,
   progressFollow: {
     isFetch: false,
-    userId: null,
+    userId: [],
   },
 };
 
@@ -87,7 +87,9 @@ export const usersReducer = (
         ...state,
         progressFollow: {
           isFetch: action.isFetch,
-          userId: action.id,
+          userId: action.isFetch
+            ? [...state.progressFollow.userId, action.id]
+            : state.progressFollow.userId.filter((el) => el !== action.id),
         },
       };
     }
@@ -134,7 +136,7 @@ type SetLoadingPageAT = {
 type ToggleProgressFollowAT = {
   type: "social/users/PROGRESS_FOLLOW";
   isFetch: boolean;
-  id: number | null;
+  id: number;
 };
 
 export const follow = (id: number): FollowAT => ({
@@ -165,7 +167,7 @@ export const setLoadingPage = (isLoad: boolean): SetLoadingPageAT => ({
 
 export const toggleProgressFollow = (
   isFetch: boolean,
-  id: number | null,
+  id: number,
 ): ToggleProgressFollowAT => ({
   type: "social/users/PROGRESS_FOLLOW",
   isFetch,

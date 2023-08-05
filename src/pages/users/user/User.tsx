@@ -3,9 +3,9 @@ import photo from "../../../assets/images/anynft.webp";
 import { ButtonB } from "../../../components/button/ButtonB";
 import { NavLink } from "react-router-dom";
 import { S } from "./User.styled";
-import axios from "axios";
-import { ProgressFollow } from "../../../redux/users.reducer";
+import { ProgressFollowT } from "../../../redux/users.reducer";
 import { usersAPI } from "../../../api/api";
+import { Loading } from "../../../components/icon/Loading";
 
 type UserPT = {
   id: number;
@@ -15,8 +15,8 @@ type UserPT = {
   status: string | null;
   follow: (id: number) => void;
   unfollow: (id: number) => void;
-  progressFollow: ProgressFollow;
-  toggleProgressFollow: (isFetch: boolean, id: number | null) => void;
+  progressFollow: ProgressFollowT;
+  toggleProgressFollow: (isFetch: boolean, id: number) => void;
 };
 
 export function User({
@@ -39,7 +39,7 @@ export function User({
     toggleProgressFollow(true, id);
     usersAPI.followU(id).then((data) => {
       if (data.resultCode === 0) {
-        toggleProgressFollow(false, null);
+        toggleProgressFollow(false, id);
         follow(id);
       }
     });
@@ -48,7 +48,7 @@ export function User({
     toggleProgressFollow(true, id);
     usersAPI.unfollowU(id).then((data) => {
       if (data.resultCode === 0) {
-        toggleProgressFollow(false, null);
+        toggleProgressFollow(false, id);
         unfollow(id);
       }
     });
@@ -60,11 +60,15 @@ export function User({
       </NavLink>
       <S.Name>{name.length > 10 ? `${name.slice(0, 8)}...` : name}</S.Name>
       <S.Status>{newStatus}</S.Status>
-      <ButtonB
-        title={followed ? "unfollow" : "follow"}
-        callback={followed ? unfollowUser : followUser}
-        disable={progressFollow.userId === id}
-      />
+      {progressFollow.userId.some((el) => el === id) ? (
+        <Loading />
+      ) : (
+        <ButtonB
+          title={followed ? "unfollow" : "follow"}
+          callback={followed ? unfollowUser : followUser}
+          disable={progressFollow.userId.includes(id)}
+        />
+      )}
     </S.User>
   );
 }

@@ -91,7 +91,7 @@ type MapDispatchPT = {
   setUsers: (user: UserT[], count: number) => void;
   setCurrentPage: (page: number) => void;
   setLoadingPage: (isLoad: boolean) => void;
-  toggleProgressFollow: (isFetch: boolean, id: number | null) => void;
+  toggleProgressFollow: (isFetch: boolean, id: number) => void;
 };
 
 export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(

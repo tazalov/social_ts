@@ -1,13 +1,13 @@
 import { User } from "./user/User";
-import { ProgressFollow, UserT } from "../../redux/users.reducer";
+import { ProgressFollowT, UserT } from "../../redux/users.reducer";
 import { S } from "./Users.styled";
 
 type UsersPT = {
   list: UserT[];
   follow: (id: number) => void;
   unfollow: (id: number) => void;
-  progressFollow: ProgressFollow;
-  toggleProgressFollow: (isFetch: boolean, id: number | null) => void;
+  progressFollow: ProgressFollowT;
+  toggleProgressFollow: (isFetch: boolean, id: number) => void;
 };
 
 export function Users({
