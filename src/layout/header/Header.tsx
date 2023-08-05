@@ -1,52 +1,31 @@
-import React from "react";
-import { ShadowContainerStyled } from "../../components/ShadowContainer.styled";
 import { Icon } from "../../components/icon/Icon";
-import { ContainerStyled } from "../../components/Container.styled";
-import styled from "styled-components";
-import { theme } from "../../styles/Theme";
-import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
-import { NavLink } from "react-router-dom";
+import { S } from "./Header.styled";
+import { C } from "../../components/Common.styled";
 
-type HeaderPT = {};
-
-export function Header(props: HeaderPT) {
+export function Header() {
   return (
-    <ContainerStyled>
-      <ShadowContainerStyled as={StyledHeader}>
-        <FlexWrapperStyled justify={"space-between"} align={"center"}>
+    <C.Container>
+      <C.ShadowContainer as={S.Header}>
+        <C.FlexWrapper justify={"space-between"} align={"center"}>
           <Icon iconId={"logo"} width={"40px"} height={"40px"} />
-          <FlexWrapperStyled gap={"20px"}>
-            <MenuLink to={"/users"}>
+          <C.FlexWrapper gap={"20px"}>
+            <S.MenuLink to={"/users"}>
               <Icon iconId={"search"} width={"20px"} height={"20px"} />
-            </MenuLink>
-            <MenuLink to={"/users"}>
+            </S.MenuLink>
+            <S.MenuLink to={"/users"}>
               <Icon iconId={"gear"} width={"20px"} height={"20px"} />
-            </MenuLink>
-            <MenuLink to={"/users"}>
+            </S.MenuLink>
+            <S.MenuLink to={"/users"}>
               <Icon
                 iconId={"logout"}
                 width={"20px"}
                 height={"20px"}
                 viewBox="0 0 32 32"
               />
-            </MenuLink>
-          </FlexWrapperStyled>
-        </FlexWrapperStyled>
-      </ShadowContainerStyled>
-    </ContainerStyled>
+            </S.MenuLink>
+          </C.FlexWrapper>
+        </C.FlexWrapper>
+      </C.ShadowContainer>
+    </C.Container>
   );
 }
-
-const StyledHeader = styled.header`
-  margin: 20px 0;
-  padding: 10px;
-`;
-
-const MenuLink = styled(NavLink)`
-  svg {
-    transition: all 0.3s linear;
-    &:hover {
-      fill: ${theme.colors.accent};
-    }
-  }
-`;

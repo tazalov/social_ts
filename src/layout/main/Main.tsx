@@ -1,14 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import { ReactNode } from "react";
+import { S } from "./Main.styled";
 
 type MainPT = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-export function Main(props: MainPT) {
-  return <StyledMain>{props.children}</StyledMain>;
+export function Main({ children }: MainPT) {
+  return <S.Main>{children}</S.Main>;
 }
-
-const StyledMain = styled.main`
-  width: 100%;
-`;
