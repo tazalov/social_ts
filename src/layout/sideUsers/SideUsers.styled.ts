@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import { FlexWrapperStyled } from "../../components/FlexWrapper.styled";
 import { theme } from "../../styles/Theme";
+import { C } from "../../components/Common.styled";
 
 const UserList = styled.ul``;
 
-const User = styled(FlexWrapperStyled)`
+const User = styled(C.FlexWrapper)`
   padding: 10px;
   &:hover {
     background-color: ${theme.colors.thirdBg};
   }
 `;
 
-const Info = styled(FlexWrapperStyled)`
+const Info = styled(C.FlexWrapper)`
   user-select: none;
 `;
 

@@ -1,10 +1,9 @@
-import { FlexWrapperStyled } from "../FlexWrapper.styled";
-import { ShadowContainerStyled } from "../ShadowContainer.styled";
 import styled from "styled-components";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { theme } from "../../styles/Theme";
+import { C } from "../Common.styled";
 
 type PaginationPT = {
   totalCount: number;
@@ -53,7 +52,7 @@ export function Pagination({
 
   return (
     <StyledPagination>
-      <FlexWrapperStyled justify={"center"} align={"center"} gap={"10px"}>
+      <C.FlexWrapper justify={"center"} align={"center"} gap={"10px"}>
         {portionNum > 1 && (
           <StyledArrow onClick={() => setPortionNum(portionNum - 1)}>
             <FontAwesomeIcon icon={faCaretLeft} size="2x" />
@@ -65,12 +64,12 @@ export function Pagination({
             <FontAwesomeIcon icon={faCaretRight} size={"2x"} />
           </StyledArrow>
         )}
-      </FlexWrapperStyled>
+      </C.FlexWrapper>
     </StyledPagination>
   );
 }
 
-const StyledPagination = styled(ShadowContainerStyled)`
+const StyledPagination = styled(C.ShadowContainer)`
   padding: 10px;
 `;
 

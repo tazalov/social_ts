@@ -1,7 +1,6 @@
-import { FlexWrapperStyled } from "../FlexWrapper.styled";
-import { ShadowContainerStyled } from "../ShadowContainer.styled";
 import styled from "styled-components";
 import { theme } from "../../styles/Theme";
+import { C } from "../Common.styled";
 
 type PaginationPT = {
   totalCount: number;
@@ -39,14 +38,14 @@ export function Pagination2({
 
   return (
     <StyledPagination>
-      <FlexWrapperStyled justify={"center"} align={"center"} gap={"10px"}>
+      <C.FlexWrapper justify={"center"} align={"center"} gap={"10px"}>
         {buttons.length > 1 && buttons}
-      </FlexWrapperStyled>
+      </C.FlexWrapper>
     </StyledPagination>
   );
 }
 
-const StyledPagination = styled(ShadowContainerStyled)`
+const StyledPagination = styled(C.ShadowContainer)`
   padding: 10px;
 `;
 

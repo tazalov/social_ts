@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { SubtitleStyled } from "../../components/Subtitle.styled";
 import { theme } from "../../styles/Theme";
+import { F } from "../../components/Fragments.styled";
 
 const Sidebar = styled.nav``;
 
 const SidebarItem = styled.li``;
 
 const SidebarLink = styled(NavLink)`
-  ${SubtitleStyled};
+  ${F.Subtitle};
   padding: 15px 150px 15px 20px;
   cursor: pointer;
   display: flex;
