@@ -1,18 +1,36 @@
 import { Icon } from "../../components/icon/Icon";
 import { S } from "./Header.styled";
 import { C } from "../../components/Common.styled";
+import { ButtonB } from "../../components/button/ButtonB";
+import { useTheme } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 type HeaderPT = {
   isAuth: boolean;
-  login: string;
+  login: string | null;
+  toggleTheme: () => void;
 };
 
-export function Header({ isAuth, login }: HeaderPT) {
+export function Header({ isAuth, login, toggleTheme }: HeaderPT) {
+  const theme = useTheme();
   return (
     <C.Container>
       <C.ShadowContainer as={S.Header}>
         <C.FlexWrapper justify={"space-between"} align={"center"}>
-          <Icon iconId={"logo"} width={"40px"} height={"40px"} />
+          <C.FlexWrapper align={"center"} gap={"20px"}>
+            <ButtonB
+              title={
+                theme.name === "dark" ? (
+                  <FontAwesomeIcon icon={faMoon} />
+                ) : (
+                  <FontAwesomeIcon icon={faSun} />
+                )
+              }
+              callback={toggleTheme}
+            />
+            <Icon iconId={"logo"} width={"40px"} height={"40px"} />
+          </C.FlexWrapper>
           <C.FlexWrapper gap={"20px"} align={"center"}>
             <S.MenuLink to={"/users"}>
               <Icon iconId={"search"} width={"20px"} height={"20px"} />

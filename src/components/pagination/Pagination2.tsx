@@ -55,7 +55,7 @@ const StyledButton = styled.button`
   background-color: ${(props) => props.theme.colors.accent};
   transition: all 0.3s ease;
   &:hover {
-    background-color: ${(props) => props.theme.colors.primaryFont};
+    background-color: ${(props) => props.theme.colors.secondaryFont};
   }
 `;
 

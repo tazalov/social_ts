@@ -30,7 +30,7 @@ export const StyledButton = styled.button`
   font-size: 14px;
   &:hover {
     background-color: ${(props) => props.theme.colors.secondaryFont};
-    border: 1px solid ${(props) => props.theme.colors.primaryFont};
-    color: ${(props) => props.theme.colors.primaryFont};
+    border: 1px solid ${(props) => props.theme.colors.secondaryFont};
+    color: ${(props) => props.theme.colors.thirdBg};
   }
 `;

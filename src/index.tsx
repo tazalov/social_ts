@@ -8,7 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { theme, lightTheme } from "./styles/theme/Theme";
 
 function Root() {
-  const [currentTheme, setCurrentTheme] = useState(theme);
+  const [currentTheme, setCurrentTheme] = useState(lightTheme);
 
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === lightTheme ? theme : lightTheme);
@@ -18,8 +18,7 @@ function Root() {
     <Provider store={store}>
       <ThemeProvider theme={currentTheme}>
         <GlobalStyle />
-        <App state={store.getState()} />
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        <App state={store.getState()} toggleTheme={toggleTheme} />
       </ThemeProvider>
     </Provider>
   );

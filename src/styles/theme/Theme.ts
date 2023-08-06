@@ -1,4 +1,5 @@
 export const theme = {
+  name: "dark",
   colors: {
     bodyBg: "linear-gradient(180deg,#424979, #24273b)",
     primaryBg: "#49526f",
@@ -27,8 +28,9 @@ export const theme = {
 };
 
 export const lightTheme = {
+  name: "light",
   colors: {
-    bodyBg: "linear-gradient(180deg, #FFFFFF, #F0F0F0)",
+    bodyBg: "linear-gradient(180deg, #D0D0D0, #F0F0F0)",
     primaryBg: "#E6E6E6",
     secondaryBg: "#F0F0F0",
     thirdBg: "#D0D0D0",

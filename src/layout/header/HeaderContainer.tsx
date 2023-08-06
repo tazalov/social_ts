@@ -5,7 +5,13 @@ import { AppStateT } from "../../redux/store";
 import { connect } from "react-redux";
 import axios from "axios";
 
-class HeaderContainer extends Component<any, any> {
+type OwnPT = {
+  toggleTheme: () => void;
+};
+
+type HeaderContainerPT = OwnPT & InitialStateT & MapDispatchPT;
+
+class HeaderContainer extends Component<HeaderContainerPT> {
   componentDidMount() {
     axios
       .get("https://social-network.samuraijs.com/api/1.0/auth/me", {
@@ -22,8 +28,8 @@ class HeaderContainer extends Component<any, any> {
   }
 
   render() {
-    const { isAuth, login } = this.props;
-    return <Header isAuth={isAuth} login={login} />;
+    const { isAuth, login, toggleTheme } = this.props;
+    return <Header isAuth={isAuth} login={login} toggleTheme={toggleTheme} />;
   }
 }
 

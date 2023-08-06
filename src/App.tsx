@@ -12,12 +12,13 @@ import { C } from "./components/Common.styled";
 
 type AppPT = {
   state: AppStateT;
+  toggleTheme: () => void;
 };
 
-export function App({ state }: AppPT) {
+export function App({ state, toggleTheme }: AppPT) {
   return (
     <BrowserRouter>
-      <Header />
+      <Header toggleTheme={toggleTheme} />
       <C.Container>
         <C.FlexWrapper gap={"20px"}>
           <C.FlexWrapper direction={"column"} gap={"20px"}>
