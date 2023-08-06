@@ -7,6 +7,12 @@ const Header = styled.header`
   padding: 10px;
 `;
 
+const Logo = styled.div`
+  svg {
+    fill: ${(props) => props.theme.colors.accent};
+  }
+`;
+
 const MenuLink = styled(NavLink)`
   svg {
     transition: all 0.3s linear;
@@ -27,6 +33,7 @@ const Login = styled.span`
 
 export const S = {
   Header,
+  Logo,
   MenuLink,
   Login,
 };

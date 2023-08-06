@@ -22,14 +22,22 @@ export function Header({ isAuth, login, toggleTheme }: HeaderPT) {
             <ButtonB
               title={
                 theme.name === "dark" ? (
-                  <FontAwesomeIcon icon={faMoon} />
+                  <FontAwesomeIcon
+                    icon={faMoon}
+                    style={{ width: "15px", height: "15xp" }}
+                  />
                 ) : (
-                  <FontAwesomeIcon icon={faSun} />
+                  <FontAwesomeIcon
+                    icon={faSun}
+                    style={{ width: "15px", height: "15xp" }}
+                  />
                 )
               }
               callback={toggleTheme}
             />
-            <Icon iconId={"logo"} width={"40px"} height={"40px"} />
+            <S.Logo>
+              <Icon iconId={"logo"} width={"40px"} height={"40px"} />
+            </S.Logo>
           </C.FlexWrapper>
           <C.FlexWrapper gap={"20px"} align={"center"}>
             <S.MenuLink to={"/users"}>
