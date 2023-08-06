@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../../../styles/Theme";
 import { C } from "../../../components/Common.styled";
 
 const ProfileInfoStyled = styled(C.FlexWrapper)`
@@ -12,7 +11,7 @@ const Avatar = styled.div`
   margin-top: -80px;
   left: 10px;
   top: 0;
-  border: 5px solid ${theme.colors.secondaryBg};
+  border: 5px solid ${(props) => props.theme.colors.secondaryBg};
   border-radius: 50%;
 `;
 
@@ -28,12 +27,12 @@ const Name = styled(C.FlexWrapper)`
   span {
     font-size: 14px;
     padding: 5px;
-    background-color: ${theme.colors.primaryBg};
+    background-color: ${(props) => props.theme.colors.primaryBg};
   }
 `;
 
 const Status = styled.div`
-  color: ${theme.colors.secondaryFont};
+  color: ${(props) => props.theme.colors.secondaryFont};
 `;
 
 const Looking = styled.div`

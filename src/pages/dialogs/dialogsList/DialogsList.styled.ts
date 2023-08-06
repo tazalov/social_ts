@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { theme } from "../../../styles/Theme";
 import { F } from "../../../components/Fragments.styled";
 import { C } from "../../../components/Common.styled";
 
@@ -23,7 +22,7 @@ const ItemLink = styled(NavLink)`
   display: block;
   &.active,
   &:hover {
-    background-color: ${theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `;
 

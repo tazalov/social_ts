@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../../styles/Theme";
 import { F } from "../../../components/Fragments.styled";
 import { C } from "../../../components/Common.styled";
 
 const User = styled(C.FlexWrapper)`
   padding: 10px;
   &:hover {
-    background-color: ${theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `;
 
@@ -16,7 +15,7 @@ const Name = styled.div`
 `;
 
 const Status = styled.div`
-  color: ${theme.colors.secondaryFont};
+  color: ${(props) => props.theme.colors.secondaryFont};
   font-size: 14px;
 `;
 

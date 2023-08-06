@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
 import styled from "styled-components";
-import { theme } from "../../styles/Theme";
 import { Button } from "../button/Button";
 import { C } from "../Common.styled";
 
@@ -37,8 +36,8 @@ export function TextForm({ place, callback, submit }: TextFormPT) {
 const StyledTextArea = styled.textarea`
   width: 100%;
   padding: 5px;
-  color: ${theme.colors.primaryFont};
-  background-color: ${theme.colors.thirdBg};
+  color: ${(props) => props.theme.colors.primaryFont};
+  background-color: ${(props) => props.theme.colors.thirdBg};
   font-family:
     "Rubik",
     -apple-system,

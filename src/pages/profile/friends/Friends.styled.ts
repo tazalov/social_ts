@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../../../styles/Theme";
 import { C } from "../../../components/Common.styled";
 
 //friends
@@ -18,13 +17,13 @@ const Friend = styled.div`
   padding: 10px;
   cursor: pointer;
   &:hover {
-    background-color: ${theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `;
 
 const Name = styled.div`
   margin: 10px 0 0 0;
-  color: white;
+  color: ${(props) => props.theme.colors.primaryFont};
   text-align: center;
 `;
 

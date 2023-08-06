@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../../../../styles/Theme";
 import { F } from "../../../../components/Fragments.styled";
 import { C } from "../../../../components/Common.styled";
 
@@ -14,7 +13,7 @@ const UserInfo = styled(C.FlexWrapper)`
     ${F.Subtitle};
   }
   i {
-    color: ${theme.colors.secondaryFont};
+    color: ${(props) => props.theme.colors.secondaryFont};
     font-size: 10px;
   }
 `;
@@ -22,16 +21,16 @@ const UserInfo = styled(C.FlexWrapper)`
 const PostText = styled.div`
   margin: 10px 0;
   padding: 20px 10px;
-  background-color: ${theme.colors.thirdBg};
+  background-color: ${(props) => props.theme.colors.thirdBg};
 `;
 
 const PostButtons = styled(C.FlexWrapper)`
   button {
     padding: 5px;
-    color: ${theme.colors.secondaryFont};
+    color: ${(props) => props.theme.colors.secondaryFont};
     font-size: 14px;
     &:hover {
-      color: ${theme.colors.primaryFont};
+      color: ${(props) => props.theme.colors.primaryFont};
     }
     span {
       margin-left: 5px;

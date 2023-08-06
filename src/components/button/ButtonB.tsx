@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../../styles/Theme";
 
 type ButtonBPT = {
   title: string | React.ReactNode;
@@ -21,8 +20,8 @@ export function ButtonB({ title, disable, callback }: ButtonBPT) {
 
 export const StyledButton = styled.button`
   padding: 5px;
-  color: ${theme.colors.secondaryFont};
-  border: 1px solid ${theme.colors.secondaryFont};
+  color: ${(props) => props.theme.colors.secondaryFont};
+  border: 1px solid ${(props) => props.theme.colors.secondaryFont};
   transition: all 0.3s ease;
   text-transform: uppercase;
   text-align: center;
@@ -30,8 +29,8 @@ export const StyledButton = styled.button`
   display: block;
   font-size: 14px;
   &:hover {
-    background-color: ${theme.colors.secondaryFont};
-    border: 1px solid ${theme.colors.primaryFont};
-    color: ${theme.colors.primaryFont};
+    background-color: ${(props) => props.theme.colors.secondaryFont};
+    border: 1px solid ${(props) => props.theme.colors.primaryFont};
+    color: ${(props) => props.theme.colors.primaryFont};
   }
 `;

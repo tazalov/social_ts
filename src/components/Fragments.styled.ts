@@ -1,15 +1,14 @@
 import { css } from "styled-components";
-import { theme } from "../styles/Theme";
 
 const Scroll = css`
   &::-webkit-scrollbar {
     width: 4px;
   }
   &::-webkit-scrollbar-track {
-    background-color: ${theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${theme.colors.primaryBg};
+    background-color: ${(props) => props.theme.colors.primaryBg};
   }
 `;
 
@@ -18,10 +17,10 @@ const ScrollBody = css`
     width: 8px;
   }
   &::-webkit-scrollbar-track {
-    background-color: ${theme.colors.secondaryBg};
+    background-color: ${(props) => props.theme.colors.secondaryBg};
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `;
 

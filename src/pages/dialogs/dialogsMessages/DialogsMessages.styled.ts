@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../../../styles/Theme";
 import { C } from "../../../components/Common.styled";
 import { F } from "../../../components/Fragments.styled";
 
@@ -26,7 +25,7 @@ const FormWrapper = styled(C.ShadowContainer)`
 //message
 const Message = styled.div`
   margin: 10px;
-  background-color: ${theme.colors.primaryBg};
+  background-color: ${(props) => props.theme.colors.primaryBg};
   border-radius: 8px 8px 8px 0;
   max-width: 300px;
   position: relative;
@@ -40,12 +39,12 @@ const Message = styled.div`
     width: 16px;
     height: 10px;
     clip-path: path("M 10,0 A 10,10 0 0 1 0,10 H 16 V 0 Z");
-    background-color: ${theme.colors.primaryBg};
+    background-color: ${(props) => props.theme.colors.primaryBg};
   }
 `;
 
 const Text = styled.div`
-  color: ${theme.colors.primaryFont};
+  color: ${(props) => props.theme.colors.primaryFont};
   padding: 5px;
   font-size: 14px;
 `;
@@ -53,7 +52,7 @@ const Text = styled.div`
 const Time = styled.div`
   text-align: right;
   font-size: 10px;
-  color: ${theme.colors.secondaryFont};
+  color: ${(props) => props.theme.colors.secondaryFont};
 `;
 
 export const S = {

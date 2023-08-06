@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../styles/Theme";
 
 const Container = styled.div`
   max-width: 1270px;
@@ -28,8 +27,8 @@ const FlexWrapper = styled.div<FlexWrapperPT>`
 `;
 
 const ShadowContainer = styled.div`
-  box-shadow: 0 0 15px 2px rgba(22, 24, 40, 0.8);
-  background-color: ${theme.colors.secondaryBg};
+  box-shadow: ${(props) => props.theme.colors.shadowPrimary};
+  background-color: ${(props) => props.theme.colors.secondaryBg};
 `;
 
 export const C = {

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { theme } from "../../styles/Theme";
 import { F } from "../../components/Fragments.styled";
 
 const Sidebar = styled.nav``;
@@ -20,7 +19,7 @@ const SidebarLink = styled(NavLink)`
   }
   &.active,
   &:hover {
-    background-color: ${theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `;
 
