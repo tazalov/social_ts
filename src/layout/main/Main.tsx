@@ -1,10 +1,8 @@
-import { ReactNode } from "react";
-import { S } from "./Main.styled";
+import { FC, ReactNode } from 'react'
+import { S } from './Main.styled'
 
 type MainPT = {
-  children: ReactNode;
-};
-
-export function Main({ children }: MainPT) {
-  return <S.Main>{children}</S.Main>;
+  children: ReactNode
 }
+
+export const Main: FC<MainPT> = ({ children }) => <S.Main>{children}</S.Main>

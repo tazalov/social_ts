@@ -1,86 +1,71 @@
-import React from "react";
-import iconsSprite from "../../assets/images/icon/social-icon-sprite.svg";
-import styled, { css, useTheme } from "styled-components";
-import { ContactLinksT } from "../../pages/profile/profileInfo/links/Links";
+import { FC } from 'react'
+import styled, { css, useTheme } from 'styled-components'
+import iconsSprite from '../../assets/images/icon/social-icon-sprite.svg'
+import { ContactLinksT } from '../../pages/profile/profileInfo/links/Links'
 
-type Props = {
-  iconId: ContactLinksT;
-  width?: string;
-  height?: string;
-  viewBox?: string;
-  link: string;
-};
+type SocialPT = {
+  iconId: ContactLinksT
+  link: string
+}
 
-export const Social = ({ iconId, width, height, link, viewBox }: Props) => {
-  const theme = useTheme();
+export const Social: FC<SocialPT> = ({ iconId, link }) => {
+  const theme = useTheme()
   return (
     <Link href={link}>
       <StyledSocial
-        width={width || "30px"}
-        height={height || "30px"}
-        viewBox={viewBox || "0 0 24 24"}
+        width={'30px'}
+        height={'30px'}
+        viewBox={'0 0 24 24'}
         xmlns="http://www.w3.org/2000/svg"
-        link={iconId}
+        $link={iconId}
       >
-        {iconId === "instagram" && (
+        {iconId === 'instagram' && (
           <radialGradient id="gradient" r="150%" cx="30%" cy="107%">
             <stop stopColor={theme.colors.svg.gradientStops.stop1} offset="0" />
-            <stop
-              stopColor={theme.colors.svg.gradientStops.stop2}
-              offset="0.05"
-            />
-            <stop
-              stopColor={theme.colors.svg.gradientStops.stop3}
-              offset="0.45"
-            />
-            <stop
-              stopColor={theme.colors.svg.gradientStops.stop4}
-              offset="0.6"
-            />
-            <stop
-              stopColor={theme.colors.svg.gradientStops.stop5}
-              offset="0.9"
-            />
+            <stop stopColor={theme.colors.svg.gradientStops.stop2} offset="0.05" />
+            <stop stopColor={theme.colors.svg.gradientStops.stop3} offset="0.45" />
+            <stop stopColor={theme.colors.svg.gradientStops.stop4} offset="0.6" />
+            <stop stopColor={theme.colors.svg.gradientStops.stop5} offset="0.9" />
           </radialGradient>
         )}
         <use xlinkHref={`${iconsSprite}#${iconId}`} />
       </StyledSocial>
     </Link>
-  );
-};
+  )
+}
 
-const Link = styled.a``;
+const Link = styled.a``
 
 type StyledSocialPT = {
-  link: ContactLinksT;
-};
+  $link: ContactLinksT
+}
 
 const StyledSocial = styled.svg<StyledSocialPT>`
   transition: all 0.2s linear;
-  ${(props) => {
-    switch (props.link) {
-      case "github": {
+  ${props => {
+    switch (props.$link) {
+      case 'github': {
         return css`
           &:hover {
             fill: grey;
           }
-        `;
+        `
       }
-      case "vk": {
+      case 'vk': {
         return css`
           &:hover {
             fill: #0077ff;
           }
-        `;
+        `
       }
-      case "facebook": {
+      case 'facebook': {
         return css`
           &:hover {
             fill: #3b5998;
           }
-        `;
+        `
       }
-      case "instagram": {
+      case 'instagram': {
         return css`
           fill: url(#gradient);
           stop {
@@ -101,36 +86,36 @@ const StyledSocial = styled.svg<StyledSocialPT>`
           &:hover stop:nth-child(5) {
             stop-color: #285aeb;
           }
-        `;
+        `
       }
-      case "twitter": {
+      case 'twitter': {
         return css`
           &:hover {
             fill: #00acee;
           }
-        `;
+        `
       }
-      case "website": {
+      case 'website': {
         return css`
           &:hover {
             fill: #3b9869;
           }
-        `;
+        `
       }
-      case "youtube": {
+      case 'youtube': {
         return css`
           &:hover {
             fill: rgb(204, 23, 23);
           }
-        `;
+        `
       }
-      case "mainLink": {
+      case 'mainLink': {
         return css`
           &:hover {
             fill: #22d97d;
           }
-        `;
+        `
       }
     }
   }}
-`;
+`

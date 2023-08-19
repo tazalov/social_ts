@@ -27,5 +27,5 @@ export function Loading() {
         ></animateTransform>
       </g>
     </svg>
-  );
+  )
 }

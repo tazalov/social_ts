@@ -1,40 +1,33 @@
-import { ButtonB } from "../button/ButtonB";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
-import styled from "styled-components";
-import { F } from "../Fragments.styled";
-import { C } from "../Common.styled";
+import { faAnglesRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+import { C } from '../../styles/Common.styled'
+import { F } from '../../styles/Fragments.styled'
+import { ButtonB } from '../button/ButtonB'
 
 type TitleBlockPT = {
-  title: string | React.ReactNode;
-  nobtn?: boolean;
-};
-
-export function TitleBlock({ title, nobtn }: TitleBlockPT) {
-  return (
-    <TitleWrapper justify={"space-between"} align={"center"}>
-      <Title>{title}</Title>
-      {nobtn || (
-        <ButtonB
-          title={<FontAwesomeIcon icon={faAnglesRight} />}
-          callback={() => {}}
-        />
-      )}
-    </TitleWrapper>
-  );
+  title: string | ReactNode
+  noBtn?: boolean
 }
 
+export const TitleBlock: FC<TitleBlockPT> = ({ title, noBtn }) => (
+  <TitleWrapper $justify={'space-between'} $align={'center'}>
+    <Title>{title}</Title>
+    {noBtn || <ButtonB title={<FontAwesomeIcon icon={faAnglesRight} />} callback={() => {}} />}
+  </TitleWrapper>
+)
+
 const TitleWrapper = styled(C.FlexWrapper)`
-  background-color: ${(props) => props.theme.colors.thirdBg};
+  background-color: ${props => props.theme.colors.thirdBg};
   padding: 15px 20px;
-`;
+`
 
 const Title = styled.h2`
   ${F.Subtitle};
   span {
-    color: ${(props) => props.theme.colors.secondaryFont};
+    color: ${props => props.theme.colors.secondaryFont};
     font-size: 14px;
     padding: 5px;
   }
-`;
+`

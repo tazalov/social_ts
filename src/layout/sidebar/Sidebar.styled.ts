@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { F } from "../../components/Fragments.styled";
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
+import { F } from '../../styles/Fragments.styled'
 
-const Sidebar = styled.nav``;
+const Sidebar = styled.nav``
 
-const SidebarItem = styled.li``;
+const SidebarItem = styled.li``
 
 const SidebarLink = styled(NavLink)`
   ${F.Subtitle};
@@ -19,12 +19,12 @@ const SidebarLink = styled(NavLink)`
   }
   &.active,
   &:hover {
-    background-color: ${(props) => props.theme.colors.thirdBg};
+    background-color: ${props => props.theme.colors.thirdBg};
   }
-`;
+`
 
 export const S = {
   Sidebar,
   SidebarItem,
   SidebarLink,
-};
+}

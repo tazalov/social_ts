@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { F } from "../../../components/Fragments.styled";
-import { C } from "../../../components/Common.styled";
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
+import { F } from '../../../styles/Fragments.styled'
+import { C } from '../../../styles/Common.styled'
 
 const DialogsList = styled(C.ShadowContainer)`
   height: 100%;
-`;
+`
 
 const List = styled.ul`
   ${F.Scroll};
@@ -14,7 +14,7 @@ const List = styled.ul`
   &:hover {
     overflow-y: auto;
   }
-`;
+`
 
 const ItemLink = styled(NavLink)`
   padding: 10px;
@@ -22,17 +22,17 @@ const ItemLink = styled(NavLink)`
   display: block;
   &.active,
   &:hover {
-    background-color: ${(props) => props.theme.colors.thirdBg};
+    background-color: ${props => props.theme.colors.thirdBg};
   }
-`;
+`
 
 const ItemText = styled.div`
   ${F.Subtitle}
-`;
+`
 
 export const S = {
   DialogsList,
   List,
   ItemLink,
   ItemText,
-};
+}

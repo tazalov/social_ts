@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const CoverImg = styled.div`
   height: 150px;
@@ -7,8 +7,8 @@ const CoverImg = styled.div`
     width: 100%;
     object-fit: cover;
   }
-`;
+`
 
 export const S = {
   CoverImg,
-};
+}

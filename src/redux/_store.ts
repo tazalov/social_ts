@@ -1,4 +1,4 @@
-export {};
+export {}
 /*
 import { AddPostAT, profileReducer } from "./profile.reducer";
 import { AddMessageAT, dialogsReducer } from "./dialogs.reducer";

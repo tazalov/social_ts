@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { F } from "../components/Fragments.styled";
+import { createGlobalStyle } from 'styled-components'
+import { F } from './Fragments.styled'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -24,8 +24,8 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1;
     font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Arial', sans-serif;
     font-size: 16px;
-    color: ${(props) => props.theme.colors.primaryFont};
-    background: ${(props) => props.theme.colors.bodyBg};
+    color: ${props => props.theme.colors.primaryFont};
+    background: ${props => props.theme.colors.bodyBg};
     ${F.ScrollBody};
   }
   input,
@@ -64,6 +64,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   svg {
-    fill: ${(props) => props.theme.colors.svg.fill};
+    fill: ${props => props.theme.colors.svg.fill};
   }
-`;
+`
