@@ -3,7 +3,7 @@ import { Avatar } from '../../../components/avatar/Avatar'
 import avatar from '../../../assets/images/carrepair.webp'
 import { S } from './Friends.styled'
 
-type FriendPT = {
+interface FriendPT {
   name: string
 }
 

@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { TitleBlock } from '../../../components/titleBlock/TitleBlock'
-import { FriendsT } from '../../../redux/profile.reducer'
+import { FriendsT } from '../../../redux/profile/reducer/types'
 import { Friend } from './Friend'
 import { S } from './Friends.styled'
 
-type FriendsPT = {
+interface FriendsPT {
   friends: FriendsT
 }
 

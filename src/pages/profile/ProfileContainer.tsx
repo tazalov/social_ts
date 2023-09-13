@@ -1,29 +1,25 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
-import { profileAPI } from '../../api/api'
-import { addPost, InitialStateT, ProfileT, setProfile } from '../../redux/profile.reducer'
+import { addPost } from '../../redux/profile/actions'
+import { ProfileST } from '../../redux/profile/reducer/types'
+import { getUserProfile } from '../../redux/profile/thunks'
 import { AppStateT } from '../../redux/store'
 import { Profile } from './Profile'
 
-type ProfileContainerPT = InitialStateT & MapDispatchPT & RouteComponentProps<{ userId: string }>
+type ProfileContainerPT = ProfileST & MapDispatchPT & RouteComponentProps<{ userId: string }>
 
 class ProfileContainer extends Component<ProfileContainerPT> {
-  getProfileInfo(userId: string) {
-    profileAPI.getProfile(userId).then(data => {
-      this.props.setProfile(data)
-    })
-  }
   componentDidMount() {
     let userId = this.props.match.params.userId
     if (!userId) userId = '29403'
-    this.getProfileInfo(userId)
+    this.props.getUserProfile(userId)
   }
 
   componentDidUpdate(prevProps: Readonly<ProfileContainerPT>) {
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
       let userId = '29403'
-      this.getProfileInfo(userId)
+      this.props.getUserProfile(userId)
     }
   }
 
@@ -32,20 +28,20 @@ class ProfileContainer extends Component<ProfileContainerPT> {
   }
 }
 
-const mapStateToProps = (state: AppStateT): InitialStateT => ({
+const mapStateToProps = (state: AppStateT): ProfileST => ({
   profile: state.profile.profile,
   posts: state.profile.posts,
   friends: state.profile.friends,
 })
 
-type MapDispatchPT = {
+interface MapDispatchPT {
   addPost: (postText: string) => void
-  setProfile: (profile: ProfileT) => void
+  getUserProfile: (userId: string) => void
 }
 
 const ProfileWithRouter = withRouter(ProfileContainer)
 
-export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+export default connect<ProfileST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
   addPost,
-  setProfile,
+  getUserProfile,
 })(ProfileWithRouter)

@@ -76,7 +76,7 @@ const mapStateToProps = (state: AppStateT): UsersST => ({
   progressFollow: state.users.progressFollow,
 })
 
-type MapDispatchPT = {
+interface MapDispatchPT {
   setFollow: (id: number) => void
   setUnfollow: (id: number) => void
   setCurrentPage: (page: number) => void

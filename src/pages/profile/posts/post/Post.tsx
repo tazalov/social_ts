@@ -6,7 +6,7 @@ import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { S } from './Post.styled'
 import { C } from '../../../../styles/Common.styled'
 
-type PostPT = {
+interface PostPT {
   id: number
   name: string
   message: string

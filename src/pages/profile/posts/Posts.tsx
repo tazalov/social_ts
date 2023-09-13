@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { TextForm } from '../../../components/textForm/textForm'
-import { PostT } from '../../../redux/profile.reducer'
+import { PostT } from '../../../redux/profile/reducer/types'
 import { C } from '../../../styles/Common.styled'
 import { Post } from './post/Post'
 import { S } from './Posts.styled'
 
-type PostsPT = {
+interface PostsPT {
   posts: PostT[]
   addPost: (postText: string) => void
 }

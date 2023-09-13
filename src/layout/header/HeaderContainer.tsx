@@ -29,7 +29,7 @@ const mapStateToProps = (state: AppStateT): AuthST => ({
   isAuth: state.auth.isAuth,
 })
 
-type MapDispatchPT = {
+interface MapDispatchPT {
   getUserData: () => void
 }
 

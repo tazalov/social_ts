@@ -2,12 +2,12 @@ import { FC } from 'react'
 import noAvatar from '../../../assets/images/anynft.webp'
 import { Avatar } from '../../../components/avatar/Avatar'
 import { ButtonB } from '../../../components/button/ButtonB'
-import { ContactsT } from '../../../redux/profile.reducer'
+import { ContactsT } from '../../../redux/profile/reducer/types'
 import { C } from '../../../styles/Common.styled'
 import { Links } from './links/Links'
 import { S } from './ProfileInfo.styled'
 
-type ProfileInfoPT = {
+interface ProfileInfoPT {
   avatar: string | null
   name: string
   isLookingJob: boolean
