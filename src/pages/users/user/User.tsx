@@ -7,7 +7,7 @@ import { Loading } from '../../../components/icon/Loading'
 import { ProgressFollowT } from '../../../redux/users/reducer/types'
 import { S } from './User.styled'
 
-type UserPT = {
+interface UserPT {
   id: number
   name: string
   followed: boolean

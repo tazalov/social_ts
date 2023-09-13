@@ -1,30 +1,19 @@
-import axios from 'axios'
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { InitialStateT, setUserData } from '../../redux/auth.reducer'
+import { AuthST } from '../../redux/auth/reducer/types'
+import { getUserData } from '../../redux/auth/thunks'
 import { AppStateT } from '../../redux/store'
 import { Header } from './Header'
 
-type OwnPT = {
+interface OwnPT {
   toggleTheme: () => void
 }
 
-type HeaderContainerPT = OwnPT & InitialStateT & MapDispatchPT
+type HeaderContainerPT = OwnPT & AuthST & MapDispatchPT
 
 class HeaderContainer extends Component<HeaderContainerPT> {
   componentDidMount() {
-    axios
-      .get('https://social-network.samuraijs.com/api/1.0/auth/me', {
-        withCredentials: true,
-      })
-      .then(response => {
-        if (response.data.resultCode === 0) {
-          const { id, login, email } = response.data.data
-          this.props.setUserData(id, login, email, true)
-        } else {
-          this.props.setUserData(null, null, null, false)
-        }
-      })
+    this.props.getUserData()
   }
 
   render() {
@@ -33,7 +22,7 @@ class HeaderContainer extends Component<HeaderContainerPT> {
   }
 }
 
-const mapStateToProps = (state: AppStateT): InitialStateT => ({
+const mapStateToProps = (state: AppStateT): AuthST => ({
   id: state.auth.id,
   login: state.auth.login,
   email: state.auth.email,
@@ -41,14 +30,9 @@ const mapStateToProps = (state: AppStateT): InitialStateT => ({
 })
 
 type MapDispatchPT = {
-  setUserData: (
-    id: number | null,
-    login: string | null,
-    email: string | null,
-    isAuth: boolean,
-  ) => void
+  getUserData: () => void
 }
 
-export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
-  setUserData,
+export default connect<AuthST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+  getUserData,
 })(HeaderContainer)

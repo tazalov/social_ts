@@ -40,3 +40,10 @@ export const profileAPI = {
     return response.data
   },
 }
+
+export const authAPI = {
+  async getUserData() {
+    const response = await social.get('auth/me')
+    return response.data
+  },
+}

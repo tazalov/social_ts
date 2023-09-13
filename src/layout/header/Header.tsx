@@ -7,7 +7,7 @@ import { Icon } from '../../components/icon/Icon'
 import { C } from '../../styles/Common.styled'
 import { S } from './Header.styled'
 
-type HeaderPT = {
+interface HeaderPT {
   isAuth: boolean
   login: string | null
   toggleTheme: () => void
