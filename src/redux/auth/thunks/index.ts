@@ -1,4 +1,4 @@
-import { authAPI } from '../../../api/api'
+import { authAPI } from '../../../api'
 import { BaseThunkT } from '../../store'
 import { setUserData } from '../actions'
 import { AuthAT } from '../actions/types'

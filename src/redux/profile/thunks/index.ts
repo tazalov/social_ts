@@ -1,4 +1,4 @@
-import { profileAPI } from '../../../api/api'
+import { profileAPI } from '../../../api'
 import { BaseThunkT } from '../../store'
 import { setProfile } from '../actions'
 import { ProfileAT } from '../actions/types'

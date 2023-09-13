@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux'
-import { ResponseT, usersAPI } from '../../../api/api'
+import { ResponseT } from '../../../api'
+import { usersAPI } from '../../../api'
 import { BaseThunkT } from '../../store'
 import { follow, setLoadingPage, setUsers, toggleProgressFollow, unfollow } from '../actions'
 import { UsersAT } from '../actions/types'
