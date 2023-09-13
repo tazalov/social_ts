@@ -1,13 +1,14 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { RouteComponentProps, withRouter } from 'react-router-dom'
+import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom'
+import { AuthST } from '../../redux/auth/reducer/types'
 import { addPost } from '../../redux/profile/actions'
 import { ProfileST } from '../../redux/profile/reducer/types'
 import { getUserProfile } from '../../redux/profile/thunks'
 import { AppStateT } from '../../redux/store'
 import { Profile } from './Profile'
 
-type ProfileContainerPT = ProfileST & MapDispatchPT & RouteComponentProps<{ userId: string }>
+type ProfileContainerPT = MapStatePT & MapDispatchPT & RouteComponentProps<{ userId: string }>
 
 class ProfileContainer extends Component<ProfileContainerPT> {
   componentDidMount() {
@@ -18,20 +19,24 @@ class ProfileContainer extends Component<ProfileContainerPT> {
 
   componentDidUpdate(prevProps: Readonly<ProfileContainerPT>) {
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
-      let userId = '29403'
+      let userId = `${this.props.id}`
       this.props.getUserProfile(userId)
     }
   }
 
   render() {
-    return <Profile {...this.props} />
+    return this.props.isAuth ? <Profile {...this.props} /> : <Redirect to={'/login'} />
   }
 }
 
-const mapStateToProps = (state: AppStateT): ProfileST => ({
+type MapStatePT = ProfileST & Pick<AuthST, 'isAuth' | 'id'>
+
+const mapStateToProps = (state: AppStateT): MapStatePT => ({
   profile: state.profile.profile,
   posts: state.profile.posts,
   friends: state.profile.friends,
+  isAuth: state.auth.isAuth,
+  id: state.auth.id,
 })
 
 interface MapDispatchPT {
@@ -41,7 +46,7 @@ interface MapDispatchPT {
 
 const ProfileWithRouter = withRouter(ProfileContainer)
 
-export default connect<ProfileST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+export default connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
   addPost,
   getUserProfile,
 })(ProfileWithRouter)

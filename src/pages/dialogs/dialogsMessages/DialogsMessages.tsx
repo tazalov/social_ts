@@ -9,15 +9,16 @@ interface DialogsMessagesPT {
   addMessage: (value: string) => void
 }
 
-export const DialogsMessages: FC<DialogsMessagesPT> = ({ messages, addMessage }) => (
-  <S.DialogsMessages $direction={'column'} $gap={'20px'}>
-    <S.MessagesList>
-      {messages.map(el => (
-        <DialogsMessage key={el.id} id={el.id} message={el.message} />
-      ))}
-    </S.MessagesList>
-    <S.FormWrapper>
-      <TextForm place={'Enter your message...'} callback={addMessage} />
-    </S.FormWrapper>
-  </S.DialogsMessages>
-)
+export const DialogsMessages: FC<DialogsMessagesPT> = ({ messages, addMessage }) => {
+  const messagesList = messages.map(el => (
+    <DialogsMessage key={el.id} id={el.id} message={el.message} />
+  ))
+  return (
+    <S.DialogsMessages $direction={'column'} $gap={'20px'}>
+      <S.MessagesList>{messagesList}</S.MessagesList>
+      <S.FormWrapper>
+        <TextForm place={'Enter your message...'} callback={addMessage} />
+      </S.FormWrapper>
+    </S.DialogsMessages>
+  )
+}

@@ -4,6 +4,7 @@ import { F } from '../../../../styles/Fragments.styled'
 
 const Post = styled.div`
   padding: 10px;
+  word-break: break-all;
 `
 
 const UserInfo = styled(C.FlexWrapper)`

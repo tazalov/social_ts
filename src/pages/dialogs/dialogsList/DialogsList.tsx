@@ -7,12 +7,11 @@ interface DialogsListPT {
   list: DialogsListItemT[]
 }
 
-export const DialogsList: FC<DialogsListPT> = ({ list }) => (
-  <S.DialogsList>
-    <S.List>
-      {list.map(el => (
-        <DialogsListItem key={el.id} id={el.id} name={el.name} />
-      ))}
-    </S.List>
-  </S.DialogsList>
-)
+export const DialogsList: FC<DialogsListPT> = ({ list }) => {
+  const dialogsList = list.map(el => <DialogsListItem key={el.id} id={el.id} name={el.name} />)
+  return (
+    <S.DialogsList>
+      <S.List>{dialogsList}</S.List>
+    </S.DialogsList>
+  )
+}
