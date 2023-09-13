@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/static/js/main.4e01f318.js",
+    "static/media/anynft.webp": "/static/media/anynft.7f9ed0309c774a6b3ef3.webp",
+    "static/media/carrepair.webp": "/static/media/carrepair.5faf1d35741a0df22060.webp",
+    "static/media/social-icon-sprite.svg": "/static/media/social-icon-sprite.f0e6aaeb91e711434b9e54c9720175d5.svg",
+    "static/media/icon-sprite.svg": "/static/media/icon-sprite.581a403bc01b6ff7862da2a9cd33cb92.svg",
+    "index.html": "/index.html",
+    "main.4e01f318.js.map": "/static/js/main.4e01f318.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4e01f318.js"
+  ]
+}
