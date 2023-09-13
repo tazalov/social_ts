@@ -72,30 +72,12 @@ const initialState: InitialStateT = {
   friends: {
     count: 123,
     list: [
-      {
-        id: 1,
-        name: 'Egorka Zashibu',
-      },
-      {
-        id: 2,
-        name: 'Vsaya',
-      },
-      {
-        id: 3,
-        name: 'Antoni',
-      },
-      {
-        id: 4,
-        name: 'Dima',
-      },
-      {
-        id: 5,
-        name: 'blabla',
-      },
-      {
-        id: 6,
-        name: 'Tratata',
-      },
+      { id: 1, name: 'Egorka Zashibu' },
+      { id: 2, name: 'Vsaya' },
+      { id: 3, name: 'Antoni' },
+      { id: 4, name: 'Dima' },
+      { id: 5, name: 'blabla' },
+      { id: 6, name: 'Tratata' },
     ],
   },
 }

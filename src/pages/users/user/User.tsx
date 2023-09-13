@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
-import { usersAPI } from '../../../api/api'
 import photo from '../../../assets/images/anynft.webp'
 import { Avatar } from '../../../components/avatar/Avatar'
 import { ButtonB } from '../../../components/button/ButtonB'
 import { Loading } from '../../../components/icon/Loading'
-import { ProgressFollowT } from '../../../redux/users.reducer'
+import { ProgressFollowT } from '../../../redux/users/reducer/types'
 import { S } from './User.styled'
 
 type UserPT = {
@@ -17,7 +16,6 @@ type UserPT = {
   follow: (id: number) => void
   unfollow: (id: number) => void
   progressFollow: ProgressFollowT
-  toggleProgressFollow: (isFetch: boolean, id: number) => void
 }
 
 export const User: FC<UserPT> = ({
@@ -29,31 +27,16 @@ export const User: FC<UserPT> = ({
   follow,
   unfollow,
   progressFollow,
-  toggleProgressFollow,
 }) => {
   const newStatus = status
     ? status.length > 15
       ? `${status.slice(0, 13)}...`
       : status
     : 'No status'
-  const followUser = () => {
-    toggleProgressFollow(true, id)
-    usersAPI.followU(id).then(data => {
-      if (data.resultCode === 0) {
-        toggleProgressFollow(false, id)
-        follow(id)
-      }
-    })
-  }
-  const unfollowUser = () => {
-    toggleProgressFollow(true, id)
-    usersAPI.unfollowU(id).then(data => {
-      if (data.resultCode === 0) {
-        toggleProgressFollow(false, id)
-        unfollow(id)
-      }
-    })
-  }
+
+  const followUser = () => follow(id)
+  const unfollowUser = () => unfollow(id)
+
   return (
     <S.User $direction={'column'} $align={'center'} $gap={'20px'}>
       <NavLink to={`/profile/${id}`}>

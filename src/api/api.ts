@@ -1,5 +1,16 @@
 import axios from 'axios'
 
+export enum ResultCodeE {
+  Success = 0,
+  Error = 1,
+}
+
+export type ResponseT<T = {}, RC = ResultCodeE> = {
+  data: T
+  resultCode: RC
+  messages: Array<string>
+}
+
 const social = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
   withCredentials: true,

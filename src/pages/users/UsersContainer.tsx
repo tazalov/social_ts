@@ -1,42 +1,27 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { usersAPI } from '../../api/api'
 import { Pagination2 } from '../../components/pagination/Pagination2'
 import { Preloader } from '../../components/preloader/Preloader'
 import { AppStateT } from '../../redux/store'
-import {
-  follow,
-  InitialStateT,
-  setCurrentPage,
-  setLoadingPage,
-  setUsers,
-  toggleProgressFollow,
-  unfollow,
-  UserT,
-} from '../../redux/users.reducer'
-import { Users } from './Users'
+import { setCurrentPage } from '../../redux/users/actions'
+import { UsersST } from '../../redux/users/reducer/types'
+import { getUsers, setFollow, setUnfollow } from '../../redux/users/thunks'
+import { User } from './user/User'
+import { S } from './Users.styled'
 
-type UsersCPT = InitialStateT & MapDispatchPT
+type UsersCPT = UsersST & MapDispatchPT
 
 class UsersC extends Component<UsersCPT> {
   componentDidMount() {
-    const { list, pageSize, currentPage, setUsers, setLoadingPage } = this.props
+    const { list, pageSize, currentPage, getUsers } = this.props
     if (!list.length) {
-      setLoadingPage(true)
-      usersAPI.getUsers(currentPage, pageSize).then(data => {
-        setUsers(data.items, data.totalCount)
-        setLoadingPage(false)
-      })
+      getUsers(currentPage, pageSize)
     }
   }
   componentDidUpdate(prevProps: Readonly<UsersCPT>) {
-    const { pageSize, currentPage, setUsers, setLoadingPage } = this.props
+    const { pageSize, currentPage, getUsers } = this.props
     if (currentPage !== prevProps.currentPage) {
-      setLoadingPage(true)
-      usersAPI.getUsers(currentPage, pageSize).then(data => {
-        setUsers(data.items, data.totalCount)
-        setLoadingPage(false)
-      })
+      getUsers(currentPage, pageSize)
     }
   }
 
@@ -47,11 +32,10 @@ class UsersC extends Component<UsersCPT> {
       pageSize,
       currentPage,
       isPageLoading,
-      follow,
-      unfollow,
+      setFollow,
+      setUnfollow,
       setCurrentPage,
       progressFollow,
-      toggleProgressFollow,
     } = this.props
     return isPageLoading ? (
       <Preloader size={150} />
@@ -63,19 +47,27 @@ class UsersC extends Component<UsersCPT> {
           totalCount={totalCount}
           setPage={setCurrentPage}
         />
-        <Users
-          list={list}
-          follow={follow}
-          unfollow={unfollow}
-          progressFollow={progressFollow}
-          toggleProgressFollow={toggleProgressFollow}
-        />
+        <S.Users>
+          {list.map(el => (
+            <User
+              key={el.id}
+              id={el.id}
+              name={el.name}
+              followed={el.followed}
+              avatarUrl={el.photos.small}
+              status={el.status}
+              follow={setFollow}
+              unfollow={setUnfollow}
+              progressFollow={progressFollow}
+            />
+          ))}
+        </S.Users>
       </>
     )
   }
 }
 
-const mapStateToProps = (state: AppStateT): InitialStateT => ({
+const mapStateToProps = (state: AppStateT): UsersST => ({
   list: state.users.list,
   totalCount: state.users.totalCount,
   pageSize: state.users.pageSize,
@@ -85,19 +77,15 @@ const mapStateToProps = (state: AppStateT): InitialStateT => ({
 })
 
 type MapDispatchPT = {
-  follow: (id: number) => void
-  unfollow: (id: number) => void
-  setUsers: (user: UserT[], count: number) => void
+  setFollow: (id: number) => void
+  setUnfollow: (id: number) => void
   setCurrentPage: (page: number) => void
-  setLoadingPage: (isLoad: boolean) => void
-  toggleProgressFollow: (isFetch: boolean, id: number) => void
+  getUsers: (currentPage: number, pageSize: number) => void
 }
 
-export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
-  follow,
-  unfollow,
-  setUsers,
-  setLoadingPage,
+export default connect<UsersST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+  setFollow,
+  setUnfollow,
   setCurrentPage,
-  toggleProgressFollow,
+  getUsers,
 })(UsersC)
