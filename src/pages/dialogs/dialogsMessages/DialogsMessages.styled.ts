@@ -31,6 +31,7 @@ const Message = styled.div`
   position: relative;
   padding: 5px;
   user-select: none;
+  word-break: break-all;
   &:before {
     position: absolute;
     content: '';

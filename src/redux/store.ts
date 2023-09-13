@@ -1,7 +1,7 @@
 import { Action, applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunkMiddleware, { ThunkAction } from 'redux-thunk'
 import { authReducer } from './auth/reducer'
-import { dialogsReducer } from './dialogs.reducer'
+import { dialogsReducer } from './dialogs/reducer'
 import { profileReducer } from './profile/reducer'
 import { sideUsersReducer } from './sideusers.reducer'
 import { usersReducer } from './users/reducer'

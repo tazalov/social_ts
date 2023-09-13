@@ -1,21 +1,13 @@
 import { FC } from 'react'
 import { connect } from 'react-redux'
-import {
-  addMessage,
-  DialogsListItemT,
-  DialogsMessageT,
-  InitialStateT,
-} from '../../redux/dialogs.reducer'
+import { addMessage } from '../../redux/dialogs/actions'
+import { DialogsST } from '../../redux/dialogs/reducer/types'
 import { AppStateT } from '../../redux/store'
 import { S } from './Dialogs.styled'
 import { DialogsList } from './dialogsList/DialogsList'
 import { DialogsMessages } from './dialogsMessages/DialogsMessages'
 
-type DialogsPT = {
-  list: DialogsListItemT[]
-  messages: DialogsMessageT[]
-  addMessage: (message: string) => void
-}
+type DialogsPT = DialogsST & MapDispatchPT
 
 const Dialogs: FC<DialogsPT> = ({ list, messages, addMessage }) => (
   <S.Dialogs>
@@ -24,15 +16,15 @@ const Dialogs: FC<DialogsPT> = ({ list, messages, addMessage }) => (
   </S.Dialogs>
 )
 
-const mapStateToProps = (state: AppStateT): InitialStateT => ({
+const mapStateToProps = (state: AppStateT): DialogsST => ({
   list: state.dialogs.list,
   messages: state.dialogs.messages,
 })
 
-type MapDispatchPT = {
+interface MapDispatchPT {
   addMessage: (message: string) => void
 }
 
-export default connect<InitialStateT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+export default connect<DialogsST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
   addMessage,
 })(Dialogs)

@@ -1,19 +1,7 @@
-export type DialogsListItemT = {
-  id: number
-  name: string
-}
+import { DialogsAT } from '../actions/types'
+import { DialogsST } from './types'
 
-export type DialogsMessageT = {
-  id: number
-  message: string
-}
-
-export type InitialStateT = {
-  list: DialogsListItemT[]
-  messages: DialogsMessageT[]
-}
-
-const initialState: InitialStateT = {
+const initialState: DialogsST = {
   list: [
     { id: 1, name: 'Iliya' },
     { id: 2, name: 'Dmitry' },
@@ -46,17 +34,14 @@ const initialState: InitialStateT = {
       message: 'A molestiae praesentium quod! Earum hic necessitatibus temporibus!',
     },
     { id: 7, message: 'Lorem ipsum' },
-    { id: 8, message: 'A molestiae praesentium quod!' },
-    { id: 9, message: 'A molestiae praesentium quod!' },
-    { id: 10, message: 'A molestiae praesentium quod!' },
   ],
 }
 
-export const dialogsReducer = (state: InitialStateT = initialState, action: DialogsAT) => {
+export const dialogsReducer = (state = initialState, action: DialogsAT) => {
   switch (action.type) {
     case 'social/profile/ADD_MESSAGE': {
       const newMessage = {
-        id: 11,
+        id: state.messages.length + 2,
         message: action.messageText,
       }
       return {
@@ -69,15 +54,3 @@ export const dialogsReducer = (state: InitialStateT = initialState, action: Dial
     }
   }
 }
-
-export type DialogsAT = AddMessageAT
-
-export type AddMessageAT = {
-  type: 'social/profile/ADD_MESSAGE'
-  messageText: string
-}
-
-export const addMessage = (messageText: string): AddMessageAT => ({
-  type: 'social/profile/ADD_MESSAGE',
-  messageText,
-})

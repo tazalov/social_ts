@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { TextForm } from '../../../components/textForm/textForm'
-import { DialogsMessageT } from '../../../redux/dialogs.reducer'
+import { DialogsMessageT } from '../../../redux/dialogs/reducer/types'
 import { DialogsMessage } from './DialogsMessage'
 import { S } from './DialogsMessages.styled'
 
-type DialogsMessagesPT = {
+interface DialogsMessagesPT {
   messages: DialogsMessageT[]
   addMessage: (value: string) => void
 }

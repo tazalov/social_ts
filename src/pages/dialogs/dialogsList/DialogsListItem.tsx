@@ -4,7 +4,7 @@ import avatar from '../../../assets/images/anynft.webp'
 import { S } from './DialogsList.styled'
 import { C } from '../../../styles/Common.styled'
 
-type DialogsListItemPT = {
+interface DialogsListItemPT {
   id: number
   name: string
 }

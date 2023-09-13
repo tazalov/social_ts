@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { S } from './DialogsMessages.styled'
 
-type DialogsMessagePT = {
+interface DialogsMessagePT {
   id: number
   message: string
 }

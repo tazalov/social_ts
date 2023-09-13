@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { DialogsListItemT } from '../../../redux/dialogs.reducer'
+import { DialogsListItemT } from '../../../redux/dialogs/reducer/types'
 import { S } from './DialogsList.styled'
 import { DialogsListItem } from './DialogsListItem'
 
-type DialogsListPT = {
+interface DialogsListPT {
   list: DialogsListItemT[]
 }
 
