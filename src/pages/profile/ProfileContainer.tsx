@@ -1,6 +1,7 @@
-import { Component } from 'react'
+import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
+import { compose } from 'redux'
 import { AuthST } from '../../redux/auth/reducer/types'
 import { addPost } from '../../redux/profile/actions'
 import { ProfileST } from '../../redux/profile/reducer/types'
@@ -44,10 +45,11 @@ interface MapDispatchPT {
   getUserProfile: (userId: string) => void
 }
 
-const ProfileWithRouter = withRouter(ProfileContainer)
-const ProfileWithRedirect = redirectToLogin(ProfileWithRouter)
-
-export default connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
-  addPost,
-  getUserProfile,
-})(ProfileWithRedirect)
+export default compose<ComponentType>(
+  connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+    addPost,
+    getUserProfile,
+  }),
+  withRouter,
+  redirectToLogin,
+)(ProfileContainer)

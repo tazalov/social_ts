@@ -1,11 +1,13 @@
-import { Component } from 'react'
+import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { Pagination2 } from '../../components/pagination/Pagination2'
 import { Preloader } from '../../components/preloader/Preloader'
 import { AppStateT } from '../../redux/store'
 import { setCurrentPage } from '../../redux/users/actions'
 import { UsersST } from '../../redux/users/reducer/types'
 import { getUsers, setFollow, setUnfollow } from '../../redux/users/thunks'
+import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 import { User } from './user/User'
 import { S } from './Users.styled'
 
@@ -83,9 +85,12 @@ interface MapDispatchPT {
   getUsers: (currentPage: number, pageSize: number) => void
 }
 
-export default connect<UsersST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
-  setFollow,
-  setUnfollow,
-  setCurrentPage,
-  getUsers,
-})(UsersC)
+export default compose<ComponentType>(
+  connect<UsersST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+    setFollow,
+    setUnfollow,
+    setCurrentPage,
+    getUsers,
+  }),
+  redirectToLogin,
+)(UsersC)

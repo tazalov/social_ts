@@ -6,6 +6,7 @@ import { AppStateT } from '../../redux/store'
 
 export const redirectToLogin = (Component: ComponentType<any>) => {
   const MyRedirect: FC<MapStatePT> = ({ isAuth, ...restProps }) => {
+    debugger
     return isAuth ? <Component {...restProps} /> : <Redirect to={'/login'} />
   }
 
@@ -15,5 +16,5 @@ export const redirectToLogin = (Component: ComponentType<any>) => {
     isAuth: state.auth.isAuth,
   })
 
-  return connect<MapStatePT, {}, unknown, AppStateT>(mapStateToProps, {})(MyRedirect)
+  return connect<MapStatePT, unknown, unknown, AppStateT>(mapStateToProps)(MyRedirect)
 }
