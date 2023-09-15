@@ -1,5 +1,5 @@
-import { ProfileT } from '../reducer/types'
-import { AddPostAT, SetProfileAT, SetStatusAT } from './types'
+import { FriendT, ProfileT } from '../reducer/types'
+import { AddPostAT, SetFriendsProfileAT, SetProfileAT, SetStatusAT } from './types'
 
 export const addPost = (postText: string): AddPostAT => ({
   type: 'social/profile/ADD_POST',
@@ -14,4 +14,10 @@ export const setProfile = (profile: ProfileT): SetProfileAT => ({
 export const setStatus = (status: string): SetStatusAT => ({
   type: 'social/profile/SET_STATUS',
   status,
+})
+
+export const setFriendsProfile = (list: FriendT[], count: number): SetFriendsProfileAT => ({
+  type: 'social/profile/SET_FRIENDS_PROFILE',
+  list,
+  count,
 })

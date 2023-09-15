@@ -17,17 +17,7 @@ const initialState: ProfileST = {
       likes: 22,
     },
   ],
-  friends: {
-    count: 123,
-    list: [
-      { id: 1, name: 'Egorka Zashibu' },
-      { id: 2, name: 'Vsaya' },
-      { id: 3, name: 'Antoni' },
-      { id: 4, name: 'Dima' },
-      { id: 5, name: 'blabla' },
-      { id: 6, name: 'Tratata' },
-    ],
-  },
+  friends: null,
   status: '',
 }
 
@@ -49,6 +39,13 @@ export const profileReducer = (state = initialState, action: ProfileAT) => {
       return {
         ...state,
         profile: action.profile,
+      }
+    }
+    case 'social/profile/SET_FRIENDS_PROFILE': {
+      const { list, count } = action
+      return {
+        ...state,
+        friends: { list, count },
       }
     }
     case 'social/profile/SET_STATUS': {

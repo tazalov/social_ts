@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { TitleBlock } from '../../../components/titleBlock/TitleBlock'
 import { C } from '../../../styles/Common.styled'
-import { S } from './About.styled'
 
 type AboutPT = {
   about: string | null
@@ -10,6 +9,6 @@ type AboutPT = {
 export const About: FC<AboutPT> = ({ about }) => (
   <C.ShadowContainer>
     <TitleBlock title={'About me'} noBtn />
-    <S.Text>{about || 'User dont add this info'}</S.Text>
+    <C.Text>{about || 'User dont add this info'}</C.Text>
   </C.ShadowContainer>
 )

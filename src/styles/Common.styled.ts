@@ -31,8 +31,15 @@ const ShadowContainer = styled.div`
   background-color: ${props => props.theme.colors.secondaryBg};
 `
 
+const Text = styled.div`
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+`
+
 export const C = {
   Container,
   FlexWrapper,
   ShadowContainer,
+  Text,
 }

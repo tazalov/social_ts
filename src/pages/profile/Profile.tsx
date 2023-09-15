@@ -12,11 +12,12 @@ import { C } from '../../styles/Common.styled'
 interface ProfilePT {
   profile: ProfileT | null
   posts: PostT[]
-  friends: FriendsT
+  friends: FriendsT | null
   addPost: (postText: string) => void
+  isOwner: boolean
 }
 
-export const Profile: FC<ProfilePT> = ({ posts, friends, addPost, profile }) =>
+export const Profile: FC<ProfilePT> = ({ profile, posts, friends, addPost, isOwner }) =>
   !profile ? (
     <Preloader size={150} />
   ) : (
@@ -37,7 +38,7 @@ export const Profile: FC<ProfilePT> = ({ posts, friends, addPost, profile }) =>
         <Posts posts={posts} addPost={addPost} />
         <C.FlexWrapper $gap={'20px'} $direction={'column'}>
           <About about={profile.aboutMe} />
-          <Friends friends={friends} />
+          <Friends friends={friends} isOwner={isOwner} />
         </C.FlexWrapper>
       </C.FlexWrapper>
     </C.FlexWrapper>

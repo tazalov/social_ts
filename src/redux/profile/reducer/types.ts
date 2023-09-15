@@ -6,8 +6,15 @@ export interface PostT {
 }
 
 export interface FriendT {
-  id: number
   name: string
+  id: number
+  uniqueUrlName: null
+  photos: {
+    small: string | null
+    large: string | null
+  }
+  status: string | null
+  followed: boolean
 }
 
 export interface FriendsT {
@@ -44,6 +51,6 @@ export interface ProfileT {
 export interface ProfileST {
   profile: ProfileT | null
   posts: PostT[]
-  friends: FriendsT
+  friends: FriendsT | null
   status: string
 }

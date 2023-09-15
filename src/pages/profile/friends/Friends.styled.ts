@@ -4,6 +4,7 @@ import { C } from '../../../styles/Common.styled'
 //friends
 const Friends = styled(C.ShadowContainer)`
   height: min-content;
+  min-width: 300px;
 `
 
 const List = styled.ul`
