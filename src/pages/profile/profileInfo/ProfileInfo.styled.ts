@@ -4,6 +4,7 @@ import { C } from '../../../styles/Common.styled'
 const ProfileInfoStyled = styled(C.FlexWrapper)`
   padding: 10px 10px 10px 160px;
   position: relative;
+  width: 100%;
 `
 
 const Avatar = styled.div`
@@ -17,6 +18,7 @@ const Avatar = styled.div`
 
 const Info = styled(C.FlexWrapper)`
   margin-left: 20px;
+  width: 100%;
 `
 
 const Name = styled(C.FlexWrapper)`
@@ -33,13 +35,21 @@ const Name = styled(C.FlexWrapper)`
 
 const Status = styled.div`
   color: ${props => props.theme.colors.secondaryFont};
+  display: inline-flex;
+  width: 100%;
+  & span {
+    padding: 5px 5px 5px 0;
+    font-style: italic;
+    display: inline-block;
+    width: 100%;
+  }
 `
 
 const Looking = styled.div`
   text-align: left;
   span {
     font-size: 18px;
-    padding: 5px;
+    padding: 5px 5px 5px 0;
   }
 `
 

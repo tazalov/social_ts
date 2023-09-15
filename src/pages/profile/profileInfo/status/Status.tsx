@@ -1,5 +1,6 @@
 import { ChangeEvent, Component, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
+import { Input } from '../../../../components/input/Input'
 import { updateStatusProfile } from '../../../../redux/profile/thunks'
 import { AppStateT } from '../../../../redux/store'
 import { S } from '../ProfileInfo.styled'
@@ -13,6 +14,14 @@ class Status extends Component<MapStatePT & MapDispatchPT, OwnStateT> {
   state = {
     status: this.props.status,
     editMode: false,
+  }
+
+  componentDidUpdate(prevProps: Readonly<MapStatePT & MapDispatchPT>) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status,
+      })
+    }
   }
 
   activateEditMode = () => {
@@ -42,9 +51,9 @@ class Status extends Component<MapStatePT & MapDispatchPT, OwnStateT> {
     return (
       <S.Status>
         {!this.state.editMode ? (
-          <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+          <span onDoubleClick={this.activateEditMode}>{this.props.status || 'No status'}</span>
         ) : (
-          <input
+          <Input
             type="text"
             value={this.state.status}
             onChange={this.handleOnChange}
