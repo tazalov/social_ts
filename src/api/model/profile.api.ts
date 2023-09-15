@@ -7,4 +7,8 @@ export const profileAPI = {
     )
     return response.data
   },
+  async getStatus(userId: string) {
+    const response = await social.get(`/profile/status/${userId}`)
+    return response.data
+  },
 }

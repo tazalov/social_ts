@@ -1,14 +1,16 @@
 import { ChangeEvent, Component } from 'react'
-import { connect } from 'react-redux'
-import { AppStateT } from '../../../../redux/store'
 import { S } from '../ProfileInfo.styled'
+
+interface StatusPT {
+  status: string
+}
 
 interface OwnStateT {
   editMode: boolean
   status: string
 }
 
-class Status extends Component<{ status: string }, OwnStateT> {
+export class Status extends Component<StatusPT, OwnStateT> {
   state = {
     status: this.props.status,
     editMode: false,
@@ -45,9 +47,3 @@ class Status extends Component<{ status: string }, OwnStateT> {
     )
   }
 }
-
-const mapStateToProps = (state: AppStateT) => ({
-  status: state.profile.status,
-})
-
-export default connect<{ status: string }, {}, unknown, AppStateT>(mapStateToProps)(Status)

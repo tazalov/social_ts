@@ -28,7 +28,7 @@ const initialState: ProfileST = {
       { id: 6, name: 'Tratata' },
     ],
   },
-  status: 'asd',
+  status: '',
 }
 
 export const profileReducer = (state = initialState, action: ProfileAT) => {
@@ -49,6 +49,12 @@ export const profileReducer = (state = initialState, action: ProfileAT) => {
       return {
         ...state,
         profile: action.profile,
+      }
+    }
+    case 'social/profile/SET_STATUS': {
+      return {
+        ...state,
+        status: action.status,
       }
     }
     default: {

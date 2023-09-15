@@ -6,7 +6,7 @@ import { ContactsT } from '../../../redux/profile/reducer/types'
 import { C } from '../../../styles/Common.styled'
 import { Links } from './links/Links'
 import { S } from './ProfileInfo.styled'
-import Status from './status/Status'
+import { Status } from './status/Status'
 
 interface ProfileInfoPT {
   avatar: string | null
@@ -14,6 +14,7 @@ interface ProfileInfoPT {
   isLookingJob: boolean
   jobDesc: string | null
   contacts: ContactsT
+  status: string
 }
 
 export const ProfileInfo: FC<ProfileInfoPT> = ({
@@ -22,6 +23,7 @@ export const ProfileInfo: FC<ProfileInfoPT> = ({
   isLookingJob,
   jobDesc,
   contacts,
+  status,
 }) => (
   <C.FlexWrapper $align={'center'} $justify={'space-between'}>
     <S.ProfileInfo $align={'center'}>
@@ -33,7 +35,7 @@ export const ProfileInfo: FC<ProfileInfoPT> = ({
           <p>{name}</p>
           <span>{jobDesc || 'developer'}</span>
         </S.Name>
-        <Status />
+        <Status status={status} />
         <S.Looking>
           Looking for a job: <span>{isLookingJob ? 'YES' : 'NO'}</span>
         </S.Looking>

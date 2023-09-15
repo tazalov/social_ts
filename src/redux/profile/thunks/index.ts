@@ -1,11 +1,18 @@
 import { profileAPI } from '../../../api'
 import { BaseThunkT } from '../../store'
-import { setProfile } from '../actions'
-import { ProfileAT } from '../actions/types'
+import { setProfile, setStatus } from '../actions'
+import { ProfileAT, SetStatusAT } from '../actions/types'
 
 export const getUserProfile =
   (userId: string): BaseThunkT<ProfileAT> =>
   async dispatch => {
     const data = await profileAPI.getProfile(userId)
     dispatch(setProfile(data))
+  }
+
+export const getStatusProfile =
+  (userId: string): BaseThunkT<SetStatusAT> =>
+  async dispatch => {
+    const data = await profileAPI.getStatus(userId)
+    dispatch(setStatus(data))
   }

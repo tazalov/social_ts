@@ -1,14 +1,14 @@
 import { FC } from 'react'
+import { BrowserRouter, Redirect, Route } from 'react-router-dom'
 import Header from './layout/header/HeaderContainer'
 import { Main } from './layout/main/Main'
 import { Sidebar } from './layout/sidebar/Sidebar'
-import { BrowserRouter, Redirect, Route } from 'react-router-dom'
 import { SideUsers } from './layout/sideUsers/SideUsers'
-import { Login } from './pages/login/Login'
-import { AppStateT } from './redux/store'
 import Dialogs from './pages/dialogs/DialogsContainer'
+import { Login } from './pages/login/Login'
 import Profile from './pages/profile/ProfileContainer'
 import Users from './pages/users/UsersContainer'
+import { AppStateT } from './redux/store'
 import { C } from './styles/Common.styled'
 
 type AppPT = {
