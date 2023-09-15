@@ -28,6 +28,7 @@ const initialState: ProfileST = {
       { id: 6, name: 'Tratata' },
     ],
   },
+  status: 'asd',
 }
 
 export const profileReducer = (state = initialState, action: ProfileAT) => {

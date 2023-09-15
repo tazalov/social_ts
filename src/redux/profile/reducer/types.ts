@@ -45,4 +45,5 @@ export interface ProfileST {
   profile: ProfileT | null
   posts: PostT[]
   friends: FriendsT
+  status: string
 }

@@ -6,7 +6,6 @@ import { AppStateT } from '../../redux/store'
 
 export const redirectToLogin = (Component: ComponentType<any>) => {
   const MyRedirect: FC<MapStatePT> = ({ isAuth, ...restProps }) => {
-    debugger
     return isAuth ? <Component {...restProps} /> : <Redirect to={'/login'} />
   }
 

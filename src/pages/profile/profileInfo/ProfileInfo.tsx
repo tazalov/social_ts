@@ -6,6 +6,7 @@ import { ContactsT } from '../../../redux/profile/reducer/types'
 import { C } from '../../../styles/Common.styled'
 import { Links } from './links/Links'
 import { S } from './ProfileInfo.styled'
+import Status from './status/Status'
 
 interface ProfileInfoPT {
   avatar: string | null
@@ -32,9 +33,7 @@ export const ProfileInfo: FC<ProfileInfoPT> = ({
           <p>{name}</p>
           <span>{jobDesc || 'developer'}</span>
         </S.Name>
-        <S.Status>
-          <i>A molestiae praesentium quod!</i>
-        </S.Status>
+        <Status />
         <S.Looking>
           Looking for a job: <span>{isLookingJob ? 'YES' : 'NO'}</span>
         </S.Looking>
