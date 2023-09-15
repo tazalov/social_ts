@@ -1,32 +1,41 @@
-import { ChangeEvent, Component } from 'react'
+import { ChangeEvent, Component, KeyboardEvent } from 'react'
+import { connect } from 'react-redux'
+import { updateStatusProfile } from '../../../../redux/profile/thunks'
+import { AppStateT } from '../../../../redux/store'
 import { S } from '../ProfileInfo.styled'
-
-interface StatusPT {
-  status: string
-}
 
 interface OwnStateT {
   editMode: boolean
   status: string
 }
 
-export class Status extends Component<StatusPT, OwnStateT> {
+class Status extends Component<MapStatePT & MapDispatchPT, OwnStateT> {
   state = {
     status: this.props.status,
     editMode: false,
   }
 
   activateEditMode = () => {
-    this.setState({ editMode: true })
+    const { id, userId } = this.props
+    if (id === userId) {
+      this.setState({ editMode: true })
+    }
   }
 
   deactivateEditMode = () => {
-    this.setState({ editMode: false })
+    this.setState({ status: this.props.status, editMode: false })
   }
 
   handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ status: e.target.value })
     console.log(this.state.status)
+  }
+
+  handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      this.props.updateStatusProfile(this.state.status)
+      this.deactivateEditMode()
+    }
   }
 
   render() {
@@ -37,9 +46,10 @@ export class Status extends Component<StatusPT, OwnStateT> {
         ) : (
           <input
             type="text"
-            value={this.props.status}
+            value={this.state.status}
             onChange={this.handleOnChange}
             onBlur={this.deactivateEditMode}
+            onKeyDown={this.handleEnter}
             autoFocus
           />
         )}
@@ -47,3 +57,23 @@ export class Status extends Component<StatusPT, OwnStateT> {
     )
   }
 }
+
+interface MapStatePT {
+  id?: number | null
+  userId?: number | null
+  status: string
+}
+
+const mapStateToProps = (state: AppStateT): MapStatePT => ({
+  id: state.auth.id,
+  userId: state.profile.profile?.userId,
+  status: state.profile.status,
+})
+
+interface MapDispatchPT {
+  updateStatusProfile: (status: string) => void
+}
+
+export default connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+  updateStatusProfile,
+})(Status)

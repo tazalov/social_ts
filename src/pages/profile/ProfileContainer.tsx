@@ -33,13 +33,12 @@ class ProfileContainer extends Component<ProfileContainerPT> {
   }
 }
 
-type MapStatePT = ProfileST & Pick<AuthST, 'id'>
+type MapStatePT = Omit<ProfileST, 'status'> & Pick<AuthST, 'id'>
 
 const mapStateToProps = (state: AppStateT): MapStatePT => ({
   profile: state.profile.profile,
   posts: state.profile.posts,
   friends: state.profile.friends,
-  status: state.profile.status,
   id: state.auth.id,
 })
 

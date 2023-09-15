@@ -13,11 +13,10 @@ interface ProfilePT {
   profile: ProfileT | null
   posts: PostT[]
   friends: FriendsT
-  status: string
   addPost: (postText: string) => void
 }
 
-export const Profile: FC<ProfilePT> = ({ posts, friends, status, addPost, profile }) =>
+export const Profile: FC<ProfilePT> = ({ posts, friends, addPost, profile }) =>
   !profile ? (
     <Preloader size={150} />
   ) : (
@@ -32,7 +31,6 @@ export const Profile: FC<ProfilePT> = ({ posts, friends, status, addPost, profil
           isLookingJob={profile.lookingForAJob}
           jobDesc={profile.lookingForAJobDescription}
           contacts={profile.contacts}
-          status={status}
         />
       </C.ShadowContainer>
       <C.FlexWrapper $gap={'20px'}>

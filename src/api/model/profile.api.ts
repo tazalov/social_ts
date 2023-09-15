@@ -11,4 +11,8 @@ export const profileAPI = {
     const response = await social.get(`/profile/status/${userId}`)
     return response.data
   },
+  async updateStatus(status: string) {
+    const response = await social.put(`/profile/status`, { status })
+    return response.data
+  },
 }

@@ -16,3 +16,12 @@ export const getStatusProfile =
     const data = await profileAPI.getStatus(userId)
     dispatch(setStatus(data))
   }
+
+export const updateStatusProfile =
+  (status: string): BaseThunkT<SetStatusAT> =>
+  async dispatch => {
+    const data = await profileAPI.updateStatus(status)
+    if (data.resultCode === 0) {
+      dispatch(setStatus(status))
+    }
+  }

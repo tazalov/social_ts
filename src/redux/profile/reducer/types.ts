@@ -37,7 +37,7 @@ export interface ProfileT {
   lookingForAJob: boolean
   lookingForAJobDescription: string | null
   fullName: string
-  userId: string
+  userId: number
   photos: PhotosT
 }
 
