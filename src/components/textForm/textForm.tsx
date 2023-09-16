@@ -26,7 +26,7 @@ export function TextForm({ place, callback, submit }: TextFormPT) {
   return (
     <C.FlexWrapper $gap={'10px'}>
       <StyledTextArea placeholder={place} value={text} onChange={onChangeHandler} />
-      <Button title={'send'} callback={onClickHandler} submit={submit || false} />
+      <Button title={'send'} callback={onClickHandler} type={submit ? 'submit' : undefined} />
     </C.FlexWrapper>
   )
 }

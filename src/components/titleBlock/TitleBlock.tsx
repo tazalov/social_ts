@@ -9,10 +9,11 @@ import { ButtonB } from '../button/ButtonB'
 type TitleBlockPT = {
   title: string | ReactNode
   noBtn?: boolean
+  centered?: boolean
 }
 
-export const TitleBlock: FC<TitleBlockPT> = ({ title, noBtn }) => (
-  <TitleWrapper $justify={'space-between'} $align={'center'}>
+export const TitleBlock: FC<TitleBlockPT> = ({ title, noBtn, centered = false }) => (
+  <TitleWrapper $justify={centered ? 'center' : 'space-between'} $align={'center'}>
     <Title>{title}</Title>
     {noBtn || <ButtonB title={<FontAwesomeIcon icon={faAnglesRight} />} callback={() => {}} />}
   </TitleWrapper>

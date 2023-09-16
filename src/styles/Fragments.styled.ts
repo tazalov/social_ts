@@ -24,6 +24,12 @@ const ScrollBody = css`
   }
 `
 
+const Title = css`
+  font-size: 30px;
+  font-weight: 600;
+  user-select: none;
+`
+
 const Subtitle = css`
   font-size: 18px;
   font-weight: 600;
@@ -33,5 +39,6 @@ const Subtitle = css`
 export const F = {
   Scroll,
   ScrollBody,
+  Title,
   Subtitle,
 }

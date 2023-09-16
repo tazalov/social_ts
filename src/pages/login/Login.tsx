@@ -1,15 +1,23 @@
 import { FC } from 'react'
+import styled from 'styled-components'
+import { C } from '../../styles/Common.styled'
+import { F } from '../../styles/Fragments.styled'
+import { LoginForm } from './LoginForm'
 
-type LoginPT = {
-  // add props type
-}
-
-export const Login: FC<LoginPT> = ({}) => {
+export const Login: FC = () => {
   return (
-    <div>
-      <input type="text" />
-      <input type="text" />
-      <button>login</button>
-    </div>
+    <C.ShadowContainer>
+      <C.FlexWrapper $gap={'10px'} $direction={'column'} $justify={'center'}>
+        <Title>LOGIN</Title>
+        <LoginForm />
+      </C.FlexWrapper>
+    </C.ShadowContainer>
   )
 }
+
+const Title = styled.h2`
+  ${F.Title};
+  text-align: center;
+  background-color: ${props => props.theme.colors.thirdBg};
+  padding: 10px;
+`

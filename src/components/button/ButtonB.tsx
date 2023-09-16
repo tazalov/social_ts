@@ -1,18 +1,26 @@
-import { FC, ReactNode } from 'react'
+import { ButtonHTMLAttributes, FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-interface ButtonBPT {
+type HTMLButtonT = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title'>
+
+interface ButtonBPT extends HTMLButtonT {
   title: string | ReactNode
   disable?: boolean
-  callback: () => void
+  callback?: () => void
 }
 
-export const ButtonB: FC<ButtonBPT> = ({ title, disable, callback }) => {
+export const ButtonB: FC<ButtonBPT> = ({
+  title,
+  disable,
+  callback,
+  type = 'button',
+  ...restProps
+}) => {
   const onClickHandler = () => {
-    callback()
+    callback?.()
   }
   return (
-    <StyledButton disabled={disable || false} onClick={onClickHandler}>
+    <StyledButton type={type} disabled={disable || false} onClick={onClickHandler} {...restProps}>
       {title}
     </StyledButton>
   )

@@ -9,6 +9,7 @@ export const theme = {
     accent2: '#0077FF',
     primaryFont: '#FFFFFF',
     secondaryFont: '#808080',
+    error: '#b90000',
     shadowPrimary: '0 0 15px 2px rgba(22, 24, 40, 0.8)',
     svg: {
       fill: '#ffffff',
@@ -38,6 +39,7 @@ export const lightTheme = {
     accent2: '#005FCC',
     primaryFont: '#555555',
     secondaryFont: '#808080',
+    error: '#ff2828',
     shadowPrimary: '0 0 15px 2px rgba(22, 24, 40, 0.2)',
     svg: {
       fill: '#999999',

@@ -1,24 +1,33 @@
-import { FC } from 'react'
+import React, { ButtonHTMLAttributes, FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-type ButtonPT = {
-  title: string
-  callback: () => void
-  submit?: boolean
+type HTMLButtonT = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title'>
+
+interface ButtonPT extends HTMLButtonT {
+  title: string | ReactNode
+  callback?: () => void
   radius?: boolean
   disable?: boolean
 }
 
-export const Button: FC<ButtonPT> = ({ title, radius, disable, callback, submit }) => {
+export const Button: FC<ButtonPT> = ({
+  title,
+  radius,
+  disable,
+  callback,
+  type = 'button',
+  ...restProps
+}) => {
   const onClickHandler = () => {
-    callback()
+    callback?.()
   }
   return (
     <StyledButton
       disabled={disable || false}
       onClick={onClickHandler}
       $radius={radius ? 'true' : 'false'}
-      type={submit ? 'submit' : undefined}
+      type={type}
+      {...restProps}
     >
       {title}
     </StyledButton>
@@ -38,6 +47,7 @@ const StyledButton = styled.button<PropsType>`
   text-transform: uppercase;
   border-radius: ${props => (props.$radius === 'true' ? '50%' : '0')};
   display: block;
+  max-width: min-content;
   &:hover {
     background-color: ${props => props.theme.colors.accent2};
   }
