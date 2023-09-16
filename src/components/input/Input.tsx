@@ -2,6 +2,7 @@ import { FC, InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
 import { C } from '../../app/styles/Common.styled'
 import { F } from '../../app/styles/Fragments.styled'
+import { ErrorField } from '../errorField/ErrorField'
 
 interface InputPT extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -15,7 +16,7 @@ export const Input: FC<InputPT> = ({ label, error = false, errorText, ...restPro
       {label && <Label>{label}</Label>}
       <C.FlexWrapper $direction={'column'} $gap={'5px'} $align={'center'}>
         <StyledInput {...restProps} />
-        {error && <Error>{errorText}</Error>}
+        {error && <ErrorField>{errorText}</ErrorField>}
       </C.FlexWrapper>
     </C.FlexWrapper>
   )
@@ -36,9 +37,4 @@ const StyledInput = styled.input`
     BlinkMacSystemFont,
     'Arial',
     sans-serif;
-`
-const Error = styled.div`
-  color: ${props => props.theme.colors.error};
-  font-size: 14px;
-  font-weight: 600;
 `

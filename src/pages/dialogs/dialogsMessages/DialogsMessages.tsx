@@ -17,7 +17,7 @@ export const DialogsMessages: FC<DialogsMessagesPT> = ({ messages, addMessage })
     <S.DialogsMessages $direction={'column'} $gap={'20px'}>
       <S.MessagesList>{messagesList}</S.MessagesList>
       <S.FormWrapper>
-        <TextForm place={'Enter your message...'} callback={addMessage} />
+        <TextForm placeholder={'Enter your message...'} callback={addMessage} />
       </S.FormWrapper>
     </S.DialogsMessages>
   )

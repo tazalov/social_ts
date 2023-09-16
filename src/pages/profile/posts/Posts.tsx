@@ -13,7 +13,7 @@ interface PostsPT {
 export const Posts: FC<PostsPT> = ({ posts, addPost }) => (
   <S.Posts $direction={'column'} $gap={'20px'}>
     <C.ShadowContainer as={S.FormWrapper}>
-      <TextForm place={'Enter post message...'} callback={addPost} />
+      <TextForm placeholder={'Enter post message...'} callback={addPost} />
     </C.ShadowContainer>
     {posts.map(el => (
       <Post key={el.id} id={el.id} name={el.user} message={el.text} likes={el.likes} />

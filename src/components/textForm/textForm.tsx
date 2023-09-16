@@ -1,33 +1,40 @@
-import { ChangeEvent, useState } from 'react'
+import { Field, Form, Formik, FormikHelpers } from 'formik'
 import styled from 'styled-components'
 import { C } from '../../app/styles/Common.styled'
+import { TextFormSchema } from '../../app/utils/validators/validators'
 import { Button } from '../button/Button'
+import { ErrorField } from '../errorField/ErrorField'
+import { Loading } from '../icon/Loading'
 
 type TextFormPT = {
-  place: string
+  placeholder: string
   callback: (value: string) => void
-  submit?: boolean
 }
 
-export function TextForm({ place, callback, submit }: TextFormPT) {
-  const [text, setText] = useState<string>('')
+export function TextForm({ placeholder, callback }: TextFormPT) {
+  const initialFields = { text: '' }
 
-  const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value)
-  }
-
-  const onClickHandler = () => {
-    if (text) {
-      callback(text)
-      setText('')
-    }
+  const onSubmit = (values: typeof initialFields, props: FormikHelpers<typeof initialFields>) => {
+    callback(values.text)
+    props.resetForm()
+    props.setSubmitting(false)
   }
 
   return (
-    <C.FlexWrapper $gap={'10px'}>
-      <StyledTextArea placeholder={place} value={text} onChange={onChangeHandler} />
-      <Button title={'send'} callback={onClickHandler} type={submit ? 'submit' : undefined} />
-    </C.FlexWrapper>
+    <Formik initialValues={initialFields} onSubmit={onSubmit} validationSchema={TextFormSchema}>
+      {props => {
+        const { errors, touched, isSubmitting } = props
+        return (
+          <Form>
+            <C.FlexWrapper $gap={'10px'} $align={'center'}>
+              <Field as={StyledTextArea} name={'text'} type={'text'} placeholder={placeholder} />
+              {isSubmitting ? <Loading /> : <Button title={'send'} type={'submit'} />}
+            </C.FlexWrapper>
+            {errors.text && touched.text && <ErrorField>{errors.text}</ErrorField>}
+          </Form>
+        )
+      }}
+    </Formik>
   )
 }
 
