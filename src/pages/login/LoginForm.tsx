@@ -6,7 +6,11 @@ import { Input } from '../../components/input/Input'
 import { C } from '../../app/styles/Common.styled'
 import { LoginSchema } from '../../app/utils/validators/validators'
 
-export const LoginForm: FC = () => {
+interface LoginFormPT {
+  loginUser: (email: string, password: string, rememberMe: boolean) => void
+}
+
+export const LoginForm: FC<LoginFormPT> = ({ loginUser }) => {
   const initialFields = {
     email: '',
     password: '',
@@ -16,6 +20,7 @@ export const LoginForm: FC = () => {
     console.log(values)
     console.log(props)
     setTimeout(() => {
+      loginUser(values.email, values.password, values.remember)
       props.resetForm()
       props.setSubmitting(false)
     }, 2000)

@@ -22,6 +22,15 @@ const MenuLink = styled(NavLink)`
   }
 `
 
+const Logout = styled.div`
+  svg {
+    transition: all 0.3s linear;
+    &:hover {
+      fill: ${props => props.theme.colors.accent};
+    }
+  }
+`
+
 const Login = styled.span`
   ${F.Subtitle};
   text-transform: uppercase;
@@ -35,5 +44,6 @@ export const S = {
   Header,
   Logo,
   MenuLink,
+  Logout,
   Login,
 }

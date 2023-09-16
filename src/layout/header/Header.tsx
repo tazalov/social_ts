@@ -11,9 +11,10 @@ interface HeaderPT {
   isAuth: boolean
   login: string | null
   toggleTheme: () => void
+  logout: () => void
 }
 
-export const Header: FC<HeaderPT> = ({ isAuth, login, toggleTheme }) => {
+export const Header: FC<HeaderPT> = ({ isAuth, login, toggleTheme, logout }) => {
   const theme = useTheme()
   return (
     <C.Container>
@@ -46,9 +47,9 @@ export const Header: FC<HeaderPT> = ({ isAuth, login, toggleTheme }) => {
                 <S.MenuLink to={'/profile'}>
                   <S.Login>{login}</S.Login>
                 </S.MenuLink>
-                <S.MenuLink to={'/login'}>
+                <S.Logout onClick={logout}>
                   <Icon iconId={'logout'} width={'20px'} height={'20px'} viewBox="0 0 32 32" />
-                </S.MenuLink>
+                </S.Logout>
               </>
             ) : (
               <S.MenuLink to={'/login'}>

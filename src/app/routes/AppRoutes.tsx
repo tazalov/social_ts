@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import Dialogs from '../../pages/dialogs/DialogsContainer'
-import { Login } from '../../pages/login/Login'
+import Login from '../../pages/login/Login'
 import Users from '../../pages/users/UsersContainer'
 import Profile from '../../pages/profile/ProfileContainer'
 

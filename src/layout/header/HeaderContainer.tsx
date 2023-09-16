@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { AuthST } from '../../redux/auth/reducer/types'
-import { getUserData } from '../../redux/auth/thunks'
+import { getUserData, logoutUser } from '../../redux/auth/thunks'
 import { AppStateT } from '../../redux/store'
 import { Header } from './Header'
 
@@ -18,7 +18,14 @@ class HeaderContainer extends Component<HeaderContainerPT> {
 
   render() {
     const { isAuth, login, toggleTheme } = this.props
-    return <Header isAuth={isAuth} login={login} toggleTheme={toggleTheme} />
+    return (
+      <Header
+        isAuth={isAuth}
+        login={login}
+        toggleTheme={toggleTheme}
+        logout={this.props.logoutUser}
+      />
+    )
   }
 }
 
@@ -31,8 +38,10 @@ const mapStateToProps = (state: AppStateT): AuthST => ({
 
 interface MapDispatchPT {
   getUserData: () => void
+  logoutUser: () => void
 }
 
 export default connect<AuthST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
   getUserData,
+  logoutUser,
 })(HeaderContainer)
