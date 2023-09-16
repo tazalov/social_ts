@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { Avatar } from '../../../components/avatar/Avatar'
-import noAvatar from '../../../assets/images/carrepair.webp'
+import noAvatar from '../../../assets/images/anynft.webp'
 import { S } from './Friends.styled'
 
 interface FriendPT {

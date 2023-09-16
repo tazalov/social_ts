@@ -19,6 +19,7 @@ const initialState: ProfileST = {
   ],
   friends: null,
   status: '',
+  isProfileLoading: false,
 }
 
 export const profileReducer = (state = initialState, action: ProfileAT) => {
@@ -39,6 +40,12 @@ export const profileReducer = (state = initialState, action: ProfileAT) => {
       return {
         ...state,
         profile: action.profile,
+      }
+    }
+    case 'social/profile/SET_PROFILE_LOADING': {
+      return {
+        ...state,
+        isProfileLoading: action.isLoading,
       }
     }
     case 'social/profile/SET_FRIENDS_PROFILE': {

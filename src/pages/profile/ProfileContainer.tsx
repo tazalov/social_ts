@@ -2,6 +2,7 @@ import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
+import { Preloader } from '../../components/preloader/Preloader'
 import { AuthST } from '../../redux/auth/reducer/types'
 import { addPost } from '../../redux/profile/actions'
 import { ProfileST } from '../../redux/profile/reducer/types'
@@ -34,7 +35,11 @@ class ProfileContainer extends Component<ProfileContainerPT> {
   }
 
   render() {
-    return <Profile {...this.props} isOwner={!this.props.match.params.userId} />
+    return this.props.isProfileLoading ? (
+      <Preloader size={150} />
+    ) : (
+      <Profile {...this.props} isOwner={!this.props.match.params.userId} />
+    )
   }
 }
 
@@ -44,6 +49,7 @@ const mapStateToProps = (state: AppStateT): MapStatePT => ({
   profile: state.profile.profile,
   posts: state.profile.posts,
   friends: state.profile.friends,
+  isProfileLoading: state.profile.isProfileLoading,
   id: state.auth.id,
 })
 

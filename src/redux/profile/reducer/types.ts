@@ -53,4 +53,5 @@ export interface ProfileST {
   posts: PostT[]
   friends: FriendsT | null
   status: string
+  isProfileLoading: boolean
 }
