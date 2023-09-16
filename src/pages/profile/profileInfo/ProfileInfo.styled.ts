@@ -25,6 +25,8 @@ const Name = styled(C.FlexWrapper)`
   font-size: 25px;
   p {
     text-transform: uppercase;
+    font-weight: 600;
+    color: ${props => props.theme.colors.accent2};
   }
   span {
     font-size: 14px;

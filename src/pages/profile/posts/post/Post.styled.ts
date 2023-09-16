@@ -28,10 +28,10 @@ const PostText = styled.div`
 const PostButtons = styled(C.FlexWrapper)`
   button {
     padding: 5px;
-    color: ${props => props.theme.colors.secondaryFont};
+    color: ${props => props.theme.colors.error};
     font-size: 14px;
     &:hover {
-      color: ${props => props.theme.colors.primaryFont};
+      color: ${props => props.theme.colors.accent};
     }
     span {
       margin-left: 5px;

@@ -28,8 +28,8 @@ export const ButtonB: FC<ButtonBPT> = ({
 
 const StyledButton = styled.button`
   padding: 5px;
-  color: ${props => props.theme.colors.secondaryFont};
-  border: 1px solid ${props => props.theme.colors.secondaryFont};
+  color: ${props => props.theme.colors.accent2};
+  border: 1px solid ${props => props.theme.colors.accent2};
   transition: all 0.3s ease;
   text-transform: uppercase;
   text-align: center;
@@ -37,8 +37,8 @@ const StyledButton = styled.button`
   display: block;
   font-size: 14px;
   &:hover {
-    background-color: ${props => props.theme.colors.secondaryFont};
-    border: 1px solid ${props => props.theme.colors.secondaryFont};
+    background-color: ${props => props.theme.colors.accent2};
+    border: 1px solid ${props => props.theme.colors.accent2};
     color: ${props => props.theme.colors.thirdBg};
   }
 `

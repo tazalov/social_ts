@@ -17,13 +17,7 @@ export const Friends: FC<FriendsPT> = ({ friends, isOwner }) => {
     )) || 'No friends'
   return (
     <S.Friends>
-      <TitleBlock
-        title={
-          <>
-            Friends <span>{friends?.count || 0}</span>
-          </>
-        }
-      />
+      <TitleBlock title={<>Friends {isOwner ? <span>{friends?.count || 0}</span> : ''}</>} />
       {isOwner ? <S.List>{friendsProfile}</S.List> : <C.Text>User hidden this info</C.Text>}
     </S.Friends>
   )

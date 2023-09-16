@@ -48,10 +48,16 @@ class Status extends Component<MapStatePT & MapDispatchPT, OwnStateT> {
   }
 
   render() {
+    const { status } = this.props
+    const newStatus = status
+      ? status.length > 15
+        ? `${status.slice(0, 13)}...`
+        : status
+      : 'No status'
     return (
       <S.Status>
         {!this.state.editMode ? (
-          <span onDoubleClick={this.activateEditMode}>{this.props.status || 'No status'}</span>
+          <span onDoubleClick={this.activateEditMode}>{newStatus}</span>
         ) : (
           <Input
             type="text"
