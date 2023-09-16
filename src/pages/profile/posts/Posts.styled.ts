@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { C } from '../../../styles/Common.styled'
+import { C } from '../../../app/styles/Common.styled'
 
 const Posts = styled(C.FlexWrapper)`
   width: 100%;

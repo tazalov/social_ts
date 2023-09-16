@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Avatar } from '../../../../components/avatar/Avatar'
-import avatar from '../../../../assets/images/anynft.webp'
+import avatar from '../../../../app/assets/images/anynft.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { S } from './Post.styled'
-import { C } from '../../../../styles/Common.styled'
+import { C } from '../../../../app/styles/Common.styled'
 
 interface PostPT {
   id: number

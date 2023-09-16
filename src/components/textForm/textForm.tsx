@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'
-import { C } from '../../styles/Common.styled'
+import { C } from '../../app/styles/Common.styled'
 import { Button } from '../button/Button'
 
 type TextFormPT = {

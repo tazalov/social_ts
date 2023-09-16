@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import iconsSprite from '../../assets/images/icon/icon-sprite.svg'
+import iconsSprite from '../../app/assets/images/icon/icon-sprite.svg'
 
 type IconPT = {
   iconId: string

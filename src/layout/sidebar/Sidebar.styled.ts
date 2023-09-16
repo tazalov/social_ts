@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { F } from '../../styles/Fragments.styled'
+import { F } from '../../app/styles/Fragments.styled'
 
 const Sidebar = styled.nav``
 

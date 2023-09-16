@@ -1,7 +1,7 @@
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FC, useState } from 'react'
-import { C } from '../../styles/Common.styled'
+import { C } from '../../app/styles/Common.styled'
 import { S } from './Pagination.styled'
 
 type PaginationPT = {

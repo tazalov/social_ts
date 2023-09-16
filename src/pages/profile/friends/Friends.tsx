@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { TitleBlock } from '../../../components/titleBlock/TitleBlock'
 import { FriendsT } from '../../../redux/profile/reducer/types'
-import { C } from '../../../styles/Common.styled'
+import { C } from '../../../app/styles/Common.styled'
 import { Friend } from './Friend'
 import { S } from './Friends.styled'
 

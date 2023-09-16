@@ -7,7 +7,7 @@ import { AppStateT } from '../../redux/store'
 import { setCurrentPage } from '../../redux/users/actions'
 import { UsersST } from '../../redux/users/reducer/types'
 import { getUsers, setFollow, setUnfollow } from '../../redux/users/thunks'
-import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
+import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
 import { User } from './user/User'
 import { S } from './Users.styled'
 

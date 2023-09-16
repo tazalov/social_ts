@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { C } from '../../../../styles/Common.styled'
-import { F } from '../../../../styles/Fragments.styled'
+import { C } from '../../../../app/styles/Common.styled'
+import { F } from '../../../../app/styles/Fragments.styled'
 
 const Post = styled.div`
   padding: 10px;

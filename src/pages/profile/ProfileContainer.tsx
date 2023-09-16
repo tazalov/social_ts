@@ -8,7 +8,7 @@ import { addPost } from '../../redux/profile/actions'
 import { ProfileST } from '../../redux/profile/reducer/types'
 import { getFriendsProfile, getStatusProfile, getUserProfile } from '../../redux/profile/thunks'
 import { AppStateT } from '../../redux/store'
-import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
+import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
 import { Profile } from './Profile'
 
 type ProfileContainerPT = MapStatePT & MapDispatchPT & RouteComponentProps<{ userId: string }>

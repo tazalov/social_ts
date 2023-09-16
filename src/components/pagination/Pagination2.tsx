@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { C } from '../../styles/Common.styled'
+import { C } from '../../app/styles/Common.styled'
 import { S } from './Pagination.styled'
 
 type PaginationPT = {

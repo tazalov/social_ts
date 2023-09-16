@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styled, { css, useTheme } from 'styled-components'
-import iconsSprite from '../../assets/images/icon/social-icon-sprite.svg'
+import iconsSprite from '../../app/assets/images/icon/social-icon-sprite.svg'
 import { ContactLinksT } from '../../pages/profile/profileInfo/links/Links'
 
 type SocialPT = {

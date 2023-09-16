@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Header from '../layout/header/HeaderContainer'
 import { Main } from '../layout/main/Main'
 import { Sidebar } from '../layout/sidebar/Sidebar'
-import { C } from '../styles/Common.styled'
+import { C } from './styles/Common.styled'
 import { AppRoutes } from './routes/AppRoutes'
 
 type AppPT = {

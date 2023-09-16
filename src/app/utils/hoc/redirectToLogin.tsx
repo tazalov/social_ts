@@ -1,8 +1,8 @@
 import React, { ComponentType, FC } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { AuthST } from '../../redux/auth/reducer/types'
-import { AppStateT } from '../../redux/store'
+import { AuthST } from '../../../redux/auth/reducer/types'
+import { AppStateT } from '../../../redux/store'
 
 export const redirectToLogin = (Component: ComponentType<any>) => {
   const MyRedirect: FC<MapStatePT> = ({ isAuth, ...restProps }) => {

@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { useTheme } from 'styled-components'
 import { ButtonB } from '../../components/button/ButtonB'
 import { Icon } from '../../components/icon/Icon'
-import { C } from '../../styles/Common.styled'
+import { C } from '../../app/styles/Common.styled'
 import { S } from './Header.styled'
 
 interface HeaderPT {

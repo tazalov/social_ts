@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { C } from '../../styles/Common.styled'
+import { C } from '../../app/styles/Common.styled'
 
 const Users = styled(C.ShadowContainer)`
   margin-top: 20px;

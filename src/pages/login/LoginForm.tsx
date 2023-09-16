@@ -3,8 +3,8 @@ import { FC } from 'react'
 import { Button } from '../../components/button/Button'
 import { Loading } from '../../components/icon/Loading'
 import { Input } from '../../components/input/Input'
-import { C } from '../../styles/Common.styled'
-import { LoginSchema } from '../../utils/validators/validators'
+import { C } from '../../app/styles/Common.styled'
+import { LoginSchema } from '../../app/utils/validators/validators'
 
 export const LoginForm: FC = () => {
   const initialFields = {
@@ -25,7 +25,6 @@ export const LoginForm: FC = () => {
     <Formik initialValues={initialFields} onSubmit={onSubmit} validationSchema={LoginSchema}>
       {props => {
         const { errors, touched, isSubmitting } = props
-        console.log(errors)
         return (
           <Form style={{ maxWidth: '500px', margin: '20px auto' }}>
             <C.FlexWrapper
@@ -36,7 +35,7 @@ export const LoginForm: FC = () => {
             >
               <Field
                 as={Input}
-                label={'E-mail'}
+                label={'E-mail *'}
                 name={'email'}
                 type={'email'}
                 placeholder={'Enter you email'}
@@ -46,7 +45,7 @@ export const LoginForm: FC = () => {
               />
               <Field
                 as={Input}
-                label={'Password'}
+                label={'Password *'}
                 name={'password'}
                 type={'password'}
                 placeholder={'Enter your password'}
@@ -55,11 +54,11 @@ export const LoginForm: FC = () => {
                 errorText={errors.password}
               />
               <Field as={Input} label={'Remember me'} name={'remember'} type={'checkbox'} />
-              <Button
-                type="submit"
-                title={isSubmitting ? <Loading /> : 'login'}
-                disable={Object.keys(errors).length > 0}
-              />
+              {isSubmitting ? (
+                <Loading />
+              ) : (
+                <Button type="submit" title={'login'} disable={Object.keys(errors).length > 0} />
+              )}
             </C.FlexWrapper>
           </Form>
         )
