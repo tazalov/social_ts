@@ -12,12 +12,18 @@ const Button = styled.button`
   background-color: ${props => props.theme.colors.accent};
   transition: all 0.3s ease;
   &:hover {
-    background-color: ${props => props.theme.colors.secondaryFont};
+    background-color: ${props => {
+      const { name, colors } = props.theme
+      return name === 'light' ? colors.primaryFont : colors.secondaryFont
+    }};
   }
 `
 
 const SelectedButton = styled(Button)`
-  background-color: ${props => props.theme.colors.secondaryFont};
+  background-color: ${props => {
+    const { name, colors } = props.theme
+    return name === 'light' ? colors.primaryFont : colors.secondaryFont
+  }};
 `
 
 export const S = {

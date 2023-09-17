@@ -1,9 +1,8 @@
 import { FC } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import styled from 'styled-components'
 import { C } from '../../app/styles/Common.styled'
-import { F } from '../../app/styles/Fragments.styled'
+import { TitleBlock } from '../../components/titleBlock/TitleBlock'
 import { loginUser } from '../../redux/auth/thunks'
 import { AppStateT } from '../../redux/store'
 import { LoginForm } from './LoginForm'
@@ -14,19 +13,12 @@ export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, loginUser }) => 
   ) : (
     <C.ShadowContainer>
       <C.FlexWrapper $gap={'10px'} $direction={'column'} $justify={'center'}>
-        <Title>LOGIN</Title>
+        <TitleBlock title={'LOGIN'} />
         <LoginForm loginUser={loginUser} />
       </C.FlexWrapper>
     </C.ShadowContainer>
   )
 }
-
-const Title = styled.h2`
-  ${F.Title};
-  text-align: center;
-  background-color: ${props => props.theme.colors.thirdBg};
-  padding: 10px;
-`
 
 interface MapStatePT {
   isAuth: boolean

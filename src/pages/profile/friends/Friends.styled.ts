@@ -17,6 +17,7 @@ const List = styled.ul`
 const Friend = styled.div`
   padding: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
   &:hover {
     background-color: ${props => props.theme.colors.thirdBg};
   }

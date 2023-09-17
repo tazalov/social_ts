@@ -12,6 +12,7 @@ const SidebarLink = styled(NavLink)`
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
   svg {
     width: 20px;
     height: 20px;
@@ -19,7 +20,11 @@ const SidebarLink = styled(NavLink)`
   }
   &.active,
   &:hover {
-    background-color: ${props => props.theme.colors.thirdBg};
+    background-color: ${props => props.theme.colors.accent};
+    color: ${props => {
+      const { name, colors } = props.theme
+      return name === 'light' ? colors.secondaryFont : colors.primaryFont
+    }};
   }
 `
 

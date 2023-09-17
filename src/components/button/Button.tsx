@@ -49,7 +49,7 @@ const StyledButton = styled.button<PropsType>`
   display: block;
   max-width: min-content;
   &:hover {
-    background-color: ${props => props.theme.colors.accent2};
+    background-color: ${props => props.theme.colors.accent};
   }
   &:disabled {
     background-color: ${props => props.theme.colors.secondaryFont};

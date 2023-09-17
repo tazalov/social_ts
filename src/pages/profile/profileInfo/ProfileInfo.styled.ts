@@ -26,7 +26,7 @@ const Name = styled(C.FlexWrapper)`
   p {
     text-transform: uppercase;
     font-weight: 600;
-    color: ${props => props.theme.colors.accent2};
+    color: ${props => props.theme.colors.accent};
   }
   span {
     font-size: 14px;
@@ -36,7 +36,10 @@ const Name = styled(C.FlexWrapper)`
 `
 
 const Status = styled.div`
-  color: ${props => props.theme.colors.secondaryFont};
+  color: ${props => {
+    const { name, colors } = props.theme
+    return name === 'light' ? colors.primaryFont : colors.secondaryFont
+  }};
   display: inline-flex;
   width: 100%;
   & span {

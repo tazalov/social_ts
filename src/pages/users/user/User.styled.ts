@@ -4,6 +4,7 @@ import { F } from '../../../app/styles/Fragments.styled'
 
 const User = styled(C.FlexWrapper)`
   padding: 10px;
+  transition: all 0.3s ease;
   &:hover {
     background-color: ${props => props.theme.colors.thirdBg};
   }
@@ -15,7 +16,10 @@ const Name = styled.div`
 `
 
 const Status = styled.div`
-  color: ${props => props.theme.colors.secondaryFont};
+  color: ${props => {
+    const { name, colors } = props.theme
+    return name === 'light' ? colors.primaryFont : colors.secondaryFont
+  }};
   font-size: 14px;
 `
 

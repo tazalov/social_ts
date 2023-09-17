@@ -5,8 +5,7 @@ export const theme = {
     primaryBg: '#49526f',
     secondaryBg: '#161828',
     thirdBg: '#24273b',
-    accent: '#00b7ff',
-    accent2: '#0077FF',
+    accent: '#0a53a8',
     primaryFont: '#FFFFFF',
     secondaryFont: '#808080',
     error: '#ff2828',
@@ -31,14 +30,13 @@ export const theme = {
 export const lightTheme = {
   name: 'light',
   colors: {
-    bodyBg: 'linear-gradient(180deg, #D0D0D0, #F0F0F0)',
+    bodyBg: 'linear-gradient(180deg, #73a4de, #adcaec)',
     primaryBg: '#E6E6E6',
     secondaryBg: '#F0F0F0',
     thirdBg: '#D0D0D0',
     accent: '#0077FF',
-    accent2: '#005FCC',
     primaryFont: '#555555',
-    secondaryFont: '#808080',
+    secondaryFont: '#FFFFFF',
     error: '#b90000',
     shadowPrimary: '0 0 15px 2px rgba(0, 95, 204, 0.2)',
     svg: {

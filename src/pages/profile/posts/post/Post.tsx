@@ -16,13 +16,13 @@ interface PostPT {
 export const Post: FC<PostPT> = ({ name, message, likes }) => (
   <C.ShadowContainer>
     <S.Post>
-      <C.FlexWrapper $align={'center'}>
+      <S.PostHeader $align={'center'}>
         <Avatar img={avatar} w={50} h={50} />
         <S.UserInfo $gap={'10px'} $justify={'space-between'}>
           <span>{name}</span>
           <i>12/04/2022</i>
         </S.UserInfo>
-      </C.FlexWrapper>
+      </S.PostHeader>
       <S.PostText>{message}</S.PostText>
       <S.PostButtons $gap={'10px'} $justify={'space-between'}>
         <button>
