@@ -7,14 +7,14 @@ import { loginUser } from '../../redux/auth/thunks'
 import { AppStateT } from '../../redux/store'
 import { LoginForm } from './LoginForm'
 
-export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, loginUser }) => {
+export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, captcha, error, loginUser }) => {
   return isAuth ? (
     <Redirect to={'/profile'} />
   ) : (
     <C.ShadowContainer>
       <C.FlexWrapper $gap={'10px'} $direction={'column'} $justify={'center'}>
         <TitleBlock title={'LOGIN'} />
-        <LoginForm loginUser={loginUser} />
+        <LoginForm error={error} captcha={captcha} loginUser={loginUser} />
       </C.FlexWrapper>
     </C.ShadowContainer>
   )
@@ -22,14 +22,18 @@ export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, loginUser }) => 
 
 interface MapStatePT {
   isAuth: boolean
+  captcha: string
+  error: string
 }
 
-const mapStateToProps = (state: AppStateT) => ({
+const mapStateToProps = (state: AppStateT): MapStatePT => ({
   isAuth: state.auth.isAuth,
+  captcha: state.auth.captcha,
+  error: state.auth.error,
 })
 
 interface MapDispatchPT {
-  loginUser: (email: string, password: string, rememberMe: boolean) => void
+  loginUser: (email: string, password: string, rememberMe: boolean, captcha: string) => any
 }
 
 export default connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {

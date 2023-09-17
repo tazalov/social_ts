@@ -3,4 +3,6 @@ export interface AuthST {
   login: string | null
   email: string | null
   isAuth: boolean
+  captcha: string
+  error: string
 }

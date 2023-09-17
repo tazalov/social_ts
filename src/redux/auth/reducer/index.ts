@@ -6,6 +6,8 @@ const initialState: AuthST = {
   login: null,
   email: null,
   isAuth: false,
+  captcha: '',
+  error: '',
 }
 
 export const authReducer = (state = initialState, action: AuthAT) => {
@@ -15,6 +17,18 @@ export const authReducer = (state = initialState, action: AuthAT) => {
         ...state,
         ...action.payload,
         isAuth: action.isAuth,
+      }
+    }
+    case 'social/auth/SET_CAPTCHA': {
+      return {
+        ...state,
+        captcha: action.captcha,
+      }
+    }
+    case 'social/auth/SET_ERROR': {
+      return {
+        ...state,
+        error: action.error,
       }
     }
     default: {

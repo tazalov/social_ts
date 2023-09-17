@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { AuthST } from '../../redux/auth/reducer/types'
 import { getUserData, logoutUser } from '../../redux/auth/thunks'
 import { AppStateT } from '../../redux/store'
 import { Header } from './Header'
@@ -9,7 +8,7 @@ interface OwnPT {
   toggleTheme: () => void
 }
 
-type HeaderContainerPT = OwnPT & AuthST & MapDispatchPT
+type HeaderContainerPT = OwnPT & MapStatePT & MapDispatchPT
 
 class HeaderContainer extends Component<HeaderContainerPT> {
   componentDidMount() {
@@ -29,7 +28,14 @@ class HeaderContainer extends Component<HeaderContainerPT> {
   }
 }
 
-const mapStateToProps = (state: AppStateT): AuthST => ({
+type MapStatePT = {
+  id: number | null
+  login: string | null
+  email: string | null
+  isAuth: boolean
+}
+
+const mapStateToProps = (state: AppStateT): MapStatePT => ({
   id: state.auth.id,
   login: state.auth.login,
   email: state.auth.email,
@@ -41,7 +47,7 @@ interface MapDispatchPT {
   logoutUser: () => void
 }
 
-export default connect<AuthST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+export default connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
   getUserData,
   logoutUser,
 })(HeaderContainer)

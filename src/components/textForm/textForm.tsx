@@ -40,7 +40,11 @@ export function TextForm({ placeholder, callback }: TextFormPT) {
                 onBlur={handleBlur}
                 placeholder={placeholder}
               />
-              {isSubmitting ? <Loading /> : <Button title={'send'} type={'submit'} />}
+              {isSubmitting ? (
+                <Loading />
+              ) : (
+                <Button title={'send'} type={'submit'} disable={Object.keys(errors).length > 0} />
+              )}
             </C.FlexWrapper>
             {errors.text && touched.text && <ErrorField>{errors.text}</ErrorField>}
           </Form>

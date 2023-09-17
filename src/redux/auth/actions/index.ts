@@ -1,4 +1,4 @@
-import { SetUserDataAT } from './types'
+import { SetCaptchaAT, SetErrorAT, SetUserDataAT } from './types'
 
 export const setUserData = (
   id: number | null,
@@ -13,4 +13,14 @@ export const setUserData = (
     email,
   },
   isAuth,
+})
+
+export const setCaptcha = (captcha: string): SetCaptchaAT => ({
+  type: 'social/auth/SET_CAPTCHA',
+  captcha,
+})
+
+export const setError = (error: string): SetErrorAT => ({
+  type: 'social/auth/SET_ERROR',
+  error,
 })
