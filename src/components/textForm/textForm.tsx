@@ -23,11 +23,23 @@ export function TextForm({ placeholder, callback }: TextFormPT) {
   return (
     <Formik initialValues={initialFields} onSubmit={onSubmit} validationSchema={TextFormSchema}>
       {props => {
-        const { errors, touched, isSubmitting } = props
+        const { errors, touched, isSubmitting, setFieldError } = props
+        const handleBlur = () => {
+          if (touched.text) {
+            setFieldError('text', undefined)
+          }
+        }
+
         return (
           <Form>
             <C.FlexWrapper $gap={'10px'} $align={'center'}>
-              <Field as={StyledTextArea} name={'text'} type={'text'} placeholder={placeholder} />
+              <Field
+                as={StyledTextArea}
+                name={'text'}
+                type={'text'}
+                onBlur={handleBlur}
+                placeholder={placeholder}
+              />
               {isSubmitting ? <Loading /> : <Button title={'send'} type={'submit'} />}
             </C.FlexWrapper>
             {errors.text && touched.text && <ErrorField>{errors.text}</ErrorField>}

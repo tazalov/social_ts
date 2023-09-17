@@ -17,19 +17,20 @@ export const LoginForm: FC<LoginFormPT> = ({ loginUser }) => {
     remember: false,
   }
   const onSubmit = (values: typeof initialFields, props: FormikHelpers<typeof initialFields>) => {
-    console.log(values)
-    console.log(props)
-    setTimeout(() => {
-      loginUser(values.email, values.password, values.remember)
-      props.resetForm()
-      props.setSubmitting(false)
-    }, 2000)
+    loginUser(values.email, values.password, values.remember)
+    props.resetForm()
+    props.setSubmitting(false)
   }
 
   return (
     <Formik initialValues={initialFields} onSubmit={onSubmit} validationSchema={LoginSchema}>
       {props => {
-        const { errors, touched, isSubmitting } = props
+        const { errors, touched, isSubmitting, setFieldError } = props
+        const handleBlur = (fieldName: 'email' | 'password') => () => {
+          if (touched[fieldName]) {
+            setFieldError(fieldName, undefined)
+          }
+        }
         return (
           <Form style={{ maxWidth: '500px', margin: '20px auto' }}>
             <C.FlexWrapper
@@ -44,9 +45,10 @@ export const LoginForm: FC<LoginFormPT> = ({ loginUser }) => {
                 name={'email'}
                 type={'email'}
                 placeholder={'Enter you email'}
-                style={{ padding: '10px' }}
+                onBlur={handleBlur}
                 error={errors.email && touched.email}
                 errorText={errors.email}
+                style={{ padding: '10px' }}
               />
               <Field
                 as={Input}
@@ -54,9 +56,10 @@ export const LoginForm: FC<LoginFormPT> = ({ loginUser }) => {
                 name={'password'}
                 type={'password'}
                 placeholder={'Enter your password'}
-                style={{ padding: '10px' }}
+                onBlur={handleBlur}
                 error={errors.password && touched.password}
                 errorText={errors.password}
+                style={{ padding: '10px' }}
               />
               <Field as={Input} label={'Remember me'} name={'remember'} type={'checkbox'} />
               {isSubmitting ? (
