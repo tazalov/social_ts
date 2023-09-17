@@ -14,8 +14,9 @@ export const authAPI = {
     })
     return response.data
   },
-  logout() {
-    return social.delete(`auth/login`)
+  async logout() {
+    const response = await social.delete(`auth/login`)
+    return response.data
   },
   async getCaptcha() {
     const response = await social.get('security/get-captcha-url')

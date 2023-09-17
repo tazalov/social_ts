@@ -29,8 +29,8 @@ export const loginUser =
   }
 
 export const logoutUser = (): BaseThunkT<AuthAT> => async dispatch => {
-  const response = await authAPI.logout()
-  if (response.data.resultCode === ResultCodeE.Success) {
+  const data = await authAPI.logout()
+  if (data.resultCode === ResultCodeE.Success) {
     dispatch(setUserData(null, null, null, false))
   }
 }

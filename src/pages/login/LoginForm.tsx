@@ -20,9 +20,14 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
     captcha,
     remember: false,
   }
-  const onSubmit = (values: typeof initialFields, props: FormikHelpers<typeof initialFields>) => {
-    loginUser(values.email, values.password, values.remember, values.captcha)
-    props.resetForm()
+  const onSubmit = async (
+    values: typeof initialFields,
+    props: FormikHelpers<typeof initialFields>,
+  ) => {
+    await loginUser(values.email, values.password, values.remember, values.captcha)
+    if (!error) {
+      props.resetForm()
+    }
     props.setSubmitting(false)
   }
 
