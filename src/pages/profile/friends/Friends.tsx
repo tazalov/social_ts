@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { C } from '../../../app/styles/Common.styled'
-import { TitleBlock } from '../../../components/titleBlock/TitleBlock'
+import { TitleBlock } from '../../../components'
 import { FriendsT } from '../../../redux/profile-reducer'
 import { Friend } from './Friend'
 import { S } from './Friends.styled'

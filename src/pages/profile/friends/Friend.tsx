@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Avatar } from '../../../components/avatar/Avatar'
+import { Avatar } from '../../../components'
 import noAvatar from '../../../app/assets/images/anynft.webp'
 import { S } from './Friends.styled'
 

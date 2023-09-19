@@ -1,9 +1,7 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import photo from '../../../app/assets/images/anynft.webp'
-import { Avatar } from '../../../components/avatar/Avatar'
-import { ButtonB } from '../../../components/button/ButtonB'
-import { Loading } from '../../../components/icon/Loading'
+import { Avatar, ButtonB, Loading } from '../../../components'
 import { ProgressFollowT } from '../../../redux/users-reducer'
 import { S } from './User.styled'
 

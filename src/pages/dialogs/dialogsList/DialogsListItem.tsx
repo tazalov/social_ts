@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Avatar } from '../../../components/avatar/Avatar'
+import { Avatar } from '../../../components'
 import avatar from '../../../app/assets/images/anynft.webp'
 import { S } from './DialogsList.styled'
 import { C } from '../../../app/styles/Common.styled'

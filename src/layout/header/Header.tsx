@@ -2,9 +2,8 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FC } from 'react'
 import { useTheme } from 'styled-components'
-import { ButtonB } from '../../components/button/ButtonB'
-import { Icon } from '../../components/icon/Icon'
 import { C } from '../../app/styles/Common.styled'
+import { ButtonB, Icon } from '../../components'
 import { S } from './Header.styled'
 
 interface HeaderPT {

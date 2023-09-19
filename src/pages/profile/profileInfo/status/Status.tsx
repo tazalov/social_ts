@@ -1,6 +1,6 @@
 import { ChangeEvent, Component, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
-import { Input } from '../../../../components/input/Input'
+import { Input } from '../../../../components'
 import { updateStatusProfile } from '../../../../redux/profile-reducer'
 import { RootStateT } from '../../../../redux/store'
 import { S } from '../ProfileInfo.styled'

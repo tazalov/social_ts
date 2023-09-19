@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Social } from '../../../../components/icon/Social'
+import { Social } from '../../../../components'
 import { C } from '../../../../app/styles/Common.styled'
 import { ContactsT } from '../../../../redux/profile-reducer'
 

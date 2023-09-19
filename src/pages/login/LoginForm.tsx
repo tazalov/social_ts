@@ -1,11 +1,8 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik'
 import { FC } from 'react'
-import { Button } from '../../components/button/Button'
-import { ErrorField } from '../../components/errorField/ErrorField'
-import { Loading } from '../../components/icon/Loading'
-import { Input } from '../../components/input/Input'
 import { C } from '../../app/styles/Common.styled'
 import { LoginSchema } from '../../app/utils/validators/validators'
+import { Button, ErrorField, Input, Loading } from '../../components'
 
 interface LoginFormPT {
   captcha: string

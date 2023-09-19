@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TextForm } from '../../../components/textForm/textForm'
+import { TextForm } from '../../../components'
 import { DialogsMessageT } from '../../../redux/dialogs-reducer'
 import { DialogsMessage } from './DialogsMessage'
 import { S } from './DialogsMessages.styled'
