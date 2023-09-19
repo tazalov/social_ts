@@ -1,9 +1,8 @@
 import { ComponentType, FC } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { addMessage } from '../../redux/dialogs/actions'
-import { DialogsST } from '../../redux/dialogs/reducer/types'
-import { AppStateT } from '../../redux/store'
+import { addMessage, DialogsST } from '../../redux/dialogs-reducer'
+import { RootStateT } from '../../redux/store'
 import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
 import { S } from './Dialogs.styled'
 import { DialogsList } from './dialogsList/DialogsList'
@@ -20,7 +19,7 @@ const Dialogs: FC<DialogsPT> = ({ list, messages, addMessage }) => {
   )
 }
 
-const mapStateToProps = (state: AppStateT): DialogsST => ({
+const mapStateToProps = (state: RootStateT): DialogsST => ({
   list: state.dialogs.list,
   messages: state.dialogs.messages,
 })
@@ -30,7 +29,7 @@ interface MapDispatchPT {
 }
 
 export default compose<ComponentType>(
-  connect<DialogsST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+  connect<DialogsST, MapDispatchPT, unknown, RootStateT>(mapStateToProps, {
     addMessage,
   }),
   redirectToLogin,

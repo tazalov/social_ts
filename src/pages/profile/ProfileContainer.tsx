@@ -2,13 +2,17 @@ import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
-import { Preloader } from '../../components/preloader/Preloader'
-import { AuthST } from '../../redux/auth/reducer/types'
-import { addPost } from '../../redux/profile/actions'
-import { ProfileST } from '../../redux/profile/reducer/types'
-import { getFriendsProfile, getStatusProfile, getUserProfile } from '../../redux/profile/thunks'
-import { AppStateT } from '../../redux/store'
 import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
+import { Preloader } from '../../components/preloader/Preloader'
+import { AppST } from '../../redux/app-reducer'
+import {
+  addPost,
+  getFriendsProfile,
+  getStatusProfile,
+  getUserProfile,
+  ProfileST,
+} from '../../redux/profile-reducer'
+import { RootStateT } from '../../redux/store'
 import { Profile } from './Profile'
 
 type ProfileContainerPT = MapStatePT & MapDispatchPT & RouteComponentProps<{ userId: string }>
@@ -43,14 +47,14 @@ class ProfileContainer extends Component<ProfileContainerPT> {
   }
 }
 
-type MapStatePT = Omit<ProfileST, 'status'> & Pick<AuthST, 'id'>
+type MapStatePT = Omit<ProfileST, 'status'> & Pick<AppST, 'id'>
 
-const mapStateToProps = (state: AppStateT): MapStatePT => ({
+const mapStateToProps = (state: RootStateT): MapStatePT => ({
   profile: state.profile.profile,
   posts: state.profile.posts,
   friends: state.profile.friends,
   isProfileLoading: state.profile.isProfileLoading,
-  id: state.auth.id,
+  id: state.app.id,
 })
 
 interface MapDispatchPT {
@@ -61,7 +65,7 @@ interface MapDispatchPT {
 }
 
 export default compose<ComponentType>(
-  connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+  connect<MapStatePT, MapDispatchPT, unknown, RootStateT>(mapStateToProps, {
     addPost,
     getUserProfile,
     getStatusProfile,

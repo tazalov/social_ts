@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { TextForm } from '../../../components/textForm/textForm'
-import { PostT } from '../../../redux/profile/reducer/types'
 import { C } from '../../../app/styles/Common.styled'
+import { PostT } from '../../../redux/profile-reducer'
 import { Post } from './post/Post'
 import { S } from './Posts.styled'
 

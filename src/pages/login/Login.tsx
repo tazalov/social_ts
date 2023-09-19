@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { C } from '../../app/styles/Common.styled'
 import { TitleBlock } from '../../components/titleBlock/TitleBlock'
-import { loginUser } from '../../redux/auth/thunks'
-import { AppStateT } from '../../redux/store'
+import { loginUser } from '../../redux/app-reducer'
+import { RootStateT } from '../../redux/store'
 import { LoginForm } from './LoginForm'
 
 export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, captcha, error, loginUser }) => {
@@ -26,16 +26,16 @@ interface MapStatePT {
   error: string
 }
 
-const mapStateToProps = (state: AppStateT): MapStatePT => ({
-  isAuth: state.auth.isAuth,
-  captcha: state.auth.captcha,
-  error: state.auth.error,
+const mapStateToProps = (state: RootStateT): MapStatePT => ({
+  isAuth: state.app.isAuth,
+  captcha: state.app.captcha,
+  error: state.app.error,
 })
 
 interface MapDispatchPT {
   loginUser: (email: string, password: string, rememberMe: boolean, captcha: string) => any
 }
 
-export default connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+export default connect<MapStatePT, MapDispatchPT, unknown, RootStateT>(mapStateToProps, {
   loginUser,
 })(Login)

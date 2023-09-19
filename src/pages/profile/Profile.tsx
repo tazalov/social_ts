@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import cover from '../../app/assets/images/carrepair.webp'
-import { FriendsT, PostT, ProfileT } from '../../redux/profile/reducer/types'
+import { FriendsT, PostT, ProfileT } from '../../redux/profile-reducer'
 import { ProfileInfo } from './profileInfo/ProfileInfo'
 import { Friends } from './friends/Friends'
 import { Posts } from './posts/Posts'

@@ -5,7 +5,7 @@ export const theme = {
     primaryBg: '#49526f',
     secondaryBg: '#161828',
     thirdBg: '#24273b',
-    accent: '#0a53a8',
+    accent: '#444a7c',
     primaryFont: '#FFFFFF',
     secondaryFont: '#808080',
     error: '#ff2828',

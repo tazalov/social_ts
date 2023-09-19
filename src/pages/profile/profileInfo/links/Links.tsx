@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Social } from '../../../../components/icon/Social'
-import { ContactsT } from '../../../../redux/profile/reducer/types'
 import { C } from '../../../../app/styles/Common.styled'
+import { ContactsT } from '../../../../redux/profile-reducer'
 
 interface LinksPT {
   links: ContactsT

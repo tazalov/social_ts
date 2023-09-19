@@ -4,7 +4,7 @@ import photo from '../../../app/assets/images/anynft.webp'
 import { Avatar } from '../../../components/avatar/Avatar'
 import { ButtonB } from '../../../components/button/ButtonB'
 import { Loading } from '../../../components/icon/Loading'
-import { ProgressFollowT } from '../../../redux/users/reducer/types'
+import { ProgressFollowT } from '../../../redux/users-reducer'
 import { S } from './User.styled'
 
 interface UserPT {

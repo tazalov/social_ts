@@ -1,8 +1,8 @@
 import { ChangeEvent, Component, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
 import { Input } from '../../../../components/input/Input'
-import { updateStatusProfile } from '../../../../redux/profile/thunks'
-import { AppStateT } from '../../../../redux/store'
+import { updateStatusProfile } from '../../../../redux/profile-reducer'
+import { RootStateT } from '../../../../redux/store'
 import { S } from '../ProfileInfo.styled'
 
 interface OwnStateT {
@@ -79,8 +79,8 @@ interface MapStatePT {
   status: string
 }
 
-const mapStateToProps = (state: AppStateT): MapStatePT => ({
-  id: state.auth.id,
+const mapStateToProps = (state: RootStateT): MapStatePT => ({
+  id: state.app.id,
   userId: state.profile.profile?.userId,
   status: state.profile.status,
 })
@@ -89,6 +89,6 @@ interface MapDispatchPT {
   updateStatusProfile: (status: string) => void
 }
 
-export default connect<MapStatePT, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+export default connect<MapStatePT, MapDispatchPT, unknown, RootStateT>(mapStateToProps, {
   updateStatusProfile,
 })(Status)

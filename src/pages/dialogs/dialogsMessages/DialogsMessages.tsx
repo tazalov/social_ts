@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TextForm } from '../../../components/textForm/textForm'
-import { DialogsMessageT } from '../../../redux/dialogs/reducer/types'
+import { DialogsMessageT } from '../../../redux/dialogs-reducer'
 import { DialogsMessage } from './DialogsMessage'
 import { S } from './DialogsMessages.styled'
 

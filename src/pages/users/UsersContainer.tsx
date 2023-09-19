@@ -3,11 +3,10 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Pagination2 } from '../../components/pagination/Pagination2'
 import { Preloader } from '../../components/preloader/Preloader'
-import { AppStateT } from '../../redux/store'
-import { setCurrentPage } from '../../redux/users/actions'
-import { UsersST } from '../../redux/users/reducer/types'
-import { getUsers, setFollow, setUnfollow } from '../../redux/users/thunks'
+import { RootStateT } from '../../redux/store'
 import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
+import { getUsers, setFollow, setUnfollow, UsersST } from '../../redux/users-reducer'
+import { setCurrentPage } from '../../redux/users-reducer/model/actions/users.actions'
 import { User } from './user/User'
 import { S } from './Users.styled'
 
@@ -69,7 +68,7 @@ class UsersC extends Component<UsersCPT> {
   }
 }
 
-const mapStateToProps = (state: AppStateT): UsersST => ({
+const mapStateToProps = (state: RootStateT): UsersST => ({
   list: state.users.list,
   totalCount: state.users.totalCount,
   pageSize: state.users.pageSize,
@@ -86,7 +85,7 @@ interface MapDispatchPT {
 }
 
 export default compose<ComponentType>(
-  connect<UsersST, MapDispatchPT, unknown, AppStateT>(mapStateToProps, {
+  connect<UsersST, MapDispatchPT, unknown, RootStateT>(mapStateToProps, {
     setFollow,
     setUnfollow,
     setCurrentPage,

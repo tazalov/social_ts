@@ -7,7 +7,7 @@ const Container = styled.div`
   margin: 0 auto;
 `
 
-type FlexWrapperPT = {
+interface FlexWrapperPT {
   $direction?: string
   $justify?: string
   $align?: string

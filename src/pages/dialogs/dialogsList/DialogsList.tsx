@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { DialogsListItemT } from '../../../redux/dialogs/reducer/types'
+import { DialogsListItemT } from '../../../redux/dialogs-reducer'
 import { S } from './DialogsList.styled'
 import { DialogsListItem } from './DialogsListItem'
 
