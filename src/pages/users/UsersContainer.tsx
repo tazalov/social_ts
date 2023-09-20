@@ -4,8 +4,14 @@ import { compose } from 'redux'
 import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
 import { Pagination2, Preloader } from '../../components'
 import { RootStateT } from '../../redux/store'
-import { getUsers, setFollow, setUnfollow, UsersST } from '../../redux/users-reducer'
-import { setCurrentPage } from '../../redux/users-reducer/model/actions/users.actions'
+import {
+  getUsers,
+  getUsersState,
+  setCurrentPage,
+  setFollow,
+  setUnfollow,
+  UsersST,
+} from '../../redux/users-reducer'
 import { User } from './user/User'
 import { S } from './Users.styled'
 
@@ -67,15 +73,6 @@ class UsersC extends Component<UsersCPT> {
   }
 }
 
-const mapStateToProps = (state: RootStateT): UsersST => ({
-  list: state.users.list,
-  totalCount: state.users.totalCount,
-  pageSize: state.users.pageSize,
-  currentPage: state.users.currentPage,
-  isPageLoading: state.users.isPageLoading,
-  progressFollow: state.users.progressFollow,
-})
-
 interface MapDispatchPT {
   setFollow: (id: number) => void
   setUnfollow: (id: number) => void
@@ -84,7 +81,7 @@ interface MapDispatchPT {
 }
 
 export default compose<ComponentType>(
-  connect<UsersST, MapDispatchPT, unknown, RootStateT>(mapStateToProps, {
+  connect<UsersST, MapDispatchPT, unknown, RootStateT>(getUsersState, {
     setFollow,
     setUnfollow,
     setCurrentPage,
