@@ -1,76 +1,58 @@
-import { ChangeEvent, Component, KeyboardEvent } from 'react'
+import { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Input } from '../../../../components'
 import { updateStatusProfile } from '../../../../redux/profile-reducer'
 import { RootStateT } from '../../../../redux/store'
+import { getShortString } from '../../../../utils/string/getShortString'
 import { S } from '../ProfileInfo.styled'
 
-interface OwnStateT {
-  editMode: boolean
-  status: string
-}
+type StatusPT = MapStatePT & MapDispatchPT
 
-class Status extends Component<MapStatePT & MapDispatchPT, OwnStateT> {
-  state = {
-    status: this.props.status,
-    editMode: false,
+const Status: FC<StatusPT> = ({ id, userId, status, updateStatusProfile }) => {
+  const [editMode, setEditMode] = useState(false)
+  const [currentStatus, setCurrentStatus] = useState('')
+
+  useEffect(() => {
+    setCurrentStatus(status)
+  }, [status])
+
+  const activateEditMode = () => {
+    if (id === userId) setEditMode(true)
   }
 
-  componentDidUpdate(prevProps: Readonly<MapStatePT & MapDispatchPT>) {
-    if (prevProps.status !== this.props.status) {
-      this.setState({
-        status: this.props.status,
-      })
-    }
+  const deactivateEditMode = () => {
+    setCurrentStatus(status)
+    setEditMode(false)
   }
 
-  activateEditMode = () => {
-    const { id, userId } = this.props
-    if (id === userId) {
-      this.setState({ editMode: true })
-    }
-  }
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setCurrentStatus(e.currentTarget.value)
 
-  deactivateEditMode = () => {
-    this.setState({ status: this.props.status, editMode: false })
-  }
-
-  handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ status: e.target.value })
-    console.log(this.state.status)
-  }
-
-  handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      this.props.updateStatusProfile(this.state.status)
-      this.deactivateEditMode()
+      updateStatusProfile(currentStatus)
+      deactivateEditMode()
     }
   }
 
-  render() {
-    const { status } = this.props
-    const newStatus = status
-      ? status.length > 15
-        ? `${status.slice(0, 13)}...`
-        : status
-      : 'No status'
-    return (
-      <S.Status>
-        {!this.state.editMode ? (
-          <span onDoubleClick={this.activateEditMode}>{newStatus}</span>
-        ) : (
-          <Input
-            type="text"
-            value={this.state.status}
-            onChange={this.handleOnChange}
-            onBlur={this.deactivateEditMode}
-            onKeyDown={this.handleEnter}
-            autoFocus
-          />
-        )}
-      </S.Status>
-    )
-  }
+  const newStatus = status ? getShortString(status, 15) : 'No status'
+
+  return (
+    <S.Status>
+      {!editMode ? (
+        <span onDoubleClick={activateEditMode}>{newStatus}</span>
+      ) : (
+        <Input
+          type="text"
+          value={currentStatus}
+          onChange={handleOnChange}
+          onBlur={deactivateEditMode}
+          onKeyDown={handleEnter}
+          autoFocus
+        />
+      )}
+    </S.Status>
+  )
 }
 
 interface MapStatePT {

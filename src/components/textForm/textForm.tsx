@@ -1,7 +1,7 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik'
 import styled from 'styled-components'
 import { C } from '../../app/styles/Common.styled'
-import { TextFormSchema } from '../../app/utils/validators/validators'
+import { TextFormSchema } from '../../utils/validators/validators'
 import { Button } from '../button/Button'
 import { ErrorField } from '../errorField/ErrorField'
 import { Loading } from '../icon/Loading'

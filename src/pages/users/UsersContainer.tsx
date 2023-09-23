@@ -1,7 +1,7 @@
 import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
+import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 import { Pagination2, Preloader } from '../../components'
 import { RootStateT } from '../../redux/store'
 import {

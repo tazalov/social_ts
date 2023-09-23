@@ -2,7 +2,7 @@ import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
-import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
+import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 import { Preloader } from '../../components'
 import { AppST } from '../../redux/app-reducer'
 import {

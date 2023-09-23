@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import photo from '../../../app/assets/images/anynft.webp'
 import { Avatar, ButtonB, Loading } from '../../../components'
 import { ProgressFollowT } from '../../../redux/users-reducer'
+import { getShortString } from '../../../utils/string/getShortString'
 import { S } from './User.styled'
 
 interface UserPT {
@@ -26,12 +27,7 @@ export const User: FC<UserPT> = ({
   unfollow,
   progressFollow,
 }) => {
-  const newStatus = status
-    ? status.length > 15
-      ? `${status.slice(0, 13)}...`
-      : status
-    : 'No status'
-
+  const newStatus = status ? getShortString(status, 15) : 'No status'
   const followUser = () => follow(id)
   const unfollowUser = () => unfollow(id)
 
@@ -40,7 +36,7 @@ export const User: FC<UserPT> = ({
       <NavLink to={`/profile/${id}`}>
         <Avatar img={avatarUrl || photo} w={100} h={100} />
       </NavLink>
-      <S.Name>{name.length > 10 ? `${name.slice(0, 8)}...` : name}</S.Name>
+      <S.Name>{getShortString(name, 10)}</S.Name>
       <S.Status>{newStatus}</S.Status>
       {progressFollow.userId.some(el => el === id) ? (
         <Loading />

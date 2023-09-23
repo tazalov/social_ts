@@ -1,7 +1,7 @@
 import { ComponentType, FC } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { redirectToLogin } from '../../app/utils/hoc/redirectToLogin'
+import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 import { addMessage, getDialogsState, DialogsST } from '../../redux/dialogs-reducer'
 import { RootStateT } from '../../redux/store'
 import { S } from './Dialogs.styled'

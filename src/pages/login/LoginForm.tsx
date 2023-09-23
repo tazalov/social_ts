@@ -1,7 +1,7 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik'
 import { FC } from 'react'
 import { C } from '../../app/styles/Common.styled'
-import { LoginSchema } from '../../app/utils/validators/validators'
+import { LoginSchema } from '../../utils/validators/validators'
 import { Button, ErrorField, Input, Loading } from '../../components'
 
 interface LoginFormPT {
