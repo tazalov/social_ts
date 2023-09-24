@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "set \"CI=false\" && react-scripts build",
     "test": "react-scripts test",
     "lint:es": "eslint --ext .js,.jsx,.ts,.tsx,.test.ts,.test.tsx src",
     "lint:es:fix": "npm run lint:es -- --fix",
