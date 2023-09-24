@@ -11,10 +11,7 @@ interface FriendsPT {
 }
 
 export const Friends: FC<FriendsPT> = memo(({ friends, isOwner }) => {
-  const friendsProfile =
-    friends?.list.map(el => (
-      <Friend key={el.id} id={el.id} name={el.name} avatar={el.photos.small} />
-    )) || 'No friends'
+  const friendsProfile = friends?.list.map(el => <Friend key={el.id} friend={el} />) || 'No friends'
   return (
     <S.Friends>
       <TitleBlock title={<>Friends {isOwner ? <span>{friends?.count || 0}</span> : ''}</>} />

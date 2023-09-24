@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux'
-import { ResponseT, usersAPI } from '../../../../api'
+import { ResponseT, ResultCodeE, usersAPI } from '../../../../api'
 import { BaseThunkT } from '../../../store'
 import { UsersAT } from '../../types/users.actions'
 import {
@@ -17,11 +17,11 @@ export const getUsers =
     const data = await usersAPI.getUsers(currentPage, pageSize)
     if (!data.error) {
       dispatch(setUsers(data.items, data.totalCount))
-      dispatch(setLoadingPage(false))
     }
+    dispatch(setLoadingPage(false))
   }
 
-const _commonFollowUnfollowFlow = async (
+const _commonSubscribeFlow = async (
   id: number,
   method: (id: number) => Promise<ResponseT>,
   actionCreator: (id: number) => UsersAT,
@@ -29,7 +29,7 @@ const _commonFollowUnfollowFlow = async (
 ) => {
   dispatch(toggleProgressFollow(true, id))
   const data = await method(id)
-  if (data.resultCode === 0) {
+  if (data.resultCode === ResultCodeE.Success) {
     dispatch(toggleProgressFollow(false, id))
     dispatch(actionCreator(id))
   }
@@ -39,12 +39,12 @@ export const setFollow =
   (id: number): BaseThunkT<UsersAT> =>
   async dispatch => {
     const method = usersAPI.followU.bind(usersAPI)
-    await _commonFollowUnfollowFlow(id, method, follow, dispatch)
+    await _commonSubscribeFlow(id, method, follow, dispatch)
   }
 
 export const setUnfollow =
   (id: number): BaseThunkT<UsersAT> =>
   async dispatch => {
     const method = usersAPI.unfollowU.bind(usersAPI)
-    await _commonFollowUnfollowFlow(id, method, unfollow, dispatch)
+    await _commonSubscribeFlow(id, method, unfollow, dispatch)
   }

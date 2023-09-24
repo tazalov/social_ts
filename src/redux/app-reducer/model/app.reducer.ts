@@ -39,7 +39,7 @@ export const appReducer = (state = initialState, action: AuthAT) => {
       }
     }
     default: {
-      return { ...state }
+      return state
     }
   }
 }

@@ -59,11 +59,7 @@ class UsersC extends Component<UsersCPT> {
           {list.map(el => (
             <User
               key={el.id}
-              id={el.id}
-              name={el.name}
-              followed={el.followed}
-              avatarUrl={el.photos.small}
-              status={el.status}
+              user={el}
               follow={setFollow}
               unfollow={setUnfollow}
               progressFollow={progressFollow}

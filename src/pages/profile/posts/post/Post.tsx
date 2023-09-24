@@ -3,26 +3,25 @@ import { Avatar } from '../../../../components'
 import avatar from '../../../../app/assets/images/anynft.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { PostT } from '../../../../redux/profile-reducer'
 import { S } from './Post.styled'
 
 interface PostPT {
-  id: number
-  name: string
-  message: string
-  likes: number
+  post: PostT
 }
 
-export const Post: FC<PostPT> = memo(({ name, message, likes }) => {
+export const Post: FC<PostPT> = memo(({ post }) => {
+  const { user, text, likes } = post
   return (
     <S.Post>
       <S.PostHeader $align={'center'}>
         <Avatar img={avatar} w={50} h={50} />
         <S.UserInfo $gap={'10px'} $justify={'space-between'}>
-          <span>{name}</span>
+          <span>{user}</span>
           <i>12/04/2022</i>
         </S.UserInfo>
       </S.PostHeader>
-      <S.PostText>{message}</S.PostText>
+      <S.PostText>{text}</S.PostText>
       <S.PostButtons $gap={'10px'} $justify={'space-between'}>
         <button>
           <FontAwesomeIcon icon={faHeart} />

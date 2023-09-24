@@ -1,4 +1,4 @@
-import { profileAPI } from '../../../../api'
+import { profileAPI, ResultCodeE } from '../../../../api'
 import { BaseThunkT } from '../../../store'
 import { ProfileAT, SetFriendsProfileAT, SetStatusAT } from '../../types/profile.actions'
 import {
@@ -35,7 +35,7 @@ export const updateStatusProfile =
   (status: string): BaseThunkT<SetStatusAT> =>
   async dispatch => {
     const data = await profileAPI.updateStatus(status)
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodeE.Success) {
       dispatch(setStatus(status))
     }
   }

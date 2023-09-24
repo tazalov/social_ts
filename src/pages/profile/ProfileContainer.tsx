@@ -39,10 +39,17 @@ class ProfileContainer extends Component<ProfileContainerPT> {
   }
 
   render() {
-    return this.props.isProfileLoading ? (
+    const { isProfileLoading, profile, posts, friends, addPost } = this.props
+    return isProfileLoading || !profile ? (
       <Preloader size={150} />
     ) : (
-      <Profile {...this.props} isOwner={!this.props.match.params.userId} />
+      <Profile
+        profile={profile}
+        posts={posts}
+        friends={friends}
+        addPost={addPost}
+        isOwner={!this.props.match.params.userId}
+      />
     )
   }
 }

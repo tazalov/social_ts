@@ -17,7 +17,7 @@ export const Posts: FC<PostsPT> = memo(({ posts, addPost }) => {
         <TextForm placeholder={'Enter post message...'} callback={addPost} />
       </C.ShadowContainer>
       {posts.map(el => (
-        <Post key={el.id} id={el.id} name={el.user} message={el.text} likes={el.likes} />
+        <Post key={el.id} post={el} />
       ))}
     </S.Posts>
   )
