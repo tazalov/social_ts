@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { C } from '../../../app/styles/Common.styled'
 
 const ProfileInfoStyled = styled(C.FlexWrapper)`
@@ -7,7 +7,7 @@ const ProfileInfoStyled = styled(C.FlexWrapper)`
   width: 100%;
 `
 
-const Avatar = styled.div`
+const AvatarPos = css`
   position: absolute;
   margin-top: -80px;
   left: 10px;
@@ -64,7 +64,7 @@ const Buttons = styled(C.FlexWrapper)`
 
 export const S = {
   ProfileInfo: ProfileInfoStyled,
-  Avatar,
+  AvatarPos,
   Info,
   Name,
   Status,

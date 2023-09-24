@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, memo, ReactNode } from 'react'
 import styled from 'styled-components'
 import { C } from '../../app/styles/Common.styled'
 import { F } from '../../app/styles/Fragments.styled'
@@ -7,11 +7,13 @@ type TitleBlockPT = {
   title: string | ReactNode
 }
 
-export const TitleBlock: FC<TitleBlockPT> = ({ title }) => (
-  <TitleWrapper $justify={'center'} $align={'center'}>
-    <Title>{title}</Title>
-  </TitleWrapper>
-)
+export const TitleBlock: FC<TitleBlockPT> = memo(({ title }) => {
+  return (
+    <TitleWrapper $justify={'center'} $align={'center'}>
+      <Title>{title}</Title>
+    </TitleWrapper>
+  )
+})
 
 const TitleWrapper = styled(C.FlexWrapper)`
   background-color: ${props => props.theme.colors.accent};

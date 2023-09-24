@@ -25,9 +25,7 @@ export const ProfileInfo: FC<ProfileInfoPT> = ({
 }) => (
   <C.FlexWrapper $align={'center'} $justify={'space-between'}>
     <S.ProfileInfo $align={'center'}>
-      <S.Avatar>
-        <Avatar img={avatar || noAvatar} w={150} h={150} />
-      </S.Avatar>
+      <Avatar img={avatar || noAvatar} w={150} h={150} pos_styles={S.AvatarPos} />
       <S.Info $direction={'column'} $align={'flex-start'} $gap={'10px'}>
         <S.Name $align={'center'} $gap={'5px'}>
           <p>{name}</p>

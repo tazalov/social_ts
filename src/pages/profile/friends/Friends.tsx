@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { C } from '../../../app/styles/Common.styled'
 import { TitleBlock } from '../../../components'
 import { FriendsT } from '../../../redux/profile-reducer'
@@ -10,7 +10,7 @@ interface FriendsPT {
   isOwner: boolean
 }
 
-export const Friends: FC<FriendsPT> = ({ friends, isOwner }) => {
+export const Friends: FC<FriendsPT> = memo(({ friends, isOwner }) => {
   const friendsProfile =
     friends?.list.map(el => (
       <Friend key={el.id} id={el.id} name={el.name} avatar={el.photos.small} />
@@ -21,4 +21,4 @@ export const Friends: FC<FriendsPT> = ({ friends, isOwner }) => {
       {isOwner ? <S.List>{friendsProfile}</S.List> : <C.Text>User hidden this info</C.Text>}
     </S.Friends>
   )
-}
+})

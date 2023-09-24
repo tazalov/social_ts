@@ -1,5 +1,5 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { C } from '../../app/styles/Common.styled'
 import { LoginSchema } from '../../utils/validators/validators'
 import { Button, ErrorField, Input, Loading } from '../../components'
@@ -17,15 +17,22 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
     captcha,
     remember: false,
   }
-  const onSubmit = async (
-    values: typeof initialFields,
-    props: FormikHelpers<typeof initialFields>,
-  ) => {
-    await loginUser(values.email, values.password, values.remember, values.captcha)
-    if (!error) {
-      props.resetForm()
+
+  const [isMounted, setIsMounted] = useState(true)
+
+  useEffect(() => {
+    setIsMounted(true)
+
+    return () => {
+      setIsMounted(false)
     }
-    props.setSubmitting(false)
+  }, [])
+
+  const onSubmit = (values: typeof initialFields, props: FormikHelpers<typeof initialFields>) => {
+    loginUser(values.email, values.password, values.remember, values.captcha)
+    if (isMounted) {
+      props.setSubmitting(false)
+    }
   }
 
   return (

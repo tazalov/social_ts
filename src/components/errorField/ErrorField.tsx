@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import styled from 'styled-components'
 
-export const ErrorField: FC = ({ children }) => {
+export const ErrorField: FC = memo(({ children }) => {
   return <Error>{children}</Error>
-}
+})
 
 const Error = styled.div`
   color: ${props => props.theme.colors.error};
