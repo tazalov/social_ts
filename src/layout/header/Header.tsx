@@ -17,47 +17,45 @@ export const Header: FC<HeaderPT> = ({ isAuth, login, toggleTheme, logout }) => 
   const theme = useTheme()
   return (
     <C.Container>
-      <C.ShadowContainer as={S.Header}>
-        <C.FlexWrapper $justify={'space-between'} $align={'center'}>
-          <C.FlexWrapper $align={'center'} $gap={'20px'}>
-            <ButtonB
-              title={
-                theme.name === 'dark' ? (
-                  <FontAwesomeIcon icon={faMoon} style={{ width: '15px', height: '15xp' }} />
-                ) : (
-                  <FontAwesomeIcon icon={faSun} style={{ width: '15px', height: '15xp' }} />
-                )
-              }
-              callback={toggleTheme}
-            />
-            <S.Logo>
-              <Icon iconId={'logo'} width={'40px'} height={'40px'} />
-            </S.Logo>
-          </C.FlexWrapper>
-          <C.FlexWrapper $gap={'20px'} $align={'center'}>
-            <S.MenuLink to={'/users'}>
-              <Icon iconId={'search'} width={'20px'} height={'20px'} />
-            </S.MenuLink>
-            <S.MenuLink to={'/users'}>
-              <Icon iconId={'gear'} width={'20px'} height={'20px'} />
-            </S.MenuLink>
-            {isAuth ? (
-              <>
-                <S.MenuLink to={'/profile'}>
-                  <S.Login>{login}</S.Login>
-                </S.MenuLink>
-                <S.Logout onClick={logout}>
-                  <Icon iconId={'logout'} width={'20px'} height={'20px'} viewBox="0 0 32 32" />
-                </S.Logout>
-              </>
-            ) : (
-              <S.MenuLink to={'/login'}>
-                <S.Login>Login</S.Login>
-              </S.MenuLink>
-            )}
-          </C.FlexWrapper>
+      <C.FlexWrapper as={S.Header} $justify={'space-between'} $align={'center'} $shadow>
+        <C.FlexWrapper $align={'center'} $gap={'20px'}>
+          <ButtonB
+            title={
+              theme.name === 'dark' ? (
+                <FontAwesomeIcon icon={faMoon} style={{ width: '15px', height: '15xp' }} />
+              ) : (
+                <FontAwesomeIcon icon={faSun} style={{ width: '15px', height: '15xp' }} />
+              )
+            }
+            callback={toggleTheme}
+          />
+          <S.Logo>
+            <Icon iconId={'logo'} width={'40px'} height={'40px'} />
+          </S.Logo>
         </C.FlexWrapper>
-      </C.ShadowContainer>
+        <C.FlexWrapper $gap={'20px'} $align={'center'}>
+          <S.MenuLink to={'/users'}>
+            <Icon iconId={'search'} width={'20px'} height={'20px'} />
+          </S.MenuLink>
+          <S.MenuLink to={'/users'}>
+            <Icon iconId={'gear'} width={'20px'} height={'20px'} />
+          </S.MenuLink>
+          {isAuth ? (
+            <>
+              <S.MenuLink to={'/profile'}>
+                <S.Login>{login}</S.Login>
+              </S.MenuLink>
+              <S.Logout onClick={logout}>
+                <Icon iconId={'logout'} width={'20px'} height={'20px'} viewBox="0 0 32 32" />
+              </S.Logout>
+            </>
+          ) : (
+            <S.MenuLink to={'/login'}>
+              <S.Login>Login</S.Login>
+            </S.MenuLink>
+          )}
+        </C.FlexWrapper>
+      </C.FlexWrapper>
     </C.Container>
   )
 }

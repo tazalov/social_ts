@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { C } from '../../../../app/styles/Common.styled'
 import { F } from '../../../../app/styles/Fragments.styled'
 
-const Post = styled.div`
+const Post = styled(C.ShadowContainer)`
   word-break: break-all;
 `
 

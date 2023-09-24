@@ -11,12 +11,10 @@ export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, captcha, error, 
   return isAuth ? (
     <Redirect to={'/profile'} />
   ) : (
-    <C.ShadowContainer>
-      <C.FlexWrapper $gap={'10px'} $direction={'column'} $justify={'center'}>
-        <TitleBlock title={'LOGIN'} />
-        <LoginForm error={error} captcha={captcha} loginUser={loginUser} />
-      </C.FlexWrapper>
-    </C.ShadowContainer>
+    <C.FlexWrapper $gap={'10px'} $direction={'column'} $justify={'center'} $shadow>
+      <TitleBlock title={'LOGIN'} />
+      <LoginForm error={error} captcha={captcha} loginUser={loginUser} />
+    </C.FlexWrapper>
   )
 }
 

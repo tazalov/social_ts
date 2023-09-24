@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Container = styled.div`
   max-width: 1270px;
@@ -14,9 +14,16 @@ interface FlexWrapperPT {
   $wrap?: string
   $content?: string
   $gap?: string
+  $shadow?: boolean
 }
 
 const FlexWrapper = styled.div<FlexWrapperPT>`
+  ${props =>
+    props.$shadow &&
+    css`
+      box-shadow: ${props => props.theme.colors.shadowPrimary};
+      background-color: ${props => props.theme.colors.secondaryBg};
+    `}
   display: flex;
   flex-direction: ${props => props.$direction || 'row'};
   justify-content: ${props => props.$justify || 'flex-start'};
