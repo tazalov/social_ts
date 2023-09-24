@@ -21,7 +21,7 @@ jobs:
       - name: install modules
         run: yarn
       - name: build production
-        run: yarn build:prod
+        run: yarn build
         if: always()
       - name: linting es
         run: yarn lint:es

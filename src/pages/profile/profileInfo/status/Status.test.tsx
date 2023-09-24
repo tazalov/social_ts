@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import React, { ReactNode } from 'react'
 import '@testing-library/jest-dom'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { ThemeProvider } from 'styled-components'
@@ -16,14 +16,14 @@ import { theme } from '../../../../app/styles/theme/Theme'
 
 const renderWithProviders = (component: ReactNode, store: any) => {
   return render(
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           {component}
         </ThemeProvider>
       </Provider>
-    </BrowserRouter>,
+    </HashRouter>,
   )
 }
 
