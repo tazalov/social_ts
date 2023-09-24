@@ -1,7 +1,8 @@
-import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import { F } from '../../../app/styles/Fragments.styled'
+import styled from 'styled-components'
+
 import { C } from '../../../app/styles/Common.styled'
+import { F } from '../../../app/styles/Fragments.styled'
 
 const DialogsList = styled(C.ShadowContainer)`
   height: 100%;
@@ -24,7 +25,7 @@ const ItemLink = styled(NavLink)`
   transition: all 0.3s ease;
   &.active,
   &:hover {
-    background-color: ${props => props.theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `
 

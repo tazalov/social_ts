@@ -18,7 +18,7 @@ export const usersReducer = (state = initialState, action: UsersAT) => {
     case 'social/users/FOLLOW': {
       return {
         ...state,
-        list: state.list?.map(el => {
+        list: state.list?.map((el) => {
           if (el.id === action.id) {
             return { ...el, followed: true }
           }
@@ -29,7 +29,7 @@ export const usersReducer = (state = initialState, action: UsersAT) => {
     case 'social/users/UNFOLLOW': {
       return {
         ...state,
-        list: state.list?.map(el => {
+        list: state.list?.map((el) => {
           if (el.id === action.id) {
             return { ...el, followed: false }
           }
@@ -63,7 +63,7 @@ export const usersReducer = (state = initialState, action: UsersAT) => {
           isFetch: action.isFetch,
           userId: action.isFetch
             ? [...state.progressFollow.userId, action.id]
-            : state.progressFollow.userId.filter(el => el !== action.id),
+            : state.progressFollow.userId.filter((el) => el !== action.id),
         },
       }
     }

@@ -1,14 +1,9 @@
 import { AnyAction } from 'redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+
 import { ResultCodeE, usersAPI } from '../../../api'
-import {
-  follow,
-  setLoadingPage,
-  setUsers,
-  toggleProgressFollow,
-  unfollow,
-} from '../model/actions/users.actions'
+import { follow, setLoadingPage, setUsers, toggleProgressFollow, unfollow } from '../model/actions/users.actions'
 import { getUsers, setFollow, setUnfollow } from '../model/thunks/users.thunks'
 
 const middlewares = [thunk]
@@ -72,7 +67,7 @@ describe('users thunks tests', () => {
     const store = mockStore()
     await store.dispatch(getUsers(1, 10) as unknown as AnyAction)
 
-    const expectedActions = [setLoadingPage(true)]
+    const expectedActions = [setLoadingPage(true), setLoadingPage(false)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
@@ -85,11 +80,7 @@ describe('users thunks tests', () => {
     const store = mockStore()
     await store.dispatch(setFollow(1) as unknown as AnyAction)
 
-    const expectedActions = [
-      toggleProgressFollow(true, 1),
-      toggleProgressFollow(false, 1),
-      follow(1),
-    ]
+    const expectedActions = [toggleProgressFollow(true, 1), toggleProgressFollow(false, 1), follow(1)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
@@ -115,11 +106,7 @@ describe('users thunks tests', () => {
     const store = mockStore()
     await store.dispatch(setUnfollow(1) as unknown as AnyAction)
 
-    const expectedActions = [
-      toggleProgressFollow(true, 1),
-      toggleProgressFollow(false, 1),
-      unfollow(1),
-    ]
+    const expectedActions = [toggleProgressFollow(true, 1), toggleProgressFollow(false, 1), unfollow(1)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })

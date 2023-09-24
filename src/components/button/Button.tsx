@@ -10,14 +10,7 @@ interface ButtonPT extends HTMLButtonT {
   disable?: boolean
 }
 
-export const Button: FC<ButtonPT> = ({
-  title,
-  radius,
-  disable,
-  callback,
-  type = 'button',
-  ...restProps
-}) => {
+export const Button: FC<ButtonPT> = ({ title, radius, disable, callback, type = 'button', ...restProps }) => {
   const onClickHandler = () => {
     callback?.()
   }
@@ -41,19 +34,19 @@ type PropsType = {
 const StyledButton = styled.button<PropsType>`
   font-weight: 600;
   padding: 10px 13px;
-  background-color: ${props => props.theme.colors.accent};
+  background-color: ${(props) => props.theme.colors.accent};
   color: white;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  border-radius: ${props => (props.$radius === 'true' ? '50%' : '0')};
+  border-radius: ${(props) => (props.$radius === 'true' ? '50%' : '0')};
   display: block;
   max-width: min-content;
   &:hover {
-    background-color: ${props => props.theme.colors.accent};
+    background-color: ${(props) => props.theme.colors.accent};
   }
   &:disabled {
-    background-color: ${props => props.theme.colors.secondaryFont};
-    color: ${props => props.theme.colors.primaryFont};
+    background-color: ${(props) => props.theme.colors.secondaryFont};
+    color: ${(props) => props.theme.colors.primaryFont};
     box-shadow: none;
   }
 `

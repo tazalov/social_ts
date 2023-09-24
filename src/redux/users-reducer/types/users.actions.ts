@@ -1,12 +1,6 @@
 import { UserT } from './users.reducer'
 
-export type UsersAT =
-  | FollowAT
-  | UnfollowAT
-  | SetUsersAT
-  | SetCurrentPageAT
-  | SetLoadingPageAT
-  | ToggleProgressFollowAT
+export type UsersAT = FollowAT | UnfollowAT | SetUsersAT | SetCurrentPageAT | SetLoadingPageAT | ToggleProgressFollowAT
 
 export interface FollowAT {
   type: 'social/users/FOLLOW'

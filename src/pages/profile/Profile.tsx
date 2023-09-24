@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import cover from '../../app/assets/images/carrepair.webp'
-import { FriendsT, PostT, ProfileT } from '../../redux/profile-reducer'
-import { ProfileInfo } from './profileInfo/ProfileInfo'
+
+import { About } from './about/About'
 import { Friends } from './friends/Friends'
 import { Posts } from './posts/Posts'
-import { About } from './about/About'
 import { S } from './Profile.styled'
+import { ProfileInfo } from './profileInfo/ProfileInfo'
+
+import cover from '../../app/assets/images/carrepair.webp'
 import { C } from '../../app/styles/Common.styled'
+import { FriendsT, PostT, ProfileT } from '../../redux/profile-reducer'
 
 interface ProfilePT {
   profile: ProfileT
@@ -20,7 +22,7 @@ export const Profile: FC<ProfilePT> = ({ profile, posts, friends, addPost, isOwn
   <C.FlexWrapper $gap={'20px'} $direction={'column'}>
     <C.ShadowContainer>
       <S.CoverImg>
-        <img src={profile.photos.large || cover} alt="" />
+        <img src={profile.photos.large || cover} alt='' />
       </S.CoverImg>
       <ProfileInfo
         avatar={profile.photos.small}

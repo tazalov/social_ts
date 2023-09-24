@@ -1,8 +1,9 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik'
 import { FC, useEffect, useState } from 'react'
+
 import { C } from '../../app/styles/Common.styled'
-import { LoginSchema } from '../../utils/validators/validators'
 import { Button, ErrorField, Input, Loading } from '../../components'
+import { LoginSchema } from '../../utils/validators/validators'
 
 interface LoginFormPT {
   captcha: string
@@ -37,16 +38,11 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
 
   return (
     <Formik initialValues={initialFields} onSubmit={onSubmit} validationSchema={LoginSchema}>
-      {props => {
+      {(props) => {
         const { errors, touched, isSubmitting } = props
         return (
           <Form style={{ maxWidth: '500px', margin: '20px auto' }}>
-            <C.FlexWrapper
-              $direction={'column'}
-              $gap={'20px'}
-              $justify={'center'}
-              $align={'center'}
-            >
+            <C.FlexWrapper $direction={'column'} $gap={'20px'} $justify={'center'} $align={'center'}>
               <Field
                 as={Input}
                 label={'E-mail *'}
@@ -71,7 +67,7 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
               {captcha && (
                 <Field
                   as={Input}
-                  label={<img src={captcha} alt="asd" />}
+                  label={<img src={captcha} alt='asd' />}
                   name={'captcha'}
                   type={'text'}
                   placeholder={'Enter captcha'}
@@ -84,7 +80,7 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
               {isSubmitting ? (
                 <Loading />
               ) : (
-                <Button type="submit" title={'login'} disable={Object.keys(errors).length > 0} />
+                <Button type='submit' title={'login'} disable={Object.keys(errors).length > 0} />
               )}
             </C.FlexWrapper>
           </Form>

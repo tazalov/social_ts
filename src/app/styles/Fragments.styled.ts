@@ -5,10 +5,10 @@ const Scroll = css`
     width: 4px;
   }
   &::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme.colors.primaryBg};
+    background-color: ${(props) => props.theme.colors.primaryBg};
   }
 `
 
@@ -17,10 +17,10 @@ const ScrollBody = css`
     width: 8px;
   }
   &::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.colors.secondaryBg};
+    background-color: ${(props) => props.theme.colors.secondaryBg};
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `
 

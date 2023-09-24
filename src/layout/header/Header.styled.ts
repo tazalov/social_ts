@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+
 import { F } from '../../app/styles/Fragments.styled'
 
 const Header = styled.header`
@@ -9,7 +10,7 @@ const Header = styled.header`
 
 const Logo = styled.div`
   svg {
-    fill: ${props => props.theme.colors.accent};
+    fill: ${(props) => props.theme.colors.accent};
   }
 `
 
@@ -17,7 +18,7 @@ const MenuLink = styled(NavLink)`
   svg {
     transition: all 0.3s linear;
     &:hover {
-      fill: ${props => props.theme.colors.accent};
+      fill: ${(props) => props.theme.colors.accent};
     }
   }
 `
@@ -26,7 +27,7 @@ const Logout = styled.div`
   svg {
     transition: all 0.3s linear;
     &:hover {
-      fill: ${props => props.theme.colors.accent};
+      fill: ${(props) => props.theme.colors.accent};
     }
   }
 `
@@ -36,7 +37,7 @@ const Login = styled.span`
   text-transform: uppercase;
   transition: all 0.3s linear;
   &:hover {
-    color: ${props => props.theme.colors.accent};
+    color: ${(props) => props.theme.colors.accent};
   }
 `
 

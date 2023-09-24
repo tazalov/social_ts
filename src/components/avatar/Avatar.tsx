@@ -10,7 +10,7 @@ type AvatarPT = {
 
 export const Avatar: FC<AvatarPT> = ({ img, w, h, pos_styles }) => (
   <StyledAvatar $w={w} $h={h} $styles={pos_styles}>
-    <img src={img} alt="img" />
+    <img src={img} alt='img' />
   </StyledAvatar>
 )
 
@@ -21,11 +21,11 @@ type StyledAvatarPT = {
 }
 
 const StyledAvatar = styled.div<StyledAvatarPT>`
-  ${props => props.$styles};
+  ${(props) => props.$styles};
   img {
     border-radius: 50%;
-    width: ${props => props.$w + 'px'};
-    height: ${props => props.$h + 'px'};
+    width: ${(props) => props.$w + 'px'};
+    height: ${(props) => props.$h + 'px'};
     object-fit: cover;
   }
 `

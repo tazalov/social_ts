@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react'
+
 import { S } from './Main.styled'
 
 type MainPT = {

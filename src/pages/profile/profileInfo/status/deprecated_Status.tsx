@@ -1,5 +1,6 @@
 import { ChangeEvent, Component, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
+
 import { Input } from '../../../../components'
 import { updateStatusProfile } from '../../../../redux/profile-reducer'
 import { RootStateT } from '../../../../redux/store'
@@ -57,7 +58,7 @@ class Deprecated_Status extends Component<MapStatePT & MapDispatchPT, OwnStateT>
           <span onDoubleClick={this.activateEditMode}>{newStatus}</span>
         ) : (
           <Input
-            type="text"
+            type='text'
             value={this.state.status}
             onChange={this.handleOnChange}
             onBlur={this.deactivateEditMode}

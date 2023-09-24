@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
-import { TitleBlock } from '../../../components'
+
 import { C } from '../../../app/styles/Common.styled'
+import { TitleBlock } from '../../../components'
 
 type AboutPT = {
   about: string | null

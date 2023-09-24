@@ -1,10 +1,13 @@
-import { FC, memo } from 'react'
-import { Avatar } from '../../../../components'
-import avatar from '../../../../app/assets/images/anynft.webp'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { PostT } from '../../../../redux/profile-reducer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FC, memo } from 'react'
+
 import { S } from './Post.styled'
+
+import avatar from '../../../../app/assets/images/anynft.webp'
+import { Avatar } from '../../../../components'
+
+import { PostT } from '../../../../redux/profile-reducer'
 
 interface PostPT {
   post: PostT

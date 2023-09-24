@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { C } from '../../../app/styles/Common.styled'
 
 const Posts = styled(C.FlexWrapper)`

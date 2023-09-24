@@ -1,6 +1,7 @@
 import { AnyAction } from 'redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+
 import { authAPI, ResultCodeE } from '../../../api'
 import { setCaptcha, setError, setUserData } from '../model/actions/app.actions'
 import { getUserData, loginUser, logoutUser } from '../model/thunks/app.thunks'

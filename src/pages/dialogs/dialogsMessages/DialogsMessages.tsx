@@ -1,8 +1,11 @@
 import { FC } from 'react'
+
+import { DialogsMessage } from './DialogsMessage'
+
+import { S } from './DialogsMessages.styled'
+
 import { TextForm } from '../../../components'
 import { DialogsMessageT } from '../../../redux/dialogs-reducer'
-import { DialogsMessage } from './DialogsMessage'
-import { S } from './DialogsMessages.styled'
 
 interface DialogsMessagesPT {
   messages: DialogsMessageT[]
@@ -10,9 +13,7 @@ interface DialogsMessagesPT {
 }
 
 export const DialogsMessages: FC<DialogsMessagesPT> = ({ messages, addMessage }) => {
-  const messagesList = messages.map(el => (
-    <DialogsMessage key={el.id} id={el.id} message={el.message} />
-  ))
+  const messagesList = messages.map((el) => <DialogsMessage key={el.id} id={el.id} message={el.message} />)
   return (
     <S.DialogsMessages $direction={'column'} $gap={'20px'}>
       <S.MessagesList>{messagesList}</S.MessagesList>

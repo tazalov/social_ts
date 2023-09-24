@@ -1,11 +1,6 @@
 import { FriendT, ProfileT } from './profile.reducer'
 
-export type ProfileAT =
-  | AddPostAT
-  | SetProfileAT
-  | SetProfileLoadingAT
-  | SetFriendsProfileAT
-  | SetStatusAT
+export type ProfileAT = AddPostAT | SetProfileAT | SetProfileLoadingAT | SetFriendsProfileAT | SetStatusAT
 
 export interface AddPostAT {
   type: 'social/profile/ADD_POST'

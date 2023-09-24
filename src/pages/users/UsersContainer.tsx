@@ -1,19 +1,16 @@
 import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
+
+import { User } from './user/User'
+
+import { S } from './Users.styled'
+
 import { Pagination2, Preloader } from '../../components'
 import { RootStateT } from '../../redux/store'
-import {
-  getUsers,
-  getUsersState,
-  setCurrentPage,
-  setFollow,
-  setUnfollow,
-  UsersST,
-} from '../../redux/users-reducer'
-import { User } from './user/User'
-import { S } from './Users.styled'
+import { getUsers, getUsersState, setCurrentPage, setFollow, setUnfollow, UsersST } from '../../redux/users-reducer'
+
+import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 
 type UsersCPT = UsersST & MapDispatchPT
 
@@ -49,21 +46,10 @@ class UsersC extends Component<UsersCPT> {
       <Preloader size={150} />
     ) : (
       <>
-        <Pagination2
-          pageSize={pageSize}
-          currentPage={currentPage}
-          totalCount={totalCount}
-          setPage={setCurrentPage}
-        />
+        <Pagination2 pageSize={pageSize} currentPage={currentPage} totalCount={totalCount} setPage={setCurrentPage} />
         <S.Users>
-          {list.map(el => (
-            <User
-              key={el.id}
-              user={el}
-              follow={setFollow}
-              unfollow={setUnfollow}
-              progressFollow={progressFollow}
-            />
+          {list.map((el) => (
+            <User key={el.id} user={el} follow={setFollow} unfollow={setUnfollow} progressFollow={progressFollow} />
           ))}
         </S.Users>
       </>

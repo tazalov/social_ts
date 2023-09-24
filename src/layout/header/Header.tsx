@@ -2,9 +2,11 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FC } from 'react'
 import { useTheme } from 'styled-components'
+
+import { S } from './Header.styled'
+
 import { C } from '../../app/styles/Common.styled'
 import { ButtonB, Icon } from '../../components'
-import { S } from './Header.styled'
 
 interface HeaderPT {
   isAuth: boolean
@@ -46,7 +48,7 @@ export const Header: FC<HeaderPT> = ({ isAuth, login, toggleTheme, logout }) => 
                 <S.Login>{login}</S.Login>
               </S.MenuLink>
               <S.Logout onClick={logout}>
-                <Icon iconId={'logout'} width={'20px'} height={'20px'} viewBox="0 0 32 32" />
+                <Icon iconId={'logout'} width={'20px'} height={'20px'} viewBox='0 0 32 32' />
               </S.Logout>
             </>
           ) : (

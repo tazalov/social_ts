@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+
 import { F } from '../../app/styles/Fragments.styled'
 
 const Sidebar = styled.nav``
@@ -20,8 +21,8 @@ const SidebarLink = styled(NavLink)`
   }
   &.active,
   &:hover {
-    background-color: ${props => props.theme.colors.accent};
-    color: ${props => {
+    background-color: ${(props) => props.theme.colors.accent};
+    color: ${(props) => {
       const { name, colors } = props.theme
       return name === 'light' ? colors.secondaryFont : colors.primaryFont
     }};

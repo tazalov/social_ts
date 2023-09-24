@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { C } from '../../app/styles/Common.styled'
 
 const Pagination = styled(C.ShadowContainer)`
@@ -9,10 +10,10 @@ const Pagination = styled(C.ShadowContainer)`
 const Button = styled.button`
   padding: 10px;
   border-radius: 5px;
-  background-color: ${props => props.theme.colors.accent};
+  background-color: ${(props) => props.theme.colors.accent};
   transition: all 0.3s ease;
   &:hover {
-    background-color: ${props => {
+    background-color: ${(props) => {
       const { name, colors } = props.theme
       return name === 'light' ? colors.primaryFont : colors.secondaryFont
     }};
@@ -20,7 +21,7 @@ const Button = styled.button`
 `
 
 const SelectedButton = styled(Button)`
-  background-color: ${props => {
+  background-color: ${(props) => {
     const { name, colors } = props.theme
     return name === 'light' ? colors.primaryFont : colors.secondaryFont
   }};

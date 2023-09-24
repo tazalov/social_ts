@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+
 import { S } from './DialogsMessages.styled'
 
 interface DialogsMessagePT {

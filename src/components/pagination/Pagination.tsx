@@ -1,8 +1,10 @@
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FC, useState } from 'react'
-import { C } from '../../app/styles/Common.styled'
+
 import { S } from './Pagination.styled'
+
+import { C } from '../../app/styles/Common.styled'
 
 type PaginationPT = {
   totalCount: number
@@ -26,11 +28,7 @@ export const Pagination: FC<PaginationPT> = ({ totalCount, pageSize, currentPage
     const onClickHandler = () => setPage(el)
     if (el >= leftBorderPortion && el <= rightBorderPortion) {
       const button = (
-        <S.Button
-          as={el === currentPage ? S.SelectedButton : S.Button}
-          key={el}
-          onClick={onClickHandler}
-        >
+        <S.Button as={el === currentPage ? S.SelectedButton : S.Button} key={el} onClick={onClickHandler}>
           {el}
         </S.Button>
       )
@@ -44,7 +42,7 @@ export const Pagination: FC<PaginationPT> = ({ totalCount, pageSize, currentPage
       <C.FlexWrapper $justify={'center'} $align={'center'} $gap={'10px'}>
         {portionNum > 1 && (
           <S.Button onClick={() => setPortionNum(portionNum - 1)}>
-            <FontAwesomeIcon icon={faCaretLeft} size="2x" />
+            <FontAwesomeIcon icon={faCaretLeft} size='2x' />
           </S.Button>
         )}
         {buttons.length > 1 && buttons}

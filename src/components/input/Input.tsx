@@ -1,5 +1,6 @@
 import { FC, InputHTMLAttributes, ReactNode } from 'react'
 import styled from 'styled-components'
+
 import { C } from '../../app/styles/Common.styled'
 import { F } from '../../app/styles/Fragments.styled'
 import { ErrorField } from '../errorField/ErrorField'
@@ -29,8 +30,8 @@ const Label = styled.label`
 const StyledInput = styled.input`
   width: 100%;
   padding: 3.5px;
-  color: ${props => props.theme.colors.primaryFont};
-  background-color: ${props => props.theme.colors.thirdBg};
+  color: ${(props) => props.theme.colors.primaryFont};
+  background-color: ${(props) => props.theme.colors.thirdBg};
   font-family:
     'Rubik',
     -apple-system,

@@ -1,13 +1,9 @@
 import { AnyAction } from 'redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+
 import { profileAPI, ResultCodeE } from '../../../api'
-import {
-  setFriendsProfile,
-  setProfile,
-  setProfileLoading,
-  setStatus,
-} from '../model/actions/profile.actions'
+import { setFriendsProfile, setProfile, setProfileLoading, setStatus } from '../model/actions/profile.actions'
 import {
   getFriendsProfile,
   getStatusProfile,
@@ -63,11 +59,7 @@ describe('profile thunks tests', () => {
     const store = mockStore()
     await store.dispatch(getUserProfile('123') as unknown as AnyAction)
 
-    const expectedActions = [
-      setProfileLoading(true),
-      setProfile(responseData),
-      setProfileLoading(false),
-    ]
+    const expectedActions = [setProfileLoading(true), setProfile(responseData), setProfileLoading(false)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })

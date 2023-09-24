@@ -6,7 +6,7 @@ export const ErrorField: FC = memo(({ children }) => {
 })
 
 const Error = styled.div`
-  color: ${props => props.theme.colors.error};
+  color: ${(props) => props.theme.colors.error};
   font-size: 14px;
   font-weight: 600;
   text-align: center;

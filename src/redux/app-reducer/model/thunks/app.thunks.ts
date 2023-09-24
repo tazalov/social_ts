@@ -3,7 +3,7 @@ import { BaseThunkT } from '../../../store'
 import { AuthAT } from '../../types/app.actions'
 import { initialize, setCaptcha, setError, setUserData } from '../actions/app.actions'
 
-export const initializeApp = (): BaseThunkT<AuthAT> => async dispatch => {
+export const initializeApp = (): BaseThunkT<AuthAT> => async (dispatch) => {
   await dispatch(getUserData())
   let promise1 = dispatch(getUserData())
   /*
@@ -15,7 +15,7 @@ export const initializeApp = (): BaseThunkT<AuthAT> => async dispatch => {
   })
 }
 
-export const getUserData = (): BaseThunkT<AuthAT> => async dispatch => {
+export const getUserData = (): BaseThunkT<AuthAT> => async (dispatch) => {
   const data = await authAPI.getUserData()
   if (data.resultCode === ResultCodeE.Success) {
     const { id, login, email } = data.data
@@ -27,7 +27,7 @@ export const getUserData = (): BaseThunkT<AuthAT> => async dispatch => {
 
 export const loginUser =
   (email: string, password: string, rememberMe: boolean, captcha: string): BaseThunkT<AuthAT> =>
-  async dispatch => {
+  async (dispatch) => {
     const data = await authAPI.login(email, password, rememberMe, captcha)
     if (data.resultCode === ResultCodeE.Success) {
       await dispatch(getUserData())
@@ -40,7 +40,7 @@ export const loginUser =
     }
   }
 
-export const logoutUser = (): BaseThunkT<AuthAT> => async dispatch => {
+export const logoutUser = (): BaseThunkT<AuthAT> => async (dispatch) => {
   const data = await authAPI.logout()
   if (data.resultCode === ResultCodeE.Success) {
     dispatch(setUserData(null, null, null, false))

@@ -1,11 +1,14 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
+
+import { AppRoutes } from './routes/AppRoutes'
+
+import { C } from './styles/Common.styled'
+
 import { Preloader } from '../components'
 import { Header, Main, Sidebar } from '../layout'
 import { initializeApp } from '../redux/app-reducer'
 import { RootStateT } from '../redux/store'
-import { AppRoutes } from './routes/AppRoutes'
-import { C } from './styles/Common.styled'
 
 interface AppPT {
   toggleTheme: () => void

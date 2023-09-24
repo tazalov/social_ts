@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { C } from '../../../app/styles/Common.styled'
 import { F } from '../../../app/styles/Fragments.styled'
 
@@ -6,7 +7,7 @@ const User = styled(C.FlexWrapper)`
   padding: 10px;
   transition: all 0.3s ease;
   &:hover {
-    background-color: ${props => props.theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.thirdBg};
   }
 `
 
@@ -16,7 +17,7 @@ const Name = styled.div`
 `
 
 const Status = styled.div`
-  color: ${props => {
+  color: ${(props) => {
     const { name, colors } = props.theme
     return name === 'light' ? colors.primaryFont : colors.secondaryFont
   }};

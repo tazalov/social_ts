@@ -1,5 +1,6 @@
 import { FC, memo, ReactNode } from 'react'
 import styled from 'styled-components'
+
 import { C } from '../../app/styles/Common.styled'
 import { F } from '../../app/styles/Fragments.styled'
 
@@ -16,8 +17,8 @@ export const TitleBlock: FC<TitleBlockPT> = memo(({ title }) => {
 })
 
 const TitleWrapper = styled(C.FlexWrapper)`
-  background-color: ${props => props.theme.colors.accent};
-  color: ${props => {
+  background-color: ${(props) => props.theme.colors.accent};
+  color: ${(props) => {
     const { name, colors } = props.theme
     return name === 'light' ? colors.secondaryFont : colors.primaryFont
   }};
@@ -27,7 +28,7 @@ const TitleWrapper = styled(C.FlexWrapper)`
 const Title = styled.h2`
   ${F.Subtitle};
   span {
-    color: ${props => {
+    color: ${(props) => {
       const { name, colors } = props.theme
       return name === 'light' ? colors.primaryFont : colors.secondaryFont
     }};

@@ -18,24 +18,24 @@ interface FlexWrapperPT {
 }
 
 const FlexWrapper = styled.div<FlexWrapperPT>`
-  ${props =>
+  ${(props) =>
     props.$shadow &&
     css`
-      box-shadow: ${props => props.theme.colors.shadowPrimary};
-      background-color: ${props => props.theme.colors.secondaryBg};
+      box-shadow: ${(props) => props.theme.colors.shadowPrimary};
+      background-color: ${(props) => props.theme.colors.secondaryBg};
     `}
   display: flex;
-  flex-direction: ${props => props.$direction || 'row'};
-  justify-content: ${props => props.$justify || 'flex-start'};
-  align-items: ${props => props.$align || 'stretch'};
-  flex-wrap: ${props => props.$wrap || 'nowrap'};
-  align-content: ${props => props.$content || 'stretch'};
-  gap: ${props => props.$gap || '0px'};
+  flex-direction: ${(props) => props.$direction || 'row'};
+  justify-content: ${(props) => props.$justify || 'flex-start'};
+  align-items: ${(props) => props.$align || 'stretch'};
+  flex-wrap: ${(props) => props.$wrap || 'nowrap'};
+  align-content: ${(props) => props.$content || 'stretch'};
+  gap: ${(props) => props.$gap || '0px'};
 `
 
 const ShadowContainer = styled.div`
-  box-shadow: ${props => props.theme.colors.shadowPrimary};
-  background-color: ${props => props.theme.colors.secondaryBg};
+  box-shadow: ${(props) => props.theme.colors.shadowPrimary};
+  background-color: ${(props) => props.theme.colors.secondaryBg};
 `
 
 const Text = styled.div`

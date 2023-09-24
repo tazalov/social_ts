@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { C } from '../../../../app/styles/Common.styled'
 import { F } from '../../../../app/styles/Fragments.styled'
 
@@ -7,8 +8,8 @@ const Post = styled(C.ShadowContainer)`
 `
 
 const PostHeader = styled(C.FlexWrapper)`
-  background-color: ${props => props.theme.colors.accent};
-  color: ${props => {
+  background-color: ${(props) => props.theme.colors.accent};
+  color: ${(props) => {
     const { name, colors } = props.theme
     return name === 'light' ? colors.secondaryFont : colors.primaryFont
   }};
@@ -22,7 +23,7 @@ const UserInfo = styled(C.FlexWrapper)`
     ${F.Subtitle};
   }
   i {
-    color: ${props => {
+    color: ${(props) => {
       const { name, colors } = props.theme
       return name === 'light' ? colors.secondaryFont : colors.primaryFont
     }};
@@ -38,11 +39,11 @@ const PostButtons = styled(C.FlexWrapper)`
   padding: 10px;
   button {
     padding: 5px;
-    color: ${props => props.theme.colors.error};
+    color: ${(props) => props.theme.colors.error};
     font-size: 14px;
     transition: all 0.3s ease;
     &:hover {
-      color: ${props => props.theme.colors.accent};
+      color: ${(props) => props.theme.colors.accent};
     }
     span {
       margin-left: 5px;

@@ -1,10 +1,4 @@
-import {
-  addPost,
-  setFriendsProfile,
-  setProfile,
-  setProfileLoading,
-  setStatus,
-} from '../model/actions/profile.actions'
+import { addPost, setFriendsProfile, setProfile, setProfileLoading, setStatus } from '../model/actions/profile.actions'
 import { profileReducer } from '../model/profile.reducer'
 import { ProfileST, ProfileT } from '../types/profile.reducer'
 

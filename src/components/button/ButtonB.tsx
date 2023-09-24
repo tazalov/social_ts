@@ -9,13 +9,7 @@ interface ButtonBPT extends HTMLButtonT {
   callback?: () => void
 }
 
-export const ButtonB: FC<ButtonBPT> = ({
-  title,
-  disable,
-  callback,
-  type = 'button',
-  ...restProps
-}) => {
+export const ButtonB: FC<ButtonBPT> = ({ title, disable, callback, type = 'button', ...restProps }) => {
   const onClickHandler = () => {
     callback?.()
   }
@@ -28,8 +22,8 @@ export const ButtonB: FC<ButtonBPT> = ({
 
 const StyledButton = styled.button`
   padding: 5px;
-  color: ${props => props.theme.colors.accent};
-  border: 1px solid ${props => props.theme.colors.accent};
+  color: ${(props) => props.theme.colors.accent};
+  border: 1px solid ${(props) => props.theme.colors.accent};
   transition: all 0.3s ease;
   text-transform: uppercase;
   text-align: center;
@@ -37,8 +31,8 @@ const StyledButton = styled.button`
   display: block;
   font-size: 14px;
   &:hover {
-    background-color: ${props => props.theme.colors.accent};
-    border: 1px solid ${props => props.theme.colors.accent};
-    color: ${props => props.theme.colors.thirdBg};
+    background-color: ${(props) => props.theme.colors.accent};
+    border: 1px solid ${(props) => props.theme.colors.accent};
+    color: ${(props) => props.theme.colors.thirdBg};
   }
 `

@@ -1,9 +1,12 @@
 import { FC, memo } from 'react'
-import { TextForm } from '../../../components'
-import { C } from '../../../app/styles/Common.styled'
-import { PostT } from '../../../redux/profile-reducer'
+
 import { Post } from './post/Post'
+
 import { S } from './Posts.styled'
+
+import { C } from '../../../app/styles/Common.styled'
+import { TextForm } from '../../../components'
+import { PostT } from '../../../redux/profile-reducer'
 
 interface PostsPT {
   posts: PostT[]
@@ -16,7 +19,7 @@ export const Posts: FC<PostsPT> = memo(({ posts, addPost }) => {
       <C.ShadowContainer as={S.FormWrapper}>
         <TextForm placeholder={'Enter post message...'} callback={addPost} />
       </C.ShadowContainer>
-      {posts.map(el => (
+      {posts.map((el) => (
         <Post key={el.id} post={el} />
       ))}
     </S.Posts>

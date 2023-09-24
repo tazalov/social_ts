@@ -1,9 +1,12 @@
 import { FC, memo } from 'react'
+
+import { Friend } from './Friend'
+
+import { S } from './Friends.styled'
+
 import { C } from '../../../app/styles/Common.styled'
 import { TitleBlock } from '../../../components'
 import { FriendsT } from '../../../redux/profile-reducer'
-import { Friend } from './Friend'
-import { S } from './Friends.styled'
 
 interface FriendsPT {
   friends: FriendsT | null
@@ -11,7 +14,7 @@ interface FriendsPT {
 }
 
 export const Friends: FC<FriendsPT> = memo(({ friends, isOwner }) => {
-  const friendsProfile = friends?.list.map(el => <Friend key={el.id} friend={el} />) || 'No friends'
+  const friendsProfile = friends?.list.map((el) => <Friend key={el.id} friend={el} />) || 'No friends'
   return (
     <S.Friends>
       <TitleBlock title={<>Friends {isOwner ? <span>{friends?.count || 0}</span> : ''}</>} />

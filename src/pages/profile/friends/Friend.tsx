@@ -1,10 +1,12 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Avatar } from '../../../components'
+
+import { S } from './Friends.styled'
+
 import noAvatar from '../../../app/assets/images/anynft.webp'
+import { Avatar } from '../../../components'
 import { FriendT } from '../../../redux/profile-reducer'
 import { getShortString } from '../../../utils/string/getShortString'
-import { S } from './Friends.styled'
 
 interface FriendPT {
   friend: FriendT

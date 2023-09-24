@@ -1,6 +1,8 @@
 import { FC } from 'react'
-import { C } from '../../app/styles/Common.styled'
+
 import { S } from './Pagination.styled'
+
+import { C } from '../../app/styles/Common.styled'
 
 type PaginationPT = {
   totalCount: number
@@ -13,17 +15,12 @@ export const Pagination2: FC<PaginationPT> = ({ totalCount, pageSize, currentPag
   const pagesCount = Math.ceil(totalCount / pageSize)
   const pages: number[] = Array.from({ length: pagesCount }, (_, i) => i + 1)
 
-  let slicedPages =
-    currentPage - 9 < 0 ? pages.slice(0, 9) : pages.slice(currentPage - 5, currentPage + 4)
+  let slicedPages = currentPage - 9 < 0 ? pages.slice(0, 9) : pages.slice(currentPage - 5, currentPage + 4)
 
-  const buttons = slicedPages.map(el => {
+  const buttons = slicedPages.map((el) => {
     const onClickHandler = () => setPage(el)
     return (
-      <S.Button
-        as={el === currentPage ? S.SelectedButton : S.Button}
-        key={el}
-        onClick={onClickHandler}
-      >
+      <S.Button as={el === currentPage ? S.SelectedButton : S.Button} key={el} onClick={onClickHandler}>
         {el}
       </S.Button>
     )

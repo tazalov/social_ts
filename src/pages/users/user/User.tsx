@@ -1,10 +1,12 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
+
+import { S } from './User.styled'
+
 import photo from '../../../app/assets/images/anynft.webp'
 import { Avatar, ButtonB, Loading } from '../../../components'
 import { ProgressFollowT, UserT } from '../../../redux/users-reducer'
 import { getShortString } from '../../../utils/string/getShortString'
-import { S } from './User.styled'
 
 interface UserPT {
   user: UserT
@@ -27,7 +29,7 @@ export const User: FC<UserPT> = ({ user, follow, unfollow, progressFollow }) => 
       </NavLink>
       <S.Name>{getShortString(name, 10)}</S.Name>
       <S.Status>{newStatus}</S.Status>
-      {progressFollow.userId.some(el => el === id) ? (
+      {progressFollow.userId.some((el) => el === id) ? (
         <Loading />
       ) : (
         <ButtonB

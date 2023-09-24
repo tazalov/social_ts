@@ -1,11 +1,13 @@
 import { FC } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+
+import { LoginForm } from './LoginForm'
+
 import { C } from '../../app/styles/Common.styled'
 import { TitleBlock } from '../../components'
 import { loginUser } from '../../redux/app-reducer'
 import { RootStateT } from '../../redux/store'
-import { LoginForm } from './LoginForm'
 
 export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, captcha, error, loginUser }) => {
   return isAuth ? (

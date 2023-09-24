@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import styled, { css, useTheme } from 'styled-components'
+
 import iconsSprite from '../../app/assets/images/icon/social-icon-sprite.svg'
 import { ContactLinksT } from '../../pages/profile/profileInfo/links/Links'
 
@@ -16,16 +17,16 @@ export const Social: FC<SocialPT> = ({ iconId, link }) => {
         width={'30px'}
         height={'30px'}
         viewBox={'0 0 24 24'}
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns='http://www.w3.org/2000/svg'
         $link={iconId}
       >
         {iconId === 'instagram' && (
-          <radialGradient id="gradient" r="150%" cx="30%" cy="107%">
-            <stop stopColor={theme.colors.svg.gradientStops.stop1} offset="0" />
-            <stop stopColor={theme.colors.svg.gradientStops.stop2} offset="0.05" />
-            <stop stopColor={theme.colors.svg.gradientStops.stop3} offset="0.45" />
-            <stop stopColor={theme.colors.svg.gradientStops.stop4} offset="0.6" />
-            <stop stopColor={theme.colors.svg.gradientStops.stop5} offset="0.9" />
+          <radialGradient id='gradient' r='150%' cx='30%' cy='107%'>
+            <stop stopColor={theme.colors.svg.gradientStops.stop1} offset='0' />
+            <stop stopColor={theme.colors.svg.gradientStops.stop2} offset='0.05' />
+            <stop stopColor={theme.colors.svg.gradientStops.stop3} offset='0.45' />
+            <stop stopColor={theme.colors.svg.gradientStops.stop4} offset='0.6' />
+            <stop stopColor={theme.colors.svg.gradientStops.stop5} offset='0.9' />
           </radialGradient>
         )}
         <use xlinkHref={`${iconsSprite}#${iconId}`} />
@@ -42,7 +43,7 @@ type StyledSocialPT = {
 
 const StyledSocial = styled.svg<StyledSocialPT>`
   transition: all 0.2s linear;
-  ${props => {
+  ${(props) => {
     switch (props.$link) {
       case 'github': {
         return css`

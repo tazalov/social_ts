@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { C } from '../../../app/styles/Common.styled'
 import { F } from '../../../app/styles/Fragments.styled'
 
@@ -26,22 +27,23 @@ const FormWrapper = styled(C.ShadowContainer)`
 //message
 const Message = styled.div`
   margin: 10px;
-  background-color: ${props => props.theme.colors.accent};
+  background-color: ${(props) => props.theme.colors.accent};
   border-radius: 8px 8px 8px 0;
   max-width: 300px;
   position: relative;
   padding: 5px;
   user-select: none;
   word-break: break-all;
-  &:before {
-    position: absolute;
+  &:after {
     content: '';
+    position: absolute;
     bottom: 0;
     left: -10px;
-    width: 16px;
-    height: 10px;
-    clip-path: path('M 10,0 A 10,10 0 0 1 0,10 H 16 V 0 Z');
-    background-color: ${props => props.theme.colors.accent};
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 0; /* Размер и форма уголка */
+    border-color: transparent ${(props) => props.theme.colors.accent} transparent transparent; /* Цвет уголка и фона сообщения */
   }
 `
 

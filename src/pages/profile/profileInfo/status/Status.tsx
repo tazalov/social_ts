@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+
 import { Input } from '../../../../components'
 import { updateStatusProfile } from '../../../../redux/profile-reducer'
 import { RootStateT } from '../../../../redux/store'
@@ -25,8 +26,7 @@ const Status: FC<StatusPT> = ({ id, userId, status, updateStatusProfile }) => {
     setEditMode(false)
   }
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setCurrentStatus(e.currentTarget.value)
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => setCurrentStatus(e.currentTarget.value)
 
   const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -40,10 +40,13 @@ const Status: FC<StatusPT> = ({ id, userId, status, updateStatusProfile }) => {
   return (
     <S.Status>
       {!editMode ? (
-        <span onDoubleClick={activateEditMode}>{newStatus}</span>
+        <span role='status-span' onDoubleClick={activateEditMode}>
+          {newStatus}
+        </span>
       ) : (
         <Input
-          type="text"
+          role='status-input'
+          type='text'
           value={currentStatus}
           onChange={handleOnChange}
           onBlur={deactivateEditMode}

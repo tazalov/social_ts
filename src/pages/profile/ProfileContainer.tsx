@@ -2,18 +2,14 @@ import { Component, ComponentType } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
-import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
+
+import { Profile } from './Profile'
+
 import { Preloader } from '../../components'
 import { AppST } from '../../redux/app-reducer'
-import {
-  addPost,
-  getFriendsProfile,
-  getStatusProfile,
-  getUserProfile,
-  ProfileST,
-} from '../../redux/profile-reducer'
+import { addPost, getFriendsProfile, getStatusProfile, getUserProfile, ProfileST } from '../../redux/profile-reducer'
 import { RootStateT } from '../../redux/store'
-import { Profile } from './Profile'
+import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 
 type ProfileContainerPT = MapStatePT & MapDispatchPT & RouteComponentProps<{ userId: string }>
 
