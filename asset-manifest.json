@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.js": "/incubator_social_ts/static/js/main.91f5200b.js",
-    "static/js/407.13a4db5d.chunk.js": "/incubator_social_ts/static/js/407.13a4db5d.chunk.js",
-    "static/js/724.ae82169d.chunk.js": "/incubator_social_ts/static/js/724.ae82169d.chunk.js",
-    "static/js/923.b75abb66.chunk.js": "/incubator_social_ts/static/js/923.b75abb66.chunk.js",
-    "static/js/940.05b235e4.chunk.js": "/incubator_social_ts/static/js/940.05b235e4.chunk.js",
+    "main.js": "/incubator_social_ts/static/js/main.47b0d3ef.js",
+    "static/js/407.ed02aa34.chunk.js": "/incubator_social_ts/static/js/407.ed02aa34.chunk.js",
+    "static/js/724.8c45990e.chunk.js": "/incubator_social_ts/static/js/724.8c45990e.chunk.js",
+    "static/js/671.303f54df.chunk.js": "/incubator_social_ts/static/js/671.303f54df.chunk.js",
+    "static/js/940.8624837c.chunk.js": "/incubator_social_ts/static/js/940.8624837c.chunk.js",
     "static/media/social-icon-sprite.svg": "/incubator_social_ts/static/media/social-icon-sprite.f0e6aaeb91e711434b9e54c9720175d5.svg",
-    "static/media/carrepair.webp": "/incubator_social_ts/static/media/carrepair.10d4140b37af4164e532.webp",
     "static/media/icon-sprite.svg": "/incubator_social_ts/static/media/icon-sprite.581a403bc01b6ff7862da2a9cd33cb92.svg",
     "static/media/anynft.webp": "/incubator_social_ts/static/media/anynft.a2c31cf8619462c6524b.webp",
     "index.html": "/incubator_social_ts/index.html",
-    "main.91f5200b.js.map": "/incubator_social_ts/static/js/main.91f5200b.js.map",
-    "407.13a4db5d.chunk.js.map": "/incubator_social_ts/static/js/407.13a4db5d.chunk.js.map",
-    "724.ae82169d.chunk.js.map": "/incubator_social_ts/static/js/724.ae82169d.chunk.js.map",
-    "923.b75abb66.chunk.js.map": "/incubator_social_ts/static/js/923.b75abb66.chunk.js.map",
-    "940.05b235e4.chunk.js.map": "/incubator_social_ts/static/js/940.05b235e4.chunk.js.map"
+    "main.47b0d3ef.js.map": "/incubator_social_ts/static/js/main.47b0d3ef.js.map",
+    "407.ed02aa34.chunk.js.map": "/incubator_social_ts/static/js/407.ed02aa34.chunk.js.map",
+    "724.8c45990e.chunk.js.map": "/incubator_social_ts/static/js/724.8c45990e.chunk.js.map",
+    "671.303f54df.chunk.js.map": "/incubator_social_ts/static/js/671.303f54df.chunk.js.map",
+    "940.8624837c.chunk.js.map": "/incubator_social_ts/static/js/940.8624837c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.91f5200b.js"
+    "static/js/main.47b0d3ef.js"
   ]
 }
