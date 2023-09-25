@@ -20,6 +20,7 @@ const initialState: ProfileST = {
   friends: null,
   status: '',
   isProfileLoading: false,
+  errorUpdate: '',
 }
 
 export const profileReducer = (state = initialState, action: ProfileAT) => {
@@ -68,6 +69,12 @@ export const profileReducer = (state = initialState, action: ProfileAT) => {
           ...state.profile,
           photos: action.photos,
         } as ProfileT,
+      }
+    }
+    case 'social/profile/SET_ERROR': {
+      return {
+        ...state,
+        errorUpdate: action.error,
       }
     }
     default: {

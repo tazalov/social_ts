@@ -10,8 +10,8 @@ export const LoginSchema = yup.object().shape({
 
 export const ProfileSchema = yup.object().shape({
   fullName: yup.string().required('Required').min(2, 'Min 5 characters').max(150, 'Max count characters - 30'),
-  aboutMe: yup.string().max(150, 'Max count characters - 100'),
-  lookingForAJobDescription: yup.string().max(150, 'Max count characters - 100'),
+  aboutMe: yup.string().required('Required').max(150, 'Max count characters - 100'),
+  lookingForAJobDescription: yup.string().required('Required').max(150, 'Max count characters - 100'),
 })
 
 export const TextFormSchema = yup.object().shape({

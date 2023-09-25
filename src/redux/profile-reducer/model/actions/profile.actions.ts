@@ -1,5 +1,6 @@
 import {
   AddPostAT,
+  SetErrorUpdateAT,
   SetFriendsProfileAT,
   SetPhotosAT,
   SetProfileAT,
@@ -37,4 +38,9 @@ export const setFriendsProfile = (list: FriendT[], count: number): SetFriendsPro
 export const setPhotoProfile = (photos: PhotosT): SetPhotosAT => ({
   type: 'social/profile/SET_PHOTOS',
   photos,
+})
+
+export const setErrorUpdate = (error: string): SetErrorUpdateAT => ({
+  type: 'social/profile/SET_ERROR',
+  error,
 })

@@ -43,7 +43,8 @@ class ProfileContainer extends Component<ProfileContainerPT> {
   }
 
   render() {
-    const { isProfileLoading, profile, posts, friends, addPost, updatePhotoProfile, updateProfile } = this.props
+    const { isProfileLoading, profile, posts, friends, errorUpdate, addPost, updatePhotoProfile, updateProfile } =
+      this.props
     return isProfileLoading || !profile ? (
       <Preloader size={150} />
     ) : (
@@ -52,6 +53,7 @@ class ProfileContainer extends Component<ProfileContainerPT> {
         posts={posts}
         friends={friends}
         isOwner={!this.props.match.params.userId}
+        errorUpdate={errorUpdate}
         addPost={addPost}
         updatePhoto={updatePhotoProfile}
         updateProfile={updateProfile}
@@ -67,6 +69,7 @@ const mapStateToProps = (state: RootStateT): MapStatePT => ({
   posts: state.profile.posts,
   friends: state.profile.friends,
   isProfileLoading: state.profile.isProfileLoading,
+  errorUpdate: state.profile.errorUpdate,
   id: state.app.id,
 })
 

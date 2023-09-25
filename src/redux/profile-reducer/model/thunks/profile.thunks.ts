@@ -3,6 +3,7 @@ import { BaseThunkT } from '../../../store'
 import { ProfileAT, SetFriendsProfileAT, SetPhotosAT, SetStatusAT } from '../../types/profile.actions'
 import { ProfileT } from '../../types/profile.reducer'
 import {
+  setErrorUpdate,
   setFriendsProfile,
   setPhotoProfile,
   setProfile,
@@ -57,12 +58,14 @@ export const updateProfile =
   async (dispatch, getState) => {
     const id = getState().app.id
     const response = await profileAPI.updateProfile(profile)
-    const { resultCode } = response
+    const { resultCode, messages } = response
     if (resultCode === ResultCodeE.Success) {
       if (id) {
         await dispatch(getUserProfile(`${id}`))
       } else {
         console.error('id must be a number when sending the request')
       }
+    } else {
+      dispatch(setErrorUpdate(messages[0]))
     }
   }

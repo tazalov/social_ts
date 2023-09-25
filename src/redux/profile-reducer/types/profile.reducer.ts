@@ -54,4 +54,5 @@ export interface ProfileST {
   friends: FriendsT | null
   status: string
   isProfileLoading: boolean
+  errorUpdate: string
 }

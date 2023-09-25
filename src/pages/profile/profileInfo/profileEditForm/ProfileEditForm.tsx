@@ -2,7 +2,6 @@ import { Field, Form, Formik, FormikHelpers } from 'formik'
 import { FC, useEffect, useState } from 'react'
 
 import { C } from '../../../../app/styles/Common.styled'
-
 import { Button, ErrorField, Input, Loading, TitleBlock } from '../../../../components'
 import { ProfileT } from '../../../../redux/profile-reducer'
 import { ProfileSchema } from '../../../../utils/validators/validators'
@@ -120,11 +119,19 @@ export const ProfileEditForm: FC<ProfileEditFormPT> = ({ profile, error, updateP
               style={{ padding: '10px' }}
             >
               {arrayFieldsContacts}
+            </C.FlexWrapper>
+            <C.FlexWrapper
+              $direction={'column'}
+              $gap={'15px'}
+              $justify={'center'}
+              $align={'center'}
+              style={{ padding: '10px' }}
+            >
               {error && <ErrorField>{error}</ErrorField>}
               {isSubmitting ? (
                 <Loading />
               ) : (
-                <Button type='submit' title={'login'} disable={Object.keys(errors).length > 0} />
+                <Button type='submit' title={'save'} disable={Object.keys(errors).length > 0} />
               )}
             </C.FlexWrapper>
           </Form>

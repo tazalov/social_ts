@@ -15,6 +15,7 @@ const startState: ProfileST = {
   friends: null,
   status: '',
   isProfileLoading: false,
+  errorUpdate: '',
 }
 
 describe('profileReducer', () => {

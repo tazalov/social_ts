@@ -51,18 +51,6 @@ const Status = styled.div`
   }
 `
 
-const Looking = styled.div`
-  text-align: left;
-  span {
-    font-size: 18px;
-    padding: 5px 5px 5px 0;
-  }
-`
-
-const Buttons = styled(C.FlexWrapper)`
-  padding: 0 10px;
-`
-
 const EditPhoto = styled.label`
   padding: 6px;
   color: ${(props) => props.theme.colors.accent};
@@ -80,13 +68,23 @@ const EditPhoto = styled.label`
   }
 `
 
+const CoverImg = styled.div`
+  height: 150px;
+  background: rgb(66, 73, 121);
+  background: linear-gradient(139deg, rgba(66, 73, 121, 1) 15%, rgba(115, 164, 222, 1) 57%, rgba(0, 212, 255, 1) 100%);
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+`
+
 export const S = {
   ProfileInfo: ProfileInfoStyled,
   AvatarPos,
   Info,
   Name,
   Status,
-  Looking,
-  Buttons,
   EditPhoto,
+  CoverImg,
 }

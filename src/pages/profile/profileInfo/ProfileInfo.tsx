@@ -2,7 +2,6 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ChangeEvent, FC, memo, useCallback, useState } from 'react'
 
-import { Links } from './links/Links'
 import { ProfileEditForm } from './profileEditForm/ProfileEditForm'
 import { S } from './ProfileInfo.styled'
 import Status from './status/Status'
@@ -15,12 +14,14 @@ import { ProfileT } from '../../../redux/profile-reducer'
 interface ProfileInfoPT {
   profile: ProfileT
   isOwner: boolean
+  errorUpdate: string
   updatePhoto: (photo: File) => void
   updateProfile: (profile: Omit<ProfileT, 'photos'>) => void
 }
 
-export const ProfileInfo: FC<ProfileInfoPT> = memo(({ profile, isOwner, updatePhoto, updateProfile }) => {
-  const { fullName, lookingForAJob, lookingForAJobDescription, photos, contacts } = profile
+export const ProfileInfo: FC<ProfileInfoPT> = memo(({ profile, isOwner, errorUpdate, updatePhoto, updateProfile }) => {
+  const { fullName, lookingForAJobDescription, photos } = profile
+
   const [isAuthModal, setIsAuthModal] = useState(false)
 
   const onShowModal = useCallback(() => {
@@ -38,23 +39,21 @@ export const ProfileInfo: FC<ProfileInfoPT> = memo(({ profile, isOwner, updatePh
   }
 
   return (
-    <C.FlexWrapper $align={'center'} $justify={'space-between'}>
-      <S.ProfileInfo $align={'center'}>
-        <Avatar img={photos.large || noAvatar} w={150} h={150} pos_styles={S.AvatarPos} />
-        <S.Info $direction={'column'} $align={'flex-start'} $gap={'10px'}>
-          <S.Name $align={'center'} $gap={'5px'}>
-            <p>{fullName}</p>
-            <span>{lookingForAJobDescription || 'developer'}</span>
-          </S.Name>
-          <Status />
-          <S.Looking>
-            Looking for a job: <span>{lookingForAJob ? 'YES' : 'NO'}</span>
-          </S.Looking>
-        </S.Info>
-      </S.ProfileInfo>
-      <S.Buttons $direction={'column'} $justify={'center'} $align={'flex-end'} $gap={'10px'}>
+    <C.ShadowContainer>
+      <S.CoverImg>{photos.large && <img src={photos.large} alt='' />}</S.CoverImg>
+      <C.FlexWrapper $align={'center'} $justify={'space-between'}>
+        <S.ProfileInfo $align={'center'}>
+          <Avatar img={photos.large || noAvatar} w={150} h={150} pos_styles={S.AvatarPos} />
+          <S.Info $direction={'column'} $align={'flex-start'} $gap={'10px'}>
+            <S.Name $align={'center'} $gap={'5px'}>
+              <p>{fullName}</p>
+              <span>{lookingForAJobDescription || 'developer'}</span>
+            </S.Name>
+            <Status />
+          </S.Info>
+        </S.ProfileInfo>
         {isOwner && (
-          <C.FlexWrapper $align={'center'} $gap={'5px'} $justify={'center'}>
+          <C.FlexWrapper $align={'center'} $gap={'5px'} $justify={'center'} style={{ padding: '10px' }}>
             <S.EditPhoto htmlFor={'edit_photo_profile'}>
               <FontAwesomeIcon icon={faCamera} />
             </S.EditPhoto>
@@ -68,11 +67,10 @@ export const ProfileInfo: FC<ProfileInfoPT> = memo(({ profile, isOwner, updatePh
             <ButtonB title={'edit'} callback={onShowModal} />
           </C.FlexWrapper>
         )}
-        <Links links={contacts} />
-      </S.Buttons>
-      <Modal isOpen={isAuthModal} onClose={onCloseModal}>
-        <ProfileEditForm profile={profile} updateProfile={updateProfile} error={''} />
-      </Modal>
-    </C.FlexWrapper>
+        <Modal isOpen={isAuthModal} onClose={onCloseModal}>
+          <ProfileEditForm profile={profile} updateProfile={updateProfile} error={errorUpdate} />
+        </Modal>
+      </C.FlexWrapper>
+    </C.ShadowContainer>
   )
 })
