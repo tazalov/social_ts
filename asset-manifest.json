@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/incubator_social_ts/static/js/main.47b0d3ef.js",
+    "main.js": "/incubator_social_ts/static/js/main.bff1be7e.js",
     "static/js/407.ed02aa34.chunk.js": "/incubator_social_ts/static/js/407.ed02aa34.chunk.js",
     "static/js/724.8c45990e.chunk.js": "/incubator_social_ts/static/js/724.8c45990e.chunk.js",
     "static/js/671.303f54df.chunk.js": "/incubator_social_ts/static/js/671.303f54df.chunk.js",
@@ -9,13 +9,13 @@
     "static/media/icon-sprite.svg": "/incubator_social_ts/static/media/icon-sprite.581a403bc01b6ff7862da2a9cd33cb92.svg",
     "static/media/anynft.webp": "/incubator_social_ts/static/media/anynft.a2c31cf8619462c6524b.webp",
     "index.html": "/incubator_social_ts/index.html",
-    "main.47b0d3ef.js.map": "/incubator_social_ts/static/js/main.47b0d3ef.js.map",
+    "main.bff1be7e.js.map": "/incubator_social_ts/static/js/main.bff1be7e.js.map",
     "407.ed02aa34.chunk.js.map": "/incubator_social_ts/static/js/407.ed02aa34.chunk.js.map",
     "724.8c45990e.chunk.js.map": "/incubator_social_ts/static/js/724.8c45990e.chunk.js.map",
     "671.303f54df.chunk.js.map": "/incubator_social_ts/static/js/671.303f54df.chunk.js.map",
     "940.8624837c.chunk.js.map": "/incubator_social_ts/static/js/940.8624837c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.47b0d3ef.js"
+    "static/js/main.bff1be7e.js"
   ]
 }
