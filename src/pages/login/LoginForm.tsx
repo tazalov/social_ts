@@ -65,7 +65,7 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
                 errorText={errors.password}
                 style={{ padding: '10px' }}
               />
-              <Field as={Input} label={'Remember me'} name={'remember'} type={'checkbox'} />
+              <Field id={'remember_login'} as={Input} label={'Remember me'} name={'remember'} type={'checkbox'} />
               {captcha && (
                 <Field
                   id={'captcha_login'}

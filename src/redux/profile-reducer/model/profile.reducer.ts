@@ -62,7 +62,6 @@ export const profileReducer = (state = initialState, action: ProfileAT) => {
       }
     }
     case 'social/profile/SET_PHOTOS': {
-      debugger
       return {
         ...state,
         profile: {

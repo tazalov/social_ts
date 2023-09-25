@@ -17,30 +17,25 @@ interface ProfilePT {
   isOwner: boolean
   addPost: (postText: string) => void
   updatePhoto: (photo: File) => void
+  updateProfile: (profile: Omit<ProfileT, 'photos'>) => void
 }
 
-export const Profile: FC<ProfilePT> = ({ profile, posts, friends, isOwner, addPost, updatePhoto }) => (
-  <C.FlexWrapper $gap={'20px'} $direction={'column'}>
-    <C.ShadowContainer>
-      <S.CoverImg>
-        <img src={profile.photos.large || cover} alt='' />
-      </S.CoverImg>
-      <ProfileInfo
-        avatar={profile.photos.large}
-        name={profile.fullName}
-        isLookingJob={profile.lookingForAJob}
-        jobDesc={profile.lookingForAJobDescription}
-        contacts={profile.contacts}
-        updatePhoto={updatePhoto}
-        isOwner={isOwner}
-      />
-    </C.ShadowContainer>
-    <C.FlexWrapper $gap={'20px'}>
-      <Posts posts={posts} addPost={addPost} />
-      <C.FlexWrapper $gap={'20px'} $direction={'column'}>
-        <About about={profile.aboutMe} />
-        <Friends friends={friends} isOwner={isOwner} />
+export const Profile: FC<ProfilePT> = ({ profile, posts, friends, isOwner, addPost, updatePhoto, updateProfile }) => {
+  return (
+    <C.FlexWrapper $gap={'20px'} $direction={'column'}>
+      <C.ShadowContainer>
+        <S.CoverImg>
+          <img src={profile.photos.large || cover} alt='' />
+        </S.CoverImg>
+        <ProfileInfo profile={profile} updatePhoto={updatePhoto} isOwner={isOwner} updateProfile={updateProfile} />
+      </C.ShadowContainer>
+      <C.FlexWrapper $gap={'20px'}>
+        <Posts posts={posts} addPost={addPost} />
+        <C.FlexWrapper $gap={'20px'} $direction={'column'}>
+          <About about={profile.aboutMe} />
+          <Friends friends={friends} isOwner={isOwner} />
+        </C.FlexWrapper>
       </C.FlexWrapper>
     </C.FlexWrapper>
-  </C.FlexWrapper>
-)
+  )
+}

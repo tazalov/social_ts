@@ -7,8 +7,15 @@ import { Profile } from './Profile'
 
 import { Preloader } from '../../components'
 import { AppST } from '../../redux/app-reducer'
-import { addPost, getFriendsProfile, getStatusProfile, getUserProfile, ProfileST } from '../../redux/profile-reducer'
-import { updatePhotoProfile } from '../../redux/profile-reducer/model/thunks/profile.thunks'
+import {
+  addPost,
+  getFriendsProfile,
+  getStatusProfile,
+  getUserProfile,
+  ProfileST,
+  ProfileT,
+} from '../../redux/profile-reducer'
+import { updatePhotoProfile, updateProfile } from '../../redux/profile-reducer/model/thunks/profile.thunks'
 import { RootStateT } from '../../redux/store'
 import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 
@@ -36,7 +43,7 @@ class ProfileContainer extends Component<ProfileContainerPT> {
   }
 
   render() {
-    const { isProfileLoading, profile, posts, friends, addPost, updatePhotoProfile } = this.props
+    const { isProfileLoading, profile, posts, friends, addPost, updatePhotoProfile, updateProfile } = this.props
     return isProfileLoading || !profile ? (
       <Preloader size={150} />
     ) : (
@@ -47,6 +54,7 @@ class ProfileContainer extends Component<ProfileContainerPT> {
         isOwner={!this.props.match.params.userId}
         addPost={addPost}
         updatePhoto={updatePhotoProfile}
+        updateProfile={updateProfile}
       />
     )
   }
@@ -68,6 +76,7 @@ interface MapDispatchPT {
   getStatusProfile: (userId: string) => void
   getFriendsProfile: () => void
   updatePhotoProfile: (photo: File) => void
+  updateProfile: (profile: Omit<ProfileT, 'photos'>) => void
 }
 
 export default compose<ComponentType>(
@@ -77,6 +86,7 @@ export default compose<ComponentType>(
     getStatusProfile,
     getFriendsProfile,
     updatePhotoProfile,
+    updateProfile,
   }),
   withRouter,
   redirectToLogin,

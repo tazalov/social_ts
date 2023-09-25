@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { C } from '../../../../app/styles/Common.styled'
 import { Social } from '../../../../components'
@@ -10,7 +10,7 @@ interface LinksPT {
 
 export type ContactLinksT = keyof ContactsT
 
-export const Links: FC<LinksPT> = ({ links }) => {
+export const Links: FC<LinksPT> = memo(({ links }) => {
   const linksNames = Object.keys(links) as ContactLinksT[]
   return (
     <C.FlexWrapper $gap={'10px'} $justify={'flex-end'}>
@@ -22,4 +22,4 @@ export const Links: FC<LinksPT> = ({ links }) => {
       }, [] as JSX.Element[])}
     </C.FlexWrapper>
   )
-}
+})

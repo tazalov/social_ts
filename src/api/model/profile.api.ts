@@ -1,3 +1,4 @@
+import { ProfileT } from '../../redux/profile-reducer'
 import { social } from '../config/api.config'
 
 export const profileAPI = {
@@ -21,6 +22,10 @@ export const profileAPI = {
     const formData = new FormData()
     formData.append('image', photo)
     const response = await social.put(`profile/photo`, formData)
+    return response.data
+  },
+  async updateProfile(profile: Omit<ProfileT, 'photos'>) {
+    const response = await social.put(`profile`, profile)
     return response.data
   },
 }
