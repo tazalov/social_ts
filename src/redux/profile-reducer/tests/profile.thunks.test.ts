@@ -3,11 +3,18 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
 import { profileAPI, ResultCodeE } from '../../../api'
-import { setFriendsProfile, setProfile, setProfileLoading, setStatus } from '../model/actions/profile.actions'
+import {
+  setFriendsProfile,
+  setPhotoProfile,
+  setProfile,
+  setProfileLoading,
+  setStatus,
+} from '../model/actions/profile.actions'
 import {
   getFriendsProfile,
   getStatusProfile,
   getUserProfile,
+  updatePhotoProfile,
   updateStatusProfile,
 } from '../model/thunks/profile.thunks'
 
@@ -124,15 +131,24 @@ describe('profile thunks tests', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('dont should dispatch setStatus when will it be updated', async () => {
-    const responseData = { resultCode: ResultCodeE.Error }
+  it('should dispatch updatePhotosProfile when will it be updated', async () => {
+    const responseData = {
+      resultCode: ResultCodeE.Success,
+      data: {
+        photos: {
+          small: 'smallPhotoUrl',
+          large: 'largePhotoUrl',
+        },
+      },
+    }
+    const photoFile = '' as unknown as File
 
-    profileAPI.updateStatus = jest.fn(() => Promise.resolve(responseData))
+    profileAPI.updatePhoto = jest.fn(() => Promise.resolve(responseData))
 
     const store = mockStore()
-    await store.dispatch(updateStatusProfile('123') as unknown as AnyAction)
+    await store.dispatch(updatePhotoProfile(photoFile) as unknown as AnyAction)
 
-    const expectedActions: any[] = []
+    const expectedActions: any[] = [setPhotoProfile(responseData.data.photos)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
