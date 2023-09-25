@@ -63,6 +63,23 @@ const Buttons = styled(C.FlexWrapper)`
   padding: 0 10px;
 `
 
+const EditPhoto = styled.label`
+  padding: 6px;
+  color: ${(props) => props.theme.colors.accent};
+  border: 1px solid ${(props) => props.theme.colors.accent};
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.accent};
+    border: 1px solid ${(props) => props.theme.colors.accent};
+    color: ${(props) => props.theme.colors.thirdBg};
+  }
+`
+
 export const S = {
   ProfileInfo: ProfileInfoStyled,
   AvatarPos,
@@ -71,4 +88,5 @@ export const S = {
   Status,
   Looking,
   Buttons,
+  EditPhoto,
 }

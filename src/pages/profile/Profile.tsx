@@ -14,22 +14,25 @@ interface ProfilePT {
   profile: ProfileT
   posts: PostT[]
   friends: FriendsT | null
-  addPost: (postText: string) => void
   isOwner: boolean
+  addPost: (postText: string) => void
+  updatePhoto: (photo: File) => void
 }
 
-export const Profile: FC<ProfilePT> = ({ profile, posts, friends, addPost, isOwner }) => (
+export const Profile: FC<ProfilePT> = ({ profile, posts, friends, isOwner, addPost, updatePhoto }) => (
   <C.FlexWrapper $gap={'20px'} $direction={'column'}>
     <C.ShadowContainer>
       <S.CoverImg>
         <img src={profile.photos.large || cover} alt='' />
       </S.CoverImg>
       <ProfileInfo
-        avatar={profile.photos.small}
+        avatar={profile.photos.large}
         name={profile.fullName}
         isLookingJob={profile.lookingForAJob}
         jobDesc={profile.lookingForAJobDescription}
         contacts={profile.contacts}
+        updatePhoto={updatePhoto}
+        isOwner={isOwner}
       />
     </C.ShadowContainer>
     <C.FlexWrapper $gap={'20px'}>

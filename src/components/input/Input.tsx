@@ -9,14 +9,15 @@ interface InputPT extends InputHTMLAttributes<HTMLInputElement> {
   label?: string | ReactNode
   error?: boolean
   errorText?: string
+  id: string
 }
 
-export const Input: FC<InputPT> = ({ label, error = false, errorText, ...restProps }) => {
+export const Input: FC<InputPT> = ({ label, error = false, errorText, id, ...restProps }) => {
   return (
-    <C.FlexWrapper $direction={'column'} $gap={'5px'} $align={'center'}>
-      {label && <Label>{label}</Label>}
+    <C.FlexWrapper $direction={'column'} $gap={'5px'} $align={'center'} $justify={'center'}>
+      {label && <Label htmlFor={id}>{label}</Label>}
       <C.FlexWrapper $direction={'column'} $gap={'5px'} $align={'center'}>
-        <StyledInput {...restProps} />
+        <StyledInput id={id} {...restProps} />
         {error && <ErrorField>{errorText}</ErrorField>}
       </C.FlexWrapper>
     </C.FlexWrapper>

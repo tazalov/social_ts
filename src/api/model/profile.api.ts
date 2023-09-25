@@ -17,4 +17,10 @@ export const profileAPI = {
     const response = await social.put(`profile/status`, { status })
     return response.data
   },
+  async updatePhoto(photo: File) {
+    const formData = new FormData()
+    formData.append('image', photo)
+    const response = await social.put(`profile/photo`, formData)
+    return response.data
+  },
 }

@@ -1,7 +1,13 @@
 import { profileAPI, ResultCodeE } from '../../../../api'
 import { BaseThunkT } from '../../../store'
-import { ProfileAT, SetFriendsProfileAT, SetStatusAT } from '../../types/profile.actions'
-import { setFriendsProfile, setProfile, setProfileLoading, setStatus } from '../actions/profile.actions'
+import { ProfileAT, SetFriendsProfileAT, SetPhotosAT, SetStatusAT } from '../../types/profile.actions'
+import {
+  setFriendsProfile,
+  setPhotoProfile,
+  setProfile,
+  setProfileLoading,
+  setStatus,
+} from '../actions/profile.actions'
 
 export const getUserProfile =
   (userId: string): BaseThunkT<ProfileAT> =>
@@ -32,5 +38,15 @@ export const updateStatusProfile =
     const data = await profileAPI.updateStatus(status)
     if (data.resultCode === ResultCodeE.Success) {
       dispatch(setStatus(status))
+    }
+  }
+
+export const updatePhotoProfile =
+  (photo: File): BaseThunkT<SetPhotosAT> =>
+  async (dispatch) => {
+    const response = await profileAPI.updatePhoto(photo)
+    const { resultCode, data } = response
+    if (resultCode === ResultCodeE.Success) {
+      dispatch(setPhotoProfile(data.photos))
     }
   }

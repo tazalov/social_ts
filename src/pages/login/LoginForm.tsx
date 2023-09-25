@@ -44,6 +44,7 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
           <Form style={{ maxWidth: '500px', margin: '20px auto' }}>
             <C.FlexWrapper $direction={'column'} $gap={'20px'} $justify={'center'} $align={'center'}>
               <Field
+                id={'email_login'}
                 as={Input}
                 label={'E-mail *'}
                 name={'email'}
@@ -54,6 +55,7 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
                 style={{ padding: '10px' }}
               />
               <Field
+                id={'password_login'}
                 as={Input}
                 label={'Password *'}
                 name={'password'}
@@ -66,6 +68,7 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
               <Field as={Input} label={'Remember me'} name={'remember'} type={'checkbox'} />
               {captcha && (
                 <Field
+                  id={'captcha_login'}
                   as={Input}
                   label={<img src={captcha} alt='asd' />}
                   name={'captcha'}

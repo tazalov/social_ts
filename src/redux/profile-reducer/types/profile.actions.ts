@@ -1,6 +1,6 @@
-import { FriendT, ProfileT } from './profile.reducer'
+import { FriendT, PhotosT, ProfileT } from './profile.reducer'
 
-export type ProfileAT = AddPostAT | SetProfileAT | SetProfileLoadingAT | SetFriendsProfileAT | SetStatusAT
+export type ProfileAT = AddPostAT | SetProfileAT | SetProfileLoadingAT | SetFriendsProfileAT | SetStatusAT | SetPhotosAT
 
 export interface AddPostAT {
   type: 'social/profile/ADD_POST'
@@ -26,4 +26,9 @@ export interface SetFriendsProfileAT {
 export interface SetStatusAT {
   type: 'social/profile/SET_STATUS'
   status: string
+}
+
+export interface SetPhotosAT {
+  type: 'social/profile/SET_PHOTOS'
+  photos: PhotosT
 }

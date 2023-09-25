@@ -45,6 +45,7 @@ const Status: FC<StatusPT> = ({ id, userId, status, updateStatusProfile }) => {
         </span>
       ) : (
         <Input
+          id='status_profile'
           role='status-input'
           type='text'
           value={currentStatus}

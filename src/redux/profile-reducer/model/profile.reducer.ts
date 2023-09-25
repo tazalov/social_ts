@@ -1,5 +1,5 @@
 import { ProfileAT } from '../types/profile.actions'
-import { ProfileST } from '../types/profile.reducer'
+import { ProfileST, ProfileT } from '../types/profile.reducer'
 
 const initialState: ProfileST = {
   profile: null,
@@ -59,6 +59,16 @@ export const profileReducer = (state = initialState, action: ProfileAT) => {
       return {
         ...state,
         status: action.status,
+      }
+    }
+    case 'social/profile/SET_PHOTOS': {
+      debugger
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          photos: action.photos,
+        } as ProfileT,
       }
     }
     default: {

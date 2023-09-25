@@ -58,6 +58,7 @@ class Deprecated_Status extends Component<MapStatePT & MapDispatchPT, OwnStateT>
           <span onDoubleClick={this.activateEditMode}>{newStatus}</span>
         ) : (
           <Input
+            id='deprecated_status_profile'
             type='text'
             value={this.state.status}
             onChange={this.handleOnChange}

@@ -1,11 +1,12 @@
 import {
   AddPostAT,
   SetFriendsProfileAT,
+  SetPhotosAT,
   SetProfileAT,
   SetProfileLoadingAT,
   SetStatusAT,
 } from '../../types/profile.actions'
-import { FriendT, ProfileT } from '../../types/profile.reducer'
+import { FriendT, PhotosT, ProfileT } from '../../types/profile.reducer'
 
 export const addPost = (postText: string): AddPostAT => ({
   type: 'social/profile/ADD_POST',
@@ -31,4 +32,9 @@ export const setFriendsProfile = (list: FriendT[], count: number): SetFriendsPro
   type: 'social/profile/SET_FRIENDS_PROFILE',
   list,
   count,
+})
+
+export const setPhotoProfile = (photos: PhotosT): SetPhotosAT => ({
+  type: 'social/profile/SET_PHOTOS',
+  photos,
 })
