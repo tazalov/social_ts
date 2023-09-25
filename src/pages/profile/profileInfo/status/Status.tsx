@@ -35,7 +35,7 @@ const Status: FC<StatusPT> = ({ id, userId, status, updateStatusProfile }) => {
     }
   }
 
-  const newStatus = status ? getShortString(status, 15) : 'No status'
+  const newStatus = status ? getShortString(status, 40) : 'No status'
 
   return (
     <S.Status>

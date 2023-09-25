@@ -14,7 +14,7 @@ type AboutPT = {
 
 export const About: FC<AboutPT> = memo(({ about, contacts, lookingForAJob }) => {
   return (
-    <C.ShadowContainer style={{ width: '300px' }}>
+    <C.ShadowContainer style={{ height: 'min-content', minWidth: '300px' }}>
       <TitleBlock title={'Current profile info'} />
       <C.FlexWrapper $direction={'column'} $gap={'20px'} style={{ padding: '10px' }}>
         <Text title={'Looking job'} text={lookingForAJob ? 'YES' : 'NO'} />

@@ -3,6 +3,7 @@ import styled, { css, useTheme } from 'styled-components'
 
 import iconsSprite from '../../app/assets/images/icon/social-icon-sprite.svg'
 import { ContactLinksT } from '../../pages/profile/profileInfo/links/Links'
+import { addHttpsPrefix } from '../../utils/string/addHttpPrefix'
 
 type SocialPT = {
   iconId: ContactLinksT
@@ -11,8 +12,9 @@ type SocialPT = {
 
 export const Social: FC<SocialPT> = ({ iconId, link }) => {
   const theme = useTheme()
+  const linkWithPrefix = addHttpsPrefix(link)
   return (
-    <Link href={link}>
+    <Link href={linkWithPrefix}>
       <StyledSocial
         width={'30px'}
         height={'30px'}

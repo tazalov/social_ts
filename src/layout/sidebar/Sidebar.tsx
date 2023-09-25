@@ -1,4 +1,4 @@
-import { faComments, faMessage, faMusic, faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faComments, faMessage, faUser } from '@fortawesome/free-solid-svg-icons'
 
 import { S } from './Sidebar.styled'
 import { SidebarItem } from './sidebarItem/SidebarItem'
@@ -8,8 +8,6 @@ import { C } from '../../app/styles/Common.styled'
 const sidebarItems = [
   { url: '/profile', icon: faUser, title: 'Profile' },
   { url: '/dialogs', icon: faMessage, title: 'Dialogs' },
-  { url: '/music', icon: faMusic, title: 'Music' },
-  { url: '/1', icon: faUserGroup, title: 'Friends' },
   { url: '/2', icon: faComments, title: 'Chat' },
 ]
 

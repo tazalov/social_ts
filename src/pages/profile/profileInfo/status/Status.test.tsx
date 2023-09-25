@@ -32,7 +32,8 @@ describe('Status', () => {
     app: { id: 1 },
     profile: {
       profile: { userId: 1 },
-      status: 'Testing status string',
+      status:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     },
   }
 
@@ -49,7 +50,7 @@ describe('Status', () => {
     renderWithProviders(<Status />, store)
 
     expect(screen.getByRole('status-span')).toBeInTheDocument()
-    expect(screen.getByText('Testing status...')).toBeInTheDocument()
+    expect(screen.getByText('Lorem ipsum dolor sit amet, consectetur...')).toBeInTheDocument()
   })
 
   it('renders without input', () => {
@@ -63,7 +64,7 @@ describe('Status', () => {
     const store = mockStore(initialState)
     renderWithProviders(<Status />, store)
 
-    userEvent.dblClick(screen.getByText('Testing status...'))
+    userEvent.dblClick(screen.getByText('Lorem ipsum dolor sit amet, consectetur...'))
 
     expect(screen.getByRole('status-input')).toBeInTheDocument()
     expect(screen.queryByRole('status-span')).toBeNull()

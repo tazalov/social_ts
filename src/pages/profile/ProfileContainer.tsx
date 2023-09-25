@@ -24,10 +24,8 @@ type ProfileContainerPT = MapStatePT & MapDispatchPT & RouteComponentProps<{ use
 class ProfileContainer extends Component<ProfileContainerPT> {
   refreshProfile() {
     let userId = this.props.match.params.userId
-    if (!userId) {
-      userId = `${this.props.id}`
-      this.props.getFriendsProfile()
-    }
+    if (!userId) userId = `${this.props.id}`
+    this.props.getFriendsProfile()
     this.props.getUserProfile(userId)
     this.props.getStatusProfile(userId)
   }
