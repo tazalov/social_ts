@@ -2,7 +2,6 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { AppRoutes } from './routes/AppRoutes'
-
 import { C } from './styles/Common.styled'
 
 import { Preloader } from '../components'

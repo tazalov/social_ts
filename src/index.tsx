@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
 import App from './app/App'
@@ -16,14 +16,14 @@ const Root = () => {
   }
 
   return (
-    <HashRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <StoreProvider>
         <ThemeProvider theme={currentTheme}>
           <GlobalStyle />
           <App toggleTheme={toggleTheme} />
         </ThemeProvider>
       </StoreProvider>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
