@@ -1,9 +1,11 @@
+import { notify, setUpNotifications } from 'reapop'
 import { AnyAction } from 'redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
 import { profileAPI, ResultCodeE } from '../../../api'
 import {
+  setErrorUpdate,
   setFriendsProfile,
   setPhotoProfile,
   setProfile,
@@ -15,6 +17,7 @@ import {
   getStatusProfile,
   getUserProfile,
   updatePhotoProfile,
+  updateProfile,
   updateStatusProfile,
 } from '../model/thunks/profile.thunks'
 
@@ -33,50 +36,52 @@ const friend = {
   followed: false,
 }
 
+const profile = {
+  aboutMe: 'asd',
+  contacts: {
+    facebook: null,
+    website: null,
+    vk: null,
+    twitter: null,
+    instagram: null,
+    youtube: null,
+    github: null,
+    mainLink: null,
+  },
+  lookingForAJob: true,
+  lookingForAJobDescription: 'asd',
+  fullName: 'asd',
+  userId: 2,
+  photos: {
+    small: null,
+    large: null,
+  },
+}
+
 describe('profile thunks tests', () => {
+  beforeEach(() => {
+    setUpNotifications({
+      generateId: () => 'mocked-id',
+    })
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should dispatch setProfileLoading and setProfile', async () => {
-    const responseData = {
-      aboutMe: 'about',
-      contacts: {
-        facebook: null,
-        website: null,
-        vk: null,
-        twitter: null,
-        instagram: null,
-        youtube: null,
-        github: null,
-        mainLink: null,
-      },
-      lookingForAJob: true,
-      lookingForAJobDescription: null,
-      fullName: 'Fullname',
-      userId: 123,
-      photos: {
-        small: null,
-        large: null,
-      },
-    }
-
-    profileAPI.getProfile = jest.fn(() => Promise.resolve(responseData))
+  it('correct action creators should be dispatched (getUserProfile thunk)', async () => {
+    profileAPI.getProfile = jest.fn(() => Promise.resolve(profile))
 
     const store = mockStore()
     await store.dispatch(getUserProfile('123') as unknown as AnyAction)
 
-    const expectedActions = [setProfileLoading(true), setProfile(responseData), setProfileLoading(false)]
+    const expectedActions = [setProfileLoading(true), setProfile(profile), setProfileLoading(false)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('should dispatch setFriendsProfile', async () => {
-    const responseData = {
-      items: [friend],
-      totalCount: 10,
-      error: '',
-    }
+  it('correct action creators should be dispatched (getFriendsProfile thunk)', async () => {
+    const responseData = { items: [friend], totalCount: 10, error: '' }
 
     profileAPI.getProfileFriends = jest.fn(() => Promise.resolve(responseData))
 
@@ -88,24 +93,20 @@ describe('profile thunks tests', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('dont should dispatch setFriendsProfile', async () => {
-    const responseData = {
-      items: [friend],
-      totalCount: 10,
-      error: 'some error',
-    }
+  it('correct action creators should be dispatched (getFriendsProfile thunk), response have error', async () => {
+    const responseData = { items: [friend], totalCount: 10, error: 'some error' }
 
     profileAPI.getProfileFriends = jest.fn(() => Promise.resolve(responseData))
 
     const store = mockStore()
     await store.dispatch(getFriendsProfile() as unknown as AnyAction)
 
-    const expectedActions: any[] = []
+    const expectedActions: any[] = [notify(responseData.error, 'error')]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('should dispatch setStatus', async () => {
+  it('correct action creators should be dispatched (getStatusProfile thunk)', async () => {
     const responseData = 'some status'
 
     profileAPI.getStatus = jest.fn(() => Promise.resolve(responseData))
@@ -118,7 +119,7 @@ describe('profile thunks tests', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('should dispatch setStatus when will it be updated', async () => {
+  it('correct action creators should be dispatched (updateStatusProfile thunk)', async () => {
     const responseData = { resultCode: ResultCodeE.Success }
 
     profileAPI.updateStatus = jest.fn(() => Promise.resolve(responseData))
@@ -131,7 +132,20 @@ describe('profile thunks tests', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('should dispatch updatePhotosProfile when will it be updated', async () => {
+  it('correct action creators should be dispatched (updateStatusProfile thunk), response have error', async () => {
+    const responseData = { resultCode: ResultCodeE.Error, messages: ['Some error'] }
+
+    profileAPI.updateStatus = jest.fn(() => Promise.resolve(responseData))
+
+    const store = mockStore()
+    await store.dispatch(updateStatusProfile('123') as unknown as AnyAction)
+
+    const expectedActions: any[] = [notify(responseData.messages[0], 'error')]
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  it('correct action creators should be dispatched (updatePhotoProfile thunk)', async () => {
     const responseData = {
       resultCode: ResultCodeE.Success,
       data: {
@@ -149,6 +163,75 @@ describe('profile thunks tests', () => {
     await store.dispatch(updatePhotoProfile(photoFile) as unknown as AnyAction)
 
     const expectedActions: any[] = [setPhotoProfile(responseData.data.photos)]
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  it('correct action creators should be dispatched (updatePhotoProfile thunk), response have error', async () => {
+    const responseData = { resultCode: ResultCodeE.Error, messages: ['Some error'] }
+
+    const photoFile = '' as unknown as File
+
+    profileAPI.updatePhoto = jest.fn(() => Promise.resolve(responseData))
+
+    const store = mockStore()
+    await store.dispatch(updatePhotoProfile(photoFile) as unknown as AnyAction)
+
+    const expectedActions: any[] = [notify(responseData.messages[0], 'error')]
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  it('correct action creators should be dispatched (updatePhotoProfile thunk), some error', async () => {
+    const e = new Error('Error')
+    const photoFile = '' as unknown as File
+
+    profileAPI.updatePhoto = jest.fn(() => Promise.reject(e))
+
+    const store = mockStore()
+    await store.dispatch(updatePhotoProfile(photoFile) as unknown as AnyAction)
+
+    const expectedActions: any[] = [notify(e.message, 'error')]
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  it('correct action creators should be dispatched (updateProfile thunk)', async () => {
+    const responseData = { resultCode: ResultCodeE.Success }
+
+    profileAPI.updateProfile = jest.fn(() => Promise.resolve(responseData))
+    profileAPI.getProfile = jest.fn(() => Promise.resolve(profile))
+
+    const store = mockStore({ app: { id: '2' } })
+    await store.dispatch(updateProfile(profile) as unknown as AnyAction)
+
+    const expectedActions: any[] = [setProfileLoading(true), setProfile(profile), setProfileLoading(false)]
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  it('correct action creators should be dispatched (updateProfile thunk), id into state is undefined', async () => {
+    const responseData = { resultCode: ResultCodeE.Success }
+
+    profileAPI.updateProfile = jest.fn(() => Promise.resolve(responseData))
+
+    const store = mockStore({ app: { id: null } })
+    await store.dispatch(updateProfile(profile) as unknown as AnyAction)
+
+    const expectedActions: any[] = [notify('id must be a number when sending the request', 'error')]
+
+    expect(store.getActions()).toEqual(expectedActions)
+  })
+
+  it('correct action creators should be dispatched (updateProfile thunk), response have error', async () => {
+    const responseData = { resultCode: ResultCodeE.Error, messages: ['Some error'] }
+
+    profileAPI.updateProfile = jest.fn(() => Promise.resolve(responseData))
+
+    const store = mockStore({ app: { id: '2' } })
+    await store.dispatch(updateProfile(profile) as unknown as AnyAction)
+
+    const expectedActions: any[] = [setErrorUpdate(responseData.messages[0]), notify(responseData.messages[0], 'error')]
 
     expect(store.getActions()).toEqual(expectedActions)
   })

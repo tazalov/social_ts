@@ -1,3 +1,4 @@
+import { reducer as notificationsReducer } from 'reapop'
 import { Action, applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunkMiddleware, { ThunkAction } from 'redux-thunk'
 
@@ -11,8 +12,8 @@ const rootReducer = combineReducers({
   dialogs: dialogsReducer,
   users: usersReducer,
   app: appReducer,
+  notifications: notificationsReducer(),
 })
-
 //type globalReducer & AppState
 type RootReducerT = typeof rootReducer
 export type RootStateT = ReturnType<RootReducerT>

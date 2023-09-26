@@ -5,6 +5,7 @@ import { AppRoutes } from './routes/AppRoutes'
 import { C } from './styles/Common.styled'
 
 import { Preloader } from '../components'
+import { Notifications } from '../components/notifications/Notifications'
 import { Header, Main, Sidebar } from '../layout'
 import { initializeApp } from '../redux/app-reducer'
 import { RootStateT } from '../redux/store'
@@ -33,6 +34,7 @@ class App extends Component<AppPT & MapStatePT & MapDispatchPT> {
             </Main>
           </C.FlexWrapper>
         </C.Container>
+        <Notifications />
       </>
     ) : (
       <Preloader size={200} />

@@ -1,3 +1,4 @@
+import { notify, setUpNotifications } from 'reapop'
 import { AnyAction } from 'redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
@@ -34,16 +35,18 @@ const user2 = {
 const users = [user1, user2]
 
 describe('users thunks tests', () => {
+  beforeEach(() => {
+    setUpNotifications({
+      generateId: () => 'mocked-id',
+    })
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   it('correct action creators should be dispatched (getUsers thunk)', async () => {
-    const responseData = {
-      items: users,
-      totalCount: 10,
-      error: '',
-    }
+    const responseData = { items: users, totalCount: 10, error: '' }
 
     usersAPI.getUsers = jest.fn(() => Promise.resolve(responseData))
 
@@ -59,7 +62,7 @@ describe('users thunks tests', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('correct action creators should be dispatched (getUsers thunk), response - error', async () => {
+  it('correct action creators should be dispatched (getUsers thunk), response have error', async () => {
     const responseData = { error: 'asd' }
 
     usersAPI.getUsers = jest.fn(() => Promise.resolve(responseData))
@@ -67,7 +70,7 @@ describe('users thunks tests', () => {
     const store = mockStore()
     await store.dispatch(getUsers(1, 10) as unknown as AnyAction)
 
-    const expectedActions = [setLoadingPage(true), setLoadingPage(false)]
+    const expectedActions = [setLoadingPage(true), notify(responseData.error, 'error'), setLoadingPage(false)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
@@ -80,20 +83,24 @@ describe('users thunks tests', () => {
     const store = mockStore()
     await store.dispatch(setFollow(1) as unknown as AnyAction)
 
-    const expectedActions = [toggleProgressFollow(true, 1), toggleProgressFollow(false, 1), follow(1)]
+    const expectedActions = [toggleProgressFollow(true, 1), follow(1), toggleProgressFollow(false, 1)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('correct action creators should be dispatched (setFollow thunk), response - error', async () => {
-    const responseData = { resultCode: ResultCodeE.Error }
+  it('correct action creators should be dispatched (setFollow thunk), response have error', async () => {
+    const responseData = { resultCode: ResultCodeE.Error, messages: ['Some error'] }
 
     usersAPI.followU = jest.fn(() => Promise.resolve(responseData))
 
     const store = mockStore()
     await store.dispatch(setFollow(1) as unknown as AnyAction)
 
-    const expectedActions = [toggleProgressFollow(true, 1)]
+    const expectedActions = [
+      toggleProgressFollow(true, 1),
+      notify(responseData.messages[0], 'error'),
+      toggleProgressFollow(false, 1),
+    ]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
@@ -106,20 +113,24 @@ describe('users thunks tests', () => {
     const store = mockStore()
     await store.dispatch(setUnfollow(1) as unknown as AnyAction)
 
-    const expectedActions = [toggleProgressFollow(true, 1), toggleProgressFollow(false, 1), unfollow(1)]
+    const expectedActions = [toggleProgressFollow(true, 1), unfollow(1), toggleProgressFollow(false, 1)]
 
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('correct action creators should be dispatched (setUnfollow thunk), response - error', async () => {
-    const responseData = { resultCode: ResultCodeE.Error }
+  it('correct action creators should be dispatched (setUnfollow thunk), response have error', async () => {
+    const responseData = { resultCode: ResultCodeE.Error, messages: ['Some error'] }
 
     usersAPI.unfollowU = jest.fn(() => Promise.resolve(responseData))
 
     const store = mockStore()
     await store.dispatch(setUnfollow(1) as unknown as AnyAction)
 
-    const expectedActions = [toggleProgressFollow(true, 1)]
+    const expectedActions = [
+      toggleProgressFollow(true, 1),
+      notify(responseData.messages[0], 'error'),
+      toggleProgressFollow(false, 1),
+    ]
 
     expect(store.getActions()).toEqual(expectedActions)
   })

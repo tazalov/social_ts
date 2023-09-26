@@ -1,3 +1,4 @@
+import { notify, setUpNotifications } from 'reapop'
 import { AnyAction } from 'redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
@@ -16,11 +17,17 @@ const remember = false
 const captcha = 'testCaptcha'
 
 describe('app thunks tests', () => {
+  beforeEach(() => {
+    setUpNotifications({
+      generateId: () => 'mocked-id',
+    })
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('getUserData should dispatch setUserData with correct data when resultCode is ResultCodeE.Success', async () => {
+  it('correct action creators should be dispatched (getUserData thunk)', async () => {
     const responseData = {
       resultCode: ResultCodeE.Success,
       data: {
@@ -31,7 +38,7 @@ describe('app thunks tests', () => {
     }
 
     const expectedActions = [setUserData(1, 'login', 'email', true)]
-    const store = mockStore({})
+    const store = mockStore()
 
     authAPI.getUserData = jest.fn(() => Promise.resolve(responseData))
     await store.dispatch(getUserData() as unknown as AnyAction) //! КОСТЫЛЬ
@@ -39,10 +46,8 @@ describe('app thunks tests', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('getUserData should dispatch setUserData with null values when resultCode is not ResultCodeE.Success', async () => {
-    const responseData = {
-      resultCode: ResultCodeE.Error,
-    }
+  it('correct action creators should be dispatched (getUserData thunk), response have error', async () => {
+    const responseData = { resultCode: ResultCodeE.Error }
 
     const expectedActions = [setUserData(null, null, null, false)]
     const store = mockStore({})
@@ -53,7 +58,7 @@ describe('app thunks tests', () => {
     expect(store.getActions()).toEqual(expectedActions)
   })
 
-  it('should dispatch getUserData when login is successful', async () => {
+  it('correct action creators should be dispatched (loginUser thunk)', async () => {
     const responseData = { resultCode: ResultCodeE.Success }
     const responseGetUserData = {
       resultCode: ResultCodeE.Success,
@@ -70,37 +75,29 @@ describe('app thunks tests', () => {
     const store = mockStore()
     await store.dispatch(loginUser(email, pass, remember, captcha) as unknown as AnyAction)
 
-    const expectedActions = [setUserData(1, 'login', 'email', true)]
+    const expectedActions = [setUserData(1, 'login', 'email', true), notify('Success authorize', 'success')]
 
     expect(store.getActions()).toEqual(expectedActions)
     expect(authAPI.login).toHaveBeenCalledWith(email, pass, remember, captcha)
   })
 
-  it('should dispatch setError when login is failed', async () => {
-    const responseData = {
-      messages: ['Some error'],
-      resultCode: ResultCodeE.Error,
-    }
+  it('correct action creators should be dispatched (loginUser thunk), response have error', async () => {
+    const responseData = { messages: ['Some error'], resultCode: ResultCodeE.Error }
 
     authAPI.login = jest.fn(() => Promise.resolve(responseData))
 
     const store = mockStore()
     await store.dispatch(loginUser(email, pass, remember, captcha) as unknown as AnyAction)
 
-    const expectedActions = [setError('Some error')]
+    const expectedActions = [setError(responseData.messages[0]), notify(responseData.messages[0], 'error')]
 
     expect(store.getActions()).toEqual(expectedActions)
     expect(authAPI.login).toHaveBeenCalledWith(email, pass, remember, captcha)
   })
 
-  it('should dispatch setCaptcha when login is needed captcha', async () => {
-    const responseData = {
-      messages: ['Some error'],
-      resultCode: ResultCodeE.Captcha,
-    }
-    const responseCaptchaData = {
-      url: 'Some captcha url',
-    }
+  it('correct action creators should be dispatched (loginUser thunk), response have captcha error', async () => {
+    const responseData = { messages: ['Some error'], resultCode: ResultCodeE.Captcha }
+    const responseCaptchaData = { url: 'Some captcha url' }
 
     authAPI.login = jest.fn(() => Promise.resolve(responseData))
     authAPI.getCaptcha = jest.fn(() => Promise.resolve(responseCaptchaData))
@@ -108,16 +105,18 @@ describe('app thunks tests', () => {
     const store = mockStore()
     await store.dispatch(loginUser(email, pass, remember, captcha) as unknown as AnyAction)
 
-    const expectedActions = [setError('Some error'), setCaptcha('Some captcha url')]
+    const expectedActions = [
+      setError(responseData.messages[0]),
+      setCaptcha('Some captcha url'),
+      notify(responseData.messages[0], 'warning'),
+    ]
 
     expect(store.getActions()).toEqual(expectedActions)
     expect(authAPI.login).toHaveBeenCalledWith(email, pass, remember, captcha)
   })
 
-  it('logoutUser should dispatch setUserData with null values', async () => {
-    const responseData = {
-      resultCode: ResultCodeE.Success,
-    }
+  it('correct action creators should be dispatched (logoutUser thunk)', async () => {
+    const responseData = { resultCode: ResultCodeE.Success }
 
     const expectedActions = [setUserData(null, null, null, false)]
     const store = mockStore({})
