@@ -1,4 +1,4 @@
-import { ComponentType, FC } from 'react'
+import { ComponentType, FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
@@ -13,6 +13,9 @@ import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 type DialogsPT = DialogsST & MapDispatchPT
 
 const Dialogs: FC<DialogsPT> = ({ list, messages, addMessage }) => {
+  useEffect(() => {
+    document.title = 'Dialogs'
+  }, [])
   return (
     <S.Dialogs>
       <DialogsList list={list} />

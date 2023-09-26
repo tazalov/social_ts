@@ -22,6 +22,7 @@ class UsersC extends Component<UsersCPT> {
     if (!list.length) {
       getUsers(currentPage, pageSize)
     }
+    document.title = 'Users'
   }
   componentDidUpdate(prevProps: Readonly<UsersCPT>) {
     const { pageSize, currentPage, getUsers } = this.props

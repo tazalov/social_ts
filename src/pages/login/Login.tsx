@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
@@ -10,6 +10,9 @@ import { loginUser } from '../../redux/app-reducer'
 import { RootStateT } from '../../redux/store'
 
 export const Login: FC<MapStatePT & MapDispatchPT> = ({ isAuth, captcha, error, loginUser }) => {
+  useEffect(() => {
+    document.title = 'Login'
+  }, [])
   return isAuth ? (
     <Redirect to={'/profile'} />
   ) : (

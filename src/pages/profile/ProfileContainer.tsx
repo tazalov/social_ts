@@ -32,6 +32,7 @@ class ProfileContainer extends Component<ProfileContainerPT> {
 
   componentDidMount() {
     this.refreshProfile()
+    document.title = 'Profile'
   }
 
   componentDidUpdate(prevProps: Readonly<ProfileContainerPT>) {
