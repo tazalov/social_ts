@@ -1,5 +1,7 @@
 import { Icon } from './Icon'
 
+import { ShadowDecorator } from '../../utils/storybook/decorators/ShadowDecorator'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Icon> = {
@@ -24,6 +26,7 @@ const meta: Meta<typeof Icon> = {
       description: 'View box svg-icon',
     },
   },
+  decorators: [ShadowDecorator],
 }
 
 export default meta

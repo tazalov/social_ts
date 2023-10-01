@@ -7,9 +7,10 @@ interface ModalPT {
   children?: ReactNode
   isOpen?: boolean
   onClose?: () => void
+  element?: Element
 }
 
-export const Modal: FC<ModalPT> = ({ children, isOpen, onClose }) => {
+export const Modal: FC<ModalPT> = ({ children, isOpen, onClose, element }) => {
   const handleClickContent = (e: MouseEvent) => {
     e.stopPropagation()
   }
@@ -35,8 +36,10 @@ export const Modal: FC<ModalPT> = ({ children, isOpen, onClose }) => {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown, isOpen])
 
+  console.log(element)
+
   return (
-    <Portal element={document.getElementById('root') || undefined}>
+    <Portal element={element || document.getElementById('root') || document.body}>
       <StyledModal $isOpen={isOpen || false}>
         <Overlay onClick={handleClickClose}>
           <Content $isOpen={isOpen || false} onClick={handleClickContent}>

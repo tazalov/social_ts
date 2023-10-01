@@ -12,9 +12,9 @@ import { createPortal } from 'react-dom'
 
 interface PortalPT {
   children?: ReactNode
-  element?: HTMLElement
+  element: Element
 }
 
-export const Portal: FC<PortalPT> = ({ children, element = document.body }) => {
+export const Portal: FC<PortalPT> = ({ children, element }) => {
   return createPortal(children, element)
 }

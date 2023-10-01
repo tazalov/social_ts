@@ -1,5 +1,7 @@
 import { Social, SocialId } from './Social'
 
+import { ShadowDecorator } from '../../utils/storybook/decorators/ShadowDecorator'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Social> = {
@@ -19,6 +21,7 @@ const meta: Meta<typeof Social> = {
       control: false,
     },
   },
+  decorators: [ShadowDecorator],
 }
 
 export default meta

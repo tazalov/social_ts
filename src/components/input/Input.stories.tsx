@@ -1,5 +1,7 @@
 import { Input } from './Input'
 
+import { ShadowDecorator } from '../../utils/storybook/decorators/ShadowDecorator'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Input> = {
@@ -31,6 +33,7 @@ const meta: Meta<typeof Input> = {
       control: 'boolean',
     },
   },
+  decorators: [ShadowDecorator],
 }
 
 export default meta
