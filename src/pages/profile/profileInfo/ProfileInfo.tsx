@@ -8,7 +8,7 @@ import Status from './status/Status'
 
 import noAvatar from '../../../app/assets/images/anynft.webp'
 import { C } from '../../../app/styles/Common.styled'
-import { Avatar, ButtonB, Input, Modal } from '../../../components'
+import { Avatar, Button, ButtonVariant, Input, Modal } from '../../../components'
 import { ProfileT } from '../../../redux/profile-reducer'
 
 interface ProfileInfoPT {
@@ -53,8 +53,8 @@ export const ProfileInfo: FC<ProfileInfoPT> = memo(({ profile, isOwner, errorUpd
           </S.Info>
         </S.ProfileInfo>
         {isOwner && (
-          <C.FlexWrapper $align={'center'} $gap={'5px'} $justify={'center'} style={{ padding: '10px' }}>
-            <S.EditPhoto htmlFor={'edit_photo_profile'}>
+          <C.FlexWrapper $gap={'5px'} $justify={'center'} style={{ padding: '10px' }}>
+            <S.EditPhoto as={'label'} htmlFor={'edit_photo_profile'} $variant={ButtonVariant.OUTLINE}>
               <FontAwesomeIcon icon={faCamera} />
             </S.EditPhoto>
             <Input
@@ -64,7 +64,9 @@ export const ProfileInfo: FC<ProfileInfoPT> = memo(({ profile, isOwner, errorUpd
               style={{ display: 'none' }}
               onChange={handleOnChangeFile}
             />
-            <ButtonB title={'edit'} callback={onShowModal} />
+            <Button onClick={onShowModal} variant={ButtonVariant.OUTLINE}>
+              edit
+            </Button>
           </C.FlexWrapper>
         )}
         <Modal isOpen={isAuthModal} onClose={onCloseModal}>

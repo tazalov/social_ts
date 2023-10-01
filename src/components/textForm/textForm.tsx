@@ -38,7 +38,9 @@ export function TextForm({ placeholder, callback }: TextFormPT) {
               {isSubmitting ? (
                 <Loading />
               ) : (
-                <Button title={'send'} type={'submit'} disable={Object.keys(errors).length > 0} />
+                <Button type={'submit'} disabled={Object.keys(errors).length > 0}>
+                  send
+                </Button>
               )}
             </C.FlexWrapper>
             {errors.text && touched.text && <ErrorField>{errors.text}</ErrorField>}

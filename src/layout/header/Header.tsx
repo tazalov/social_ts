@@ -6,7 +6,7 @@ import { useTheme } from 'styled-components'
 import { S } from './Header.styled'
 
 import { C } from '../../app/styles/Common.styled'
-import { ButtonB, Icon } from '../../components'
+import { Button, ButtonVariant, Icon } from '../../components'
 
 interface HeaderPT {
   isAuth: boolean
@@ -21,16 +21,13 @@ export const Header: FC<HeaderPT> = ({ isAuth, login, toggleTheme, logout }) => 
     <C.Container>
       <C.FlexWrapper as={S.Header} $justify={'space-between'} $align={'center'} $shadow>
         <C.FlexWrapper $align={'center'} $gap={'20px'}>
-          <ButtonB
-            title={
-              theme.name === 'dark' ? (
-                <FontAwesomeIcon icon={faMoon} style={{ width: '15px', height: '15xp' }} />
-              ) : (
-                <FontAwesomeIcon icon={faSun} style={{ width: '15px', height: '15xp' }} />
-              )
-            }
-            callback={toggleTheme}
-          />
+          <Button onClick={toggleTheme} variant={ButtonVariant.OUTLINE}>
+            {theme.name === 'dark' ? (
+              <FontAwesomeIcon icon={faMoon} style={{ width: '15px', height: '15px' }} />
+            ) : (
+              <FontAwesomeIcon icon={faSun} style={{ width: '15px', height: '15px' }} />
+            )}
+          </Button>
           <S.Logo>
             <Icon iconId={'logo'} width={'40px'} height={'40px'} />
           </S.Logo>

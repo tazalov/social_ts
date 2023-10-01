@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { S } from './User.styled'
 
 import photo from '../../../app/assets/images/anynft.webp'
-import { Avatar, ButtonB, Loading } from '../../../components'
+import { Avatar, Button, ButtonVariant, Loading } from '../../../components'
 import { ProgressFollowT, UserT } from '../../../redux/users-reducer'
 import { getShortString } from '../../../utils/string/getShortString'
 
@@ -32,11 +32,13 @@ export const User: FC<UserPT> = ({ user, follow, unfollow, progressFollow }) => 
       {progressFollow.userId.some((el) => el === id) ? (
         <Loading />
       ) : (
-        <ButtonB
-          title={followed ? 'unfollow' : 'follow'}
-          callback={followed ? unfollowUser : followUser}
-          disable={progressFollow.userId.includes(id)}
-        />
+        <Button
+          onClick={followed ? unfollowUser : followUser}
+          disabled={progressFollow.userId.includes(id)}
+          variant={ButtonVariant.OUTLINE}
+        >
+          {followed ? 'unfollow' : 'follow'}
+        </Button>
       )}
     </S.User>
   )

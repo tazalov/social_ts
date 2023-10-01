@@ -131,7 +131,9 @@ export const ProfileEditForm: FC<ProfileEditFormPT> = ({ profile, error, updateP
               {isSubmitting ? (
                 <Loading />
               ) : (
-                <Button type='submit' title={'save'} disable={Object.keys(errors).length > 0} />
+                <Button type='submit' disabled={Object.keys(errors).length > 0}>
+                  save
+                </Button>
               )}
             </C.FlexWrapper>
           </Form>

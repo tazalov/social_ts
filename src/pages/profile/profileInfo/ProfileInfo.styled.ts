@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { C } from '../../../app/styles/Common.styled'
+import { StyledButton } from '../../../components'
 
 const ProfileInfoStyled = styled(C.FlexWrapper)`
   padding: 10px 10px 10px 160px;
@@ -51,21 +52,10 @@ const Status = styled.div`
   }
 `
 
-const EditPhoto = styled.label`
-  padding: 6px;
-  color: ${(props) => props.theme.colors.accent};
-  border: 1px solid ${(props) => props.theme.colors.accent};
-  transition: all 0.3s ease;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
+const EditPhoto = styled(StyledButton)`
+  flex: 1 1 auto;
   display: inline-flex;
   align-items: center;
-  &:hover {
-    background-color: ${(props) => props.theme.colors.accent};
-    border: 1px solid ${(props) => props.theme.colors.accent};
-    color: ${(props) => props.theme.colors.thirdBg};
-  }
 `
 
 const CoverImg = styled.div`

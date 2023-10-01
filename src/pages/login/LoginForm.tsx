@@ -83,7 +83,9 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
               {isSubmitting ? (
                 <Loading />
               ) : (
-                <Button type='submit' title={'login'} disable={Object.keys(errors).length > 0} />
+                <Button type='submit' disabled={Object.keys(errors).length > 0}>
+                  login
+                </Button>
               )}
             </C.FlexWrapper>
           </Form>
