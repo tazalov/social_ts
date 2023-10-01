@@ -1,22 +1,20 @@
-import { Sidebar } from './Sidebar'
+import { Error } from './Error'
 
 import { RouterDecorator } from '../../utils/storybook/decorators/RouterDecorator'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta<typeof Sidebar> = {
-  title: 'layout/Sidebar',
-  component: Sidebar,
-  tags: ['autodocs'],
+const meta: Meta<typeof Error> = {
+  title: 'pages/Error',
+  component: Error,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
-  argTypes: {},
   decorators: [RouterDecorator],
 }
 
 export default meta
-type Story = StoryObj<typeof Sidebar>
+type Story = StoryObj<typeof Error>
 
 export const Demo: Story = {
   args: {},

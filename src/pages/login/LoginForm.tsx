@@ -15,7 +15,7 @@ export const LoginForm: FC<LoginFormPT> = ({ captcha, error, loginUser }) => {
   const initialFields = {
     email: '',
     password: '',
-    captcha,
+    captcha: '',
     remember: false,
   }
 

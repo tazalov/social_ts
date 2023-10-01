@@ -12,7 +12,7 @@ import { redirectToLogin } from '../../utils/hoc/redirectToLogin'
 
 type DialogsPT = DialogsST & MapDispatchPT
 
-const Dialogs: FC<DialogsPT> = ({ list, messages, addMessage }) => {
+export const Dialogs: FC<DialogsPT> = ({ list, messages, addMessage }) => {
   useEffect(() => {
     document.title = 'Dialogs'
   }, [])

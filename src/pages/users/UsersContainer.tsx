@@ -16,7 +16,7 @@ type UsersCPT = UsersST & MapDispatchPT
 
 //TODO shouldComponentUpdate & memo - когда будем пилить филтрацию.
 
-class UsersC extends Component<UsersCPT> {
+export class UsersC extends Component<UsersCPT> {
   componentDidMount() {
     const { list, pageSize, currentPage, getUsers } = this.props
     if (!list.length) {

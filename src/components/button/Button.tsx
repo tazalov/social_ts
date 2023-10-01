@@ -24,10 +24,7 @@ type PropsType = {
 }
 
 export const StyledButton = styled.button<PropsType>`
-  font-weight: ${(props) => {
-    console.log(props)
-    return 600
-  }};
+  font-weight: 600;
   padding: ${({ $variant }) => ($variant === ButtonVariant.PRIMARY ? '10px 13px' : '5px')};
   background-color: ${({ $variant, theme }) =>
     $variant === ButtonVariant.PRIMARY ? theme.colors.accent : 'transparent'};
@@ -41,7 +38,7 @@ export const StyledButton = styled.button<PropsType>`
   &:hover {
     background-color: ${({ $variant, theme }) =>
       $variant === ButtonVariant.PRIMARY ? theme.colors.accent2 : theme.colors.accent};
-    color: ${({ $variant, theme }) => $variant === ButtonVariant.OUTLINE && 'white'};
+    color: ${({ $variant }) => $variant === ButtonVariant.OUTLINE && 'white'};
   }
   &:disabled {
     background-color: ${({ theme }) => theme.colors.secondaryFont};
