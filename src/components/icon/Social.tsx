@@ -2,11 +2,21 @@ import { FC } from 'react'
 import styled, { css, useTheme } from 'styled-components'
 
 import iconsSprite from '../../app/assets/images/icon/social-icon-sprite.svg'
-import { ContactLinksT } from '../../pages/profile/profileInfo/links/Links'
 import { addHttpsPrefix } from '../../utils/string/addHttpPrefix'
 
+export enum SocialId {
+  GITHUB = 'github',
+  VK = 'vk',
+  FACEBOOK = 'facebook',
+  TWITTER = 'twitter',
+  WEBSITE = 'website',
+  YOUTUBE = 'youtube',
+  MAIN_LINK = 'mainLink',
+  INSTAGRAM = 'instagram',
+}
+
 type SocialPT = {
-  iconId: ContactLinksT
+  iconId: SocialId
   link: string
 }
 
@@ -40,35 +50,35 @@ export const Social: FC<SocialPT> = ({ iconId, link }) => {
 const Link = styled.a``
 
 type StyledSocialPT = {
-  $link: ContactLinksT
+  $link: SocialId
 }
 
 const StyledSocial = styled.svg<StyledSocialPT>`
   transition: all 0.2s linear;
   ${(props) => {
     switch (props.$link) {
-      case 'github': {
+      case SocialId.GITHUB: {
         return css`
           &:hover {
             fill: grey;
           }
         `
       }
-      case 'vk': {
+      case SocialId.VK: {
         return css`
           &:hover {
             fill: #0077ff;
           }
         `
       }
-      case 'facebook': {
+      case SocialId.FACEBOOK: {
         return css`
           &:hover {
             fill: #3b5998;
           }
         `
       }
-      case 'instagram': {
+      case SocialId.INSTAGRAM: {
         return css`
           fill: url(#gradient);
           stop {
@@ -91,28 +101,28 @@ const StyledSocial = styled.svg<StyledSocialPT>`
           }
         `
       }
-      case 'twitter': {
+      case SocialId.TWITTER: {
         return css`
           &:hover {
             fill: #00acee;
           }
         `
       }
-      case 'website': {
+      case SocialId.WEBSITE: {
         return css`
           &:hover {
             fill: #3b9869;
           }
         `
       }
-      case 'youtube': {
+      case SocialId.YOUTUBE: {
         return css`
           &:hover {
             fill: rgb(204, 23, 23);
           }
         `
       }
-      case 'mainLink': {
+      case SocialId.MAIN_LINK: {
         return css`
           &:hover {
             fill: #22d97d;

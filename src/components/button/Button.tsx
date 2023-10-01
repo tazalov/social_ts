@@ -24,25 +24,28 @@ type PropsType = {
 }
 
 export const StyledButton = styled.button<PropsType>`
-  font-weight: 600;
-  padding: ${(props) => (props.$variant === ButtonVariant.PRIMARY ? '10px 13px' : '5px')};
-  background-color: ${(props) =>
-    props.$variant === ButtonVariant.PRIMARY ? props.theme.colors.accent : 'transparent'};
-  color: ${(props) => (props.$variant === ButtonVariant.PRIMARY ? 'white' : props.theme.colors.accent)};
-  border: ${(props) => (props.$variant === ButtonVariant.PRIMARY ? 0 : `2px solid ${props.theme.colors.accent}`)};
-  border-radius: ${(props) => (props.$variant === ButtonVariant.PRIMARY ? 0 : '5px')};
+  font-weight: ${(props) => {
+    console.log(props)
+    return 600
+  }};
+  padding: ${({ $variant }) => ($variant === ButtonVariant.PRIMARY ? '10px 13px' : '5px')};
+  background-color: ${({ $variant, theme }) =>
+    $variant === ButtonVariant.PRIMARY ? theme.colors.accent : 'transparent'};
+  color: ${({ $variant, theme }) => ($variant === ButtonVariant.PRIMARY ? 'white' : theme.colors.accent)};
+  border: ${({ $variant, theme }) => ($variant === ButtonVariant.PRIMARY ? 0 : `2px solid ${theme.colors.accent}`)};
+  border-radius: ${({ $variant }) => ($variant === ButtonVariant.PRIMARY ? 0 : '5px')};
   transition: all 0.3s ease;
   text-transform: uppercase;
   display: block;
   max-width: min-content;
   &:hover {
-    background-color: ${(props) =>
-      props.$variant === ButtonVariant.PRIMARY ? props.theme.colors.accent2 : props.theme.colors.accent};
-    color: ${(props) => props.$variant === ButtonVariant.OUTLINE && props.theme.colors.thirdBg};
+    background-color: ${({ $variant, theme }) =>
+      $variant === ButtonVariant.PRIMARY ? theme.colors.accent2 : theme.colors.accent};
+    color: ${({ $variant, theme }) => $variant === ButtonVariant.OUTLINE && 'white'};
   }
   &:disabled {
-    background-color: ${(props) => props.theme.colors.secondaryFont};
-    color: ${(props) => props.theme.colors.primaryFont};
+    background-color: ${({ theme }) => theme.colors.secondaryFont};
+    color: ${({ theme }) => theme.colors.primaryFont};
     box-shadow: none;
   }
 `

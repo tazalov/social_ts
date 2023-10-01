@@ -2,16 +2,16 @@ name: building, testing, linting
 run-name: ${{ github.actor }} is testing
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 jobs:
   pipeline:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18.16.1 ]
-        
+        node-version: [18.16.1]
+
     steps:
       - uses: actions/checkout@v2
       - name: Starting Node.js ${{ matrix.node-version }}

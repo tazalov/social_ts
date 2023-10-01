@@ -2,16 +2,15 @@ import { FC, memo } from 'react'
 
 import { C } from '../../../../app/styles/Common.styled'
 import { Social } from '../../../../components'
+import { SocialId } from '../../../../components/icon/Social'
 import { ContactsT } from '../../../../redux/profile-reducer'
 
 interface LinksPT {
   links: ContactsT
 }
 
-export type ContactLinksT = keyof ContactsT
-
 export const Links: FC<LinksPT> = memo(({ links }) => {
-  const linksNames = Object.keys(links) as ContactLinksT[]
+  const linksNames = Object.keys(links) as SocialId[]
   return (
     <C.FlexWrapper $gap={'10px'} $justify={'center'} $wrap={'wrap'} style={{ maxWidth: '200px', margin: '0 auto' }}>
       {linksNames.reduce((acc, el) => {

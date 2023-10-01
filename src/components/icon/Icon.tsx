@@ -9,14 +9,9 @@ type IconPT = {
   viewBox?: string
 }
 
-export const Icon: FC<IconPT> = ({ iconId, height, viewBox, width }) => {
+export const Icon: FC<IconPT> = ({ iconId, height = '50', viewBox = '0 0 50 50', width = '50' }) => {
   return (
-    <svg
-      width={width || '50'}
-      height={height || '50'}
-      viewBox={viewBox || '0 0 50 50'}
-      xmlns='http://www.w3.org/2000/svg'
-    >
+    <svg width={width} height={height} viewBox={viewBox} xmlns='http://www.w3.org/2000/svg'>
       <use xlinkHref={`${iconsSprite}#${iconId}`} />
     </svg>
   )
