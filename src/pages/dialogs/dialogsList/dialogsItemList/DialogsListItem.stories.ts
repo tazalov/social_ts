@@ -1,8 +1,5 @@
 import { DialogsListItem } from './DialogsListItem'
 
-import { PagesDecorator } from '../../../../utils/storybook/decorators/PagesDecorator'
-import { RouterDecorator } from '../../../../utils/storybook/decorators/RouterDecorator'
-
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof DialogsListItem> = {
@@ -18,7 +15,6 @@ const meta: Meta<typeof DialogsListItem> = {
       control: 'text',
     },
   },
-  decorators: [RouterDecorator, PagesDecorator],
 }
 
 export default meta

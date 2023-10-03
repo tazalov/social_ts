@@ -3,6 +3,9 @@ import type { Preview } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../src/app/styles/Global.styled";
 import { lightTheme, theme } from "../src/app/styles/theme/Theme";
+import {
+  RouterDecorator
+} from "../src/utils/storybook/decorators/RouterDecorator";
 
 const preview: Preview = {
   parameters: {
@@ -18,7 +21,7 @@ const preview: Preview = {
       defaultTheme: "dark",
       Provider: ThemeProvider,
       GlobalStyles: GlobalStyle
-    })]
+    }), RouterDecorator]
 };
 
 export default preview;
