@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import { Friend } from './Friend'
+import { Friend } from './friend/Friend'
 import { S } from './Friends.styled'
 
 import { TitleBlock } from '../../../components'

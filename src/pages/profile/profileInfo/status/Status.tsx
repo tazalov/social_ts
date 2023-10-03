@@ -9,7 +9,7 @@ import { S } from '../ProfileInfo.styled'
 
 type StatusPT = MapStatePT & MapDispatchPT
 
-const Status: FC<StatusPT> = ({ id, userId, status, updateStatusProfile }) => {
+export const Status: FC<StatusPT> = ({ id, userId, status, updateStatusProfile }) => {
   const [editMode, setEditMode] = useState(false)
   const [currentStatus, setCurrentStatus] = useState('')
 

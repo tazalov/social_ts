@@ -1,5 +1,3 @@
-import { Story } from '@storybook/blocks'
-
 import { TextForm } from './TextForm'
 
 import { ShadowDecorator } from '../../utils/storybook/decorators/ShadowDecorator'

@@ -2,7 +2,6 @@ import { Profile } from './Profile'
 
 import avatar from '../../app/assets/images/carrepair.webp'
 import { PagesDecorator } from '../../utils/storybook/decorators/PagesDecorator'
-import { RouterDecorator } from '../../utils/storybook/decorators/RouterDecorator'
 import { StoreDecorator } from '../../utils/storybook/decorators/StoreDecorator'
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -48,7 +47,7 @@ const meta: Meta<typeof Profile> = {
       control: 'text',
     },
   },
-  decorators: [StoreDecorator, RouterDecorator, PagesDecorator],
+  decorators: [StoreDecorator, PagesDecorator],
 }
 
 export default meta

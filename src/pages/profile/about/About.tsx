@@ -1,10 +1,11 @@
 import { FC, memo } from 'react'
 
+import { Links } from './links/Links'
+
 import { C } from '../../../app/styles/Common.styled'
 import { TitleBlock } from '../../../components'
 import { Text } from '../../../components/text/Text'
 import { ContactsT } from '../../../redux/profile-reducer'
-import { Links } from '../profileInfo/links/Links'
 
 type AboutPT = {
   about: string | null

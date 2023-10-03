@@ -1,5 +1,3 @@
-import { Story } from '@storybook/blocks'
-
 import { TitleBlock } from './TitleBlock'
 
 import type { Meta, StoryObj } from '@storybook/react'

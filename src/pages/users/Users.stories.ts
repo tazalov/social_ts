@@ -1,9 +1,6 @@
-import { Story } from '@storybook/blocks'
-
 import { UsersC } from './UsersContainer'
 
 import { PagesDecorator } from '../../utils/storybook/decorators/PagesDecorator'
-import { RouterDecorator } from '../../utils/storybook/decorators/RouterDecorator'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -57,7 +54,7 @@ const meta: Meta<typeof UsersC> = {
       action: 'you unfollowed this user!',
     },
   },
-  decorators: [RouterDecorator, PagesDecorator],
+  decorators: [PagesDecorator],
 }
 
 export default meta

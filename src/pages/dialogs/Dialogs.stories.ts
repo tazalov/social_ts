@@ -1,7 +1,6 @@
 import { Dialogs } from './DialogsContainer'
 
 import { PagesDecorator } from '../../utils/storybook/decorators/PagesDecorator'
-import { RouterDecorator } from '../../utils/storybook/decorators/RouterDecorator'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -26,7 +25,7 @@ const meta: Meta<typeof Dialogs> = {
       action: 'Message added!',
     },
   },
-  decorators: [RouterDecorator, PagesDecorator],
+  decorators: [PagesDecorator],
 }
 
 export default meta

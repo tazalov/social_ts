@@ -1,5 +1,3 @@
-import { Story } from '@storybook/blocks'
-
 import { Text } from './Text'
 
 import { ShadowDecorator } from '../../utils/storybook/decorators/ShadowDecorator'

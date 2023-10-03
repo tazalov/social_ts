@@ -1,5 +1,7 @@
 import { DialogsListItem } from './DialogsListItem'
 
+import { ShadowDecorator } from '../../../../utils/storybook/decorators/ShadowDecorator'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof DialogsListItem> = {
@@ -15,6 +17,7 @@ const meta: Meta<typeof DialogsListItem> = {
       control: 'text',
     },
   },
+  decorators: [ShadowDecorator],
 }
 
 export default meta

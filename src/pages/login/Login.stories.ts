@@ -2,7 +2,6 @@ import { Login } from './Login'
 
 import captcha from '../../app/assets/images/example-captcha.png'
 import { PagesDecorator } from '../../utils/storybook/decorators/PagesDecorator'
-import { RouterDecorator } from '../../utils/storybook/decorators/RouterDecorator'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -30,7 +29,7 @@ const meta: Meta<typeof Login> = {
       description: 'Function for submit form',
     },
   },
-  decorators: [RouterDecorator, PagesDecorator],
+  decorators: [PagesDecorator],
 }
 
 export default meta

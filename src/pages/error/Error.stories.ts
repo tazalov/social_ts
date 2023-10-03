@@ -1,7 +1,5 @@
 import { Error } from './Error'
 
-import { RouterDecorator } from '../../utils/storybook/decorators/RouterDecorator'
-
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Error> = {
@@ -10,7 +8,6 @@ const meta: Meta<typeof Error> = {
   parameters: {
     layout: 'fullscreen',
   },
-  decorators: [RouterDecorator],
 }
 
 export default meta
