@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { DialogsMessage } from './DialogsMessage'
+import { DialogsMessage } from './dialogsMessage/DialogsMessage'
 
 import { S } from './DialogsMessages.styled'
 

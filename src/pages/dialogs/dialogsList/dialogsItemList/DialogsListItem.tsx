@@ -1,10 +1,9 @@
 import { FC } from 'react'
 
-import { S } from './DialogsList.styled'
-
-import avatar from '../../../app/assets/images/anynft.webp'
-import { C } from '../../../app/styles/Common.styled'
-import { Avatar } from '../../../components'
+import avatar from '../../../../app/assets/images/anynft.webp'
+import { C } from '../../../../app/styles/Common.styled'
+import { Avatar } from '../../../../components'
+import { S } from '../DialogsList.styled'
 
 interface DialogsListItemPT {
   id: number

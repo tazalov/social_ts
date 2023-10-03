@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
+import { DialogsListItem } from './dialogsItemList/DialogsListItem'
 import { S } from './DialogsList.styled'
-import { DialogsListItem } from './DialogsListItem'
 
 import { DialogsListItemT } from '../../../redux/dialogs-reducer'
 
