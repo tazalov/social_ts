@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/social_ts/static/js/main.c414cd08.js",
-    "static/js/974.20a0a8a6.chunk.js": "/social_ts/static/js/974.20a0a8a6.chunk.js",
+    "main.js": "/social_ts/static/js/main.544fb021.js",
+    "static/js/188.3448229a.chunk.js": "/social_ts/static/js/188.3448229a.chunk.js",
     "static/js/20.744fc870.chunk.js": "/social_ts/static/js/20.744fc870.chunk.js",
-    "static/js/702.64a44a88.chunk.js": "/social_ts/static/js/702.64a44a88.chunk.js",
+    "static/js/493.bcdd5ca4.chunk.js": "/social_ts/static/js/493.bcdd5ca4.chunk.js",
     "static/js/137.922f526d.chunk.js": "/social_ts/static/js/137.922f526d.chunk.js",
     "static/media/social-icon-sprite.svg": "/social_ts/static/media/social-icon-sprite.f0e6aaeb91e711434b9e54c9720175d5.svg",
     "static/media/icon-sprite.svg": "/social_ts/static/media/icon-sprite.581a403bc01b6ff7862da2a9cd33cb92.svg",
     "static/media/anynft.webp": "/social_ts/static/media/anynft.a2c31cf8619462c6524b.webp",
     "index.html": "/social_ts/index.html",
-    "main.c414cd08.js.map": "/social_ts/static/js/main.c414cd08.js.map",
-    "974.20a0a8a6.chunk.js.map": "/social_ts/static/js/974.20a0a8a6.chunk.js.map",
+    "main.544fb021.js.map": "/social_ts/static/js/main.544fb021.js.map",
+    "188.3448229a.chunk.js.map": "/social_ts/static/js/188.3448229a.chunk.js.map",
     "20.744fc870.chunk.js.map": "/social_ts/static/js/20.744fc870.chunk.js.map",
-    "702.64a44a88.chunk.js.map": "/social_ts/static/js/702.64a44a88.chunk.js.map",
+    "493.bcdd5ca4.chunk.js.map": "/social_ts/static/js/493.bcdd5ca4.chunk.js.map",
     "137.922f526d.chunk.js.map": "/social_ts/static/js/137.922f526d.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.c414cd08.js"
+    "static/js/main.544fb021.js"
   ]
 }
