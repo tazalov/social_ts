@@ -1,5 +1,8 @@
 # Social network
 
+Login: `free@samuraijs.com`
+Password: `free`
+
 [Demo](https://tazalov.github.io/social_ts/)
 
 ###### List of technologies

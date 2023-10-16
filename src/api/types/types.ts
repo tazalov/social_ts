@@ -7,5 +7,5 @@ export enum ResultCodeE {
 export interface ResponseT<T = {}, RC = ResultCodeE> {
   data: T
   resultCode: RC
-  messages: Array<string>
+  messages: string[]
 }
